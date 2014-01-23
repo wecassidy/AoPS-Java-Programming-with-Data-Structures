@@ -1,0 +1,31 @@
+
+public class Week12Problem4 {
+	public static void selectionSort(int[] array) {
+		int min = array[0]; // Initialise min to the largest possible value for an integer
+		int minPos = 0;
+		
+		for (int firstIndex = 0; firstIndex < array.length; firstIndex ++) {
+			for (int i = firstIndex; i < array.length; i ++) {
+				if (array[i] < min) {
+					min = array[i];
+					minPos = i;
+				}
+			}
+			
+			min = Integer.array[firstIndex];
+			
+			int save = array[firstIndex];
+			
+			array[firstIndex] = min;
+			array[minPos] = save;
+		}
+		
+		for (int i : array) {
+			System.out.print(i + " ");
+		}
+	}
+	
+	public static void main(String[] args) {
+		selectionSort(new int[] {1, 2, 3, 6, 5, 3, 6735, 684678, 3473});
+	}
+}

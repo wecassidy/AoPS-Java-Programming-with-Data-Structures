@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+
+public class SampleProgram {
+
+	public static void main(String[] args) {
+		System.out.print("Enter N: ");
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        int sum = 0;
+        for (int i=0; i < Math.pow(N, N) % M; i++)
+            sum = sum + i;
+        System.out.print(sum);
+
+	}
+
+}

@@ -1,0 +1,17 @@
+import java.awt.LayoutManager;
+
+import javax.swing.JPanel;
+
+
+public class CubeCalculator extends JPanel {
+
+	public CubeCalculator() {
+		super();
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

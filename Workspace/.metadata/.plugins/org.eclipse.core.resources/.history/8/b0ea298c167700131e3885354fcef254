@@ -1,0 +1,29 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+
+public class CubeCalculator extends JPanel {
+	private JLabel numLabel;
+
+	public CubeCalculator() {
+		super();
+		
+		for (int i = 0; i < 10; i ++) {
+			JButton numButton = new JButton(i + "");
+		}
+	}
+
+	public static void main(String[] args) {
+		CubeCalculator calc = new CubeCalculator();
+		
+		JFrame window = new JFrame("Cube Calculator");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setSize(500, 450);
+		window.add(calc);
+		window.setVisible(true);
+
+	}
+
+}

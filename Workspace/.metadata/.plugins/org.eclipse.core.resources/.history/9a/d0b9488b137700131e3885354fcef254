@@ -1,0 +1,25 @@
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
+
+public class TabTest extends JTabbedPane {
+	
+	public TabTest() {
+		super();
+	}
+
+	public static void main(String[] args) {
+		TabTest tabs = new TabTest();
+		tabs.addTab("Tab 1", new JPanel());
+		tabs.addTab("Tab 2", new JPanel());
+		
+		JFrame window = new JFrame();
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setSize(500, 450);
+		window.add(tabs);
+		window.setVisible(true);
+
+	}
+
+}

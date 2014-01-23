@@ -1,0 +1,55 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+
+public class CubeCalculator extends JPanel {
+	private JLabel numLabel;
+
+	public CubeCalculator() {
+		super();
+		
+		JButton nineButton = new JButton("9");
+		JButton eightButton = new JButton("8");
+		JButton sevenButton = new JButton("7");
+		JButton sixButton = new JButton("6");
+		JButton fiveButton = new JButton("5");
+		JButton fourButton = new JButton("4");
+		JButton threeButton = new JButton("3");
+		JButton twoButton = new JButton("2");
+		JButton oneButton = new JButton("1");
+		JButton zeroButton = new JButton("0");
+		
+		JButton clearButton = new JButton("Clear");
+		JButton cubeButton = new JButton("Cube");
+	}
+
+	public static void main(String[] args) {
+		CubeCalculator calc = new CubeCalculator();
+		
+		JFrame window = new JFrame("Cube Calculator");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setSize(500, 450);
+		window.add(calc);
+		window.setVisible(true);
+
+	}
+	
+	private class BHandler implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			switch (e.getActionCommand()) {
+			case "Clear":
+				
+			}
+			
+		}
+		
+	}
+
+}
