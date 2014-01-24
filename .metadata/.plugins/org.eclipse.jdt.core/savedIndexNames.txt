@@ -1,15 +1,3 @@
 INDEX VERSION 1.126+/Users/wec/AoPS Java Programming with Data Structures/.metadata/.plugins/org.eclipse.jdt.core
-2651004802.index
-4135896242.index
-118115896.index
-1715198243.index
-1871549704.index
-3909365524.index
-2172908580.index
-1879932590.index
-1759531281.index
-411739550.index
-4058579115.index
-289204661.index
-2263756861.index
+4259809859.index
 1524501369.index
