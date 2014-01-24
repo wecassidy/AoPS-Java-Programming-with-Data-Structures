@@ -19,6 +19,8 @@ public class Welcome { // begin class definition
 		int ageNext = ageNow + 1; // Calculate the age next year
 		System.out.printf("Next year, you will be %d.", ageNext); // print the age next year
 		
+		scan.close();
+		
 		
 	} // end of main method
 

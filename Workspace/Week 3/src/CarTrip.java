@@ -70,6 +70,6 @@ public class CarTrip {
         System.out.printf("You are traveling in the approximate direction %s\n", 
                 getDirection(startX, startY, endX, endY));
         
-        
+        scan.close();
     }
 }

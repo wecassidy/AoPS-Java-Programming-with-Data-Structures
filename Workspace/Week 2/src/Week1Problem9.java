@@ -96,6 +96,8 @@ public class Week1Problem9 {
 		}
 		
 		System.out.printf("Total: $%d\n", total); // Print the total
+		
+		scan.close();
 
 
 	}

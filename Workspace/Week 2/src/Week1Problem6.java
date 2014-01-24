@@ -21,6 +21,8 @@ public class Week1Problem6 {
 		else { // If the user entered invalid input:
 			System.out.println("Please enter a positive number."); // Reprimand them :)
 		}
+		
+		scan.close();
 
 	}
 

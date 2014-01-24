@@ -28,5 +28,7 @@ public class ExceptionTest {
                 scan.nextLine();
             }
         }
+		
+		scan.close();
 	}
 }

@@ -21,6 +21,7 @@ public class SwitchExample {
         	default:
                 System.out.println("Huh??");
         }
-        
+     
+        scan.close();
     }
 }

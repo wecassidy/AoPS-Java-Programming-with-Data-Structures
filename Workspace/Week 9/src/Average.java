@@ -18,6 +18,7 @@ public class Average {
         
         System.out.println((double) sum / count); // Compute the average of the numbers in the input file and print it
  
+        scan.close();
     }
  
 }

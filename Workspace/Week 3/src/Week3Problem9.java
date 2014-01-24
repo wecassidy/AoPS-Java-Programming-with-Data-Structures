@@ -34,6 +34,7 @@ public class Week3Problem9 {
 		
 		System.out.printf("You got %d%% right.", percentage); // Tell the user what percentage he/she go right. %% prints a % sign
 
+		scan.close();
 	}
 
 }

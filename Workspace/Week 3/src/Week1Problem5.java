@@ -15,6 +15,8 @@ public class Week1Problem5 {
 		int d = scan.nextInt(); // Get the fourth number entered
 		
 		System.out.printf("The average of %d, %d, %d, and %d is %f.", a, b, c, d, average(a, b, c, d)); // Print a, b, c, d, and their average
+		
+		scan.close();
 	}
 
 }

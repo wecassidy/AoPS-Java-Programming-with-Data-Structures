@@ -23,5 +23,7 @@ public class WhileExample {
         }
         
         System.out.printf("Positives: %d\nNegatives: %d\nZeroes: %d\n", positives, negatives, zeroes);
+        
+        scan.close();
     }
 }

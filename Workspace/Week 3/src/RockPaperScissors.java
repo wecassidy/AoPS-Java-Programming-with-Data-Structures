@@ -25,6 +25,8 @@ public class RockPaperScissors {
             String userMove = scan.nextLine();
             String computerMove = getComputerMove();
             //determineWin(userMove, computerMove);
+            
+            scan.close();
         }
     }
 }

@@ -24,6 +24,7 @@ public class Week1Problem7 {
 			System.out.println("All numbers must be positive."); // Tell the user that the numbers must be positive.
 		}
 
+		scan.close();
 	}
 
 }

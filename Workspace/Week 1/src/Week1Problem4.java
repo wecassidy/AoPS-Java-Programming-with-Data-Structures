@@ -15,6 +15,7 @@ public class Week1Problem4 {
 		System.out.printf("%d * %d = %d\n", a, b, a * b); // Print the product
 		System.out.printf("%d / %d = %d\n", a, b, a / b); // Print the integer part of the quotient
 
+		scan.close();
 	}
 
 }

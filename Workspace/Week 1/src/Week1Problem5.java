@@ -40,6 +40,8 @@ public class Week1Problem5 {
 		System.out.printf("%d numbers were positive.\n", positiveCount); // Print the number of positive numbers
 		System.out.printf("%d numbers were negative.\n", negativeCount); // Print the number of negative numbers
 		System.out.printf("%d numbers were zeroes.\n", zeroCount); // Print the number of zeroes
+		
+		scan.close();
 
 	}
 

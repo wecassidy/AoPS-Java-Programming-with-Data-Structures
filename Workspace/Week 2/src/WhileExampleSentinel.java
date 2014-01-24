@@ -22,5 +22,7 @@ public class WhileExampleSentinel {
         
         // print results
         System.out.printf("Positives: %d\nNegatives: %d\n\n", positives, negatives);
+        
+        scan.close();
     }
 }

@@ -33,7 +33,7 @@ public class Week1Problem6 {
 		}
 		
 		
-
+		scan.close();
 	}
 
 }

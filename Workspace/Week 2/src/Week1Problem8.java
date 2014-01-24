@@ -20,6 +20,8 @@ public class Week1Problem8 {
 		else { // If the user entered a negative number or zero:
 			System.out.println("Please enter a positive number."); // Ask the user to enter a positive number
 		}
+		
+		scan.close();
 
 	}
 

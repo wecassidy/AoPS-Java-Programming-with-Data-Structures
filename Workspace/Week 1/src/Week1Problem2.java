@@ -8,6 +8,7 @@ public class Week1Problem2 {
 	    int num = scan.nextInt(); // Assign the value the user enters to the integer num
 	    System.out.printf("Twice the number is %d.", num * 2); // Print the message to the console
 
+	    scan.close();
 	}
 
 }

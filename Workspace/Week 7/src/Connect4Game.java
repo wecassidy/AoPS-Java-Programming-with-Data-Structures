@@ -23,7 +23,9 @@ public class Connect4Game {
 				else {
 					player = 1;
 				}
-			}    
+			}
+			
+			scan.close();
 		}
 	}
 }

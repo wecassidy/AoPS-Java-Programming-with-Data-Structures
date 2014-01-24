@@ -37,6 +37,7 @@ public class Week3Problem7 {
 			}
 		}
 
+		scan.close();
 	}
 
 }
