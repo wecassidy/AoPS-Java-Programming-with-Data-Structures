@@ -1,0 +1,98 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+
+public class Week12Problem6 {
+	
+	public static final HashMap<String, Integer> LETTER_TO_NUMBER = new HashMap<String, Integer> () {{
+		put("a", 0);
+		put("b", 1);
+		put("c", 2);
+		put("d", 3);
+		put("e", 4);
+		put("f", 5);
+		put("g", 6);
+		put("h", 7);
+		put("i", 8);
+		put("j", 9);
+		put("k", 10);
+		put("l", 11);
+		put("m", 12);
+		put("n", 13);
+		put("o", 14);
+		put("p", 15);
+		put("q", 16);
+		put("r", 17);
+		put("s", 18);
+		put("t", 19);
+		put("u", 20);
+		put("v", 21);
+		put("w", 22);
+		put("x", 23);
+		put("y", 24);
+		put("z", 25);
+	}}; // Create a dictionary that maps the letters a-z to the numbers 0-25. We make the field static so that it doesn't have to be initialised from within a constructor and final so that it is a constant 
+
+	
+	public static int[] letterFrequency(String word) {
+		final String ALPHABET = "abcdefghijklmnopqrstuvwxyz"; // Create a constant String instance to represent the alphabet
+		
+		int[] frequencyList = new int[26]; // The indices of the entries in the list of frequencies correspond to the letters as in the NUMBER_TO_LETTER dictionary
+
+		for (int i = 0; i < 26; i ++) { // Loop 26 times
+			frequencyList[i] = 0; // Initialize the frequency of the letter to 0
+		}
+
+		for (int j = 0; j < word.length(); j ++) { // Loop through the word
+				String currentChar = word.substring(j, j + 1).toLowerCase(); // Get the current character and convert it to lowercase
+
+				if (ALPHABET.indexOf(currentChar) != -1) { // If the current character is in the alphabet:
+					frequencyList[LETTER_TO_NUMBER.get(currentChar)] ++; // Increment the frequency of the current character
+				}
+			}
+
+		return frequencyList; // Return the list of frequencies
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+		File f = new File("wordlist.txt");
+		Scanner wordlist = new Scanner(f);
+		
+		Scanner s = new Scanner(System.in);
+		String bigWord = s.next();
+		ArrayList<String> littleWords = new ArrayList<String> ();
+		
+		int[] bigWordFrequency = letterFrequency(bigWord);
+		
+		boolean wordPossible = true;
+		for (String word = ""; wordlist.hasNext(); word = wordlist.nextLine()) {
+			int[] charCounts = letterFrequency(word);
+			
+			for (int i = 0; i < 26; i ++) {
+				if (charCounts[i] <= bigWordFrequency[i]) {
+					wordPossible = true;
+				}
+				
+				else {
+					wordPossible = false;
+					break;
+				}
+			}
+			
+			if (wordPossible) {
+				littleWords.add(word);
+			}
+		}
+		
+		for (String word : littleWords) {
+			System.out.println(word);
+		}
+		
+		wordlist.close();
+		s.close();
+	}
+
+}
