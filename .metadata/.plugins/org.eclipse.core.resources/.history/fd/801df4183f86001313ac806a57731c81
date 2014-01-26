@@ -1,7 +1,6 @@
-package week13;
 
-public class AList<E> implements AOPSListGeneric<E> {
-    private Object [] array; // to store the elements
+public class AList implements AOPSList {
+    private String [] array; // to store the elements
     private int capacity; // number of spots for elements in the array
     private int size; // number of elements actually stored
     
@@ -12,7 +11,7 @@ public class AList<E> implements AOPSListGeneric<E> {
     public AList()
     {
         this.capacity = 10;
-        this.array = new Object[this.capacity];
+        this.array = new String[this.capacity];
         this.size = 0;
     }
     @Override
@@ -20,7 +19,7 @@ public class AList<E> implements AOPSListGeneric<E> {
      * Puts an element at the beginning of the list
      * x element to insert
      */
-    public void addToFront(E x) {
+    public void addToFront(String x) {
         this.insert(x, 0); // add element to position 0
     }
 
@@ -29,7 +28,7 @@ public class AList<E> implements AOPSListGeneric<E> {
      * Puts an element at the end of the list
      * x element to insert
      */
-    public void addToBack(E x) {
+    public void addToBack(String x) {
         this.insert(x,  this.size); // add element at open last position
     }
 
@@ -38,7 +37,7 @@ public class AList<E> implements AOPSListGeneric<E> {
      */
     private void resize()
     {
-        Object [] newArray = new Object[2*this.capacity];
+        String [] newArray = new String[2*this.capacity];
         for (int i = 0; i < this.size; i++)
             newArray[i] = this.array[i]; // copy elements to new list
         this.array = newArray; // make array the new list
@@ -51,7 +50,7 @@ public class AList<E> implements AOPSListGeneric<E> {
      * x element to insert
      * position place where element will end up
      */
-    public void insert(E x, int position) {
+    public void insert(String x, int position) {
         if (position < 0 || position > this.size) // verify position is valid
             return;
         if (this.capacity == this.size) // resize if array is currently full
@@ -68,7 +67,7 @@ public class AList<E> implements AOPSListGeneric<E> {
      * x new element to put in
      * position place to replace
      */
-    public void replace(E x, int position) {
+    public void replace(String x, int position) {
         if (position >= 0 && position <= this.size - 1) // check if valid
             this.array[position] = x; // overwrite spot in array
     }
@@ -78,11 +77,11 @@ public class AList<E> implements AOPSListGeneric<E> {
      * Determine element at particular position
      * Return "ERROR" if position is invalid
      */
-    public E get(int position) throws NoSuchListElementException {
+    public String get(int position) {
         if (position >= 0 && position <= this.size - 1) // check for valid
-            return (E) this.array[position]; // return array element
+            return this.array[position]; // return array element
         else
-           throw new NoSuchListElementException();
+            return "ERROR";
     }
     @Override
     /**
@@ -104,7 +103,7 @@ public class AList<E> implements AOPSListGeneric<E> {
     /**
      * Return true if and only if x occurs in the list
      */
-    public boolean contains(E x) {
+    public boolean contains(String x) {
         return this.index(x) != -1; // determine if index in the list is not -1
     }
 
@@ -125,14 +124,14 @@ public class AList<E> implements AOPSListGeneric<E> {
      * Find index of x
      * Return -1 if not present, position number if present
      */
-    public int index(E x) {
+    public int index(String x) {
         for (int pos = 0; pos < this.size; pos++) // loop through array
             if (x.equals(this.array[pos])) // if we find it, return the position
                 return pos;
         return -1; // -1 if we get through the loop without finding it
     }
     /**
-     * Return a E representation of the entire list
+     * Return a String representation of the entire list
      */
     public String toString()
     {

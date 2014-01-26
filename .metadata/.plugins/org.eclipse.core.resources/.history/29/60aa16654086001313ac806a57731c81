@@ -1,7 +1,7 @@
 package week13;
 
-public class AList<E> implements AOPSListGeneric<E> {
-    private Object [] array; // to store the elements
+public class AList<E> implements AOPSList<E> {
+    private E [] array; // to store the elements
     private int capacity; // number of spots for elements in the array
     private int size; // number of elements actually stored
     
@@ -12,7 +12,7 @@ public class AList<E> implements AOPSListGeneric<E> {
     public AList()
     {
         this.capacity = 10;
-        this.array = new Object[this.capacity];
+        this.array = new E[this.capacity];
         this.size = 0;
     }
     @Override
@@ -38,7 +38,7 @@ public class AList<E> implements AOPSListGeneric<E> {
      */
     private void resize()
     {
-        Object [] newArray = new Object[2*this.capacity];
+        E [] newArray = new E[2*this.capacity];
         for (int i = 0; i < this.size; i++)
             newArray[i] = this.array[i]; // copy elements to new list
         this.array = newArray; // make array the new list
@@ -78,11 +78,11 @@ public class AList<E> implements AOPSListGeneric<E> {
      * Determine element at particular position
      * Return "ERROR" if position is invalid
      */
-    public E get(int position) throws NoSuchListElementException {
+    public E get(int position) {
         if (position >= 0 && position <= this.size - 1) // check for valid
-            return (E) this.array[position]; // return array element
+            return this.array[position]; // return array element
         else
-           throw new NoSuchListElementException();
+            return "ERROR";
     }
     @Override
     /**
