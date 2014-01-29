@@ -59,6 +59,7 @@ public class TurtleGraphics2 extends JPanel {
 		}
 	}
 
+
 	/**
 	 * Creates a TurtleGraphics object
 	 * @param row the number of rows in the board
@@ -89,6 +90,7 @@ public class TurtleGraphics2 extends JPanel {
 		return outArray; // Return the location array
 	}
 
+
 	/**
 	 * @param location the location to set
 	 */
@@ -97,12 +99,14 @@ public class TurtleGraphics2 extends JPanel {
 		this.column = column; // Set the column of the turtle
 	}
 
+
 	/**
 	 * @return the direction
 	 */
 	public String getDirection() {
 		return this.direction; // Get the direction of the turtle
 	}
+
 
 	/**
 	 * @param direction the direction to set
@@ -111,12 +115,14 @@ public class TurtleGraphics2 extends JPanel {
 		this.direction = direction; // Set the direction of the turtle
 	}
 
+
 	/**
 	 * @return the {@code true} if the pen is down, {@code false} otherwise.
 	 */
 	public boolean isPenDown() {
 		return this.penDown; // Return the state of the pen
 	}
+
 
 	/**
 	 * @param penDown {@code true} if the pen is to be set down, {@code false} otherwise.
@@ -140,6 +146,7 @@ public class TurtleGraphics2 extends JPanel {
 		this.penDown = !this.penDown; // Flip the state of the pen
 	}
 
+
 	/**
 	 * @return the board
 	 */
@@ -147,12 +154,14 @@ public class TurtleGraphics2 extends JPanel {
 		return this.board; // Return the board
 	}
 
+
 	/**
 	 * @param board the board to set
 	 */
 	public void setBoard(String[][] board) {
 		this.board = board; // Set the board attribute to the input board
 	}
+
 
 	/**
 	 * Get the value of a cell
@@ -163,6 +172,7 @@ public class TurtleGraphics2 extends JPanel {
 	public String getCell(int row, int column) {
 		return this.board[row][column]; // Return the value of the cell at the given row and column
 	}
+
 
 	/**
 	 * Sets the value of a cell
@@ -239,6 +249,7 @@ public class TurtleGraphics2 extends JPanel {
 		}
 	}
 
+
 	/**
 	 * Moves the turtle forward <var>n</var> spaces
 	 * @param numForward the number of spaces forward
@@ -300,7 +311,6 @@ public class TurtleGraphics2 extends JPanel {
 
 	}
 
-	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // Clear the board
 
