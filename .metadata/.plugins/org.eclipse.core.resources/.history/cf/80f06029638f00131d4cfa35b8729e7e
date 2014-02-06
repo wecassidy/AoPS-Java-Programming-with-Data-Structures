@@ -11,5 +11,4 @@ public interface AOPSListGeneric<E> {
     public boolean contains(E x); // is x in the list?
     public void remove(int position); // delete the element at given position
     public int index(E x); // returns first position of x in the list, -1 if not there
-    public AOPSListGeneric<E> sample(int s); // returns a randomly chosen sample of the AOPSListGeneric of size s
 }
