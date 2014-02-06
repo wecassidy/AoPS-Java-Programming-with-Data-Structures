@@ -1,9 +1,6 @@
-INDEX VERSION 1.126+/Users/wec/AoPS Java Programming with Data Structures/.metadata/.plugins/org.eclipse.jdt.core
-3321539481.index
-1271342938.index
-2545238116.index
-2328043753.index
+INDEX VERSION 1.126+/Users/pjk/AoPS-Java-Programming-with-Data-Structures/.metadata/.plugins/org.eclipse.jdt.core
 4259809859.index
+<<<<<<< HEAD
 1524501369.index
 925495247.index
 3261838026.index
@@ -25,3 +22,5 @@ INDEX VERSION 1.126+/Users/wec/AoPS Java Programming with Data Structures/.metad
 1213662472.index
 3302703152.index
 2399042292.index
+=======
+>>>>>>> 23e70e86e79e5b29460d6e469c614392ed4fa870
