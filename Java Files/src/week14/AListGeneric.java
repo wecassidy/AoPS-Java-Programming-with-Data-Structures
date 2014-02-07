@@ -195,3 +195,16 @@ class BadSampleSizeException extends IllegalArgumentException {
 	}
 	
 }
+
+/*
+(The following assumes that s is valid. If s is invalid, the method runs in constant time because it throws an exception before it loops at all.)
+Let M be the size of this.array and N be equal to s, the input of the sample() method.
+The first 3 lines of the method run in constant time, so we don't have to factor them in.
+After that, the method clones the list, which runs in O(M) (linear) time.
+The next 2 lines are two constructors which run in constant time, and so can be ignored.
+The for loop on the next line loops N times, so the running time is O(M + N).
+Random.nextInt(), AList.addToBack(), and AList.get() all run in constant time (usually), so we can ignore the time it takes to run those methods.
+AList.remove(), however, runs in O(M) time, so it needs to be factored into the big-Oh running time, leaving us with O(M + NM).
+Finally, we need to factor in the running time of resizing the list. This is heavily dependent on the size of the sample and the size of the list, so I will give it it's own variable, L. The running time is now O(M + L + MNL) because resizing might need to happen when the array is cloned and at the call to addToBack() in the for loop.
+MN will be far greater than M and L for very large N and M, so the final running time is O(NML).
+*/

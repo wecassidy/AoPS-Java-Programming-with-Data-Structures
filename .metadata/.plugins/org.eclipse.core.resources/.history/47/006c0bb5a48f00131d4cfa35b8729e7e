@@ -1,6 +1,6 @@
 package week14;
 
-import java.util.Arrays;
+import java.util.Random;
 
 public class AListGeneric<E> implements AOPSListGeneric<E> {
     private Object[] array; // to store the elements
@@ -70,13 +70,13 @@ public class AListGeneric<E> implements AOPSListGeneric<E> {
     }
 	
 	@Override
-	public E get(int position) {
+	public E get(int position) throws NoSuchListElementException {
 		if (position >= 0 && position <= this.size - 1) {
 			return (E) this.array[position];
 		}
 		
 		else {
-			throw new NoSuchElementException();
+			throw new NoSuchListElementException();
 		}
 	}
 	
@@ -133,4 +133,65 @@ public class AListGeneric<E> implements AOPSListGeneric<E> {
         
         return answer;
     }
+	
+	public AOPSListGeneric<Integer> getIndices(E element) {
+		AOPSListGeneric<Integer> indices = new AListGeneric<Integer> ();
+		
+		for (int i = 0; i < this.size; i ++) {
+			if (this.array[i].equals(element)) {
+				indices.addToBack(i);
+			}
+		}
+		
+		return indices;
+	}
+	
+	@Override
+	public AListGeneric<E> sample(int s) {
+		if (s >= this.size || s < 0) { // Check if the of the sample is outside of the range of the list
+			throw new BadSampleSizeException(); // If so, throw a BadSampleSizeException
+		}
+		
+		AListGeneric<E> sampleInputs = this.clone(); // Clone this list so that we can remove values from a list of sample inputs without messing with this list
+		AListGeneric<E> output = new AListGeneric<E>(); // Create a list to hold the sample
+		
+		Random rand = new Random(); // Create a Random object to generate random indices
+		
+		for (int i = 0; i < s; i ++) { // Repeat the loop s times
+			try { // Try the block of code, and if an exception is thrown, deal with it in the catch block
+				int index = rand.nextInt(sampleInputs.size()); // Get a random index from 0 to (size of the sample input list - 1), inclusive
+				
+				output.addToBack(sampleInputs.get(index)); // Add the element in the list of sample inputs at the random index to the back of the output array
+				
+				sampleInputs.remove(index); // Remove the element at index from sampleInputs so that it can't be selected again
+			}
+			
+			catch (NoSuchListElementException e) {} // The catch should never be entered, so we leave it empty
+		}
+		
+		return output; // Return the output list
+	}
+	
+	public AListGeneric<E> clone() {
+		AListGeneric<E> newList = new AListGeneric<E>(); // Create a new list that will end up with the same contents as the original list
+		
+		for (int i = 0; i < this.size; i ++) { // Loop through every element in this list
+			newList.addToBack((E) this.array[i]); // Add the element at i in this list to the back of the new list
+		}
+		
+		return newList; // Return the cloned array
+	}
+	
+}
+
+class BadSampleSizeException extends IllegalArgumentException {
+
+	public BadSampleSizeException() {
+		super();
+	}
+	
+	public BadSampleSizeException(String mesg) {
+		super(mesg);
+	}
+	
 }
