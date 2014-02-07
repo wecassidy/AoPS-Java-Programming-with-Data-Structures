@@ -182,6 +182,16 @@ public class AListGeneric<E> implements AOPSListGeneric<E> {
 		return newList; // Return the cloned array
 	}
 	
+	public static void main(String[] args) {
+		AListGeneric<Integer> thing = new AListGeneric<Integer> ();
+		
+		for (int i = 0; i < 64; i ++) {
+			thing.addToBack(i % 12);
+		}
+		
+		System.out.println(thing.getIndices(4))
+	}
+	
 }
 
 class BadSampleSizeException extends IllegalArgumentException {

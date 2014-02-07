@@ -134,18 +134,6 @@ public class AListGeneric<E> implements AOPSListGeneric<E> {
         return answer;
     }
 	
-	public AOPSListGeneric<Integer> getIndices(E element) {
-		AOPSListGeneric<Integer> indices = new AListGeneric<Integer> ();
-		
-		for (int i = 0; i < this.size; i ++) {
-			if (this.array[i].equals(element)) {
-				indices.addToBack(i);
-			}
-		}
-		
-		return indices;
-	}
-	
 	@Override
 	public AListGeneric<E> sample(int s) {
 		if (s >= this.size || s < 0) { // Check if the of the sample is outside of the range of the list
