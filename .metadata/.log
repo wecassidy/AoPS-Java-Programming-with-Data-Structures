@@ -58,6 +58,48 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY org.eclipse.core.net 1 0 2014-01-29 11:11:42.646
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+<<<<<<< HEAD
+!SESSION 2014-01-30 19:39:18.629 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-01-30 19:39:47.433
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-01-31 10:49:08.747 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-01-31 10:49:22.777
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-01-31 16:16:08.690 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-01-31 16:16:16.249
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-02-05 19:29:58.066 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-02-05 19:30:23.889
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+=======
 !SESSION 2014-02-03 13:02:08.541 -----------------------------------------------
 eclipse.buildId=4.3.0.M20130911-1000
 java.version=1.7.0_40
@@ -164,16 +206,27 @@ org.eclipse.core.internal.resources.ResourceException: The project description f
 
 !ENTRY org.eclipse.core.resources 4 567 2014-02-03 13:05:34.127
 !MESSAGE The project description file (.project) for 'Intro' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
-
-!ENTRY org.eclipse.e4.ui.css.core 4 0 2014-02-03 13:16:24.789
-!MESSAGE CSS property 'selected-tab-fill' has been deprecated: renamed as selected-tab-fill
-!SESSION 2014-02-03 13:17:05.290 -----------------------------------------------
+>>>>>>> 23e70e86e79e5b29460d6e469c614392ed4fa870
+!SESSION 2014-02-05 19:37:12.721 -----------------------------------------------
 eclipse.buildId=4.3.0.M20130911-1000
-java.version=1.7.0_40
+java.version=1.7.0_45
 java.vendor=Oracle Corporation
 BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
-Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/pjk/.eclipse_keyring -showlocation
-Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/pjk/.eclipse_keyring -showlocation
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
 
-!ENTRY org.eclipse.core.net 1 0 2014-02-03 13:17:10.620
+!ENTRY org.eclipse.core.resources 2 10035 2014-02-05 19:37:43.667
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.core.net 1 0 2014-02-05 19:37:53.671
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-02-06 14:04:33.388 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_45
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.standard.product -keyring /Users/wec/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.core.net 1 0 2014-02-06 14:04:49.823
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
