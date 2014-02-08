@@ -1,6 +1,6 @@
 package week14;
 
-public class NoSuchListElementException extends Exception {
+public class NoSuchListElementException extends IllegalArgumentException {
 	public NoSuchListElementException()
 	{
 		super();

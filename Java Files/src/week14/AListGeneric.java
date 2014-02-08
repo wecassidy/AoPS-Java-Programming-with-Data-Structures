@@ -197,14 +197,24 @@ class BadSampleSizeException extends IllegalArgumentException {
 }
 
 /*
-(The following assumes that s is valid. If s is invalid, the method runs in constant time because it throws an exception before it loops at all.)
+(The following assumes that s is valid. If s is invalid, the method runs in constant time because it throws an exception before it loops at all. When I say
+that O(___) = O(____), I use = in a very loose sense that is applicable to big-Oh running time analysis and nothing else.)
 Let M be the size of this.array and N be equal to s, the input of the sample() method.
-The first 3 lines of the method run in constant time, so we don't have to factor them in.
-After that, the method clones the list, which runs in O(M) (linear) time.
-The next 2 lines are two constructors which run in constant time, and so can be ignored.
-The for loop on the next line loops N times, so the running time is O(M + N).
-Random.nextInt(), AList.addToBack(), and AList.get() all run in constant time (usually), so we can ignore the time it takes to run those methods.
-AList.remove(), however, runs in O(M) time, so it needs to be factored into the big-Oh running time, leaving us with O(M + NM).
-Finally, we need to factor in the running time of resizing the list. This is heavily dependent on the size of the sample and the size of the list, so I will give it it's own variable, L. The running time is now O(M + L + MNL) because resizing might need to happen when the array is cloned and at the call to addToBack() in the for loop.
-MN will be far greater than M and L for very large N and M, so the final running time is O(NML).
+
+Running time of the resize() method:
+This method creates a new array and copies the contents of the original array into it, so it runs in O(L) time, where L is the size of the current array.
+
+Running time of the clone() method:
+In the clone() method, the for loop repeats M times, and each of the M iterations one of two "versions" of addToBack() is called, the version where the array
+isn't resized and the version where it is. The calls to addToBack() which do not resize the array can be ignored because it runs in constant time. Because
+the amount of time required to resize increases exponentially within each call (the first call loops 10 times, the second 20, the nth 10 * 2^(n - 1)), we can
+ignore all the calls but the last one because 2^n is always far greater than 2^(n - 1) for very large n. That means we need to find some x such that
+10 * 2^x > M/10 and take the ceiling. Solving for x in terms of M, we find x = log_2 (M/10), giving us the running time of clone as O(M log_2 (M/10)) = O(M
+log (M)).
+
+The for loop repeats N times, and inside it there are calls to addToBack(), nextInt(), and remove(). nextInt() runs in constant time, so it can be ignored.
+remove(), in the worst case, repeats M times. Finally, we can find the number of times addToBack() calls clone (and thus runs in non-constant time) using the
+same process as described above and get the number of loops is log_2 (N/10). This leaves us with O(N log_2 (N/10)) = O(N log (N)).
+
+Because the two "blocks" of code are independent, we add them, which leaves us with O(N log (N) + M log (M)).
 */

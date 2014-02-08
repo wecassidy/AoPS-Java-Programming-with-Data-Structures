@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package week15;
+
+/**
+ * @author pjk
+ *
+ */
+public class DLList implements AOPSListGeneric<E> {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -2,3 +2,7 @@
 1391733628955	Copy compilation unit
 1391733643957	Delete element
 1391733647825	Copy compilation unit
+1391793272705	Copy compilation unit
+1391794212552	Rename local variable 'prevNode'
+1391794774274	Rename type 'NoSuchListElementException'
+1391794867454	Delete element
