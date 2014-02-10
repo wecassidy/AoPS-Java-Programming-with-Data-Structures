@@ -3,19 +3,19 @@ package week15;
 
 public class DLList<E> implements AOPSListGeneric<E> {
 
-	private class Node<E> {
+	private class Node {
 		public E data;
-		public Node<E> previous;
-		public Node<E> next;
+		public Node previous;
+		public Node next;
 
-		public Node(E data, Node<E> previous, Node<E> next) {
+		public Node(E data, Node previous, Node next) {
 			this.data = data;
 			this.previous = previous;
 			this.next = next;
 		}
 	}
 
-	private Node<E> head;
+	private Node head;
 
 	public DLList() {
 		this.head = null;
@@ -24,11 +24,11 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	@Override
 	public void addToFront(E x) {
 		if (this.head == null) {
-			this.head = new Node<E> (x, null, null);
+			this.head = new Node (x, null, null);
 		}
 
 		else {
-			this.head = new Node<E> (x, null, this.head);
+			this.head = new Node (x, null, this.head);
 		}
 
 	}
@@ -36,15 +36,15 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	@Override
 	public void addToBack(E x) {
 		if (this.head == null) {
-			this.head = new Node<E> (x, null, this.head);
+			this.head = new Node (x, null, this.head);
 		}
 
 		else {
-			Node<E> end;
+			Node end;
 
 			for (end = this.head; end.next != null; end = end.next);
 
-			end.next = new Node<E> (x, end, null);
+			end.next = new Node (x, end, null);
 		}
 
 	}
@@ -60,11 +60,11 @@ public class DLList<E> implements AOPSListGeneric<E> {
 			return;
 		}
 
-		Node<E> prevNode = this.head;
+		Node prevNode = this.head;
 		for (int i = 1; i < position && prevNode != null; i ++, prevNode = prevNode.next);
 
 		if (prevNode != null) {
-			prevNode.next = new Node<E> (x, prevNode, prevNode.next);
+			prevNode.next = new Node (x, prevNode, prevNode.next);
 		}
 
 		else {
@@ -84,7 +84,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 			return;
 		}
 
-		Node<E> changeNode = this.head;
+		Node changeNode = this.head;
 		for (int i = 0; i < position && changeNode != null; i ++, changeNode = changeNode.next);
 
 		if (changeNode != null) {
@@ -103,7 +103,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 			throw new ListIndexOutOfBoundsException("Index less than 0");
 		}
 
-		Node<E> outNode = this.head;
+		Node outNode = this.head;
 		for (int i = 0; i < position && outNode != null; i ++, outNode = outNode.next);
 
 		if (outNode != null) {
@@ -119,7 +119,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	@Override
 	public int size() {
 		int size = 0;
-		for (Node<E> ptr = this.head; ptr.next != null; ptr = ptr.next, size ++);
+		for (Node ptr = this.head; ptr.next != null; ptr = ptr.next, size ++);
 
 		return size;
 
@@ -133,7 +133,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	@Override
 	public boolean contains(E x) {
-		for (Node<E> ptr = this.head; ptr.next != null; ptr = ptr.next) {
+		for (Node ptr = this.head; ptr.next != null; ptr = ptr.next) {
 			if (ptr.data == x) {
 				return true;
 			}
@@ -154,7 +154,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 			this.head.previous = null;
 		}
 
-		Node<E> prevNode = this.head;
+		Node prevNode = this.head;
 		for (int i = 1; i < position && prevNode != null; i ++, prevNode = prevNode.next);
 
 		if (prevNode != null) {
@@ -176,7 +176,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	@Override
 	public int index(E x) {
-		Node<E> ptr = this.head;
+		Node ptr = this.head;
 		for (int i = 0; ptr.next != null; i ++, ptr = ptr.next) {
 			if (ptr.data.equals(x)) {
 				return i;

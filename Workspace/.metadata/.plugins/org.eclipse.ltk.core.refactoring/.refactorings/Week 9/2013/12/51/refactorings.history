@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;Week 9/week9input.txt&apos; to &apos;week9problem9input.txt&apos;" description="Rename resource &apos;week9input.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="week9input.txt" name="week9problem9input.txt" stamp="1387252621435" updateReferences="true"/>
-</session>

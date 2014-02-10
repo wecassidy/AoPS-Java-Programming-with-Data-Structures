@@ -1,5 +1,0 @@
-ATMARK_RULE=\#3f7f7f | \#ffffff | false | false | false | false
-css_content_assist_default_page_sort_order=org.eclipse.wst.css.ui.proposalCategory.css\u0000org.eclipse.wst.css.ui.proposalCategory.cssTemplates\u0000
-css_content_assist_own_page_sort_order=org.eclipse.wst.css.ui.proposalCategory.cssTemplates\u0000org.eclipse.wst.css.ui.proposalCategory.css\u0000
-eclipse.preferences.version=1
-org.eclipse.wst.sse.ui.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
