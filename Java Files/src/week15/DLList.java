@@ -1,5 +1,6 @@
 package week15;
 
+import java.util.Random;
 
 public class DLList<E> implements AOPSListGeneric<E> {
 
@@ -16,6 +17,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	}
 
 	private Node head;
+	private Node current;
 
 	public DLList() {
 		this.head = null;
@@ -25,6 +27,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	public void addToFront(E x) {
 		if (this.head == null) {
 			this.head = new Node (x, null, null);
+			this.current = this.head;
 		}
 
 		else {
@@ -37,6 +40,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	public void addToBack(E x) {
 		if (this.head == null) {
 			this.head = new Node (x, null, this.head);
+			this.current = this.head;
 		}
 
 		else {
@@ -148,6 +152,10 @@ public class DLList<E> implements AOPSListGeneric<E> {
 		if (position < 0) {
 			throw new ListIndexOutOfBoundsException("Index less than 0");
 		}
+		
+		if (position == this.indexOfCurrent()) {
+			throw new IllegalArgumentException("Can't remove current node");
+		}
 
 		if (position == 0) {
 			this.head = this.head.next;
@@ -162,7 +170,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 				prevNode.next = prevNode.next.next;
 				prevNode.next.previous = prevNode;
 			}
-			
+
 			else {
 				prevNode.next = null;
 			}
@@ -174,6 +182,13 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	}
 
+	public int indexOfCurrent() {
+		int i = 0;
+		for (Node ptr = this.head; ptr.data != this.current.data; ptr = ptr.next, i ++);
+		
+		return i;
+	}
+
 	@Override
 	public int index(E x) {
 		Node ptr = this.head;
@@ -182,19 +197,66 @@ public class DLList<E> implements AOPSListGeneric<E> {
 				return i;
 			}
 		}
-		
+
 		return -1;
 	}
 
 	@Override
-	public AOPSListGeneric<E> sample(int s) {
-		// TODO Auto-generated method stub
-		return null;
+	public DLList<E> sample(int s) {
+		if (s >= this.size() || s < 0) { // Check if the of the sample is outside of the range of the list
+			throw new BadSampleSizeException(); // If so, throw a BadSampleSizeException
+		}
+		
+		DLList<E> sampleInputs = this.clone(); // Clone this list so that we can remove values from a list of sample inputs without messing with this list
+		DLList<E> output = new DLList<E>(); // Create a list to hold the sample
+		
+		Random rand = new Random(); // Create a Random object to generate random indices
+		
+		for (int i = 0; i < s; i ++) { // Repeat the loop s times
+			try { // Try the block of code, and if an exception is thrown, deal with it in the catch block
+				int index = rand.nextInt(sampleInputs.size()); // Get a random index from 0 to (size of the sample input list - 1), inclusive
+				
+				output.addToBack(sampleInputs.get(index)); // Add the element in the list of sample inputs at the random index to the back of the output array
+				
+				sampleInputs.remove(index); // Remove the element at index from sampleInputs so that it can't be selected again
+			}
+			
+			catch (ListIndexOutOfBoundsException e) {} // The catch should never be entered, so we leave it empty
+		}
+		
+		return output; // Return the output list
+	}
+	
+	public DLList<E> clone() {
+		DLList<E> newList = new DLList<E>(); // Create a new list that will end up with the same contents as the original list
+		
+		for (Node ptr = this.head; ptr.next != null; newList.addToBack(ptr.data)); // Loop through every element in this list and add it to the new List		
+		
+		return newList; // Return the cloned array
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public void forward() {
+		if (this.current.next != null) {
+			this.current = this.current.next;
+		}
+		
+		else {
+			throw new RuntimeException("No next node");
+		}
+	}
 
+	public void backward() {
+		if (this.current.previous != null) {
+			this.current = this.current.previous;
+		}
+		
+		else {
+			throw new RuntimeException("No previous node");
+		}
+	}
+	
+	public E getCurrent() {
+		return this.current.data;
 	}
 
 }
@@ -208,4 +270,16 @@ class ListIndexOutOfBoundsException extends IllegalArgumentException {
 	public ListIndexOutOfBoundsException(String mesg) {
 		super(mesg);
 	}
+}
+
+class BadSampleSizeException extends IllegalArgumentException {
+	
+	public BadSampleSizeException() {
+		super();
+	}
+	
+	public BadSampleSizeException(String mesg) {
+		super(mesg);
+	}
+	
 }
