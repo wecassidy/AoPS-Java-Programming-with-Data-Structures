@@ -21,21 +21,31 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	public DLList() {
 		this.head = null;
+		this.current = null;
 	}
 
+	/**
+	 * Add an element to the front of the list. If there are no elements in the list, the new element becomes the current one.
+	 * @param x the new element
+	 */
 	@Override
 	public void addToFront(E x) {
-		if (this.head == null) {
-			this.head = new Node (x, null, null);
-			this.current = this.head;
+		if (this.head == null) { // If this is the first node:
+			this.head = new Node(x, null, null); // Create a new Node for the head without any previous or next nodes
+			this.current = this.head; // Set the current node to this.head because it is the only node in the list
 		}
 
-		else {
-			this.head = new Node (x, null, this.head);
+		else { // If there are already nodes in the list
+			this.head = new Node(x, null, this.head); // Set the head node to a new node with the current head as the next node
 		}
 
 	}
+	// This method runs in constant time because the Node constructor runs in constant time.
 
+	/**
+	 * Add an element to the back of the list. If there are no elements in the list, the new element becomes the current one.
+	 * @param x the new element
+	 */
 	@Override
 	public void addToBack(E x) {
 		if (this.head == null) {
@@ -53,8 +63,14 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	}
 
+	/**
+	 * Inserts an element at a given position in the list.
+	 * @param x the new data for the element
+	 * @param position the index of the element to be inserted
+	 * @throws ListIndexOutOfBoundsException if the position is less than 0 or greater than the size of the list
+	 */
 	@Override
-	public void insert(E x, int position) throws ListIndexOutOfBoundsException {
+	public void insert(E x, int position) {
 		if (position < 0) {
 			throw new ListIndexOutOfBoundsException("Index less than 0");
 		}
@@ -77,8 +93,14 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	}
 
+	/**
+	 * Replaces an element at a given position in the list.
+	 * @param x the new data for the element
+	 * @param position the index of the element to be replaced
+	 * @throws ListIndexOutOfBoundsException if the index is less than 0 or greater than the size of the list
+	 */
 	@Override
-	public void replace(E x, int position) throws ListIndexOutOfBoundsException {
+	public void replace(E x, int position) {
 		if (position < 0) {
 			throw new ListIndexOutOfBoundsException("Index less than 0");
 		}
@@ -101,8 +123,14 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	}
 
+	/**
+	 * Gets the element at a given position.
+	 * @param position the index of the element to be retrieved
+	 * @return the element at the specified index in the list
+	 * @throws ListIndexOutOfBoundsException if the index is less than 0 or greater than the size of the list
+	 */
 	@Override
-	public E get(int position) throws ListIndexOutOfBoundsException {
+	public E get(int position) {
 		if (position < 0) {
 			throw new ListIndexOutOfBoundsException("Index less than 0");
 		}
@@ -120,6 +148,10 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	}
 
+	/**
+	 * Gets the size of the list.
+	 * @return the number of elements in the list as an integer
+	 */
 	@Override
 	public int size() {
 		int size = 0;
@@ -128,13 +160,22 @@ public class DLList<E> implements AOPSListGeneric<E> {
 		return size;
 
 	}
-
+	
+	/**
+	 * Checks if the list is empty.
+	 * @return if the list is empty, {@code true}, otherwise {@code false}.
+	 */
 	@Override
 	public boolean isEmpty() {
 		return this.head == null;
 
 	}
 
+	/**
+	 * Checks if a given element is in the list.
+	 * @param x the element to check for inclusion
+	 * @return {@code true} if the element is in the list, otherwise {@code false}
+	 */
 	@Override
 	public boolean contains(E x) {
 		for (Node ptr = this.head; ptr.next != null; ptr = ptr.next) {
@@ -147,14 +188,20 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	}
 
+	/**
+	 * Removes an element at a given position.
+	 * @param position the index of the element to be removed
+	 * @throws ListIndexOutOfBoundsException if the index is less than 0 or greater than the size of the list
+	 * @throws IllegalArgumentException if the index is that of the current element, which can't be removed
+	 */
 	@Override
-	public void remove(int position) throws ListIndexOutOfBoundsException {
+	public void remove(int position) {
 		if (position < 0) {
 			throw new ListIndexOutOfBoundsException("Index less than 0");
 		}
 		
 		if (position == this.indexOfCurrent()) {
-			throw new IllegalArgumentException("Can't remove current node");
+			throw new IllegalArgumentException("Can't remove current element");
 		}
 
 		if (position == 0) {
@@ -182,6 +229,10 @@ public class DLList<E> implements AOPSListGeneric<E> {
 
 	}
 
+	/**
+	 * Gets the index of the current element
+	 * @return the index of the current element as an int
+	 */
 	public int indexOfCurrent() {
 		int i = 0;
 		for (Node ptr = this.head; ptr.data != this.current.data; ptr = ptr.next, i ++);
@@ -190,6 +241,11 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	}
 
 	@Override
+	/**
+	 * Gets the index of an element of the list
+	 * @param x the element to get the index of
+	 * @return the index of the element or -1 if the element is not in the list
+	 */
 	public int index(E x) {
 		Node ptr = this.head;
 		for (int i = 0; ptr.next != null; i ++, ptr = ptr.next) {
@@ -201,6 +257,19 @@ public class DLList<E> implements AOPSListGeneric<E> {
 		return -1;
 	}
 
+	/**
+	 * Gets a random sample of the list of size {@code s}. No elements are repeated unless they appear twice in the list.
+	 * In other words, the sample is chosen as if the following code were run:
+	 <pre>output = this;
+for (int i = 0; i < s; i ++) { // Repeat the loop s times
+	int index = rand.nextInt(sampleInputs.size());
+	output.addToBack(sampleInputs.get(index));
+	this.remove(index);
+}
+return output;</pre>
+	 * @param s the size of the list
+	 * @return a randomly chosen sample of the list of size s as a {@code DLList<E>}.
+	 */
 	@Override
 	public DLList<E> sample(int s) {
 		if (s >= this.size() || s < 0) { // Check if the of the sample is outside of the range of the list
@@ -227,6 +296,11 @@ public class DLList<E> implements AOPSListGeneric<E> {
 		return output; // Return the output list
 	}
 	
+	/**
+	 * Copies the list.
+	 * @return a list which is identical to this list, but is in a different location
+	 */
+	@Override
 	public DLList<E> clone() {
 		DLList<E> newList = new DLList<E>(); // Create a new list that will end up with the same contents as the original list
 		
@@ -235,6 +309,9 @@ public class DLList<E> implements AOPSListGeneric<E> {
 		return newList; // Return the cloned array
 	}
 
+	/**
+	 * Moves the current node forward one in the list (i. e. if the index of the current node is 3, calling forward() will make it 4).
+	 */
 	public void forward() {
 		if (this.current.next != null) {
 			this.current = this.current.next;
@@ -258,6 +335,47 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	public E getCurrent() {
 		return this.current.data;
 	}
+	
+	public void reset() {
+		this.current = this.head;
+	}
+	
+	@Override
+	public String toString() {
+		String answer = "[";
+        
+        for (Node ptr = this.head; ptr.next.next != null; ptr = ptr.next) {
+        	answer += ptr.data + ", ";
+        }
+        
+        if (this.size() > 0) {
+        	answer += this.get(this.size() - 1) + "]";
+        }
+        
+        else {
+        	answer += "]";
+        }
+        
+        return answer;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if  (o instanceof DLList) {
+			DLList<E> other = (DLList<E>) o;
+			
+			Node ptr1 = this.head;
+			Node ptr2 = other.head;
+			
+			for (; ptr1.data == ptr2.data && ptr1.next != null && ptr2.next != null; ptr1 = ptr1.next, ptr2 = ptr2.next);
+			
+			if (ptr1.next == null && ptr2.next != null) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 }
 
@@ -273,7 +391,7 @@ class ListIndexOutOfBoundsException extends IllegalArgumentException {
 }
 
 class BadSampleSizeException extends IllegalArgumentException {
-	
+
 	public BadSampleSizeException() {
 		super();
 	}
