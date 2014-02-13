@@ -16,6 +16,9 @@ public class DLList<E> implements AOPSListGeneric<E> {
 		}
 	}
 
+	/**
+	 * The first node in the list. If there are no nodes in the list, {@code head} is set to {@code null}.
+	 */
 	private Node head;
 	private Node current;
 
@@ -260,15 +263,17 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	/**
 	 * Gets a random sample of the list of size {@code s}. No elements are repeated unless they appear twice in the list.
 	 * In other words, the sample is chosen as if the following code were run:
-	 <pre>output = this;
+	 <pre>DLList&lt;E&gt; output = new DLList&lt;E&gt;;
 for (int i = 0; i < s; i ++) { // Repeat the loop s times
-	int index = rand.nextInt(sampleInputs.size());
-	output.addToBack(sampleInputs.get(index));
+	int index = rand.nextInt(this.size());
+	output.addToBack(this.get(index));
 	this.remove(index);
 }
 return output;</pre>
-	 * @param s the size of the list
+	 * without destroying the list.
+	 * @param s the size of the sample
 	 * @return a randomly chosen sample of the list of size s as a {@code DLList<E>}.
+	 * @throws BadSampleSizeException if {@code s}, the size of the sample, is greater than the size of the list
 	 */
 	@Override
 	public DLList<E> sample(int s) {
@@ -310,7 +315,7 @@ return output;</pre>
 	}
 
 	/**
-	 * Moves the current node forward one in the list (i. e. if the index of the current node is 3, calling forward() will make it 4).
+	 * Moves the current node forward one in the list (i. e. if the index of the current node is 3, calling {@code forward()} will make it 4).
 	 */
 	public void forward() {
 		if (this.current.next != null) {
