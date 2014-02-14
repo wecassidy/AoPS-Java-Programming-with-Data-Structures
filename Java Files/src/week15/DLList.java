@@ -1,12 +1,14 @@
 package week15;
 
+import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class DLList<E> implements AOPSListGeneric<E> {
 
 	private class Node {
 		public E data;
-		public Node previous;
+		public Node previous; // We need a previous attribute to make the list doubly linked (both forwards and backwards) instead of singly linked (forwards only)
 		public Node next;
 
 		public Node(E data, Node previous, Node next) {
@@ -14,18 +16,30 @@ public class DLList<E> implements AOPSListGeneric<E> {
 			this.previous = previous;
 			this.next = next;
 		}
+		// The node constructor runs in constant time
 	}
 
 	/**
 	 * The first node in the list. If there are no nodes in the list, {@code head} is set to {@code null}.
 	 */
 	private Node head;
+	
+	/**
+	 * The back of the list. If there are <= 1 nodes in the list, {@code this.head == this.tail}.
+	 */
+	private Node tail;
+	
+	/**
+	 * The current node in the list. By default, the current node is set to the head node.
+	 */
 	private Node current;
 
 	public DLList() {
 		this.head = null;
+		this.tail = null;
 		this.current = null;
 	}
+	// The constructor just instantiates all the attributes to null, so it runs in constant time.
 
 	/**
 	 * Add an element to the front of the list. If there are no elements in the list, the new element becomes the current one.
@@ -35,6 +49,7 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	public void addToFront(E x) {
 		if (this.head == null) { // If this is the first node:
 			this.head = new Node(x, null, null); // Create a new Node for the head without any previous or next nodes
+			this.tail = this.head; // If there is only one node in the list, the tail of the list equals the head
 			this.current = this.head; // Set the current node to this.head because it is the only node in the list
 		}
 
@@ -51,20 +66,19 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	 */
 	@Override
 	public void addToBack(E x) {
-		if (this.head == null) {
-			this.head = new Node (x, null, this.head);
-			this.current = this.head;
+		if (this.head == null) { // If the list is empty:
+			this.head = new Node(x, null, null); // Create a new Node for the head without any previous or next nodes
+			this.tail = this.head; // If there is only one node in the list, the tail of the list equals the head
+			this.current = this.head; // Set the current node to this.head because it is the only node in the list
 		}
 
-		else {
-			Node end;
-
-			for (end = this.head; end.next != null; end = end.next);
-
-			end.next = new Node (x, end, null);
+		else { // Otherwise:
+			this.tail = new Node(x, this.tail, null); // Create a new node with the element passed to the function as the data, the previous tail as the previous node, and no next node
+			this.tail.previous.next = this.tail; // Set the next attribute of the node before the tail node to the new tail node
 		}
 
 	}
+	// The method runs in O(1) time. The only method call it contains is to the Node constructor, which also runs in constant time.
 
 	/**
 	 * Inserts an element at a given position in the list.
@@ -74,20 +88,22 @@ public class DLList<E> implements AOPSListGeneric<E> {
 	 */
 	@Override
 	public void insert(E x, int position) {
-		if (position < 0) {
-			throw new ListIndexOutOfBoundsException("Index less than 0");
+		if (position < 0) { // Check if the position is too small
+			throw new ListIndexOutOfBoundsException("Index less than 0"); // If so, throw a ListIndexOutOfBoundsException with an appropriate message
+		}
+		// We don't need an else clause because the method will exit if the throw is executed
+		
+		if (position == 0) { // If the position is 0:
+			this.addToFront(x); // We can call the addToFront() method to do the work for us
+			return; // Leave the loop
 		}
 
-		if (position == 0) {
-			this.addToFront(x);
-			return;
-		}
+		Node prevNode = this.head; // Instantiate the object that will be used as a reference to the node before the index to be inserted at to the head node
+		for (int i = 1; i < position && prevNode != null; i ++, prevNode = prevNode.next); // Go through the list, checking if we are at the index before position and that we aren't at the end of the list
 
-		Node prevNode = this.head;
-		for (int i = 1; i < position && prevNode != null; i ++, prevNode = prevNode.next);
-
-		if (prevNode != null) {
-			prevNode.next = new Node (x, prevNode, prevNode.next);
+		if (prevNode != null) { // If we didn't leave the loop because we fell off the end:
+			prevNode.next = new Node (x, prevNode, prevNode.next); // Create a new Node between prevNode and prevNode.next
+			prevNode.next.next.previous = prevNode.next;
 		}
 
 		else {
@@ -309,7 +325,7 @@ return output;</pre>
 	public DLList<E> clone() {
 		DLList<E> newList = new DLList<E>(); // Create a new list that will end up with the same contents as the original list
 		
-		for (Node ptr = this.head; ptr.next != null; newList.addToBack(ptr.data)); // Loop through every element in this list and add it to the new List		
+		for (Node ptr = this.head; ptr.next != null; newList.addToBack(ptr.data)) {ptr = ptr.next;} // Loop through every element in this list and add it to the new List		
 		
 		return newList; // Return the cloned array
 	}
@@ -381,6 +397,22 @@ return output;</pre>
 		
 		return false;
 	}
+	
+	public static void main(String[] args) throws BadSampleSizeException {
+        DLList<Integer> thing = new DLList<Integer> ();
+        
+        for (int i = 0; i < 20; i ++) {
+        	if (i % 2 == 0) {
+        		thing.addToBack(i);
+        	}
+        	
+        	else {
+        		thing.addToFront(i);
+        	}
+        }
+        
+        System.out.println(thing);
+    }
 
 }
 
