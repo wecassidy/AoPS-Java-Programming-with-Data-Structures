@@ -22,7 +22,7 @@ public class LStack implements AOPSStack {
 	@Override
 	public String pop() {
 		if (this.top == null) {
-			throw new EmptyStackException("Can't pop from empty stack");
+			throw new MyEmptyStackException("Can't pop from empty stack");
 		}
 		
 		String topData = this.top.data;
@@ -34,7 +34,7 @@ public class LStack implements AOPSStack {
 	@Override
 	public String peek() {
 		if (this.top == null) {
-			throw new EmptyStackException("Can't peek at empty stack");
+			throw new MyEmptyStackException("Can't peek at empty stack");
 		}
 		
 		return this.top.data;
@@ -47,13 +47,13 @@ public class LStack implements AOPSStack {
 
 }
 
-class EmptyStackException extends IllegalArgumentException{
+class MyEmptyStackException extends IllegalArgumentException {
 
-	public EmptyStackException() {
+	public MyEmptyStackException() {
 		super();
 	}
 
-	public EmptyStackException(String s) {
+	public MyEmptyStackException(String s) {
 		super(s);
 	}
 	
