@@ -105,19 +105,20 @@ public class Postfix {
 			}
 		}
 
-		if (! error) { // If an error did not occur
-			if (stack.size() > 1) { // If the size of the stack is greater than one, there were to many numbers relative to the number of operators
-				System.out.println("Too many number preceding operator(s)");
+		if (! error) { // If an error did not occur inside the for loop:
+			if (stack.size() > 1) { // If the size of the stack is greater than one, there were to many numbers
+				System.out.println("Too many number preceding operator(s)");// Print a relevant error message
 			}
 			
-			else if (stack.size() == 0) {
-				
+			else if (stack.size() == 0) { // If there aren't any elements on the stack, the input was empty
+				System.out.println("Empty expression"); // Print an error message 
 			}
 
-			else {
-				System.out.println(stack.pop());
+			else { // Otherwise, the expression was valid
+				System.out.println(stack.pop()); // So we print the result, which is the only element on the stack
 			}
 		}
+		// We don't need an else case because the error messages were taken care of in the for loop
 	}
 
 }
