@@ -1,5 +1,7 @@
 package week17;
 
+import java.util.Scanner;
+
 public class AOPSTree {
 	private class Node {
 		public Node left;

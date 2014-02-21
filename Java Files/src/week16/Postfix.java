@@ -26,11 +26,11 @@ public class Postfix {
 			}
 
 			catch (NumberFormatException nfe) { // If parsing the token failed (throwing a NumberFormatException), the token isn't a numeric string, which means that it is either an operator or invalid
-				switch (token) { // If the code reached here, we know that 
-				case "+":
+				switch (token) { // If the code reached here, we know that the token is either an operator or invalid
+				case "+": // Addition
 					try { // The following code could throw an EmptyStackException if there aren't enough numbers for the operators
 						double operand2 = stack.pop(); // The second operand is on the top of the stack because it was the most recent one to be pushed
-						double operand1 = stack.pop(); // The first operand is immediately after the first one
+						double operand1 = stack.pop(); // The first operand is immediately after the second one in the order of pushing to the stack
 						
 						stack.push(operand1 + operand2);
 					}
@@ -42,10 +42,10 @@ public class Postfix {
 					
 					break; // Leave the switch so that the rest of the cases aren't executed, which would mess up the program
 
-				case "-":
+				case "-": // Subtraction
 					try { // The following code could throw an EmptyStackException if there aren't enough numbers for the operators
 						double operand2 = stack.pop(); // The second operand is on the top of the stack because it was the most recent one to be pushed
-						double operand1 = stack.pop(); // The first operand is immediately after the first one
+						double operand1 = stack.pop(); // The first operand is immediately after the second one in the order of pushing to the stack
 						
 						stack.push(operand1 - operand2); // Perform the required operation on the two operands and push the result to the stack
 					}
@@ -58,10 +58,10 @@ public class Postfix {
 					
 					break; // Leave the switch so that the rest of the cases aren't executed, which would mess up the program
 
-				case "*":
+				case "*": // Multiplication
 					try { // The following code could throw an EmptyStackException if there aren't enough numbers for the operators
 						double operand2 = stack.pop(); // The second operand is on the top of the stack because it was the most recent one to be pushed
-						double operand1 = stack.pop(); // The first operand is immediately after the first one
+						double operand1 = stack.pop(); // The first operand is immediately after the second one in the order of pushing to the stack
 					
 						stack.push(operand1 * operand2); // Perform the required operation on the two operands and push the result to the stack
 					}
@@ -74,10 +74,10 @@ public class Postfix {
 					
 					break; // Leave the switch so that the rest of the cases aren't executed, which would mess up the program
 
-				case "/":
+				case "/": // Division
 					try { // The following code could throw an EmptyStackException if there aren't enough numbers for the operators
 						double operand2 = stack.pop(); // The second operand is on the top of the stack because it was the most recent one to be pushed
-						double operand1 = stack.pop(); // The first operand is immediately after the first one
+						double operand1 = stack.pop(); // The first operand is immediately after the second one in the order of pushing to the stack
 						
 						stack.push(operand1 / operand2); // Perform the required operation on the two operands and push the result to the stack
 					}
@@ -89,7 +89,38 @@ public class Postfix {
 					
 					if (stack.peek() == Double.POSITIVE_INFINITY || stack.peek() == Double.NEGATIVE_INFINITY) { // If the top item on the stack is +/- infinity for Doubles, a division by 0 occured
 						System.out.println("Division by 0"); // Print a relevant error message
-						error = true; // Set error to true, as u
+						error = true; // Set error to true, as usual
+					}
+					
+					break; // Leave the switch so that the rest of the cases aren't executed, which would mess up the program
+					
+				case "**": // Exponentiation (Python notation FTW! :P)
+					try { // The following code could throw an EmptyStackException if there aren't enough numbers for the operators
+						double power = stack.pop(); // The second operand is on the top of the stack because it was the most recent one to be pushed
+						double operand1 = stack.pop(); // The first operand is immediately after the second one in the order of pushing to the stack
+						
+						stack.push(Math.pow(operand1, power)); // Perform the required operation on the two operands and push the result to the stack
+					}
+
+					catch (EmptyStackException ese) { // If there are 0 or 1 numbers on the stack, there aren't enough operands
+						System.out.println("Not enough numbers preceeding operator(s)"); // Print a relevant error message
+						error = true; // An error occurred, so set error to true
+					}
+					
+					break; // Leave the switch so that the rest of the cases aren't executed, which would mess up the program
+					
+				case "%": // Mod
+					try { // The following code could throw an EmptyStackException if there aren't enough numbers for the operators
+						double operand2 = stack.pop(); // The second operand is on the top of the stack because it was the most recent one to be pushed
+						double operand1 = stack.pop(); // The first operand is immediately after the seconds one in the order of pushing to the stack
+					
+						stack.push(operand1 % operand2); // Perform the required operation on the two operands and push the result to the stack
+					}
+
+					catch (EmptyStackException ese) { // If there are 0 or 1 numbers on the stack, there aren't enough operands
+						System.out.println("Not enough numbers preceeding operator(s)"); // Print a relevant error message
+						error = true; // An error occurred, so set error to true
+						break; // Leave the for loop so that the rest of the code isn't executed
 					}
 					
 					break; // Leave the switch so that the rest of the cases aren't executed, which would mess up the program
