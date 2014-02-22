@@ -9,14 +9,73 @@ public class AOPSTree {
 		public String data;
 		
 		
-		public Node(Node left, Node right, String data) {
+		public Node(String data, Node left, Node right) {
 			this.left = left;
 			this.right = right;
 			this.data = data;
 		}
 	}
 	
-	private Node root = null;	
+	private Node root = null;
+	
+	public void insert(String value) {
+		Node newNode = new Node(value, null, null);
+		
+		if (this.root == null) {
+			this.root = newNode;
+		}
+		
+		else {
+			Node subroot = this.root;
+			
+			boolean done = false;
+			while (! done) {
+				if (value.compareTo(subroot.data) < 0) {
+					if (subroot.left == null) {
+						subroot.left = newNode;
+						done = true;
+					}
+					
+					else {
+						subroot = subroot.left;
+					}
+				}
+				
+				else {
+					if (subroot.right == null) {
+						subroot.right = newNode;
+						done = true;
+					}
+					
+					else {
+						subroot = subroot.right;
+					}
+				}
+			}
+		}
+	}
+	
+	public void insertRecursive(String value) {
+		insertRecursive(value, this.root);
+	}
+	
+	private void insertRecursive(String value, Node subroot) {
+		Node newNode = new Node(value, null, null);
+		
+		if (this.root == null) {
+			this.root = newNode;
+		}
+		
+		else {
+			if (value.compareTo(subroot.data) < 0) {
+				insertRecursive(value, subroot.left);
+			}
+			
+			else {
+				insertRecursive(value, subroot.right);
+			}
+		}
+	}
 	
 	public int getHeight() {
 		return getHeight(this.root);
