@@ -206,7 +206,7 @@ public class AOPSTree {
 	 * @param subroot the root of the tree
 	 */
 	private void listToTree(List<String> list, Node subroot) {
-		if (list.size() == 0) {
+		/*if (list.size() == 0) {
 			return;
 		}
 
@@ -223,6 +223,21 @@ public class AOPSTree {
 
 			if (subroot.right != null) {
 				listToTree(list.subList(middle + 1, list.size()), subroot.right);
+			}
+		}*/
+		
+		this.root.data = list.get(list.size() / 2);
+		
+		Node ptr = this.root;
+		
+		boolean done = false;
+		while (! done) {
+			while (ptr.data.compareTo(ptr.left.data) < 0 && ptr.left != null) {
+				ptr = ptr.left;
+			}
+			
+			if (ptr.data.compareTo(ptr.left.data) < 0 && ptr.left == null) {
+				
 			}
 		}
 	}
