@@ -3,18 +3,17 @@ package week17;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 
-public class AOPSTree {
+public class AOPSTree<E extends Comparable<E>> {
 
 	private class Node {
 		public Node left;
 		public Node right;
-		public String data;
+		public E data;
 
 
-		public Node(String data, Node left, Node right) {
+		public Node(E data, Node left, Node right) {
 			this.left = left;
 			this.right = right;
 			this.data = data;
@@ -27,7 +26,7 @@ public class AOPSTree {
 
 	private Node root = null;
 
-	public void insert(String value) {
+	public void insert(E value) {
 		Node newNode = new Node(value, null, null);
 
 		if (this.root == null) {
@@ -64,11 +63,11 @@ public class AOPSTree {
 		}
 	}
 
-	public void insertRecursive(String value) {
+	public void insertRecursive(E value) {
 		insertRecursive(value, this.root);
 	}
 
-	private void insertRecursive(String value, Node subroot) {
+	private void insertRecursive(E value, Node subroot) {
 		Node newNode = new Node(value, null, null);
 
 		if (this.root == null) {
@@ -113,11 +112,11 @@ public class AOPSTree {
 		return toString(subroot.left) + " " + subroot.data + " " + toString(subroot.right);
 	}
 
-	public boolean containsRecursive(String value) {
+	public boolean containsRecursive(E value) {
 		return containsRecursive(value, this.root);
 	}
 
-	private boolean containsRecursive(String value, Node subroot) {
+	private boolean containsRecursive(E value, Node subroot) {
 		if (subroot == null) {
 			return false;
 		}
@@ -135,7 +134,7 @@ public class AOPSTree {
 		}
 	}
 
-	public boolean contains(String value) {
+	public boolean contains(E value) {
 		Node subroot = this.root;
 
 		while (subroot != null) {
@@ -155,25 +154,67 @@ public class AOPSTree {
 		return false;
 	}
 
+	/**
+	 * Makes the tree as balanced as possible. For example, if the tree looks like:
+	 * <pre>
+	 * 1
+	 *  \
+	 *   2
+	 *    \
+	 *     3
+	 *      \
+	 *       4
+	 *        \
+	 *         5
+	 *          \
+	 *           7
+	 *            \
+	 *             8
+	 * </pre>
+	 * 
+	 * It will become:
+	 * <pre>
+	 *      4
+	 *     / \
+	 *    /   \
+	 *   2     7
+	 *  / \   / \
+	 * 1   3 5   8
+	 * </pre>
+	 */
 	public void rebalance() {
-		List<String> list = this.treeToList();
+		List<E> list = this.treeToList(); // Get the tree as it currently is and move it to a list
 
-		Collections.sort(list);
+		Collections.sort(list); // Use the sort method of Collections to sort the list
 
-		this.listToTree(list);
+		this.listToTree(list); // Convert the now-sorted list to a tree. Because of the way treeToList works, the tree will be balanced
 	}
 
 	/**
-	 * Moves the tree into a list. The list is in the form:
-	 * <pre>[root, left branch, right branch]</pre>
+	 * Moves the tree into a list. The tree looks like:
+	 * <pre>
+	 *      d
+	 *     / \
+	 *    /   \
+	 *   b     f
+	 *  / \   / \
+	 * a   c e   g
+	 * </pre>
+	 * 
+	 * The list will be {@code [a, b, c, d, e, f, g]}
 	 * @return The tree as a list
 	 */
-	public List<String> treeToList() {
+	public List<E> treeToList() {
 		return treeToList(this.root);
 	}
 
-	private List<String> treeToList(Node subroot) {
-		List<String> outList = new LinkedList<String> ();
+	/**
+	 * Helper method for treeToList
+	 * @param subroot the root of the tree
+	 * @return The tree as a list
+	 */
+	private List<E> treeToList(Node subroot) {
+		List<E> outList = new LinkedList<E> ();
 		outList.add(subroot.data);
 
 		if (subroot.left == null && subroot.right == null) {
@@ -193,10 +234,18 @@ public class AOPSTree {
 	}
 
 	/**
-	 * Creates a balanced tree 
+	 * Creates a tree from a list. If the list is in the form {@code [a, b, c, d, e, f, g]} the tree will look like:
+	 * <pre>
+	 *      d
+	 *     / \
+	 *    /   \
+	 *   b     f
+	 *  / \   / \
+	 * a   c e   g
+	 * </pre>
 	 * @param list
 	 */
-	public void listToTree(List<String> list) {
+	public void listToTree(List<E> list) {
 		this.listToTree(list, this.root);
 	}
 
@@ -205,40 +254,22 @@ public class AOPSTree {
 	 * @param list the data for the tree
 	 * @param subroot the root of the tree
 	 */
-	private void listToTree(List<String> list, Node subroot) {
-		/*if (list.size() == 0) {
-			return;
+	private void listToTree(List<E> list, Node subroot) {
+		if (subroot == null) {
+			subroot = new Node(null, null, null);
 		}
 
 		if (list.size() == 1) {
-			subroot = new Node(list.get(0), null, null);
+			subroot.data = list.get(0);
 		}
 
 		else {
 			int middle = list.size() / 2;
+			subroot.data = list.get(middle);
 
-			if (subroot.left != null) {
-				listToTree(list.subList(0, middle), subroot.left);
-			}
+			listToTree(list.subList(0, middle), subroot.left);
 
-			if (subroot.right != null) {
-				listToTree(list.subList(middle + 1, list.size()), subroot.right);
-			}
-		}*/
-		
-		this.root.data = list.get(list.size() / 2);
-		
-		Node ptr = this.root;
-		
-		boolean done = false;
-		while (! done) {
-			while (ptr.data.compareTo(ptr.left.data) < 0 && ptr.left != null) {
-				ptr = ptr.left;
-			}
-			
-			if (ptr.data.compareTo(ptr.left.data) < 0 && ptr.left == null) {
-				
-			}
+			listToTree(list.subList(middle + 1, list.size()), subroot.right);
 		}
 	}
 
@@ -268,19 +299,19 @@ public class AOPSTree {
 	 */
 
 	public static void main(String[] args) { // Here for testing
-		List<String> list = new LinkedList<String> (); // Create a list
+		List<Integer> list = new LinkedList<Integer> (); // Create a list
 
-		for (int i = 0; i < 10; i ++) { // Go through the integers from 0 to 50 (inclusive-exclusive)
-			list.add(String.valueOf(i)); // Add the String value of the current integer to the list
+		for (int i = 0; i < 9; i ++) { // Go through the integers from 0 to 50 (inclusive-exclusive)
+			list.add(i); // Add the E value of the current integer to the list
 		}
 
 		Collections.shuffle(list); // Shuffle the list
 
 		System.out.println(list); // Print the shuffled list
 
-		AOPSTree tree = new AOPSTree (); // Create a tree
+		AOPSTree<Integer> tree = new AOPSTree<Integer> (); // Create a tree
 
-		for (String thing : list) { // Go through each thing in the list
+		for (Integer thing : list) { // Go through each thing in the list
 			tree.insertStupid(thing); // Add the thing to the tree
 		}
 
@@ -295,7 +326,7 @@ public class AOPSTree {
 
 	}
 
-	public void insertStupid(String thing) {
+	public void insertStupid(E thing) {
 		Node newNode = new Node(thing, null, null);
 
 		if (this.root == null) {
