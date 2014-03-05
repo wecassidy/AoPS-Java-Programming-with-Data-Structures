@@ -1,6 +1,8 @@
 package week18;
 
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class HashTable {
 
@@ -33,13 +35,31 @@ public class HashTable {
 
 		return this.table[hash].remove(x);
 	}
+	
+    public List<String> makeList() {
+        List<String> data = new LinkedList<String> ();
+        
+        for (int i=0; i < this.table.length; i ++) {
+            for (String element : this.table[i]) {
+                data.add(element);
+            }
+        }
+        
+        return data;
+    }
 
 	public HashTable intersection(HashTable h) {
+		List<String> l1 = this.makeList();
+		List<String> l2 = h.makeList();
+		
+		Collections.sort(l1);
+		Collections.sort(l2);
+		
 		HashTable out = new HashTable(Math.min(this.table.length, h.table.length));
 
-		for (int i = 0; i < Math.min(this.table.length, h.table.length); i ++) {
-			if (this.table[i].get(0).equals(h.table[i].get(0))) {
-				out.add(this.table[i].get(0));
+		for (int i = 0; i < Math.min(l1.size(), l2.size()); i ++) {
+			if (l1.get(i).equals(l2.get(i))) {
+				out.add(l1.get(i));
 			}
 		}
 
@@ -47,23 +67,40 @@ public class HashTable {
 	}
 
 	public HashTable union(HashTable h) {
+		List<String> l1 = this.makeList();
+		List<String> l2 = h.makeList();
+		
+		Collections.sort(l1);
+		Collections.sort(l2);
+		
 		HashTable out = new HashTable(Math.min(this.table.length, h.table.length));
 
-		for (int i = 0; i < Math.min(this.table.length, h.table.length); i ++) {
-			if (this.table[i].get(0).equals(h.table[i].get(0))) {
-				if (!out.contains(this.table[i].get(0))) {
-					out.add(this.table[i].get(0));
-				}
+		for (int i = 0; i < Math.min(l1.size(), l2.size()); i ++) {
+			if (! l1.get(i).equals(l2.get(i))) {
+				out.add(l1.get(i));
+				out.add(l2.get(i));
 			}
-
+			
 			else {
-				if (!out.contains(this.table[i].get(0))) {
-					out.add(this.table[i].get(0));
-				}
+				out.add(l1.get(i));
+			}
+		}
 
-				if (!out.contains(h.table[i].get(0))) {
-					out.add(h.table[i].get(0));
-				}
+		return out;
+	}
+	
+	public HashTable difference(HashTable h) {
+		List<String> l1 = this.makeList();
+		List<String> l2 = h.makeList();
+		
+		Collections.sort(l1);
+		Collections.sort(l2);
+		
+		HashTable out = new HashTable(Math.min(this.table.length, h.table.length));
+
+		for (int i = 0; i < Math.min(l1.size(), l2.size()); i ++) {
+			if (l1.get(i).equals(l2.get(i))) {
+				out.add(l1.get(i));
 			}
 		}
 

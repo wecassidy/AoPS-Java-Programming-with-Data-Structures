@@ -134,14 +134,14 @@ public class AOPSHeap implements AOPSPriorityQueue {
     	return out;
     }
     
-    public static void main(String[] args) {
-    	AOPSHeap h = new AOPSHeap();
-    	
-    	for (int x : new int[] {23, 56, 12, 18, 45, 63, 2}) {
-    		h.enqueue(x);
-    	}
-    	
-    	System.out.println(h.makeList());
-    }
+	public static boolean isMaxHeap(int[] stuff) {
+		for (int i = 0; i < stuff.length - 1; i ++) {
+			if (stuff[i] < stuff[i + 1]) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 }
