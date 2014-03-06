@@ -1,0 +1,5057 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fmodern\fcharset0 Courier-Bold;\f2\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red1\green32\blue135;\red11\green85\blue38;\red18\green139\blue2;\red0\green0\blue255;\red43\green139\blue39;
+\red0\green0\blue83;\red190\green74\blue193;\red30\green91\blue156;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 12: Running-Time Analysis
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This week we're going to do very little programming, and we're not going to work with data structures. Instead, we're going to learn about the tools we use to analyze programs or structures to determine how good they are.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Question: What's an algorithm?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 7:32:27 pm
+\fs26 \
+a method to solve a problem\
+\cf4 ScottBusche\cf0  
+\fs20 7:32:27 pm
+\fs26 \
+The method you use to solve a problem.\
+\cf4 MathWolf\cf0  
+\fs20 7:32:27 pm
+\fs26 \
+It's a set of instructions to follow to attain a goal.\
+\cf4 connor0728\cf0  
+\fs20 7:32:27 pm
+\fs26 \
+A WAY OF COMPUTING SOMETHING\
+\cf4 Tungsten\cf0  
+\fs20 7:32:27 pm
+\fs26 \
+A list of instructions to do something.\
+\cf4 JRY\cf0  
+\fs20 7:32:27 pm
+\fs26 \
+a set of directions given step by step\
+\cf4 EmeraldBot\cf0  
+\fs20 7:32:27 pm
+\fs26 \
+An algorithm is a series of steps you can use to solve a problem\
+\cf4 MathWolf\cf0  
+\fs20 7:32:27 pm
+\fs26 \
+It is a set of instructions to accomplish a task.\
+\cf4 puwei99\cf0  
+\fs20 7:32:47 pm
+\fs26 \
+an algorithm is a set of instructions that a programmer writes before even starting to code\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah. These all more or less are getting at the same idea. An algorithm is a step-by-step procedure for solving a problem. We can have an algorithm for finding whether an element appears in a list, for putting the elements of a list in order, or for adding an element into a list alphabetically.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the difference between an algorithm and a program?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:34:15 pm
+\fs26 \
+A program is a set of instructions to give to a computer.\
+\cf4 Tungsten\cf0  
+\fs20 7:34:15 pm
+\fs26 \
+A program is a set of instructions that a computer can understand.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can think of a program as a way to describe an algorithm to a computer. Algorithms themselves can be performed by anyone.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As you know from looking at people's posts to the message boards or our discussions in class, or even comparing my Challenge Problem solution to yours, there are 
+\i many
+\i0  ways to solve the same problem. Some differences are minor, like a change in variable names from one program to another. But others can make a significant difference in how well the algorithm or program runs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The question we want to address today is: Given two algorithms or programs for solving the same program, how can we tell which is better?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: WHAT DOES "BETTER" MEAN?
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may have an answer in mind already to answer this question, but rather than post all 60 different responses I would get, I'm going to direct our conversation to consider some specific possibilities.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's call our two algorithms A and B. We know that algorithms can be written as programs. So I'll code algorithm A, and you'll code algorithm B. Whoever took the shortest time to code has the better algorithm.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do you think of that approach?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:36:04 pm
+\fs26 \
+its flawed\
+\cf4 spower4\cf0  
+\fs20 7:36:04 pm
+\fs26 \
+that's not a good approach\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's flawed about it?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:36:28 pm
+\fs26 \
+it's not about coding time, it's more about performance\
+\cf4 chutney\cf0  
+\fs20 7:36:28 pm
+\fs26 \
+It may be shorter, but it may also take longer to run\
+\cf4 ScottBusche\cf0  
+\fs20 7:36:28 pm
+\fs26 \
+But what if the faster method to code takes 10 years to run?\
+\cf4 connor0728\cf0  
+\fs20 7:36:28 pm
+\fs26 \
+someone could be faster at coding\
+\cf4 chenjamin\cf0  
+\fs20 7:36:33 pm
+\fs26 \
+it only compares the relative typing speed of both people\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This seems more like a test of the programmers than a test of the algorithms. I've got more experience than you, so I might be expected to be able to write any algorithm faster than you. For example, if I know about Arrays.sort and you don't, then it may take you longer to code a sorting routine from scratch.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How about if we look at length of the code instead?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:37:30 pm
+\fs26 \
+doesn't matter really\
+\cf4 ScottBusche\cf0  
+\fs20 7:37:30 pm
+\fs26 \
+Still no.\
+\cf4 MathWolf\cf0  
+\fs20 7:37:30 pm
+\fs26 \
+It is also a little flawed.\
+\cf4 spower4\cf0  
+\fs20 7:37:30 pm
+\fs26 \
+could be if some parts are redundant and can be fixed with possibly a loop\
+\cf4 chenjamin\cf0  
+\fs20 7:37:30 pm
+\fs26 \
+the longer code could run much faster\
+\cf4 k77frank\cf0  
+\fs20 7:37:30 pm
+\fs26 \
+no\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again personal style comes into play. I may put more comments into my code than you. I put open curly braces on lines by themselves; you may put them on a line with other code. Or you can minimize white space as much as possible.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The Arrays.sort example also comes into play here. If you recode Arrays.sort completely, our programs are really doing the same thing, but mine is going to be a lot shorter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Does it help if the same person writes both pieces of code? Is it now a good way to measure?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Maybe for those two pieces, but we really want something that doesn't make 
+\i me
+\i0  (or any single person) write the program up every single time. And who would we pick as the universal coder that is going to write up every algorithm we think of?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also the language you choose can have an impact on writing speed and length. Java, for example, requires a class definition in every program. Python doesn't. So you may expect Java programs to be longer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And the length of any piece of high-level code is really an illusion. Why?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Does the code we write in high-level programming languages literally get read by the computer? If not, what does it understand?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 7:40:07 pm
+\fs26 \
+it understands the machine language that the code represents\
+\cf4 teachm\cf0  
+\fs20 7:40:07 pm
+\fs26 \
+1s and 0s\
+\cf4 moppr\cf0  
+\fs20 7:40:07 pm
+\fs26 \
+binary/machine language\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's the machine language code that really determines what the program is literally going to do at the hardware level. I don't want to have to translate my algorithm to 1s and 0s to be able to analyze it!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's another point. As a computer user, you don't care at all about the code that the application you're running is based on. You may not even be aware that the code exists! What do you, as a user, care about?
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 7:40:56 pm
+\fs26 \
+Speed\
+\cf4 MSTang\cf0  
+\fs20 7:40:56 pm
+\fs26 \
+How fast it runs\
+\cf4 ScottBusche\cf0  
+\fs20 7:40:56 pm
+\fs26 \
+How fast it runs.\
+\cf4 manbugbeebee\cf0  
+\fs20 7:40:56 pm
+\fs26 \
+the amount of time it takes to run\
+\cf4 Tungsten\cf0  
+\fs20 7:40:56 pm
+\fs26 \
+Speed and useability.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, speed, usability. Anything else come to mind?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:41:27 pm
+\fs26 \
+memory\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Memory use (space efficiency) can also be important.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The most important thing is probably "Does this program do what I want it to?". We'd call that the \cf3 correctness\cf0  of the program. We'll assume that the algorithms we're analyzing are correct.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 After that, you might be concerned about how fast the program runs or how much disk space or memory it uses. We call the first one the \cf3 time efficiency\cf0  of the program, and the second the \cf3 space efficiency\cf0 . For most of the rest of class tonight, I'll focus on time efficiency, although space will show up some too.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We sometimes call the speed of an algorithm or program its \cf3 running time\cf0 . This is separate from coding time that we discussed earlier. While ease of programming can be a consideration, even if a program takes a year to code, we hope to be using it for many more years to come. Getting a program to run efficiently is more important.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So our main goal to evaluate which algorithms are better than others is to compute running time. That seems easy. Write the two programs. Run them both, using a stopwatch to time them. See which one finishes faster. No problem, right?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Wrong. First off, all the issues about coding style or different programming languages can cause a difference in their speeds. Consider, for example, using a compiler vs. interpreter. If we've precompiled the program, it should run faster than if we're interpreting it piece by piece.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Compiled programs are already expressed in your machine's native instruction set. Interpreted programs get turned into machine instructions on the fly. This intermediate step is why interpreted programs are a bit slower.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could have an issue if we're running them on two different computers. If my processor is much slower than yours, I could lose the race even if my algorithm is "better". If the algorithm involves graphics, I could lose if I don't have as good a graphics card as you.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ok. Let's fix that by putting them on the same computer. But even that's not good enough. I could be running other programs in the background that can slow down my CPU. Some, or maybe even many, of those programs are outside my control to shut down. In short, there are so many other factors in a straight-out run of a program that could affect it; I can't possibly control them all.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But let's suppose I could control all of that. I can run the two algorithms under the exact same hardware and operating system conditions. What could affect the running times of the programs now?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One big thing that could be a factor is probably where the input to the program comes from. If the program is doing user input, then I would expect its time to be mostly spent waiting for the user to type. We don't want that to count against the algorithm. Output of a final answer could also be slow.
+\b0 \
+\pard\pardeftab720
+\cf4 EmeraldBot\cf0  
+\fs20 7:47:14 pm
+\fs26 \
+The input that is fed to them\
+\cf4 chenjamin\cf0  
+\fs20 7:47:14 pm
+\fs26 \
+their input\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another important aspect of the input is precisely what it is. For lots of inputs (assuming the data was somehow preloaded into the program), the program could run so fast that we'd barely have time to start our stopwatch before it ended! If Algorithm A and Algorithm B both show up with a time of 0 milliseconds, that doesn't necessarily mean they're equally good. They could both have been given a very easy version of the problem to solve.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's think about what would make one version of a problem easier to solve than another. Suppose I have a pile of programs that I have to grade. What's going to be the main factor that determines how quickly I can grade the entire pile?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Say I'm just grading these by hand.
+\b0 \
+\pard\pardeftab720
+\cf4 piis3141592653\cf0  
+\fs20 7:48:42 pm
+\fs26 \
+how many there are\
+\cf4 chenjamin\cf0  
+\fs20 7:48:42 pm
+\fs26 \
+how many there are\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we make the assumption that there isn't a lot of variation in the time to grade a single program, then the smaller the pile is, the quicker I'll be done. Or equivalently, the larger the pile, the longer it will take.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this case, the \cf3 size\cf0  of the input is going to determine the actual running time of the program. This is true in most cases. Suppose we're trying to look up a word in a dictionary. What's the size of the input in this problem?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:49:57 pm
+\fs26 \
+The size of the dictionary\
+\cf4 MathWolf\cf0  
+\fs20 7:49:57 pm
+\fs26 \
+The number of words.\
+\cf4 EmeraldBot\cf0  
+\fs20 7:49:57 pm
+\fs26 \
+The size of the dictionary\
+\cf4 MathWolf\cf0  
+\fs20 7:49:57 pm
+\fs26 \
+The pages in the dictionary\
+\cf4 piis3141592653\cf0  
+\fs20 7:49:57 pm
+\fs26 \
+the number of words in the dictionary\
+\cf4 JRY\cf0  
+\fs20 7:49:57 pm
+\fs26 \
+the size of the dictionary\
+\cf4 connor0728\cf0  
+\fs20 7:50:02 pm
+\fs26 \
+the number of words in the dictionary?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's how many pages or words are in the dictionary. (The number of letters in the word we're searching for probably won't have a big impact, considering how short and simple single words are in comparison to the data complexity of a whole dictionary.) We could get lucky and turn to the right page on the first try, but if we're not lucky, we'll have to look at lots of pages. The more pages in the dictionary, the longer we'd have to go.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For small inputs, almost any algorithm implemented on a modern computer will be done in an instant. So, to really compare two algorithms, we need to look at large input sizes. To really see a difference, you'll need thousands or maybe even millions of words in your dictionary.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This leads to another reason not to try to use timing to analyze an algorithm. We don't want to have to generate or find a large input, and you probably don't want to sit around waiting for it to finish.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So to summarize our discussion so far: We want to analyze the running time of an algorithm based on how well it will perform on large inputs. But we don't want to do that by actually running a program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Furthermore, each individual run of a program can only account for the performance of the algorithm on that given set of input data. It does not offer a clear way for us to generalize about how the algorithm will perform as the (size of the) input data varies. Our goal today is to explore ways in which we can use mathematical reasoning to summarize how well this or that algorithm will perform regardless of what data we feed into it.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: COUNTING OPERATIONS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What we can do instead is look at the pseudocode of an algorithm or the actual code of a program and try to estimate how long it will take to run.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We don't want to try to come up with a time in seconds or minutes. As we've seen, that is too reliant on conditions beyond the algorithm itself. Instead, our units will be the number of steps that our algorithm will take.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look at a specific piece of code to learn how to do this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf8 "Enter N: "\cf7 )\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf9 =\cf0  new Scanner\cf7 (\cf5 System\cf0 .\cf6 in\cf7 )\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  N \cf9 =\cf0  scan.\cf6 nextInt\cf7 ()\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 0\cf9 ;\cf0  i \cf9 <\cf0  N\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we want to know how many actual steps this will take, what will that be based on?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is the variable that's going to determine the number of steps that will need to happen?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+the number N\
+\cf4 moppr\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+the size of N\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+N.\
+\cf4 ScottBusche\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+N\
+\cf4 want2learn\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic a96c737910b80fc4b8471db46bc30a899f0b1f29.png \width1240 \height260 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+N\
+\cf4 MathWolf\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+The amount of times we loop.\
+\cf4 connor0728\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+N\
+\cf4 chenjamin\cf0  
+\fs20 7:54:27 pm
+\fs26 \
+N\
+\cf4 spower4\cf0  
+\fs20 7:54:29 pm
+\fs26 \
+N\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It will be based on the value of N. The larger N is, the more steps the program will take.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose N is 1. How many steps does this program take?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is actually a tricky (= a little too ambiguously posed) question. Here's one way to count:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 print prompt\
+make the Scanner\
+read N\
+initialize sum\
+initialize i\
+compare i to N (and get true)\
+add i to sum\
+increment i\
+compare i to N (and get false)\
+print sum
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's a total of 10 steps. But is this right? Consider my single step "read N". Why might you think that isn't a single step?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:56:04 pm
+\fs26 \
+what is "read"?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's pseudocode. What step(s) would you have to do to get the value of N from the user?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:56:55 pm
+\fs26 \
+You have to tell the Scanner to read N, then it has to go and read N...\
+\cf4 spower4\cf0  
+\fs20 7:56:55 pm
+\fs26 \
+because you need to get the user input and then read it\
+\cf4 moppr\cf0  
+\fs20 7:56:55 pm
+\fs26 \
+scan.nextInt may have more steps within itself\
+\cf4 want2learn\cf0  
+\fs20 7:56:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic de16360f313c8363ff6133c2359ef00542677dfe.png \width4360 \height280 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:56:55 pm
+\fs26 \
+"Read N" uses a function, which contains multiple steps.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, we have to go to the Scanner object and call nextInt. Maybe that's two steps. And then we have to count the steps that nextInt takes to do the input; I really don't know how many steps that is. Lastly, we have to put the result from nextInt into N (and declare N too!).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What other steps on my list could actually be considered to be multiple steps?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:57:44 pm
+\fs26 \
+Making the Scanner object\
+\cf4 JesseLin\cf0  
+\fs20 7:57:44 pm
+\fs26 \
+comparing i to N (both)\
+\cf4 puwei99\cf0  
+\fs20 7:57:44 pm
+\fs26 \
+print statmeent\
+\cf4 MathWolf\cf0  
+\fs20 7:57:44 pm
+\fs26 \
+Comparing\
+\cf4 connor0728\cf0  
+\fs20 7:57:44 pm
+\fs26 \
+add i to sum\
+\cf4 chenjamin\cf0  
+\fs20 7:57:44 pm
+\fs26 \
+making a Scanner could be multiple steps\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Almost any of them, really. Adding i to sum involves both an addition and an assignment. So does incrementing i. The initializations also require a declaration. Printing is a function call that requires going to the System class and then the out class variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yikes! I really don't want to get into arguments about what makes a step for every single program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what saves us: Remember we are only concerned about our algorithms on large inputs. Suppose N is 10 million. Where will this algorithm be spending most of its time?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+The loop.\
+\cf4 chenjamin\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+incrementing i\
+\cf4 Tungsten\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+The for loop\
+\cf4 want2learn\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 48932c09740258023375f07de8612143f2c60f0a.png \width1680 \height320 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+On the comparing and incrementing\
+\cf4 JRY\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+Adding numbers to sum\
+\cf4 moppr\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+in the for loop with N\
+\cf4 k77frank\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+in the loop\
+\cf4 manbugbeebee\cf0  
+\fs20 7:58:51 pm
+\fs26 \
+comparing i to N, and adding i to the sum\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Inside the for loop. The declarations, initializations, and inputs may each individually take longer than the single statement in the body of the loop. But that statement will get executed so often that the total time from that will easily outweigh the code outside the loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So what we do is we figure out what is the \cf3 basic operation\cf0  of the algorithm. It's the single step that is executed most often by the algorithm. In my example, it's the addition of sum and i. Or equivalently, the assignment of that addition to sum, since they occur the same number of times.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What would be the basic operation in my searching the dictionary example?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:00:06 pm
+\fs26 \
+Comparing the words\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:00:06 pm
+\fs26 \
+Determining if the word is what you're looking for.\
+\cf4 puwei99\cf0  
+\fs20 8:00:06 pm
+\fs26 \
+comparing two words to see if they are in order\
+\cf4 Tungsten\cf0  
+\fs20 8:00:06 pm
+\fs26 \
+Checking where the word is in relation to the current page\
+\cf4 connor0728\cf0  
+\fs20 8:00:06 pm
+\fs26 \
+seeing if the word is below or above the word you are currently at in the dictionary\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Assuming we can quickly jump to any page we want, the main thing the algorithm has to do is compare the word it's looking for with the words on the page.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Once we have the basic operation, we figure out how many times it is executed given an input. For the stickied example, when N is 10 million, how many times will the basic operation (sum+i) be executed?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:00:54 pm
+\fs26 \
+10 million\
+\cf4 MathWolf\cf0  
+\fs20 8:00:54 pm
+\fs26 \
+10 million times\
+\cf4 k77frank\cf0  
+\fs20 8:00:54 pm
+\fs26 \
+10 million\
+\cf4 connor0728\cf0  
+\fs20 8:00:54 pm
+\fs26 \
+10 million\
+\cf4 Tungsten\cf0  
+\fs20 8:00:54 pm
+\fs26 \
+10,000,000\
+\cf4 JesseLin\cf0  
+\fs20 8:00:54 pm
+\fs26 \
+10 million\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 10 million times. The for loop runs 10 million times, and each time it loops, we execute the addition once.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In general, given any input N, how many times do we perform the basic operation in the stickied code?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:01:21 pm
+\fs26 \
+N times.\
+\cf4 Tungsten\cf0  
+\fs20 8:01:21 pm
+\fs26 \
+N\
+\cf4 k77frank\cf0  
+\fs20 8:01:21 pm
+\fs26 \
+N\
+\cf4 moppr\cf0  
+\fs20 8:01:21 pm
+\fs26 \
+N\
+\cf4 connor0728\cf0  
+\fs20 8:01:21 pm
+\fs26 \
+N times\
+\cf4 JesseLin\cf0  
+\fs20 8:01:21 pm
+\fs26 \
+N\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We do it N times.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we make the simplifying assumption that each addition takes the same amount of time, we can say the basic operations take a total of cN time to execute, for some constant c. If we make a similar assumption that the code before and after the loop takes the same amount of time no matter what N is, we can express the total time as the formula cN + d. Again d is a constant.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The discussion we had before about what constitutes a step is basically an argument about what we would take to be the precise values of c and d. However, in comparing algorithms, those numbers are not as important.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To see this, remember the goal: How does the function behave for large input? We can make the value of N large enough that it is significantly bigger than any value of d.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ignoring the c is a little harder to feel comfortable with at first. You'll certainly notice a difference in actual running time between a c of 3 and a c of a billion. However, if we're looking at large inputs, we're more interested in how the running time changes as the input grows.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose the total time is 3N, for example. If you double the input from, say, 100 to 200, what happens to the running time?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:04:02 pm
+\fs26 \
+It doubles\
+\cf4 k77frank\cf0  
+\fs20 8:04:02 pm
+\fs26 \
+doubles\
+\cf4 JesseLin\cf0  
+\fs20 8:04:02 pm
+\fs26 \
+doubles?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It goes from 300 to 600. Let's generalize this. If you double the input from N to 2N, what happens to the running time?
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 8:04:20 pm
+\fs26 \
+it doubles too\
+\cf4 williamyin08\cf0  
+\fs20 8:04:20 pm
+\fs26 \
+doubles\
+\cf4 k77frank\cf0  
+\fs20 8:04:20 pm
+\fs26 \
+double\
+\cf4 connor0728\cf0  
+\fs20 8:04:20 pm
+\fs26 \
+it also doubles\
+\cf4 moppr\cf0  
+\fs20 8:04:20 pm
+\fs26 \
+it gets doubled\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:04:20 pm
+\fs26 \
+doubles!\
+\cf4 Tungsten\cf0  
+\fs20 8:04:20 pm
+\fs26 \
+The running time doubles.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It goes from 3N to 6N. It also doubles.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now suppose the total time is 300000N. What happens to the running time when you double the input size?
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+running time doubles\
+\cf4 moppr\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+still doubles\
+\cf4 JRY\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+It also doubles\
+\cf4 k77frank\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+doubles\
+\cf4 Tungsten\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+The running time still doubles, assuming all other things are equal/.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It again doubles. For any c, if the running time is cN, doubling the input leads to doubling the running time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, if you're looking at how a function like cN+d grows over time, you don't really need to be concerned about the constants in the formula.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions before we press on?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: BIG-OH NOTATION
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can formalize this idea mathematically. Suppose we characterize the running time of an algorithm as a function in terms of N. In this case, I don't mean a function in terms of a method in a program, but the mathematical version: f(N) = 4N + 23, as a random example. Well, it's not that random; it follows the pattern above with c=4 and d=23.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Quick check: Does everybody know what functions are, in mathematical contexts?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're going to spend the rest of the class talking about functions, so let me know if you're shaky on the idea so we can fill that gap for you and you won't get lost.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A function is just a rule that given some (valid) input spits out a unique output.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sometimes functions can be expressed in terms of formulas, sometimes they can't. The functions we'll look at today will generally be expressible in terms of formulas (so that'll be nice and familiar).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we have two such functions, f(N) and g(N). We write that f(N) is O(g(N)) if and only if f(N) <= cg(N) for all values of N >= N0, for some constants c > 0 and N0 >=0. You "pronounce" this as "f of N is big Oh of g of N".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Technical note: In more general mathematical contexts, the definition that f(N) is O(g(N)) actually compares the absolute values, i.e., we'd require |f(N)| <= c|g(N)|. We will ignore this detail in our discussion below because all the functions we'll be interested in are already going to be positive for positive N, since they're going to be describing running-times.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Informally, if f(N) is O(g(N)), then we can think of f(N) as being no greater than g(N). We would say that g(N) is an \cf3 upper bound\cf0  on f(N). We have a little wiggle room, since cg(N) does not have to be 
+\i always
+\i0  greater. We only demand that 
+\i eventually
+\i0  cg(N) is always greater. In particular, we demand that cg(N) is always greater than (or equal to) f(N) for any N that's bigger than N0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's bring in some pictures to help us make sense of the idea.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Take a look at this picture, taken from the blog of Miguel Pardal:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f2\b0\fs24 \cf0 {{\NeXTGraphic bigO.png \width4780 \height4120 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is significant about the point N0?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:11:23 pm
+\fs26 \
+two functions intersect\
+\cf4 k77frank\cf0  
+\fs20 8:11:23 pm
+\fs26 \
+it intersects\
+\cf4 MathWolf\cf0  
+\fs20 8:11:23 pm
+\fs26 \
+It is an intersection\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you say something more precise?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Assume that the trend suggested by the graph persists beyond the region you see displayed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try processing this in terms of the definition we gave above of what it means for f(N) to be O(g(N)).
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:13:06 pm
+\fs26 \
+It's the last point where the two lines intersect, after which f(n) is always smaller than cg(n)\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:13:06 pm
+\fs26 \
+It's the last place that g(n) is less that or equal to f(n)\
+\cf4 k77frank\cf0  
+\fs20 8:13:06 pm
+\fs26 \
+c*g(n) will always be larger than f(n) after the point of intersection\
+\cf4 moppr\cf0  
+\fs20 8:13:26 pm
+\fs26 \
+f(n) is never greater than g(n) after n0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Before N0, f(N) is sometimes above and sometimes below cg(N). After that, f(N) is always below. (At least it is always below cg(N) as far as the graph shows. For the sake of this example, we'll assume that we have other ways of knowing that the trend suggested by the graph persists. The graph is simply intended to give you an idea of "what it looks like" when you have functions f and g that satisfy f(N) is O(g(N)).)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This corresponds to the idea of looking at large inputs to the function. N0 tells us how large the input has to be before our desired inequality holds.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The c allows us to give g a little boost. But it has to be a little boost. If we're looking at the growth of the functions, the graphs of f and g will follow the same general shape regardless of how we rescale them with a constant multiplicative factor like c.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions here?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's apply our definition of Big Oh notation to show that 4N + 23 is O(N). To do this, we need to find a value for c and a value for N0 so 4N + 23 <= cN for all N >= N0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you suggest a value for c?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:16:47 pm
+\fs26 \
+5\
+\cf4 connor0728\cf0  
+\fs20 8:16:47 pm
+\fs26 \
+100000\
+\cf4 AkshajK\cf0  
+\fs20 8:16:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 4a13db90366e5d908eca83ddcfda1b1b12f73332.png \width2140 \height320 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:16:47 pm
+\fs26 \
+5\
+\cf4 k77frank\cf0  
+\fs20 8:16:47 pm
+\fs26 \
+100\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The smallest (integer) value of c that could work is 5. 4N + 23 is always bigger than 4N, so c=4 is too small. (Of course, any value of c > 4 could also work. 5 is merely an especially simple number to write down.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Supposing we decide to use c=5, then what is the smallest value of N0 we could pick to make the inequality true?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:18:21 pm
+\fs26 \
+23\
+\cf4 puwei99\cf0  
+\fs20 8:18:21 pm
+\fs26 \
+23\
+\cf4 MSTang\cf0  
+\fs20 8:18:21 pm
+\fs26 \
+23\
+\cf4 k77frank\cf0  
+\fs20 8:18:21 pm
+\fs26 \
+23\
+\cf4 JesseLin\cf0  
+\fs20 8:18:21 pm
+\fs26 \
+23\
+\cf4 chenjamin\cf0  
+\fs20 8:18:21 pm
+\fs26 \
+23\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If c = 5, the smallest value of N0 we could choose is N0 = 23. Then since N>= 23, 4N + 23 <= 4N + N = 5N. \
+Of course, any value for N0 bigger than 23 works too. Fortunately, we only need to show it works for one set of values of c and N0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can use similar logic to show that N is O(4N + 23). What c and N0 can we choose to show this converse Big Oh relationship?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You don't need to give me an optimal answer. Any good enough answer will be fine by me.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that the definition requires us to pick a c that is at least positive. (It doesn't make much sense to pick a nonpositive c anyway.)
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:21:52 pm
+\fs26 \
+c=1 , N0 = 0\
+\cf4 puwei99\cf0  
+\fs20 8:21:52 pm
+\fs26 \
+1 and 1\
+\cf4 k77frank\cf0  
+\fs20 8:21:52 pm
+\fs26 \
+100, 1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since N <= 4N < 4N+23, it would suffice for us to take, for example, c = 1 and N0 = 0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody see that? Any questions there?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:23:04 pm
+\fs26 \
+what is the point of Big O notation\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Big O notation gives us a way to express the idea "this function grows no faster than this other function, for sufficiently large values of the input" in a precise way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is helpful when we're interested in describing (especially simplifying how we can describe) how functions behave for large inputs.
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:24:44 pm
+\fs26 \
+How exactly is n0 tied to the inequality?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 N0 tells us when the inequality starts to hold.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When N < N0, we make no assertion about how f relates to g.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We only assert that f(N) <= c g(N) WHEN N0 <= N.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:25:45 pm
+\fs26 \
+Why most N0 be >= 0?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 N, for us, is describing the size of the data we're inputting into an algorithm, so it's good enough for us require that N0 (the lower bound beyond which our desired inequality holds) be nonnegative.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:26:56 pm
+\fs26 \
+is the 0 the subscript of n?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 7f7752a8c01677daed3dae2141e046802a7eb614.png \width9000 \height720 \noorient
+}¬}\pard\pardeftab720
+
+\f0\b\fs26 \cf0 \
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Given this two-way relationship (4N + 23 is O(N) and N is O(4N+23)), we'd say that N is a \cf3 tight upper bound\cf0  on 4N + 23. Knowing a tight bound gives us the best estimate on the running time of the function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 0621bd97a75240f826df79b1c68b70786968ed71.png \width9000 \height740 \noorient
+}¬}\pard\pardeftab720
+
+\f0\b\fs26 \cf0 \
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Aside: Why use a theta for that notation? The way I understood it, it's because it looks like an O, but it has a bar in the middle suggesting something being squeezed both from above and below. I'm not sure whether that's the real reason, but it's a helpful enough mnemonic that I never worried too much about it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic f58c7e5f66da60bc831a8453fc8933974b7c6133.png \width4340 \height360 \noorient
+}¬}\pard\pardeftab720
+
+\f0\b\fs26 \cf0 \
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (To help prime your intuition, the question you should ask yourself is "Does N^2 grow faster than 4N + 23, when N is large?")
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 8:30:01 pm
+\fs26 \
+yes\
+\cf4 MathWolf\cf0  
+\fs20 8:30:01 pm
+\fs26 \
+Yes\
+\cf4 piis3141592653\cf0  
+\fs20 8:30:01 pm
+\fs26 \
+YES\
+\cf4 k77frank\cf0  
+\fs20 8:30:01 pm
+\fs26 \
+yes\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, it is. If we pick N0 = 5, then for all N >= N0, $23 < N^2$. Also $4N < 4N^2$. So $4N + 23 < 4N^2 + N^2 = 5N^2$. So we can pick c = 5 and then $4N + 23 < cN^2$ for all N>=N0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Sorry for the unrendered LaTeX. It's better than the alternative, which is a bunch of weirdo symbols. I'll have to fix the code later.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 However, $N^2$ is \cf3 not\cf0  O(4N + 23). We would need $N^2$ to be less than $c(4N+23)$ or equivalently $4cN + 23c$ for all N >= N0 for some choice of c and N0. You can prove this is impossible by looking at the polynomial $N^2 - 4cN - 23c$ and picking a value of N larger than either of its roots. That value must make $N^2 - 4cN - 23c$ greater than 0, which makes $N^2 > 4cN + 23c$.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If that math made your head spin a little, the moral is that, for sufficiently large inputs N, a polynomial whose highest degree is 1 is significantly smaller than a polynomial whose highest degree is 2. If the degree is 1, we say the function is \cf3 linear\cf0 . If the degree is 2, we say it is \cf3 quadratic\cf0 . All linear functions grow at the same rate, and all quadratic functions grow at the same (higher) rate.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The simple way to work with big-Oh notation is: identify the biggest term in the formula (like 4N in 4N+23), then remove any constants that multiply that term (turning, say, 4N, into N). That gives you the big-Oh classification of the function. (This is something of an oversimplification. Not everything grows like a polynomial, as we'll return to later today, but thinking in terms of this rule can help you get started getting comfortable with Big Oh and what it means.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: MORE EXAMPLES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Consider this piece of code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf0 N\cf9 -\cf11 1\cf9 ;\cf0  i \cf9 >=\cf0  \cf11 0\cf9 ;\cf0  i\cf9 --\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How would you characterize its running time using big-Oh notation? Give the tightest bound you can.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:35:23 pm
+\fs26 \
+We consider this as O(n)\
+\cf4 MSTang\cf0  
+\fs20 8:35:23 pm
+\fs26 \
+O(N)\
+\cf4 moppr\cf0  
+\fs20 8:35:23 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 8:35:23 pm
+\fs26 \
+O(n)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This loop does the exact same thing the previous example did. It just adds the numbers backwards. It still does the same amount work for a given value of N. There are N additions in the loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So this runs in O(N) time. We may also say it runs in \cf3 linear time\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So far so good?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try this one that goes forward:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 0\cf9 ;\cf0  i \cf9 <\cf0  \cf11 2\cf9 *\cf0 N\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 MathWolf\cf0  
+\fs20 8:38:01 pm
+\fs26 \
+O(2N)\
+\cf4 connor0728\cf0  
+\fs20 8:38:01 pm
+\fs26 \
+O(2N)\
+\cf4 teachm\cf0  
+\fs20 8:38:01 pm
+\fs26 \
+O(2N)?\
+\cf4 Tungsten\cf0  
+\fs20 8:38:01 pm
+\fs26 \
+O(2N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's a simpler way to express O(2N)?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:38:26 pm
+\fs26 \
+O(n)\
+\cf4 MSTang\cf0  
+\fs20 8:38:26 pm
+\fs26 \
+O(N)\
+\cf4 chenjamin\cf0  
+\fs20 8:38:26 pm
+\fs26 \
+O(N)\
+\cf4 moppr\cf0  
+\fs20 8:38:26 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 8:38:26 pm
+\fs26 \
+O(N)\
+\cf4 AkshajK\cf0  
+\fs20 8:38:26 pm
+\fs26 \
+O(n)\
+\cf4 JRY\cf0  
+\fs20 8:38:26 pm
+\fs26 \
+Also O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This takes 2N steps. The big-Oh definition lets us get rid of the constants. So this is still O(N) time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody see why, as far as our definition is concerned, it's correct to say that the running time for this example is O(N)?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's just like when we found earlier that 4N+23 is O(N). The additive constant (23) and the multiplicative constant (4) got absorbed into the freedom we got from the c and the N0 in our definition.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How about this one?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  length \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 0\cf9 ;\cf0  i \cf9 <\cf0  N\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0length\cf9 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 println\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 println\cf7 (\cf0 length\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 AkshajK\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(n)\
+\cf4 k77frank\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(N)\
+\cf4 connor0728\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(2N)=O(N)\
+\cf4 MathWolf\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(N)\
+\cf4 teachm\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(N)\
+\cf4 JesseLin\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(N)\
+\cf4 MSTang\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(N)\
+\cf4 williamyin08\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(N)\
+\cf4 moppr\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Still O(N). Now the doubling of the work is done inside the loop, as opposed to making the loop longer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: I'm seeing some people tempted to write 2O(N). That's also unnecessary. Thinking in terms of the big picture, the intuitive meaning of what this Big Oh stuff is about, if we say "This piece of code runs in O(N) time", that just expresses the idea that the amount of running time increases linearly with the size of the input data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You haven't said anything more specific by saying O(2N) rather than O(N). And 2O(N) doesn't even make any sense. O is not something that can be multiplied by stuff.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's try another.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 0\cf9 ;\cf0  i \cf9 <\cf0  N\cf9 /\cf11 4\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 AkshajK\cf0  
+\fs20 8:44:40 pm
+\fs26 \
+O(n)\
+\cf4 JesseLin\cf0  
+\fs20 8:44:40 pm
+\fs26 \
+O(N)\
+\cf4 MSTang\cf0  
+\fs20 8:44:40 pm
+\fs26 \
+O(N)....\
+\cf4 k77frank\cf0  
+\fs20 8:44:40 pm
+\fs26 \
+O(N)\
+\cf4 MathWolf\cf0  
+\fs20 8:44:40 pm
+\fs26 \
+Again O(N)\
+\cf4 connor0728\cf0  
+\fs20 8:44:40 pm
+\fs26 \
+still O(N)\
+\cf4 moppr\cf0  
+\fs20 8:44:40 pm
+\fs26 \
+O(N)\
+\cf4 JRY\cf0  
+\fs20 8:44:49 pm
+\fs26 \
+O(N)\
+\cf4 manbugbeebee\cf0  
+\fs20 8:44:49 pm
+\fs26 \
+isn't it still O(N)?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yet another linear time example. This does less work than the other ones, but it's still a constant times N. That makes it O(N).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try this one:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 0\cf9 ;\cf0  i \cf9 <\cf0  \cf11 2000\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 AkshajK\cf0  
+\fs20 8:45:44 pm
+\fs26 \
+O(1)\
+\cf4 MSTang\cf0  
+\fs20 8:45:44 pm
+\fs26 \
+O(2000)\
+\cf4 moppr\cf0  
+\fs20 8:45:44 pm
+\fs26 \
+O(1)\
+\cf4 Tungsten\cf0  
+\fs20 8:45:44 pm
+\fs26 \
+O(1)\
+\cf4 JesseLin\cf0  
+\fs20 8:45:44 pm
+\fs26 \
+O(2000)\
+\cf4 chenjamin\cf0  
+\fs20 8:45:44 pm
+\fs26 \
+O(1)\
+\cf4 JRY\cf0  
+\fs20 8:45:44 pm
+\fs26 \
+O(1) ?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This example is not linear. Notice that the variable N is no longer even in the code. So if you change N, what happens to the time that segment takes?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:45:57 pm
+\fs26 \
+nothing\
+\cf4 MSTang\cf0  
+\fs20 8:45:57 pm
+\fs26 \
+nothing\
+\cf4 moppr\cf0  
+\fs20 8:45:57 pm
+\fs26 \
+nothing!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nothing changes. It takes a certain number of steps, and there's no input to the program that can change it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may be tempted to say the running time is O(2000), which would be technically correct but unnecessarily specific. Just like we prefer to say O(N) instead of O(4N), we'll typically write a running time like 2000 as O(1). This treats 2000 as the constant c in the definition. If a running time function is O(1), we call that \cf3 constant time\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Constant-time algorithms have the slowest growth rate possible, namely 0. So, in a sense, you can't do better than a constant running time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may be crying "But what if the constant is something like 1 billion?". Yes, such a program would be worse than a linear one or maybe even a quadratic one on small or even some moderately large inputs. Remember the big-Oh notation tells us about very large inputs. Eventually the input will grow large enough that the constant will be outweighed by the linear function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Even so, we do have to be careful about the hidden constants. Fortunately, very large constants are rare in practice. So our big-Oh estimate is a fairly accurate take on the situation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Back to some examples:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 long\cf0  sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 int\cf0  length \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 0\cf9 ;\cf0  i \cf9 <\cf0  N\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0length\cf9 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 println\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 println\cf7 (\cf0 length\cf7 )\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 1\cf9 ;\cf0  i \cf9 <=\cf0  N\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 *\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 println\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 AkshajK\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+O(N)\
+\cf4 MSTang\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+O(N)\
+\cf4 k77frank\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+O(N)\
+\cf4 moppr\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This code has two loops. The basic operation in the first is addition. In the second, it appears to be multiplication. Each takes O(N) time. If we add the times together, we get O(2N) time, which can be written more simply as O(N) or linear time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a more realistic looking example:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum\cf9 =\cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i \cf9 =\cf0  \cf11 0\cf9 ;\cf0  i \cf9 <\cf0  myArray.\cf6 length\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 +=\cf0  myArray\cf7 [\cf0 i\cf7 ]\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now there's no N in here to use. Instead we have to figure out what to consider to be the size of the input. What do you think?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+O(myArray.length)\
+\cf4 MSTang\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+O(myArray.length)\
+\cf4 moppr\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+O(myArray.length)\
+\cf4 williamyin08\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+O(myArray.length)\
+\cf4 puwei99\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+O(myArray.length)\
+\cf4 JRY\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+myArray.length\
+\cf4 MathWolf\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+O(myArray.length)\
+\cf4 ScottBusche\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+myArray.length\
+\cf4 Tungsten\cf0  
+\fs20 8:48:11 pm
+\fs26 \
+The length of myArray\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, sum and i are both initialized in the code segment, so they're not input. That leaves myArray. The longer the array, the longer the loop will run. So the length of the array is our input size.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The common practice is to use N to denote the input size, even if the variable N isn't actually in the code or algorithm.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The running time of this code is basically the same as our other sum example, except it's adding the values from the array as opposed to a particular range. So it is still O(N) or linear time. If we wanted to be really specific, we might say it's linear in the length of the array.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:49:24 pm
+\fs26 \
+just saying, in the previous example, you used long, but you calculated the factorial. The program wouldn't work for anything above 20, meaning all the talk about large inputs is invalid: {\field{\*\fldinst{HYPERLINK "http://www.wolframalpha.com/input/?i=x%21+%3D+2%5E64"}}{\fldrslt \cf12 http://www.wolframalpha.com/input/?i=x%21+%3D+2%5E64}}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fair enough. Good point. We couldn't evaluate that previous example for values of N that are too large, which somewhat undermines the point I'm making. But, if you like, imagine that I made sum a BigInteger instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 With all of these examples, you might start to think that all basic algorithms might run in constant or linear time. Let's disabuse you of that mistaken notion!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: OTHER BIG-OH CLASSIFICATIONS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How about this code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  j\cf9 =\cf11 0\cf9 ;\cf0  j \cf9 <\cf0  N\cf9 ;\cf0  j\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  k\cf9 =\cf11 0\cf9 ;\cf0  k \cf9 <\cf0  N\cf9 ;\cf0  k\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  j\cf9 *\cf0 k\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: There's no such thing as O(O(N)) time.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 MSTang\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 moppr\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(n^2)\
+\cf4 MathWolf\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 teachm\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 JRY\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 Tungsten\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 18fdd4273e0456d8704ff2605b4275bbab89e503.png \width940 \height360 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 bel3900989\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 JesseLin\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 chenjamin\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 connor0728\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)\
+\cf4 manbugbeebee\cf0  
+\fs20 8:52:54 pm
+\fs26 \
+O(N^2)?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The inner loop based on k takes O(N) time. The outer loop performs the inner loop N times. So the total time is N*N or $O(N^2)$. This is our first example of code that runs in quadratic time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Before I go barreling ahead, is everyone happy with the previous example being O(N^2)? Any questions on that?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:54:24 pm
+\fs26 \
+So j*k has no effect on the O?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What we're looking at here is the number of operations that need to happen as we run through our code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As j varies from 1 to N and, for each value of j, k varies from 1 to N, we'll get various values of j*k, but what's important is that there will be N*N passes through the loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, back to the other example.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What about this one:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  j \cf9 =\cf0  \cf11 0\cf9 ;\cf0  j \cf9 <\cf0  N\cf9 ;\cf0  j\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  k\cf9 =\cf11 0\cf9 ;\cf0  k \cf9 <\cf0  N\cf9 ;\cf0  k\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  j\cf9 *\cf0 k\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i \cf9 =\cf11 0\cf9 ;\cf0  i \cf9 <\cf0  N\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 Tungsten\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic c1b18e0191315890ae061bc6789f0735d1f0ef4c.png \width3060 \height360 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O(N^2)\
+\cf4 MSTang\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O(N^2)\
+\cf4 ScottBusche\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O(N^2+N)\
+\cf4 AkshajK\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O(N^2)\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O(n^2+n)?\
+\cf4 chenjamin\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O(N^2)\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O(N^2)\
+\cf4 k77frank\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O((N^2)+N)\
+\cf4 MathWolf\cf0  
+\fs20 8:56:57 pm
+\fs26 \
+O(N^2)\
+\cf4 connor0728\cf0  
+\fs20 8:57:02 pm
+\fs26 \
+Still O(N^2)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I basically mashed up a nested loop followed by a single loop. So, at first blush, the total time is $O(N^2+N)$. We can, as you probably expected, simplify this to just $O(N^2)$. The quadratic term grows much faster than the linear term, so eventually $N^2$ will be much bigger than $N$.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Aside: This illustrates what's nice about Big Oh notation. It lets us focus on the most dominant term, the part that's really going to determine how our algorithm behaves, and we can throw away the less important stuff.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It doesn't matter that the number of steps has a measly extra added N steps. The piece that's going to determine (for large N) how many operations we're going to have to do is the N^2 piece, so that's what we retain in the Big Oh notation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now look at this slight variation on my first nested loop:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  j\cf9 =\cf11 0\cf9 ;\cf0  j \cf9 <\cf0  N\cf9 ;\cf0  j\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  k\cf9 =\cf0 j\cf9 ;\cf0  k \cf9 <\cf0  N\cf9 ;\cf0  k\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  j\cf9 *\cf0 k\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The one change is the assignment to k in the initialization of the inner for loop. Instead of resetting to 0 each time, we instead reset to the current value of j.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose that N=2. What value does this code print?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:02:13 pm
+\fs26 \
+1\
+\cf4 connor0728\cf0  
+\fs20 9:02:13 pm
+\fs26 \
+1\
+\cf4 moppr\cf0  
+\fs20 9:02:13 pm
+\fs26 \
+1\
+\cf4 k77frank\cf0  
+\fs20 9:02:13 pm
+\fs26 \
+1\
+\cf4 connor0728\cf0  
+\fs20 9:02:13 pm
+\fs26 \
+1\
+\cf4 JRY\cf0  
+\fs20 9:02:22 pm
+\fs26 \
+1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 j starts at 0, so in the first time through the outer loop, we add 0*0 and 0*1 to sum. So it's still 0. Then j becomes 1. The inner loop starts at k=1, adds 1*1 to sum, and stops (since k is now 2). So now sum is 1. j is incremented to 2, and that completes the outer loop. The program prints the value of sum, which is 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The question is how many additions are performed to sum. It's certainly fewer than when we initialize k to 0. But what's the big-Oh running time?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's still quadratic. Let's go over why. During the first time through the outer loop (when j=0), how many times does the inner loop run?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 9:04:23 pm
+\fs26 \
+N\
+\cf4 MSTang\cf0  
+\fs20 9:04:23 pm
+\fs26 \
+N\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:04:23 pm
+\fs26 \
+N\
+\cf4 Tungsten\cf0  
+\fs20 9:04:23 pm
+\fs26 \
+N\
+\cf4 JRY\cf0  
+\fs20 9:04:23 pm
+\fs26 \
+N times\
+\cf4 ScottBusche\cf0  
+\fs20 9:04:23 pm
+\fs26 \
+N\
+\cf4 puwei99\cf0  
+\fs20 9:04:30 pm
+\fs26 \
+N times\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 k goes from 0 up to N-1, so that's N times. How about the second time?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:04:46 pm
+\fs26 \
+N - 1\
+\cf4 puwei99\cf0  
+\fs20 9:04:46 pm
+\fs26 \
+N-1\
+\cf4 MSTang\cf0  
+\fs20 9:04:46 pm
+\fs26 \
+N-1\
+\cf4 JRY\cf0  
+\fs20 9:04:46 pm
+\fs26 \
+N-1\
+\cf4 manbugbeebee\cf0  
+\fs20 9:04:46 pm
+\fs26 \
+N-1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We start k at 1, so that's one less iteration than in the previous step. So the second one takes N-1 times.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And the third?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 9:05:04 pm
+\fs26 \
+N-2\
+\cf4 ScottBusche\cf0  
+\fs20 9:05:04 pm
+\fs26 \
+N-2\
+\cf4 connor0728\cf0  
+\fs20 9:05:04 pm
+\fs26 \
+N-2\
+\cf4 moppr\cf0  
+\fs20 9:05:04 pm
+\fs26 \
+N-2\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:05:04 pm
+\fs26 \
+N-2\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One less than that for N-2 times. Skipping ahead, how many times does the inner loop execute during the final iteration of the outer loop?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:05:32 pm
+\fs26 \
+1\
+\cf4 JRY\cf0  
+\fs20 9:05:32 pm
+\fs26 \
+1\
+\cf4 k77frank\cf0  
+\fs20 9:05:32 pm
+\fs26 \
+1\
+\cf4 piis3141592653\cf0  
+\fs20 9:05:32 pm
+\fs26 \
+1\
+\cf4 Tungsten\cf0  
+\fs20 9:05:32 pm
+\fs26 \
+1\
+\cf4 connor0728\cf0  
+\fs20 9:05:32 pm
+\fs26 \
+1\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:05:32 pm
+\fs26 \
+1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 At that point, j is N-1. So the inner loop starts at N-1, does the body one time, and stops. Hence the inner loop goes one time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we have a pattern like this: N, N-1, N-2, . . ., 1. To find the total for the entire piece of code, what do we do with these numbers?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:05:58 pm
+\fs26 \
+Add them!\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:05:58 pm
+\fs26 \
+add them\
+\cf4 Dragon18\cf0  
+\fs20 9:05:58 pm
+\fs26 \
+sum them\
+\cf4 williamyin08\cf0  
+\fs20 9:05:58 pm
+\fs26 \
+Add em?\
+\cf4 MathWolf\cf0  
+\fs20 9:05:58 pm
+\fs26 \
+Add them\
+\cf4 connor0728\cf0  
+\fs20 9:05:58 pm
+\fs26 \
+sum them\
+\cf4 MSTang\cf0  
+\fs20 9:05:58 pm
+\fs26 \
+add\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just add them up. This gives us the sum of the numbers from 1 to N. It turns out there's a nice formula for this sum. Anybody know what it is?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:06:32 pm
+\fs26 \
+n(n+1)/2\
+\cf4 puwei99\cf0  
+\fs20 9:06:32 pm
+\fs26 \
+n(n+1)/2\
+\cf4 JRY\cf0  
+\fs20 9:06:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 2e6532b49caaaf7c7eef918866388867a28826fc.png \width1020 \height440 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:06:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 34f23caa67c56d7c737260806982721e2ce3322f.png \width4180 \height440 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The formula is N*(N+1)/2. Here's how to prove it, based on an idea by the great mathematician Carl Friedrich Gauss when he was about your age. We have a sequence: 1, 2, 3, up to N-2, N-1, N. What's the sum of the first and last elements in this sequence?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:06:58 pm
+\fs26 \
+N+1\
+\cf4 puwei99\cf0  
+\fs20 9:06:58 pm
+\fs26 \
+N+1\
+\cf4 Dragon18\cf0  
+\fs20 9:06:58 pm
+\fs26 \
+N+1\
+\cf4 Tungsten\cf0  
+\fs20 9:06:58 pm
+\fs26 \
+N + 1\
+\cf4 k77frank\cf0  
+\fs20 9:06:58 pm
+\fs26 \
+N+1\
+\cf4 manbugbeebee\cf0  
+\fs20 9:06:58 pm
+\fs26 \
+N+1\
+\cf4 JesseLin\cf0  
+\fs20 9:06:58 pm
+\fs26 \
+N+1\
+\cf4 connor0728\cf0  
+\fs20 9:06:58 pm
+\fs26 \
+N+1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's 1 + N or, more typically, N+1. Can you find another pair that adds up to N+1?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:07:14 pm
+\fs26 \
+N-1, 2\
+\cf4 Dragon18\cf0  
+\fs20 9:07:14 pm
+\fs26 \
+2, N-1\
+\cf4 k77frank\cf0  
+\fs20 9:07:14 pm
+\fs26 \
+2nd and 2nd to last\
+\cf4 connor0728\cf0  
+\fs20 9:07:14 pm
+\fs26 \
+2 and N-1\
+\cf4 manbugbeebee\cf0  
+\fs20 9:07:18 pm
+\fs26 \
+2 and N-1\
+\cf4 k77frank\cf0  
+\fs20 9:07:18 pm
+\fs26 \
+3rd and 3rd to last\
+\cf4 JRY\cf0  
+\fs20 9:07:18 pm
+\fs26 \
+2 and N-1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 2 and N-1 also add up to N+1. As do 3 and N-2.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose N is even. Then we can pair up all the numbers this way. How many such pairs are there?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+n/2\
+\cf4 JesseLin\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N/2\
+\cf4 JRY\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N/2\
+\cf4 piis3141592653\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N/2\
+\cf4 Tungsten\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N / 2\
+\cf4 Dragon18\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N/2 pairs\
+\cf4 manbugbeebee\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N/2\
+\cf4 k77frank\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N/2\
+\cf4 FerozeM\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N/2\
+\cf4 chenjamin\cf0  
+\fs20 9:07:43 pm
+\fs26 \
+N/2 pairs'\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We end up with N/2 pairs, each adding to N+1. So the total of all the pairs is N*(N+1)/2. Ta da!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll leave the proof in the case where N is odd as a message board problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 7c4d0140894a8ab3fd3471a2b027ab2b7146e895.png \width8980 \height1540 \noorient
+}¬}\pard\pardeftab720
+
+\f0\b\fs26 \cf0 \
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you think of a real-world example of code that would run in quadratic time? What sort of structure would need that much time to process? Think of when we've needed a loop in a loop.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:08:45 pm
+\fs26 \
+For looping through a 2D array.\
+\cf4 piis3141592653\cf0  
+\fs20 9:08:45 pm
+\fs26 \
+2-D arrays\
+\cf4 moppr\cf0  
+\fs20 9:08:45 pm
+\fs26 \
+Something two dimensional, like an array or grid of something\
+\cf4 Tungsten\cf0  
+\fs20 9:08:45 pm
+\fs26 \
+Printing all the stuff in a 2d array?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've used nested loops when working with two-dimensional arrays:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  j \cf9 =\cf0  \cf11 0\cf9 ;\cf0  j \cf9 <\cf0  myArray.\cf6 length\cf9 ;\cf0  j\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  k\cf9 =\cf11 0\cf9 ;\cf0  k \cf9 <\cf0  myArray\cf7 [\cf0 j\cf7 ]\cf0 .\cf6 length\cf9 ;\cf0  k\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  myArray\cf7 [\cf0 j\cf7 ][\cf0 k\cf7 ]\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As in the 1-dimensional array, we want to use the size of the array as the size of the input. What characterizes the size of a 2-dimensional array?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:09:30 pm
+\fs26 \
+The rows x the columns?\
+\cf4 AkshajK\cf0  
+\fs20 9:09:30 pm
+\fs26 \
+length x width\
+\cf4 Dragon18\cf0  
+\fs20 9:09:30 pm
+\fs26 \
+the number of arrays and the number of terms in each array\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have 2 things: the number of rows and number of columns. In many cases, these numbers will be the same, so we can call either of them N. In that case, our loop runs in N*N or $O(N^2)$ time.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 9:09:57 pm
+\fs26 \
+okay I am eating a cake with N slices, and each of the N slices has N cherries. Each operation consists of eating a cherrie. My eatCake() method is O(N^2)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure, that's another good example (basically a 2D array expressed in terms of cake and cherries; I like where your head is at 
+\f2\b0\fs24 {{\NeXTGraphic bigsmile.gif \width320 \height320 \noorient
+}¬}
+\f0\b\fs26 ).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the numbers are not the same, we'd need two variables. Traditionally, they are N for the rows and M for the columns. How would we characterize the running time of the loop now?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:11:09 pm
+\fs26 \
+O(NM)\
+\cf4 JRY\cf0  
+\fs20 9:11:09 pm
+\fs26 \
+O(N*M)\
+\cf4 MathWolf\cf0  
+\fs20 9:11:09 pm
+\fs26 \
+O(NM)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's $O(NM)$. This makes the assumption that all the rows have the same number of columns. If not, we could note this is an over-estimate, or we could change the definition of "input size" to be number of boxes in the array. If N is the number of elements, what would be the running time of the loop according to this choice of notation?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:12:07 pm
+\fs26 \
+O(N)\
+\cf4 puwei99\cf0  
+\fs20 9:12:07 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 9:12:07 pm
+\fs26 \
+O(N)\
+\cf4 moppr\cf0  
+\fs20 9:12:07 pm
+\fs26 \
+O(N)\
+\cf4 connor0728\cf0  
+\fs20 9:12:07 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then it's $O(N)$, which is a little misleading, but is consistent with the choice of notation. The moral is you need to be careful about what the input size is and what it signifies.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As a general rule of thumb, if you have a single loop, it's going to lead to a linear time algorithm. If you have one loop inside another, it's going to be quadratic.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, these are "rules of thumb", which means they don't apply all the time:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  j \cf9 =\cf0  \cf11 0\cf9 ;\cf0  j \cf9 <\cf0  N\cf9 ;\cf0  j\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  k\cf9 =\cf11 0\cf9 ;\cf0  k \cf9 <\cf0  \cf11 100\cf9 ;\cf0  k\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf9 =\cf0  sum \cf9 +\cf0  j\cf9 *\cf0 k\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf6 out\cf0 .\cf6 print\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the big-Oh running time of this code?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:13:28 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 9:13:28 pm
+\fs26 \
+O(N)\
+\cf4 moppr\cf0  
+\fs20 9:13:28 pm
+\fs26 \
+O(N)\
+\cf4 connor0728\cf0  
+\fs20 9:13:28 pm
+\fs26 \
+O(N)\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:13:28 pm
+\fs26 \
+O(N)\
+\cf4 teachm\cf0  
+\fs20 9:13:28 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That inner loop always takes 100 steps. So the total time is 100N, or $O(N)$.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Take a look at this single loop and characterize its running time (note the increment step!):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0   sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0   for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 1\cf9 ;\cf0  i \cf9 <=\cf0  N\cf9 ;\cf0  i\cf9 +=\cf11 2\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0   sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0   \cf5 System\cf0 .\cf6 out\cf0 .\cf6 println\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 moppr\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+O(N)\
+\cf4 puwei99\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+O(N)\
+\cf4 teachm\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+O(N)\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+O(N)\
+\cf4 JRY\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+O(N)\
+\cf4 ScottBusche\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This uses only half of the numbers between 1 and N, so it takes N/2 steps. That's still $O(N)$ when we drop the constant.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 OK, that's not any different. But let's look at this one, where I've changed the operator:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0   sum \cf9 =\cf0  \cf11 0\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0   for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 1\cf9 ;\cf0  i \cf9 <=\cf0  N\cf9 ;\cf0  i\cf9 *=\cf11 2\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0   sum \cf9 =\cf0  sum \cf9 +\cf0  i\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0   \cf5 System\cf0 .\cf6 out\cf0 .\cf6 println\cf7 (\cf0 sum\cf7 )\cf9 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How many additions are done in the loop when N is 1?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:14:54 pm
+\fs26 \
+1\
+\cf4 MSTang\cf0  
+\fs20 9:14:54 pm
+\fs26 \
+1\
+\cf4 k77frank\cf0  
+\fs20 9:14:54 pm
+\fs26 \
+1\
+\cf4 connor0728\cf0  
+\fs20 9:14:54 pm
+\fs26 \
+1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just 1. Then i becomes 2, which stops the loop. Similarly, when N is 2, the loop goes 2 steps. Sounds linear so far.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But what about when N = 3? How many steps?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+2\
+\cf4 Tungsten\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+2\
+\cf4 puwei99\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+2\
+\cf4 k77frank\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+2\
+\cf4 JRY\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+2\
+\cf4 connor0728\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+2\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Still 2. i is 1, then 2, and we stop when it's 4 (as that's more than 3).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When N=4, we're up to 3 steps, since we do another loop when i is 4, and then stop. What's the next value of N that causes an increase in the number of steps?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:15:57 pm
+\fs26 \
+8\
+\cf4 moppr\cf0  
+\fs20 9:15:57 pm
+\fs26 \
+8\
+\cf4 JRY\cf0  
+\fs20 9:15:57 pm
+\fs26 \
+8\
+\cf4 connor0728\cf0  
+\fs20 9:15:57 pm
+\fs26 \
+8\
+\cf4 chenjamin\cf0  
+\fs20 9:15:57 pm
+\fs26 \
+8\
+\cf4 Tungsten\cf0  
+\fs20 9:15:57 pm
+\fs26 \
+8\
+\cf4 manbugbeebee\cf0  
+\fs20 9:16:03 pm
+\fs26 \
+8\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since we're doubling i each time, we'll go an extra time when N=8. So we've got the following:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 N=1; steps=1\
+N=2; steps=2\
+N=4; steps=3\
+N=8; steps=4\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the next line in the chart?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:16:27 pm
+\fs26 \
+16, 5\
+\cf4 moppr\cf0  
+\fs20 9:16:27 pm
+\fs26 \
+N=16; steaps=5\
+\cf4 connor0728\cf0  
+\fs20 9:16:27 pm
+\fs26 \
+N=16; steps=5\
+\cf4 JesseLin\cf0  
+\fs20 9:16:27 pm
+\fs26 \
+N=16; steps=5\
+\cf4 mattpi\cf0  
+\fs20 9:16:27 pm
+\fs26 \
+N=16; steps=5\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's N=16; steps = 5\
+What do the N numbers in my chart have in common?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:16:48 pm
+\fs26 \
+They're powers of 2\
+\cf4 teachm\cf0  
+\fs20 9:16:48 pm
+\fs26 \
+powers of 2\
+\cf4 moppr\cf0  
+\fs20 9:16:48 pm
+\fs26 \
+Powers of 2\
+\cf4 connor0728\cf0  
+\fs20 9:16:48 pm
+\fs26 \
+powers of 2\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They are all powers of 2:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 N=$2^0$; steps=1\
+N=$2^1$; steps=2\
+N=$2^2$; steps=3\
+N=$2^3$; steps=4\
+N=$2^4$; steps=5\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that big O captures the number of steps that are going to happen for a given input size N.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So when you write O(g(N)), that means that the NUMBER OF STEPS will grow like g(N) as you let N increase.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Do you see a pattern that gives us the number of steps given N?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:18:41 pm
+\fs26 \
+the power of 2 plus 1\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:18:41 pm
+\fs26 \
+the power plus 1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's one more than the exponent. Even at these values of N, you can see that N is growing much faster than the corresponding number of steps.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\fs24 \cf0 {{\NeXTGraphic 30d49b4d3d8abb9e6cfff51b6d1f62a21365c64f.png \width9020 \height2660 \noorient
+}¬}\pard\pardeftab720
+
+\f0\b\fs26 \cf0 \
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's another term for exponent that is also the name of the function we use to extract it from N. Do you know what it is?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 9:20:01 pm
+\fs26 \
+its O(log N)\
+\cf4 chenjamin\cf0  
+\fs20 9:20:01 pm
+\fs26 \
+O(log2 N)?\
+\cf4 MSTang\cf0  
+\fs20 9:20:01 pm
+\fs26 \
+log\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's called the \cf3 logarithm\cf0 . Specifically, we want the logarithm in base 2 of N, usually written as $\\log_2 N$. The formula we have for this loop is $\\log_2 N + 1$. As usual, in big_Oh notation, we only need the fastest growing term. Which is that here?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's $\\log_2 N$. Remember constants don't grow at all. The logarithm function grows very slowly, but it still grows. So we say this is $O(\\log N)$.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, logarithms to any base (where the base is > 1) are all proportional to one another (maybe I'll make a message board post on that so you don't have to take my word for it), so we don't need to be specific which base we mean. O(log(N)) is specific enough.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:21:39 pm
+\fs26 \
+Are there any algorithms that are O(sin(N))?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 |sin(N)| <= 1 for all N, so sin(N) is O(1).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're observant, you may notice that the subscript 2 disappeared in the big-Oh notation. That's because we can convert from one base to another by multiplying by a constant. (You'll figure out how that works in a message board problem.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh! I didn't notice this comment in the lesson plans. Great! I won't have to write that up myself.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've now seen four different classifications of running time:\
+$O(1)$ = constant time\
+$O(\\log N)$ = \cf3 logarithmic time\cf0 \
+$O(N)$ = linear time\
+$O(N^2)$ = quadratic time
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These are in increasing order of growth. Remember, ideally we want running times towards the top of the list.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here are a few other important classifications:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If a function runs in $O(N^3)$ time, we say it runs in \cf3 cubic time\cf0 . Where does cubic time fit in my list above?
+\b0 \
+\pard\pardeftab720
+\cf4 JesseLin\cf0  
+\fs20 9:23:43 pm
+\fs26 \
+after quadratic\
+\cf4 MathWolf\cf0  
+\fs20 9:23:43 pm
+\fs26 \
+After quadratic\
+\cf4 JRY\cf0  
+\fs20 9:23:43 pm
+\fs26 \
+at the bottom\
+\cf4 teachm\cf0  
+\fs20 9:23:43 pm
+\fs26 \
+bottom\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It comes at the end. It has the highest growth rate, which means for a given value of N, it's the slowest time of all of them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If a function runs in $O(N^k)$ for some constant k, we say the function runs in \cf3 polynomial time\cf0 . So this includes all the ones we've seen already, plus $O(N^4)$, $O(N^5)$, $O(N^100)$, etc.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If an algorithm runs in polynomial time, then for reasonably large values of N (not like "atoms in the universe" size, but in, say, the billions), the algorithm will finish in a reasonable amount of time. We say such problems are \cf3 tractable\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Compare that to a program that runs in time $O(2^N)$. This is called \cf3 exponential time\cf0 , and it is very bad. It's the inverse of logarithmic time. Even small values of N like 200 give us huge values of $2^N$.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And we could do even worse than that. There's also \cf3 factorial time\cf0 , which is $O(N!)$.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Both are products of N numbers. In exponential, each of those numbers is 2. In factorial, the numbers are N, N-1, N-2, etc. Each of these (except the final 1) is at least 2. So the product in factorial is going to be bigger than the product from exponential. If the final 1 in factorial bugs you, we can just multiply N! by 2 to make sure it's bigger.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:24:43 pm
+\fs26 \
+What about O(N^N)?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That would be slightly worse than O(N!).
+\b0 \
+\pard\pardeftab720
+\cf4 piis3141592653\cf0  
+\fs20 9:26:41 pm
+\fs26 \
+is there a classification of running time better that constant time?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What would it mean to have an algorithm that does better than constant time? Constant time means your algorithm takes the same amount of steps regardless of the complexity of the data you apply it to?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If there is a meaning to that, I don't see what it would be.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:27:50 pm
+\fs26 \
+The more data you give it, the faster it gets?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Probably that would end up contradicting the second law of thermodynamics or something.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, coming back to our discussion.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Exponential and factorial are bad...
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Both are products of N numbers. In exponential, each of those numbers is 2. In factorial, the numbers are N, N-1, N-2, etc. Each of these (except the final 1) is at least 2. So the product in factorial is going to be bigger than the product from exponential. If the final 1 in factorial bugs you, we can just multiply N! by 2 to make sure it's bigger.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These occur in practice when our algorithm tries every possibility to find a solution to a problem. For example, remember the bonus problem on the forum from Week 11 when I generated all subsets of a set? How many subsets are there of a set of N elements?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:29:08 pm
+\fs26 \
+2^N\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:29:08 pm
+\fs26 \
+2^N\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are $2^N$ subsets. So an algorithm to generate subsets must take exponential time, since it has to do at least one step for each subset. We'll encounter other examples as we progress through the last part of the course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another useful big-Oh classification is sometimes called \cf3 loglinear time\cf0 : it's $O(N \\log N). Where does that fit in my list?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 9:30:43 pm
+\fs26 \
+between linear and quadratic\
+\cf4 puwei99\cf0  
+\fs20 9:30:47 pm
+\fs26 \
+after linear time\
+\cf4 Tungsten\cf0  
+\fs20 9:30:47 pm
+\fs26 \
+Between linear and quadratic?\
+\cf4 chenjamin\cf0  
+\fs20 9:30:47 pm
+\fs26 \
+after linear, before quadratic\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It goes between $O(N)$ and $O(N^2)$. As we already saw, $1 < \\log N < N$. If you multiply through by $N$, you get $N < N \\log N < N^2$.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll see this classification show up when we look at ways to sort (or order) a given list.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The following chart puts all of these in order and shows their values for different values of N:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f2\b0\fs24 \cf0 {{\NeXTGraphic bigOchart.png \width9825 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can see that even by the N=100 column, the last two rows give huge values. By N=1000, exponential and factorial are well above the atoms-in-the-universe number.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (To our best estimate given what we (think we) know about physics and the universe.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also note for small values of N, we don't see a lot of difference in the functions. $2^N$ is not much different than $N^3$. You really see the effect when N gets large.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The upshot here is that we want algorithms as close to the top of the chart as possible in their running times.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There is just one last section I have to cover.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I could skip it, but I think for completeness I'll take 5 more minutes to run through it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can go now if you want/need to. Just check back later to see what you missed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 6: ON A CASE-BY-CASE BASIS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One more example before we go:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf10 boolean\cf0  mystery\cf7 (\cf10 int\cf7 []\cf0  myArray, \cf10 int\cf0  x\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf10 int\cf0  i\cf9 =\cf11 0\cf9 ;\cf0  i \cf9 <\cf0  myArray.\cf6 length\cf9 ;\cf0  i\cf9 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf7 (\cf0 myArray\cf7 [\cf0 i\cf7 ]\cf9 ==\cf0 x\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf10 true\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf10 false\cf9 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, what does this method do?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:33:43 pm
+\fs26 \
+tells you if x is in myArray\
+\cf4 moppr\cf0  
+\fs20 9:33:43 pm
+\fs26 \
+returns true if x is in the array\
+\cf4 Tungsten\cf0  
+\fs20 9:33:43 pm
+\fs26 \
+It checks if x is in myArray\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It returns true if and only if the value in x appears somewhere in myArray.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is the basic operation this method performs?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (What's the main thing that's getting repeated every step through the loop?)
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 9:34:50 pm
+\fs26 \
+checks the if\
+\cf4 connor0728\cf0  
+\fs20 9:34:50 pm
+\fs26 \
+checks if it's equal to something\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's the comparison of the value in the array at position i to the parameter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is the input size?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+myArray.length\
+\cf4 puwei99\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+myArray.length\
+\cf4 MathWolf\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+N=myArray.length\
+\cf4 connor0728\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+myArray.length\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+myArray.length\
+\cf4 JRY\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+myArray.length\
+\cf4 manbugbeebee\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+length of the array\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can ignore x here, since it's just one integer, and its value doesn't control the loop. What does control the loop is the number of elements in myArray.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And now, the big question: How would you characterize the running time?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:36:17 pm
+\fs26 \
+Depends on many things....\
+\cf4 puwei99\cf0  
+\fs20 9:36:17 pm
+\fs26 \
+it depends on where i is in the array\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The correct answer is: It depends on the input. (Whoa. That's different from all the other examples we saw today!) Executing the return causes the loop to stop, so the number of iterations will vary.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What input will cause the fewest iterations?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:36:50 pm
+\fs26 \
+x = myArray[0]\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:36:50 pm
+\fs26 \
+myArray[0] == x\
+\cf4 JRY\cf0  
+\fs20 9:36:50 pm
+\fs26 \
+the one where x is the first entry in the array\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If x appears as the first element in the array, then we'll execute the loop exactly once. So, in that case, the algorithm runs in constant time. It doesn't matter if the array has 10, 1000, or $10^80$ elements. We check the first spot, and we're done.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We would say $O(1)$ is the \cf3 best-case\cf0  running time of the method. We can also determine the \cf3 worst-case\cf0  running time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What input causes the most iterations of the loop? There are actually two such cases here.
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:37:40 pm
+\fs26 \
+something that's not in the loop or the last element\
+\cf4 mattpi\cf0  
+\fs20 9:37:40 pm
+\fs26 \
+it's in the last spot, or the array doesn't have it\
+\cf4 manbugbeebee\cf0  
+\fs20 9:37:40 pm
+\fs26 \
+if x is the very last entry or is not present in the array\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:37:44 pm
+\fs26 \
+last element = x, x is not in array\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:37:44 pm
+\fs26 \
+Anything not in the list or at the last element. :3\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If x is the last element in the array, or if x is not in the array at all. In either case, we have to check every element to decide the answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the running time in this case?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:38:04 pm
+\fs26 \
+O(N)\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:38:04 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we say there are N elements, then we do $O(N)$ work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You see quite a difference between the best and worst cases. Which do you think is a more useful measure of the performance of the algorithm?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 9:38:31 pm
+\fs26 \
+worst case\
+\cf4 JRY\cf0  
+\fs20 9:38:31 pm
+\fs26 \
+worst-case\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:38:31 pm
+\fs26 \
+The worst-case scenario.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We usually prefer to consider worst case over best case. Worst case gives an upper bound on how long an algorithm could take. If we need to guarantee the algorithm will be done by a certain time, then we want to minimize the worst case time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Best case gives a lower bound on the time. That can be useful in helping us decide if we can improve on an algorithm.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this course, when I ask you to characterize the running time of an algorithm, you can assume I mean worst-case unless I say otherwise.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's one more case: \cf3 average-case\cf0 . This is how the algorithm runs on "typical" inputs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To figure this out, you need to figure out what a typical or average input is, and that can be a very hard or complicated question. For our search problem, we'd have to know the probabilities of what could be stored in the array, what order those elements are in, and what's the likelihood of different values of x being given.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we decide that x is equally likely to be at any position in the array. How many elements would you expect to have to look at before you find it?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:39:59 pm
+\fs26 \
+half\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:39:59 pm
+\fs26 \
+N/2, about.\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:39:59 pm
+\fs26 \
+length / 2\
+\cf4 JRY\cf0  
+\fs20 9:39:59 pm
+\fs26 \
+myArray.length / 2\
+\cf4 Tungsten\cf0  
+\fs20 9:39:59 pm
+\fs26 \
+myArray.length/2\
+\cf4 piis3141592653\cf0  
+\fs20 9:39:59 pm
+\fs26 \
+the array length divided by 2\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Intuitively, you'd expect to look at half of the elements. You can do the math to back this up. So if it's there, you're doing N/2 operations to find it, which is $O(N)$ time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, in this problem, under these simplifying assumptions, the average case is the same as the worst case. Again, that's not always true. It depends heavily on the problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 7: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This week, we learned about an important tool in the computer scientist's toolbox: the ability to analyze the running time of a program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You learned the mathematical definition of big-Oh notation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You learned about important classifications of functions under big-Oh.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw how we can count the operations of various algorithms or programs to determine their running time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw how we can consider various cases of input to get a complete picture of the running time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Two corrections I'd like to make before I unmod:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It was asked whether there exists a reasonable notion of O(sin(N)). I quickly pointed out that sin(N) is O(1).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The point I was making, but neglected to clarify, is that if g(N) is O(h(N)) and f(N) is O(g(N)), then f(N) is O(h(N)), so anything that's O(sin(N)) is O(1), and as far as running time analysis is concerned, O(1) is as good as you're going to get.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:43:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also, I said that O(N^N) is slightly worse than O(N!). That wasn't right. O(N^N) is significantly worse. I was preparing to say something about Stirling's approximation and the fact that, according to that, N! is O(Sqrt(N) (N/e)^N).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But that e^N in the denominator indicates that N^N is much worse than N!.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In any event, exponential, factorial, and N^N running times are all pretty much useless from a practical standpoint.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week, we'll start using this tool to create and analyze our own data structures. We'll do more programming too. See you then!}

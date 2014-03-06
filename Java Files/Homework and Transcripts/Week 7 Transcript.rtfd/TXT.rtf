@@ -1,0 +1,4722 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier-Oblique;
+\f3\fmodern\fcharset0 Courier;\f4\fmodern\fcharset0 Courier-Bold;\f5\fmodern\fcharset0 Courier-BoldOblique;
+}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red83\green83\blue83;\red0\green0\blue83;\red18\green139\blue2;\red43\green139\blue39;\red190\green74\blue193;
+\red11\green85\blue38;\red1\green32\blue135;\red0\green0\blue255;\red0\green0\blue135;\red10\green82\blue135;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 7: Multidimensional Arrays/ArrayList
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Last week, we saw how we can create a data structure called an array in Java. Today we'll look at some related structures that are similar to arrays.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: MULTIDIMENSIONAL ARRAYS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The arrays we saw last week were examples of \cf3 one-dimensional\cf0  arrays. Can you think of a geometric object that is one-dimensional?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+line\
+\cf4 Tungsten\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+A line?\
+\cf4 puwei99\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+line\
+\cf4 wazmat\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+lines\
+\cf4 k77frank\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+line\
+\cf4 teachm\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+line\
+\cf4 ScottBusche\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+A line.\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+Line.\
+\cf4 dlennon\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+Line\
+\cf4 EmeraldBot\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+A line\
+\cf4 piis3141592653\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+line\
+\cf4 connor0728\cf0  
+\fs20 7:31:17 pm
+\fs26 \
+line\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A line is an example of a 1-dimensional object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I was seeing some answers of "point" and some of "square" or "triangle". Anybody want some further comment on this point?)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:32:46 pm
+\fs26 \
+A point is a 0-dimensional object\
+\cf4 bluebandit21\cf0  
+\fs20 7:32:46 pm
+\fs26 \
+a point is 0 dimensional\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, points have "0 dimensions" since there isn't any degree of freedom associated to them. Once you're at the point, you're stuck there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In contrast, when you have a line, you can move along the line, which gives you 1 degree of freedom (which is why we call lines one dimensional).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What if we wanted to go to 2 dimensions? What geometric object(s) can that correspond to?
+\b0 \
+\pard\pardeftab720
+\cf4 mrturtle\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+Square\
+\cf4 MSTang\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+plane\
+\cf4 mattpi\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+polygons\
+\cf4 puwei99\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+square\
+\cf4 williamyin08\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+decagon\
+\cf4 eyl766\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+triangle, square\
+\cf4 ScottBusche\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+Planes.\
+\cf4 wazmat\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+a square\
+\cf4 williamyin08\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+polygon\
+\cf4 FerozeM\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+square\
+\cf4 FerozeM\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+circle\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A plane extends infinitely in two directions, usually called x and y. Familiar two-dimensional objects which are finite in extent include squares, triangles, and circles. They have a length and a width.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you name some three-dimensional objects?
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+Space.\
+\cf4 mrturtle\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+dodecahedron\
+\cf4 MathWolf\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+cube\
+\cf4 mario1212\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+cube\
+\cf4 connor0728\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+sphere\
+\cf4 spower4\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+cone\
+\cf4 eyl766\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+sphere\
+\cf4 MSTang\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+sphere\
+\cf4 FerozeM\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+tetrahedron\
+\cf4 spower4\cf0  
+\fs20 7:35:15 pm
+\fs26 \
+rectangular prism\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Cubes, pyramids, and cylinders are just some of the examples of 3D solids. The extra dimension added is height.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 4D gets trickier, though, with some cleverness, there are still ways one might conceive of some 4D structures in visual ways. For example, we might use time as a fourth dimension. Or, if we're thinking about drawings, the color of the individual point could be used as a value in another dimension.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As we go up in dimensions geometrically, we add another direction in which the entity expands. We can apply a similar process to arrays.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a picture of a 1-dimensional array:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic array1d.png \width9600 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The boxes extend to the right in a single line. I've labeled the boxes with their position numbers. Remember we start at 0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For a second dimension, we'll extend in another direction, in this case down. Here's an image:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic array2d.png \width9600 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I've repeated the row of five boxes four times. So there are four rows labeled 0-3 and five columns labeled 0-4.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you think of some real-life thing we might want to model with a picture like this? It could require more rows and/or columns than I bothered to draw.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+a chess board\
+\cf4 eyl766\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+chessboard\
+\cf4 connor0728\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+someone's lawn\
+\cf4 AkshajK\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+a checker board\
+\cf4 piis3141592653\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+spreadsheet?\
+\cf4 connor0728\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+an apartment complex\
+\cf4 teachm\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+battleship game board\
+\cf4 mrturtle\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+Chessboards\
+\cf4 Wilderc\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+Window? Building? IDK\
+\cf4 connor0728\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+a map\
+\cf4 Tungsten\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+The pixels on a computer screen?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure, any grid-like arrangement of data will work here.
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:37:15 pm
+\fs26 \
+Information about a person: weight and height\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Some more ideas: A calendar is one possibility, where rows are weeks and columns are the days of the week. Another possibility could be sports records, where each row corresponds to the values for a particular player, and each column is a particular statistic. Another possibility could be a chunk of (real or imagined) map data (height, temperature, average annual rainfall, thickness of vegetation, ...), where the rows might run east-west and the columns might run north-south (each box might be one meter on a side, for example). There are many other possibilities, of course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look at how we can represent a structure like this in Java. As I said, my picture shows four rows of five boxes. We can think of each row as a single one-dimensional array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So that means we want a structure that can hold a collection of arrays. What data structure do we know of for storing a collection of things?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 7:38:39 pm
+\fs26 \
+array\
+\cf4 adrianu\cf0  
+\fs20 7:38:39 pm
+\fs26 \
+arrays\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why of course! We use an array for that! We can think of a two-dimensional array as a one-dimensional array of one-dimensional arrays.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's another picture of this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic array2djava.png \width9600 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:38:54 pm
+\fs26 \
+inception\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ha. Yeah, that's the idea.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 On the left side is an array of four boxes. I've drawn it vertically instead of horizontally, but we can still think of it as an array. Each of the boxes in the vertical array has a reference to another one-dimensional array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you can keep this "array of arrays" picture in your mind, then you should be able to generalize what we did for one-dimensional arrays to higher dimensions.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's consider how we might access the data in this 2D array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we want to access the position labeled with an X in this diagram:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic array2dX.png \width9600 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Assume our 2D array is called \cf3 a\cf0 . Think of it as the name for the vertical part. How do I get to the correct horizontal array?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: I'm going to pass some answers right now that are only half right to help us get all the way there.
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 7:41:05 pm
+\fs26 \
+a[2]\
+\cf4 chenjamin\cf0  
+\fs20 7:41:05 pm
+\fs26 \
+a[2]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 
+\i horizontal array
+\i0  we need is referenced by the box in the vertical array labeled 2, so we write \cf3 a[2]\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\i\b \cf0 Now
+\i0  we need to get to the box within 
+\i that
+\i0  horizontal array. How do we get there?
+\b0 \
+\pard\pardeftab720
+\cf4 wazmat\cf0  
+\fs20 7:41:49 pm
+\fs26 \
+a[2][1]\
+\cf4 bluebandit21\cf0  
+\fs20 7:41:49 pm
+\fs26 \
+a[2][1]?\
+\cf4 williamyin08\cf0  
+\fs20 7:41:49 pm
+\fs26 \
+a[2][1]\
+\cf4 MathWolf\cf0  
+\fs20 7:41:49 pm
+\fs26 \
+a[2][1]\
+\cf4 mattpi\cf0  
+\fs20 7:41:49 pm
+\fs26 \
+a[2][1]\
+\cf4 ScottBusche\cf0  
+\fs20 7:41:52 pm
+\fs26 \
+a[2][1]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To access the elements in the horizontal array a[2], we follow \cf3 a[2]\cf0  with brackets containing the position number we want. We need position 1, so that gives us \cf3 a[2][1]\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions about that? Everybody see why it's not a[2[1]] and it's not a[2,1]?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 7:43:09 pm
+\fs26 \
+why is it a[2][1] not a[1][2]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 a[2] tells Java which row we want (the third row), then the further [1] tells Java that we want the 2nd element in the third row.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In short, it's a[2][1] and not a[1][2] because that's how we originally set up our data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another way of thinking of this is that the 
+\i 2 gives the row number
+\i0 , and the 
+\i 1 gives the column number
+\i0  of the box we want.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:44:38 pm
+\fs26 \
+Why not just call multidimensional arrays "arrays of arrays"?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For one thing, if I wanted to talk about n-dimensional arrays, then in your system I'd have to call them arrays or arrays of ... of arrays (n times).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And that would be really messy.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look at some Java code to deal with 2D arrays. What's the first thing we need to do with an array in our code before we can start using it?
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 7:45:55 pm
+\fs26 \
+Declare it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, we need to declare it. Again, remember that a 2D array is an array of arrays. So can you figure out how to declare a 2D array of \cf3 int\cf0 s called myArray?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:46:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\i \cf5 /* So to initialize this array, we do: */
+\f3\i0 \cf0 \
+\pard\pardeftab720
+
+\f4\b \cf6 int
+\f3\b0 \cf7 [][]\cf0  myArray\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 7:46:41 pm
+\fs26 \
+int [] [] myArray;\
+\cf4 ScottBusche\cf0  
+\fs20 7:46:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf0  \cf7 []\cf0  \cf7 []\cf0  myArray\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 eyl766\cf0  
+\fs20 7:46:52 pm
+\fs26 \
+int [][] myArray\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's \cf3 int[][] myArray;\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How can we make sense of that declaration? Simple! Just remember that to declare an array, we always give the 
+\i type of the contents followed by a pair of brackets
+\i0 . So that means, whatever our declaration for this array is, it will need to look like ___[], where by ___ I just mean to indicate whatever the type is of the contents of this array. In the particular case at hand, the contents of our array consists of integer arrays, and the type of such entities is \cf3 int[]\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the full type of the 2D array is \cf3 int[][]\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions on that?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:47:44 pm
+\fs26 \
+Could you do things like int[][][][][]?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep, that would declare a 5 dimensional array of integers.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:48:08 pm
+\fs26 \
+So if we wanted to do, say, a 15-dimensional array, we would do int [][][][][][][][][][][][][][][] blah;?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, but it is rare that you need to make a multidimensional array of such high dimension.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Higher dimensions become increasingly computationally expensive.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Usually you can get away with just making arrays of dimension 1, 2, or 3.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next step is to create the array. As with 1-dimensional arrays, we have a couple of options.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we know ahead of time the exact contents of the array we'll want, we can specify them as part of the declaration:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\pard\pardeftab720
+\cf6 int\cf7 [][]\cf0  myArray \cf8 =\cf0  \cf7 \{\cf0  \cf7 \{\cf9 1\cf0 ,\cf9 2\cf7 \}\cf0 , \cf7 \{\cf9 3\cf0 ,\cf9 4\cf0 ,\cf9 5\cf7 \}\cf0 , \cf7 \{\cf9 6\cf0 ,\cf9 7\cf0 ,\cf9 8\cf7 \}\cf0  \cf7 \}\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is again generalizing how it works for 1D. The entire contents of the 2D array are in the outer curly braces. Each individual row array is given in curly braces as well. Just like with 1D arrays, this technique for initializing an array can only be done as part of the declaration.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, for my current example, what value is sitting in myArray[2][0]?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+6\
+\cf4 Tungsten\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+6\
+\cf4 chenjamin\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+6\
+\cf4 k77frank\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+6\
+\cf4 teachm\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+6\
+\cf4 MathWolf\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+6\
+\cf4 dlennon\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+6\
+\cf4 JRY\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+6\
+\cf4 MathWolf\cf0  
+\fs20 7:50:39 pm
+\fs26 \
+that would be 6\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's 6. Row 2 is the third set of braces. Position 0 is the first one there, i.e. 6.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice anything strange about the three rows I made? One is not like the others.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:51:07 pm
+\fs26 \
+wait, so the arrays in the multidimensional array don't have to be the same length?\
+\cf4 LiGhtpupPet278\cf0  
+\fs20 7:51:07 pm
+\fs26 \
+one only has 2 values\
+\cf4 connor0728\cf0  
+\fs20 7:51:07 pm
+\fs26 \
+one has only 2 numbers in it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's right. The first one is shorter. Often when we think of a 2D array, all rows have the same length. But again, if you think of it as an array of arrays, there's no particular reason that 
+\i has
+\i0  to be the case. If you're working with an array of arrays, it is not necessarily the case that all the row arrays have the same length. (If the row arrays don't all have the same length, the 2D array is typically called a \cf3 ragged array\cf0 .)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, in my example above, even though \cf3 myArray[1][2]\cf0  and \cf3 myArray[2][2]\cf0  exist, \cf3 myArray[0][2]\cf0  doesn't; if you were to try to access \cf3 myArray[0][2]\cf0 , you'd get an array out of bounds exception.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions so far?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:52:42 pm
+\fs26 \
+If you call myArray.length for the example, would you get 3 or 8?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 myArray.length = 3 since that's the length of the outer array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Continuing that example,
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 myArray[0].length = 2
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 myArray[1].length = 3
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 myArray[2].length = 3
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 7:54:09 pm
+\fs26 \
+is there myArray[0][1].length?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, because myArray[0][1] is an int, not an array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now suppose that I hadn't initialized the values of myArray in the declaration. (In other words, go back to the situation where we had declared int[][]myArray and get rid of the "= \{ \{1,2\}, \{3,4,5\}, \{6,7,8\} \}" part.) After the declaration, we need to use \cf3 new\cf0  to allocate the space for the array. Then we can use a loop to fill it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a simple example:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  \cf7 [][]\cf0  myArray\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myArray \cf8 =\cf0  new \cf6 int\cf7 [\cf9 5\cf7 ][\cf9 8\cf7 ]\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This instantiates myArray as a 2-dimensional array with 5 rows and 8 columns. You could also use variables inside the square brackets like new int[x][y] if you want to create the array based on user input or some other kind of calculation. You do have to have an integer in the brackets, though.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:54:59 pm
+\fs26 \
+But this one is not ragged\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's right. This array is not ragged. We can also instantiate ragged arrays as follows.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In such a situation, you first create the array of rows, then you go in and create each row separately.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's an example:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myArray \cf8 =\cf0  new \cf6 int\cf7 [\cf9 2\cf7 ][]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myArray\cf7 [\cf9 0\cf7 ]\cf0  \cf8 =\cf0  new \cf6 int\cf7 [\cf9 10\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myArray\cf7 [\cf9 1\cf7 ]\cf0  \cf8 =\cf0  new \cf6 int\cf7 [\cf9 15\cf7 ]\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the first line, we specify that myArray will have two rows, but we leave the column count blank. You still need the square brackets.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then, for each row, we have another line that creates the row. That's just our usual 1D array instantiation.
+\b0 \
+\pard\pardeftab720
+\cf4 eyl766\cf0  
+\fs20 7:56:30 pm
+\fs26 \
+can't you just leave some of the spaces empty if you need something ragged?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You might be able to get away with that, depending on what you're doing, but then you'd need to be careful to check for 0s (representing spaces you didn't fill in yet, OR IS IT JUST A 0 IN YOUR DATA?)...
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can probably imagine how the solution you proposed might lead to some headaches.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we'll put values into the array. You'll see the looping pattern we'll use in lots and lots of array examples. The key idea is that for each dimension, you will have another for loop. Each will have its own index variable; I'll call them rowIndex and colIndex (col being short for column).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the first line of the loop:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  myArray.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This should look familiar; it's exactly what we use for a one-dimensional array. But now myArray[rowIndex] refers to another array. So now we need a second loop to go through that array. Can you give me the line that does that, using colIndex for the loop variable?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Make sure your code makes sense. For example, rowIndex is an int, not an array, so rowIndex.length doesn't work!
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:01:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  colIndex\cf8 =\cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  myArray\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 8:01:01 pm
+\fs26 \
+for(int colIndex = 0; colIndex < myArray[rowIndex].length; colIndex++)\
+\cf4 puwei99\cf0  
+\fs20 8:01:01 pm
+\fs26 \
+for (int colIndex = 0; colIndex < myArray[rowIndex].length; colIndex++)\
+\cf4 williamyin08\cf0  
+\fs20 8:01:01 pm
+\fs26 \
+for(int colIndex=0; colIndex < myArray[rowIndex].length; colIndex++)\
+\cf4 ScottBusche\cf0  
+\fs20 8:01:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  colIndex\cf8 =\cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  myArray\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here are both lines of the loop:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  myArray.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  colIndex\cf8 =\cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  myArray\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 myArray[rowIndex].length tells us how long the current row is. Then colIndex goes through each position.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the body of the loop, we assign whatever value we want to myArray[rowIndex][colIndex]. Here I assign the sum of the indices:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  myArray.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  colIndex\cf8 =\cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  myArray\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myArray\cf7 [\cf0 rowIndex\cf7 ][\cf0 colIndex\cf7 ]\cf0  \cf8 =\cf0  rowIndex\cf8 +\cf0 colIndex\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Could we switch the order of the first two lines? We'd have the first loop go over the columns, and the second loop go over the rows.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+No.\
+\cf4 eyl766\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+no, because the array is names row then column\
+\cf4 k77frank\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+no\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+Nope. for the second line, rowIndex wouldn't exist yet when you're talking about colIndex...\
+\cf4 connor0728\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+No\
+\cf4 MathWolf\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+NO\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, if we did a straight switch, then Java would complain that rowIndex is not declared. If we knew every row had the same length, then we could use colIndex < myArray[0].length. But if it's a ragged array, then doing the columns first won't work, as you could only get as far as the shortest row. So doing rows then columns is preferable. The inner loop will go as far as it needs to for each row.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's write a static method that takes a 2-dimensional array of integers (which we'll unimaginatively name array) and adds up all the numbers in it. We'll call it add2DArray. Can you give me the first line?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:06:13 pm
+\fs26 \
+public static int add2DArray(int [][] array)\
+\cf4 teachm\cf0  
+\fs20 8:06:13 pm
+\fs26 \
+public static int add2DArray(int[][] array)\{\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 int\cf0  add2DArray\cf7 (\cf6 int\cf0  \cf7 [][]\cf0  array\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To add up the numbers, we do pretty much the same thing as for a 1D array. We initialize a counter and then use a loop to go through all the elements. The twist here is that the loop is a double loop (or \cf3 nested loop\cf0 ) like we did in the initialization example.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you write the body of the method?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 ublic 
+\f4\b static
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf0  add2DArray\cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf7 [][]\cf0  array\cf7 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  i \cf8 =\cf0  \cf9 0\cf8 ;\cf0 i\cf8 <\cf0 array.\cf10 length\cf8 ;\cf0 i\cf8 ++\cf7 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  j \cf8 =\cf0  \cf9 0\cf8 ;\cf0 j\cf8 <\cf0 array\cf7 [\cf0 i\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0 j\cf8 ++\cf7 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum\cf8 +=\cf0  array\cf7 [\cf0 i\cf7 ][\cf0 j\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  sum\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f4\b public
+\f3\b0  
+\f4\b static
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf0  add2DArray \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf7 [][]\cf0  array\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  r \cf8 =\cf0  \cf9 0\cf8 ;\cf0  r \cf8 <\cf0  array.\cf10 length\cf8 ;\cf0  r \cf8 ++\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  c \cf8 =\cf0  \cf9 0\cf8 ;\cf0  c \cf8 <\cf0  array\cf7 [\cf0 r\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  c \cf8 ++\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 +=\cf0  array\cf7 [\cf0 r\cf7 ][\cf0 c\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  sum\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 public
+\f3\b0  
+\f4\b static
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf0  add2DArray\cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf7 [][]\cf0  array\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  r\cf8 =\cf9 0\cf8 ;\cf0  r\cf8 <\cf0 array.\cf10 length\cf8 ;\cf0  r\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  c\cf8 =\cf9 0\cf8 ;\cf0  c\cf8 <\cf0 array\cf7 [\cf0 r\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  c\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 +=\cf0  array\cf7 [\cf0 r\cf7 ][\cf0 c\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  sum\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f4\b public
+\f3\b0  
+\f4\b static
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf0  add2DArray\cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf7 [][]\cf0  array\cf7 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  a \cf8 =\cf0  \cf9 0\cf8 ;\cf0  a \cf8 <\cf0  array.\cf10 length\cf8 ;\cf0  a\cf8 ++\cf7 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  b \cf8 =\cf0  \cf9 0\cf8 ;\cf0  b \cf8 <\cf0  array\cf7 [\cf0 a\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  b\cf8 ++\cf7 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 +=\cf0  array\cf7 [\cf0 a\cf7 ][\cf0 b\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  sum\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf0  total\cf8 =\cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  array.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  colIndex\cf8 =\cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  array\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0total\cf8 +=\cf0 array\cf7 [\cf0 rowIndex\cf7 ][\cf0 colIndex\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  total\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf6 int
+\f3\b0 \cf0  sum\cf8 =\cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  array.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  colIndex\cf8 =\cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  array\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 =\cf0  sum \cf8 +\cf0  array\cf7 [\cf0 rowIndex\cf7 ][\cf0 colIndex\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  sum\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f4\b public
+\f3\b0  
+\f4\b static
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf0  add2DArray\cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  \cf7 [][]\cf0  array\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  x \cf8 =\cf0  \cf9 0\cf8 ;\cf0  x\cf8 <\cf0 array.\cf10 length\cf8 ;\cf0  x\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  y \cf8 =\cf0  \cf9 0\cf8 ;\cf0  y\cf8 <\cf0 array\cf7 [\cf0 x\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  y\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum\cf8 +=\cf0 array\cf7 [\cf0 x\cf7 ][\cf0 y\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  sum\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the whole thing:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 int\cf0  add2DArray\cf7 (\cf6 int\cf0  \cf7 [][]\cf0  array\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  array.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  colIndex\cf8 =\cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  array\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 +=\cf0  array\cf7 [\cf0 rowIndex\cf7 ][\cf0 colIndex\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return sum\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 AkshajK\cf0  
+\fs20 8:09:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0  
+\f4\b public
+\f3\b0  
+\f4\b static
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf0  add2DArray\cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  \cf7 [][]\cf0  array\cf7 )\cf0 \
+\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0 \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  i\cf8 =\cf9 0\cf8 ;\cf0  i\cf8 <\cf0 array.\cf10 length\cf8 ;\cf0  a\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f4\b for
+\f3\b0 \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  j\cf8 =\cf9 0\cf8 ;\cf0  j\cf8 <\cf0 array\cf7 [\cf0 i\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  j\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0   sum \cf8 +=\cf0  array\cf7 [\cf0 i\cf7 ][\cf0 j\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  sum\cf8 ;\cf0 \
+\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's how we might call it in main:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf12 "Sum is: %d\cf13 \\n\cf12 "\cf0 , add2DArray\cf7 (\cf0 myArray\cf7 ))\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can also write this method using the enhanced for loop:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 int\cf0  add2DArray2\cf7 (\cf6 int\cf7 [][]\cf0  array\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  \cf7 []\cf0  row \cf8 :\cf0  array\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  number \cf8 :\cf0  row\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 +=\cf0  number\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return sum\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice here that the first for loop gives us each of the arrays within the big array. Then the inner loop traverses each array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: CONNECT FOUR
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's apply what we've been discussing to a real program. We're going to work on the beginning of a program to play Connect Four. The game is played on a vertical board consisting of 6 rows and 7 columns. Two players alternate dropping a checker of their color down one of the columns. A checker stops when it hits the bottom or when it hits another checker. The goal is to get four of your checkers in a row vertically, horizontally, or diagonally. If you go to the Wikipedia page for Connect Four, there's a nice animation of how the game works.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's some code to get us started:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+import \cf14 java.util.Scanner\cf8 ;\cf0 \
+public class Connect4Game \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf6 void\cf0  main\cf7 (\cf11 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f5\i \cf5 // TODO Auto-generated method stub
+\f4\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Connect4Board board \cf8 =\cf0  new Connect4Board\cf7 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  new Scanner\cf7 (\cf11 System\cf0 .\cf10 in\cf7 )\cf8 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  player \cf8 =\cf0  \cf9 1\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf7 (\cf6 true\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf12 "%s"\cf0 , board\cf7 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf12 "Player %d, enter your column number: "\cf0 , player\cf7 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  column \cf8 =\cf0  scan.\cf10 nextInt\cf7 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf7 (\cf0 board.\cf10 canDrop\cf7 (\cf0 column\cf7 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board.\cf10 dropPiece\cf7 (\cf0 column, player\cf7 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf7 (\cf0 player \cf8 ==\cf0  \cf9 1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0player \cf8 =\cf0  \cf9 2\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0player \cf8 =\cf0  \cf9 1\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 ScottBusche\cf0  
+\fs20 8:11:54 pm
+\fs26 \
+New class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure. Go ahead and make a new class if you find it helpful to follow along from within Eclipse.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 8:12:31 pm
+\fs26 \
+what do we call the class\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the code I put up, the class is called Connect4Game.
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:13:14 pm
+\fs26 \
+Are we going to make a Connect4Board class?\
+\cf4 connor0728\cf0  
+\fs20 8:13:14 pm
+\fs26 \
+it has an error on Connect4Board\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, this is a medium size project that you'll continue as part of the message board problems.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're not going to write the whole thing right now, just part of it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right now we're going to write the Connect4Board class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'll put the code we're about to write in the same project as the one where you just put the code for Connect4Game that I just supplied above.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The program we're writing right now doesn't really play the game, but it displays the board and lets the players take turns dropping their checkers. We'll represent the players and their checkers by the numbers 1 and 2.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, AkshajK found the wikipedia Connect Four animation I mentioned. Here it is.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:15:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\fs24 \cf0 {{\NeXTGraphic Connect_Four.gif \width6400 \height3800 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a partial sample run:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 0 1 2 3 4 5 6 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+Player 1, enter your column number: 3\
+0 1 2 3 4 5 6 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 1 0 0 0 \
+Player 2, enter your column number: 4\
+0 1 2 3 4 5 6 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 1 2 0 0 \
+Player 1, enter your column number: 2\
+0 1 2 3 4 5 6 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 1 1 2 0 0 \
+Player 2, enter your column number: 2\
+0 1 2 3 4 5 6 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 0 0 0 0 0 \
+0 0 2 0 0 0 0 \
+0 0 1 1 2 0 0\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Most of the heavy lifting in this program is done by the Connect4Board class. That's what we're going to work on now.
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 8:16:39 pm
+\fs26 \
+it doesn't work because we don't have connect4Board right?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're going to write the Connect4Board class right now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What methods is Connect4Board going to need to make it work with my main method?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (To answer this question, you can just examine the code I supplied for Connect4Game and see what we're going to ask Connect4Board objects to do.)
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 8:18:08 pm
+\fs26 \
+canDrop, dropPiece\
+\cf4 JRY\cf0  
+\fs20 8:18:08 pm
+\fs26 \
+canDrop and dropPiece\
+\cf4 k77frank\cf0  
+\fs20 8:18:08 pm
+\fs26 \
+canDrop, dropPiece\
+\cf4 piis3141592653\cf0  
+\fs20 8:18:08 pm
+\fs26 \
+canDrop and dropPiece\
+\cf4 Tungsten\cf0  
+\fs20 8:18:08 pm
+\fs26 \
+A constructor, canDrop, and dropPiece\
+\cf4 manbugbeebee\cf0  
+\fs20 8:18:08 pm
+\fs26 \
+canDrop, dropPiece\
+\cf4 moppr\cf0  
+\fs20 8:18:08 pm
+\fs26 \
+canDrop and dropPiece\
+\cf4 piis3141592653\cf0  
+\fs20 8:18:08 pm
+\fs26 \
+canDrop and dropPiece\
+\cf4 MathWolf\cf0  
+\fs20 8:18:14 pm
+\fs26 \
+canDrop\
+\cf4 spower4\cf0  
+\fs20 8:18:14 pm
+\fs26 \
+canDrop\
+\cf4 spower4\cf0  
+\fs20 8:18:14 pm
+\fs26 \
+dropPiece\
+\cf4 MathWolf\cf0  
+\fs20 8:18:14 pm
+\fs26 \
+dropPiece\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So far we've got three methods mentioned: a constructor, canDrop, and dropPiece.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anybody notice the implicit fourth one we didn't mention yet?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Look at those print calls. How will Java make sense of those?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:20:25 pm
+\fs26 \
+toString\
+\cf4 AkshajK\cf0  
+\fs20 8:20:25 pm
+\fs26 \
+toString\
+\cf4 ScottBusche\cf0  
+\fs20 8:20:25 pm
+\fs26 \
+toString\
+\cf4 chenjamin\cf0  
+\fs20 8:20:25 pm
+\fs26 \
+toString\
+\cf4 teachm\cf0  
+\fs20 8:20:25 pm
+\fs26 \
+tostring.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right. There are four Connect4Board methods called by main. There's a default constructor. canDrop and dropPiece are explicitly there. There's also an implicit call to toString done to print out the board.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What attributes will our class need?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:21:17 pm
+\fs26 \
+A board array\
+\cf4 moppr\cf0  
+\fs20 8:21:17 pm
+\fs26 \
+a two-dimensional array\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can get away with just one \'96 the board itself. We can represent that by a 2D array. I'll be unimaginative and call it board.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What kind of an array should it be? What sort of data does it hold?
+\b0 \
+\pard\pardeftab720
+\cf4 eyl766\cf0  
+\fs20 8:22:01 pm
+\fs26 \
+ints\
+\cf4 JRY\cf0  
+\fs20 8:22:01 pm
+\fs26 \
+int\
+\cf4 teachm\cf0  
+\fs20 8:22:01 pm
+\fs26 \
+int\
+\cf4 connor0728\cf0  
+\fs20 8:22:01 pm
+\fs26 \
+Int\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you look at the sample output, it looks like the spaces are 0s (for empty spaces), 1s (for Player 1's checkers), and 2s (for Player 2's). Note that doesn't necessarily imply the array has to store just 0s, 1s, and 2s; we're just printing it that way. But in this case, that representation works pretty well.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So can you give me the header line and the declaration of the attribute?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Nevermind, the classroom's being buggy and I actually CAN'T unsticky that particular entry right now.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 All I need right now is the header for the class and the declaration of the attribute.
+\b0 \
+\pard\pardeftab720
+\cf4 eyl766\cf0  
+\fs20 8:26:23 pm
+\fs26 \
+public class Connect4Board\{\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep, good start.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now I just also need the next line which will declare our 2D array board attribute.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Include both lines in your responses.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:27:35 pm
+\fs26 \
+public class Connect4Board(int [][] board) \{ private int [][] board;\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:27:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b public
+\f3\b0  
+\f4\b class
+\f3\b0  Connect4Board\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b \cf6 int
+\f3\b0 \cf7 [][]\cf0  board\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+public class Connect4Board \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  \cf7 [][]\cf0  board\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody see what we're doing right now? I'm not 100% sure we're all on the same page.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're currently writing code for the Connect4Board class and the two lines I just put up are the first two lines of the code for that class.
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:29:05 pm
+\fs26 \
+Does the private int [][] board; have to be inside the constructor?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, it's outside the constructor because it's the declaration of the board attribute for (objects of) the Connect4Board class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we'll write the constructor. What jobs will our constructor have?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+initialize board\
+\cf4 Tungsten\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+Turn the board attribute into a 6x7 array and fill it with 0s\
+\cf4 chenjamin\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+assigning the dimensions of the board\
+\cf4 mrturtle\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+It will have to make the board, the 2D array\
+\cf4 k77frank\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+Declaring and making 6 by 7\
+\cf4 MathWolf\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+assigning values to the board array\
+\cf4 moppr\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+give our array a size\
+\cf4 teachm\cf0  
+\fs20 8:30:51 pm
+\fs26 \
+declare # of rows & columns\
+\cf4 williamyin08\cf0  
+\fs20 8:30:54 pm
+\fs26 \
+board size\
+\cf4 connor0728\cf0  
+\fs20 8:31:04 pm
+\fs26 \
+fill it with 0s\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It has to initialize the array for the board. We also have to make sure the array is filled with all 0s.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you write the code that does this?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember (from my introductory paragraph) that a Connect Four board has 6 rows and 7 columns.
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:33:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 public
+\f3\b0  Connect4Board\cf7 ()\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board \cf8 =\cf0  
+\f4\b new
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf7 [\cf9 6\cf7 ][\cf9 7\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0 \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  \cf7 []\cf0  row \cf8 :\cf0  board\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0 \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  column\cf8 :\cf0  row\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0column \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:33:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 public
+\f3\b0  Connect4Board\cf7 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board \cf8 =\cf0  
+\f4\b new
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf7 [\cf9 6\cf7 ][\cf9 7\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  r\cf8 =\cf9 0\cf8 ;\cf0  r\cf8 <\cf9 6\cf8 ;\cf0  r\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  c\cf8 =\cf9 0\cf8 ;\cf0  c\cf8 <\cf9 7\cf8 ;\cf0  c\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board\cf7 [\cf0 r\cf7 ][\cf0 c\cf7 ]\cf0  \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:33:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0board \cf8 =\cf0  
+\f4\b new
+\f3\b0  
+\f4\b \cf6 int
+\f3\b0 \cf0  \cf7 [\cf9 6\cf7 ][\cf9 7\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  board.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  colIndex\cf8 =\cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  board\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board\cf7 [\cf0 rowIndex\cf7 ][\cf0 colIndex\cf7 ]\cf8 =\cf9 0\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's one way:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Connect4Board\cf7 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board \cf8 =\cf0  new \cf6 int\cf7 [\cf9 6\cf7 ][\cf9 7\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  board.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  colIndex \cf8 =\cf0  \cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  board\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board\cf7 [\cf0 rowIndex\cf7 ][\cf0 colIndex\cf7 ]\cf0  \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a fairly straightforward application of what we've seen already. We could also have used the enhanced loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that?
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:37:08 pm
+\fs26 \
+I don't see any handouts for week 7.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Exactly, which is why "the posted code" in what I said a minute ago didn't make sense.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So I'm rephrasing that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It is helpful to make the nested loop its own method. Can you think why?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:38:38 pm
+\fs26 \
+to restart\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:38:47 pm
+\fs26 \
+we use it over and over\
+\cf4 chutney\cf0  
+\fs20 8:38:47 pm
+\fs26 \
+Because we use it more than once\
+\cf4 Tungsten\cf0  
+\fs20 8:38:47 pm
+\fs26 \
+We will use it a lot?\
+\cf4 eyl766\cf0  
+\fs20 8:38:50 pm
+\fs26 \
+you can call that whenever you need to to clear the board\
+\cf4 JRY\cf0  
+\fs20 8:38:55 pm
+\fs26 \
+We're going to be using it often\
+\cf4 connor0728\cf0  
+\fs20 8:38:57 pm
+\fs26 \
+so we can use it again\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Thinking ahead, resetting the board is something that would happen often if we want to begin a new game. So we could have that in a method and call it whenever needed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's how what we wrote looks like after we've included a clearBoard method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Connect4Board\cf7 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board \cf8 =\cf0  new \cf6 int\cf7 [\cf9 6\cf7 ][\cf9 7\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0clearBoard\cf7 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0public \cf6 void\cf0  clearBoard\cf7 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  rowIndex\cf8 =\cf9 0\cf8 ;\cf0  rowIndex \cf8 <\cf0  board.\cf10 length\cf8 ;\cf0  rowIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  colIndex \cf8 =\cf0  \cf9 0\cf8 ;\cf0  colIndex \cf8 <\cf0  board\cf7 [\cf0 rowIndex\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  colIndex\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board\cf7 [\cf0 rowIndex\cf7 ][\cf0 colIndex\cf7 ]\cf0  \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll look at the canDrop method. Look at main and tell me what the parameter(s) and return type (if any) of the method are.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Imaginary bonus points if you also say the type of the input parameter.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:42:04 pm
+\fs26 \
+Parameter: column returns boolean\
+\cf4 puwei99\cf0  
+\fs20 8:42:04 pm
+\fs26 \
+it returns boolean and parameters are the column\
+\cf4 ScottBusche\cf0  
+\fs20 8:42:04 pm
+\fs26 \
+int what row to drop it in, returns boolean.\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:42:04 pm
+\fs26 \
+int column, boolean\
+\cf4 spower4\cf0  
+\fs20 8:42:04 pm
+\fs26 \
+int column\
+\cf4 moppr\cf0  
+\fs20 8:42:04 pm
+\fs26 \
+int column parameter, boolean return\
+\cf4 k77frank\cf0  
+\fs20 8:42:04 pm
+\fs26 \
+int column, boolean\
+\cf4 chenjamin\cf0  
+\fs20 8:42:09 pm
+\fs26 \
+parameter of column, return type of boolean\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It takes the column we're thinking of dropping into. That would be an integer. It returns true if we can drop, so the return type is a boolean.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are three conditions for when the given number is that of a column where we can drop a piece. Two conditions make sure the column actually exists. The last is a game play issue. Can you tell me what the conditions are?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that legal indices in Java (and most programming language) arrays start at 0.
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:46:11 pm
+\fs26 \
+column >= 0, column < board[0].length, and the column is not filled\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first two conditions just check that the column is a legal index in a row. Since all the rows are the same length, we can just look at row 0. So the column has to be non-negative, and it has to be smaller than the length of the first row.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:47:04 pm
+\fs26 \
+if it's less than the length, it's not negative, and its top row is filled or not.\
+\cf4 manbugbeebee\cf0  
+\fs20 8:47:11 pm
+\fs26 \
+Is the column number less than 0 or greater than 7? Is the column already full?\
+\cf4 chutney\cf0  
+\fs20 8:47:15 pm
+\fs26 \
+It makes sure the column isn't full?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Furthermore, to play there, the column can't be full. Since we know the columns fill bottom to top, we only need to look at the top of the column, i.e. row 0. If that space is empty, we can drop into the column.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So can you convert these ideas to Java code? The body of canDrop can be done in one line.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Imaginary bonus points if you don't hardcode in the length of any rows and so forth.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is generally a good habit to get into since it makes at least that part of your code trivially easy to generalize.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:52:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f4\b public
+\f3\b0  
+\f4\b \cf6 boolean
+\f3\b0 \cf0  canDrop\cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  column\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\b return
+\f3\b0  column \cf8 >\cf0  \cf9 0\cf0  \cf8 &&\cf0  column \cf8 <\cf0  
+\f4\b this
+\f3\b0 .\cf10 board\cf7 [\cf9 0\cf7 ]\cf0 .\cf10 length\cf0  \cf8 &&\cf0  
+\f4\b this
+\f3\b0 .\cf10 board\cf7 [\cf9 0\cf7 ][\cf0 column\cf7 ]\cf0  \cf8 ==\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that you need board[0].length to get the WIDTH of the rows.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 board.length is the HEIGHT of the board.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And, as we said before, those numbers aren't the same in a Connect Four game board.
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:53:45 pm
+\fs26 \
+should be column >= 0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Good catch. Yes, in Tungsten's answer, the first condition should have been column >= 0. Sorry I missed that.
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:53:59 pm
+\fs26 \
+Why do we need this.?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is necessary so the game can check whether a move we might try actually is a legal move. Here are a couple more correct answers.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:54:52 pm
+\fs26 \
+public boolean canDrop(int column)\
+\{\
+return (column>=0 && column < board[0].length && board[0][column]==0);\
+\}\
+\cf4 JRY\cf0  
+\fs20 8:55:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 return
+\f3\b0  \cf7 (\cf9 0\cf8 <=\cf0 column \cf8 &&\cf0  column\cf8 <\cf0 board\cf7 [\cf9 0\cf7 ]\cf0 .\cf10 length\cf0  \cf8 &&\cf0  board\cf7 [\cf9 0\cf7 ][\cf0 column\cf7 ]\cf8 ==\cf9 0\cf7 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 boolean\cf0  canDrop\cf7 (\cf6 int\cf0  column\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return column \cf8 >=\cf0  \cf9 0\cf0  \cf8 &&\cf0  column \cf8 <\cf0  board\cf7 [\cf9 0\cf7 ]\cf0 .\cf10 length\cf0  \cf8 &&\cf0  board\cf7 [\cf9 0\cf7 ][\cf0 column\cf7 ]\cf8 ==\cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll look at dropPiece. It takes two parameters. What are they?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+The player and the column.\
+\cf4 puwei99\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+column number and the player\
+\cf4 manbugbeebee\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+column and player\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+int column, int player\
+\cf4 spower4\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+int column, int player\
+\cf4 connor0728\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+column and player\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+(int) column and (int) player.\
+\cf4 k77frank\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+int column, int player\
+\cf4 MathWolf\cf0  
+\fs20 8:56:02 pm
+\fs26 \
+int column and int player\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The column we're going to drop in, and the player dropping it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In my main, it looks like dropPiece is a void method. But we're going to have it return the row where the piece will go. Why?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The answers I have in mind here might not be so obvious.
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 9:00:09 pm
+\fs26 \
+So we know which row the piece went into?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Thinking of how we might apply this method in the future future, we might, for example, want to print a message about where the piece went. Or we may want to use that information to decide if the game is over. The only way for someone to win is if their last placed piece caused four in a row. So that helps cut down on where to check.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:00:28 pm
+\fs26 \
+Check for a win?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also we're going to assume that dropPiece will only be called when we know the given column is a legal move. This is an example of a \cf3 precondition\cf0  on a method. This will simplify our code some, although it does trust that someone using our class doesn't screw something up. Good documentation like comments can help with that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll think about how to code this. Here's the idea. Start at the top row; remember we're assuming it's empty. Then keep moving down while\'85what?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Should we be checking the spot we're sitting in or the one vertically down from where we are?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I guess that depends on how you look at it. Either way could work.
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+the one where you are sitting\
+\cf4 chenjamin\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+keep moving down while the spot we are sitting in is 0\
+\cf4 JesseLin\cf0  
+\fs20 9:04:16 pm
+\fs26 \
+if the spot below it is still 0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to check that there is a square below us, and that square is empty. The first part is important; we don't want to get an out-of-bounds error! Basically it makes sure we stop at the bottom of the board.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When we stop, what do we have to do?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 9:05:10 pm
+\fs26 \
+replace the 0 with a 1 or 2\
+\cf4 k77frank\cf0  
+\fs20 9:05:10 pm
+\fs26 \
+change the 0 to the appropriate number\
+\cf4 JRY\cf0  
+\fs20 9:05:15 pm
+\fs26 \
+Update the number in the square that we're in to the player number\
+\cf4 ScottBusche\cf0  
+\fs20 9:05:17 pm
+\fs26 \
+Change the entry for that square to the player.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We put the player's number into the array at the correct spot. Then we return the row number.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Time to write the code! Give it a shot.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have 20 minutes left. In the interest of time, I'll just supply the solutions I have for dropPiece and toString so that we can move on to our next topic.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 int\cf0  dropPiece\cf7 (\cf6 int\cf0  column, \cf6 int\cf0  player\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf5 /* Assumes you can drop in this column */
+\f4\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  row \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf7 (\cf0 row\cf8 +\cf9 1\cf8 <\cf0 board.\cf10 length\cf0  \cf8 &&\cf0  board\cf7 [\cf0 row\cf8 +\cf9 1\cf7 ][\cf0 column\cf7 ]\cf0  \cf8 ==\cf0  \cf9 0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0row\cf8 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0board\cf7 [\cf0 row\cf7 ][\cf0 column\cf7 ]\cf8 =\cf0 player\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return row\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's toString:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf11 String\cf0  toString\cf7 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 String\cf0  answer \cf8 =\cf0  \cf12 ""\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  col \cf8 =\cf0  \cf9 0\cf8 ;\cf0  col \cf8 <\cf0  board\cf7 [\cf9 0\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  col\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer \cf8 +=\cf0  col \cf8 +\cf0  \cf12 " "\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer \cf8 +=\cf0  \cf12 "\cf13 \\n\cf12 "\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  row \cf8 =\cf0  \cf9 0\cf8 ;\cf0  row \cf8 <\cf0  board.\cf10 length\cf8 ;\cf0  row\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  col \cf8 =\cf0  \cf9 0\cf8 ;\cf0  col \cf8 <\cf0  board\cf7 [\cf0 row\cf7 ]\cf0 .\cf10 length\cf8 ;\cf0  col\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer \cf8 +=\cf0  board\cf7 [\cf0 row\cf7 ][\cf0 col\cf7 ]\cf8 +\cf12 " "\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer \cf8 +=\cf0  \cf12 "\cf13 \\n\cf12 "\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The forum problems will ask you to finish making this code into a complete Connect Four game.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions before we press on?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: ARRAYLIST
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The array is a very useful structure, but it has a major weakness. You have to state the size of the array when you create it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This leads to two possible problems. If your size is too low, then eventually your array fills up, and you have no room for new data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens if your size is too high?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then you have lots of unused locations in your array. This means you've reserved memory locations that are basically sitting idle. This isn't such a big deal if you've got an array of size 10, and you're only using 7 of them. But if memory is at a premium like in your mobile phone, or your array has a million locations, this could be a problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's code from last week for computing the average of the numbers in an array:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 double\cf0  getAverage\cf7 (\cf6 int\cf7 []\cf0  numbers\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  index\cf8 =\cf9 0\cf8 ;\cf0  index \cf8 <\cf0  numbers.\cf10 length\cf8 ;\cf0  index\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 +=\cf0  numbers\cf7 [\cf0 index\cf7 ]\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf7 (\cf6 double\cf7 )\cf0 sum \cf8 /\cf0  numbers.\cf10 length\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the array is bigger than it needs to be, what will this code do?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It won't give an error. You're doing something wrong as far as computing averages is concerned, but you're not doing anything wrong as far as Java is concerned. What would you be doing wrong here?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:12:44 pm
+\fs26 \
+lower the average with a bunch of zeroes\
+\cf4 teachm\cf0  
+\fs20 9:12:44 pm
+\fs26 \
+average in a lot of zeroes\
+\cf4 JRY\cf0  
+\fs20 9:12:44 pm
+\fs26 \
+It will add a lot of 0s to sum\
+\cf4 MSTang\cf0  
+\fs20 9:12:44 pm
+\fs26 \
+Add a bunch of 0s\
+\cf4 mrturtle\cf0  
+\fs20 9:12:44 pm
+\fs26 \
+add a bunch of zeros to the average, lowering it\
+\cf4 chutney\cf0  
+\fs20 9:12:44 pm
+\fs26 \
+It will drop the average by a lot from all the zeros\
+\cf4 chenjamin\cf0  
+\fs20 9:12:44 pm
+\fs26 \
+you'd be using all the 0s\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It will count unused positions as numbers to be averaged. So the computed average will use bad data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Even if we do keep track of the number of "real" values in the array, another problem occurs when adding in data into the middle of an array. Can you think of a situation where we may need to do that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we're keeping an 
+\i alphabetical
+\i0  list of students in a class. If someone new adds the course, then we need to put their name into the appropriate spot. Why would that be a problem in an array?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:14:23 pm
+\fs26 \
+That spot would be filled.\
+\cf4 MathWolf\cf0  
+\fs20 9:14:23 pm
+\fs26 \
+We need to move all values\
+\cf4 Tungsten\cf0  
+\fs20 9:14:29 pm
+\fs26 \
+You would need to shift everyone over 1 place\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 With an array, if we put something in a particular location, it erases what was previously at the location. We don't want to kick someone out of class! So we need to shift everyone from that spot on to the next higher position. That frees up the spot where the new student needs to go.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This wouldn't be too hard to code, but we would still need to ensure that the array had enough space to accommodate the new arrival. If it didn't, we'd have to copy all the data over to a new array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fortunately, Java has a built-in class to help solve this dilemma. It's called the \cf3 ArrayList\cf0 . Note the capital L in the middle. It's part of java.util, so we'll need to import java.util.ArrayList if we want to use it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (By the way, let me point out that we're back to talking about 1D lists here. You COULD make 2D (or higher) ArrayLists, but working with them isn't as nice as with 2D arrays.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Like an array, an ArrayList can only store elements of a single type. We have to specify the type when we declare the ArrayList object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's an example of how we can declare and initialize an ArrayList of Strings:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+ArrayList\cf8 <\cf0 String\cf8 >\cf0  stringList \cf8 =\cf0  new ArrayList\cf8 <\cf0 String\cf8 >\cf7 (\cf9 30\cf7 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The general structure of this line should look familiar, but there are a couple of new wrinkles. To specify the type of elements, we follow ArrayList with the name of the type in < and > symbols. We repeat it when we call the constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The ArrayList is a special kind of type called a \cf3 generic\cf0 . It's an object that basically takes a type as a parameter. In my example, that's String. Once you specify the type, all the methods for that ArrayList work with that type.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you go to the API for ArrayList and look at the methods listed, they will look like these:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+public E get\cf7 (\cf6 int\cf0  index\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 or
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+public \cf6 void\cf0  add\cf7 (\cf6 int\cf0  index,\
+\'a0\'a0\'a0\'a0   E element\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 "What the devil is up with that?!" you would then ask. Well, let me tell you!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here the E represents whatever type is used to declare and construct the ArrayList.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not too complicated.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another important note about generics in Java is that they can 
+\i only
+\i0  take a reference type as a parameter. So you can't make an ArrayList of ints or doubles or booleans; those are primitive types.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This seems like a big problem, but fortunately Java has a way out. Any ideas what reference type we could use when we want integers?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What you need is something that gets treated by Java as an object rather than as a primitive data type.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But otherwise, it's exactly the same as an integer. (Hint hint.)
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:19:47 pm
+\fs26 \
+Integer versus int\
+\cf4 dlennon\cf0  
+\fs20 9:19:47 pm
+\fs26 \
+Integer class\
+\cf4 AkshajK\cf0  
+\fs20 9:19:47 pm
+\fs26 \
+Integer\
+\cf4 MSTang\cf0  
+\fs20 9:19:47 pm
+\fs26 \
+Integer\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right. We can use Java's "wrapper class" called Integer. (You might remember it from when we used Integer.parseInt to convert Strings to ints.) So what we 
+\i can
+\i0  do is make an \cf3 ArrayList<Integer>\cf0  or \cf3 ArrayList<Double>\cf0  for numbers.
+\b0 \
+\pard\pardeftab720
+\cf4 jprosk\cf0  
+\fs20 9:20:08 pm
+\fs26 \
+wait what\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The things that we call \cf3 int\cf0 s in Java are not the same as objects of type Integer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They're very close, though.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Basically, the Integer class is a workaround so that you can treat \cf3 int\cf0 s as class objects.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's all.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Once we set up something like an \cf3 ArrayList<Integer>\cf0  or \cf3 ArrayList<Double>\cf0 , we can just work with the elements as ints or doubles in the code as usual. Recent versions of Java provide \cf3 autoboxing\cf0  and \cf3 autounboxing\cf0 , where it automatically converts from the primitive type to the correct reference type as needed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look back at the constructor call. My example had the number 30 in parentheses. That indicates the \cf3 capacity\cf0  of the ArrayList. That is how many positions we've allocated to start with. It's equivalent to writing \cf3 stringArray = new String[30];\cf0  for a regular array. You can also choose to leave the number out. If you do, the capacity defaults to 10.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The nice thing about an ArrayList is that it keeps track separately of the \cf3 size\cf0  of the list. That refers to the number of elements stored within it. So with my example, currently the capacity is 30, but the size is 0 (because we haven't put anything in it yet).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The ArrayList class has a method called \cf3 size()\cf0  that, of course, returns size of the list. We can use it in the same way that we use length for an array to help loop through the elements. (Be careful! size is a method, but length is not.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You access the ArrayList entirely through methods. It doesn't have the square bracket notation of arrays or Python lists.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To put something into an ArrayList, we call the method \cf3 add\cf0 :
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+stringList.\cf10 add\cf7 (\cf12 "Hello"\cf7 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This puts the given element at the end of the list, 
+\i changing the capacity automatically if necessary
+\i0 .
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 9:24:11 pm
+\fs26 \
+Then what's the point of the capacity cap? Can't you just not include that and let the arraylist fill up?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could choose to do that if you want. What you need to keep in mind is that changing the size of something can take time. If you are unnecessarily wasteful, you might lose time noticeably for no good reason.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 add\cf0  is overloaded to have a second version where we can give the index of where you want to put the element. It shifts elements if necessary to make room.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, if my stringList has the elements \{"Hello", "Bonjour", "Shalom"\}, and I call \cf3 stringList.add(1, "Greetings")\cf0 , what will the list look like?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:26:35 pm
+\fs26 \
+\{"Hello","Greetings","Bonjour","Shalom"\}\
+\cf4 moppr\cf0  
+\fs20 9:26:35 pm
+\fs26 \
+\{"Hello", "Greetings", "Bonjour", "Shalom"\}\
+\cf4 Tungsten\cf0  
+\fs20 9:26:35 pm
+\fs26 \
+\{"Hello", "Greetings", "Bonjour", "Shalom"\}\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:26:35 pm
+\fs26 \
+\{"Hello", "Greetings", "Bonjour", "Shalom"\}\
+\cf4 eyl766\cf0  
+\fs20 9:26:35 pm
+\fs26 \
+\{"Hello", "Greetings", "Bonjour", "Shalom"\}\
+\cf4 JesseLin\cf0  
+\fs20 9:26:35 pm
+\fs26 \
+\{"Hello","Greetings","Bonjour","Shalom"\}\
+\cf4 JRY\cf0  
+\fs20 9:26:40 pm
+\fs26 \
+\{"Hello","Greetings","Bonjour","Shalom"\}\
+\cf4 ScottBusche\cf0  
+\fs20 9:26:40 pm
+\fs26 \
+\{"Hello", "Greetings!", "Bonjour", "Shalom"\}\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:26:44 pm
+\fs26 \
+\{"Hello", "Greetings", "Bonjour","Shalom"\}\
+\cf4 MSTang\cf0  
+\fs20 9:26:50 pm
+\fs26 \
+hello, greetings, bonjour, shalom\
+\cf4 teachm\cf0  
+\fs20 9:26:50 pm
+\fs26 \
+Hello, Greetings, Bonjour, Shalom\
+\cf4 chenjamin\cf0  
+\fs20 9:26:50 pm
+\fs26 \
+"Hello", "Greetings", "Bonjour", "Shalom"\
+\cf4 puwei99\cf0  
+\fs20 9:26:50 pm
+\fs26 \
+Hello Greetings Bonjour Shalom\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It will be \{"Hello", "Greetings", "Bonjour", "Shalom"\}. Note that just like arrays, the first position has index 0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Contrast this with the method \cf3 set\cf0 , which replaces the element (just like stringArray[1]="Greetings" would do). So \cf3 stringList.set(1, "Greetings")\cf0  if stringList was \{"Hello", "Bonjour", "Shalom"\} would result in the list \{"Hello", "Greetings", "Shalom"\}. set also returns the replaced element ("Bonjour" in this case).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To look at the elements in the list, we use \cf3 get\cf0 . \cf3 stringList.get(0)\cf0  would return the String "Hello".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now you know enough to rewrite getAverage so it can work with an ArrayList. See the stickied code for the array version. The algorithm is the same, except the parameter type changes, and we use methods to access various things in the list. Can you write it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ack! We're out of time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 double\cf0  getAverage\cf7 (\cf0 ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  numlist\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  index \cf8 =\cf0  \cf9 0\cf8 ;\cf0  index \cf8 <\cf0  numlist.\cf10 size\cf7 ()\cf8 ;\cf0  index\cf8 ++\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 +=\cf0  numlist.\cf10 get\cf7 (\cf0 index\cf7 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf7 (\cf6 double\cf7 )\cf0  sum \cf8 /\cf0  numlist.\cf10 size\cf7 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Autounboxing lets us make sum an int, even though the ArrayList technically contains elements whose type is Integer. Also note again, in passing, we use the method \cf3 size()\cf0  for ArrayLists instead of the public attribute \cf3 length\cf0  (which is what we'd use for ordinary arrays).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a sample main you could use to verify your method works:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 void\cf0  main\cf7 (\cf11 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  myList \cf8 =\cf0  new ArrayList\cf8 <\cf0 Integer\cf8 >\cf7 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myList.\cf10 add\cf7 (\cf9 10\cf7 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myList.\cf10 add\cf7 (\cf9 20\cf7 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myList.\cf10 add\cf7 (\cf9 30\cf7 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myList.\cf10 add\cf7 (\cf9 40\cf7 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf12 "Average: %f\cf13 \\n\cf12 "\cf0 , getAverage\cf7 (\cf0 myList\cf7 ))\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unfortunately, there's no way to initialize the contents of an ArrayList in a declaration like we can with an array. I added the elements one at a time; you could of course use a loop as well.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The enhanced for loop also works with ArrayLists. Here's the getAverage method using the enhanced loop:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 double\cf0  getAverage\cf7 (\cf0 ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  numlist\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 int\cf0  sum \cf8 =\cf0  \cf9 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  number \cf8 :\cf0  numlist\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf8 +=\cf0  number\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf7 (\cf6 double\cf7 )\cf0  sum \cf8 /\cf0  numlist.\cf10 size\cf7 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Using the enhanced for eliminates the use use of the methods \cf3 get\cf0  or \cf3 size\cf0  within the loop, which is nice.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can go now if you need to. I'd like to go over by 5 minutes to mention a couple other ArrayList methods and briefly point out that Strings can be treated as arrays of chars.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just check the transcript later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are other methods for an ArrayList like \cf3 remove\cf0  to delete an element from the list, shifting the elements backwards to fill in the gap. You can specify the element directly (\cf3 stringList.remove("Shalom")\cf0 ) or by index (\cf3 stringList.remove(2)\cf0 ).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The method contains returns true if and only if its parameter appears within the list. \cf3 trimToSize\cf0  adjusts the capacity so it exactly matches the size. And there are others that you can read about in the API.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, there's no simple multidimensional version of ArrayList. You 
+\i can
+\i0  make an ArrayList of ArrayLists, but there's no easy mechanism to get at a single element. You'd need to write something like \cf3 aList.get(4).get(3)\cf0  to get position [4][3], which is a little awkward.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: STRINGS REVISITED
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll wrap up by looking at a few interesting aspects of the String class. Usually we've used a Scanner or JOptionPane to read a String from the keyboard. We can also assign a String to a variable directly:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\pard\pardeftab720
+\cf11 String\cf0  str \cf8 =\cf0  \cf12 "example"\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 "example" is what's called a \cf3 string literal\cf0 ; we've literally said what the string is directly in the code. You can also make String objects via constructor calls like:\
+String str2 = new String("example");\
+String str3 = new String(str2);
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second line above makes str3 a copy of str2. (More precisely, I mean it contains the same string of characters "example", but it is a separate entity in memory, so if you were to make a change to str2, str3 won't change.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why have I decided to bring up Strings on a day when we've been focusing arrays? Well, the point is that we can consider a String as a special kind of array, since it consists of several special data elements in sequence. What would be the type of the individual array elements?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:33:04 pm
+\fs26 \
+chars\
+\cf4 ScottBusche\cf0  
+\fs20 9:33:04 pm
+\fs26 \
+chars\
+\cf4 moppr\cf0  
+\fs20 9:33:04 pm
+\fs26 \
+char\
+\cf4 teachm\cf0  
+\fs20 9:33:04 pm
+\fs26 \
+char\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Each would be a \cf3 char\cf0  for a single character. Since we can think of a String as an array of chars, and since that is historically how they were originally treated in predecessor languages like C, Java in fact makes it possible for us to build a String from a char array:\
+char[] charArray = \{'e', 'x', 'a', 'm', 'p', 'l', 'e'\};\
+String str4 = new String(charArray);
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that characters are enclosed in single quotes to distinguish them from one-character String literals.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can also go in the other direction to turn a String into an array of chars. The associated method is called getChars, and it's a little complex:\
+str4.getChars(0, 7, newArray, 0);
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first two numbers give the portion of the String we're putting into the array. The first number is the starting position, and the second is \cf3 one after\cf0  the last position. In this case, "example" is a seven-letter word, so 0,7 gets the entire string. If I just wanted "amp", what numbers would I use?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:34:09 pm
+\fs26 \
+2 and 5\
+\cf4 chutney\cf0  
+\fs20 9:34:09 pm
+\fs26 \
+2 and 5\
+\cf4 eyl766\cf0  
+\fs20 9:34:09 pm
+\fs26 \
+2, 5\
+\cf4 JRY\cf0  
+\fs20 9:34:09 pm
+\fs26 \
+2,5\
+\cf4 MathWolf\cf0  
+\fs20 9:34:11 pm
+\fs26 \
+2,5\
+\cf4 Tungsten\cf0  
+\fs20 9:34:11 pm
+\fs26 \
+2, 5\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 2, 5. The 'a' is in position 2. We want to go from 2 to 4, so we give 5 for the second number. If you've worked with slices in Python, it works the same way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The third parameter to getChars is the array where the characters go. It's a little odd that it's a parameter and not what the method returns. The reason is the fourth parameter: it tells you at what position to start placing the characters in the string. If I use 0, it just puts them at the beginning. Note that we're assuming the array is large enough to accommodate the characters; if not, you'll get an error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The main reason to do this is to be able to manipulate the String as you would an array. However, there are some methods of the String class that let you work with the String directly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Each String knows how many characters it has via a method called length. (So Strings have a method called length, arrays have a variable called length, and ArrayLists have a method called size. Don't blame me; I didn't pick the names.) So str1.length() would return 7, since "example" has seven letters.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To determine a particular letter in a String, we use the method \cf3 charAt\cf0 . It takes the index of the character you want. For example, \cf3 str.charAt(1)\cf0  would be??
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (str = "example")
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 9:36:04 pm
+\fs26 \
+x\
+\cf4 teachm\cf0  
+\fs20 9:36:04 pm
+\fs26 \
+x\
+\cf4 mattpi\cf0  
+\fs20 9:36:04 pm
+\fs26 \
+x\
+\cf4 moppr\cf0  
+\fs20 9:36:04 pm
+\fs26 \
+x\
+\cf4 Tungsten\cf0  
+\fs20 9:36:04 pm
+\fs26 \
+x\
+\cf4 eyl766\cf0  
+\fs20 9:36:04 pm
+\fs26 \
+x\
+\cf4 williamyin08\cf0  
+\fs20 9:36:04 pm
+\fs26 \
+x\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's 'x'. Don't forget the single quotes! So can you write a method that takes a String as a parameter and prints every odd-positioned character? Here's the header line:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+public static \cf6 void\cf0  printOdds\cf7 (\cf11 String\cf0  s\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 MathWolf\cf0  
+\fs20 9:39:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 public
+\f3\b0  
+\f4\b static
+\f3\b0  
+\f4\b \cf6 void
+\f3\b0 \cf0  printOdds\cf7 (\cf11 String\cf0  s\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\b for
+\f3\b0  \cf7 (
+\f4\b \cf6 int
+\f3\b0 \cf0  i\cf8 =\cf9 0\cf8 ;\cf0  i\cf8 <\cf0 s.\cf10 length\cf7 ()\cf8 ;\cf0  i\cf8 +=\cf9 2\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 System\cf0 .\cf10 out\cf0 .\cf10 println\cf7 (\cf0 s.\cf10 charAt\cf7 (\cf0 i\cf7 ))\cf8 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 void\cf0  printOdds\cf7 (\cf11 String\cf0  s\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf7 (\cf6 int\cf0  index\cf8 =\cf9 0\cf8 ;\cf0  index\cf8 <\cf0 s.\cf10 length\cf7 ()\cf8 ;\cf0  index \cf8 +=\cf0  \cf9 2\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf0 s.\cf10 charAt\cf7 (\cf0 index\cf7 ))\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note we change the index by 2 to skip the characters in even positions.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me just finish up by covering one more point about comparing Strings.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:41:01 pm
+\fs26 \
+Starting at 0 prints the even characters...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, there's that difference between indexing at 0 and counting starting at 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I should have included my example to clarify.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 printOdds("example") would print "eape".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, I'll just quickly comment on another way we can compare Strings and we can be done for today.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may recall from our Rock Paper Scissors game that we can't use == to compareStrings. Instead we use what?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:43:33 pm
+\fs26 \
+Even indexes, odd characters\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:43:33 pm
+\fs26 \
+.equals()\
+\cf4 AkshajK\cf0  
+\fs20 9:43:33 pm
+\fs26 \
+the equals method\
+\cf4 eyl766\cf0  
+\fs20 9:43:33 pm
+\fs26 \
+.equals\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:43:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The equals method. The String class also has a method called compareTo. It determines if one string is "less than" another. Java, like Python, uses \cf3 lexicographic ordering\cf0 , which basically uses the alphabetical order of a dictionary. So "example" is less than "string", since 'e' comes before 's'.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 compareTo surprisingly returns an int rather than a boolean. (What the heck were these guys thinking?! Sigh.) When you call s1.compareTo(s2), you get a negative number if s1 is smaller, a 0 if they are equal, and a positive number if s1 is larger. So, to determine if s1<s2, you'd write if (s1.compareTo(s2) < 0).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that case matters. All uppercase letters are "smaller" than the lowercase ones. So "Example" < "example". To remove the distinction, you can use the String method toUpperCase or toLowerCase:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\b \cf0 \'a0\
+if \cf7 (\cf0 s1.\cf10 toLowerCase\cf7 ()\cf0 .\cf10 compareTo\cf7 (\cf0 s2.\cf10 toLowerCase\cf7 ())\cf0  \cf8 <\cf0  \cf9 0\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The toLowerCase method gives you a copy of the String in all lowercase. Note that the original String is unchanged.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you just want an equals check, you could use the method equalsIgnoreCase. If s1="Example" and s2="example", than s1.equalsIgnoreCase(s2) is true, while s1.equals(s2) is false.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 getChars is one way to get a set of characters from a String. If you want to get a String back instead, it's easier to use the method substring. It is very similar to the slice operator in Python.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If s1="example", s1.substring(2,5) returns the String "amp". Again the original String is unchanged. If you give just one number as a parameter, as in s1.substring(3), it returns the String from that position to the end (like "mple").
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other methods let you examine the contents of a String. The method startsWith lets you determine if your String has a particular prefix. If s1="example", then s1.startsWith("exam") would be true. And you can probably figure out what endsWith means. What's s1.endsWith("ample")?
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 9:45:40 pm
+\fs26 \
+true\
+\cf4 JRY\cf0  
+\fs20 9:45:40 pm
+\fs26 \
+true\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's true, since the last 5 characters of "example" are "ample". If you want to know if a particular set of letters appears within a String, you can use the methods indexOf or lastIndexOf. Both of them return the position of the beginning of a particular substring. The difference is whether it returns the one that occurs leftmost or rightmost in the string respectively.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, if s1 is "example", s1.indexOf("amp") is 2. s1.indexOf("e") (or 'e') is 0. s1.lastIndexOf("e") is 6.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the substring is not present, then either method will return -1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As with ArrayList, there are lots more methods that Strings have. Check out the API for more of them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Today we had three major topics.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We first looked at multidimensional arrays. We saw how to declare and initialize them. We looked at some examples of code to process data in them. We went through a mini case study of the beginning of a Connect Four game where a 2D array represented the grid.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we looked at ArrayLists. Use those if you don't know how many spaces you'll need and/or if you expect the number of elements to grow or shrink over the course of the program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Finally we saw some useful methods on Strings. You'll get some practice with these in the forum problems.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week: we go back to writing classes, seeing how Java uses the powerful object-oriented technique called inheritance. See you then!}

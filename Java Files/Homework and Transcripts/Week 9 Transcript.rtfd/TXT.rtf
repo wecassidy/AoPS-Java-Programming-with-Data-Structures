@@ -1,0 +1,5184 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fmodern\fcharset0 Courier-Bold;\f2\fmodern\fcharset0 Courier-BoldOblique;
+\f3\fswiss\fcharset0 Helvetica;\f4\fmodern\fcharset0 Courier;\f5\fmodern\fcharset0 Courier-Oblique;
+}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red30\green91\blue156;\red115\green0\blue2;
+\red251\green0\blue7;\red18\green139\blue2;\red0\green0\blue83;\red43\green139\blue39;\red1\green32\blue135;
+\red11\green85\blue38;\red0\green0\blue255;\red190\green74\blue193;\red83\green83\blue83;\red10\green82\blue135;
+\red0\green0\blue135;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Before we begin, I'll just draw attention one more time to my two pre-class announcements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 1) Sorry I haven't graded the homework from Week 6 yet! I had other things I needed to deal with this week. I'll try to knock out the remaining ones tonight.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 2) I had also mentioned on the message board last week ({\field{\*\fldinst{HYPERLINK "http://www.artofproblemsolving.com/Forum/viewtopic.php?f=1015&t=565847"}}{\fldrslt \cf3 http://www.artofproblemsolving.com/Forum/viewtopic.php?f=1015&t=565847}}) that I would return points on the Week 6 problem if by the comments it looks like you lost 2 points for not writing your solution as two separate classes. (A "back end" class which does the work and a separate class that handles the user interface and contains the main method.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Please send me a Private Message if you think you lost points for this on the Week 6 homework and I will take a look.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 Java Programming with Data Structures Week 9: Exceptions and I/O
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Today we have three things on the agenda. First, we look at an extension of abstract classes. Second, we'll look at a way that we can handle error conditions that occur in our programs. Then we'll look at how we can get Java programs to read from and write to files.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These last two may seem separate, but we actually need the first to take care of the second. You'll see how by the time we're done.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But we begin by discussing\'85
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 PART 1: INTERFACES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, we're not going back to graphical programs. An \cf4 interface\cf0  is a special type of abstract class. It's basically a class that is 
+\i entirely
+\i0  abstract.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's back up a bit. Sometimes, it would be beneficial for a class to have two superclasses. For example, consider a board game. Clearly, a board game is a type of game. It has rules, players, and a goal. So we could have a BoardGame class that inherits from a Game class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But a board game is also a product that is sold in a store. It has a price, a weight, a seller, and a resale value, potentially. So we might also like it if BoardGame inherited from Product.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that Game and Product are very different things. Baseball is a game, but not a product. A laptop is a product, but not a game. So we can't make one a subclass of the other.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When a class has more than one superclass, we have what is known as \cf4 multiple inheritance\cf0 . Both Python and C++ have mechanisms to allow it. However, Java does not. Can you think why?
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 7:34:57 pm
+\fs26 \
+It is ambiguous\
+\cf5 ReciterOfPi\cf0  
+\fs20 7:34:57 pm
+\fs26 \
+What if both superclasses have a method with the same name?\
+\cf5 connor0728\cf0  
+\fs20 7:34:57 pm
+\fs26 \
+Makes things confusing\
+\cf5 MathWolf\cf0  
+\fs20 7:34:57 pm
+\fs26 \
+What if two variables are the same?\
+\cf5 JRY\cf0  
+\fs20 7:34:57 pm
+\fs26 \
+which class does super() refer to?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah. These all touch on the main idea. The problem is that there could be conflicts in what gets inherited. Suppose Game and Product both have a toString method. Which one would BoardGame have? The first one defined? Both of them? And how would you refer to them? super only gets you to one superclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also if there are instance variables with the same name in the two superclasses, which of them does the subclass get?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 C++ and Python have rules for all of this, but Java simplifies things by only allowing you to extend one superclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It would be really nice to allow a BoardGame object, though, to be placed in both an ArrayList of Games and an ArrayList of Products. Fortunately, Java has a compromise solution.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember one of the problems with multiple inheritance is what happens if there is code in both superclasses for the same method. But if one of the superclasses has it as an 
+\i abstract
+\i0  method, then there is no code in the method. No code, no conflict.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To be safe, we have to ensure that none of the methods in one of the two superclasses has any code. So we can have multiple inheritance if one of the classes has entirely abstract methods. And it can't have any instance variables, since those might potentially cause a conflict as well. We call such a class an \cf4 interface\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, for our BoardGame example, we can define a class called Game just like we do normally. BoardGame will extend Game to get all the Game methods and instance variables.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then we could also define an interface called Product. It would consist of a bunch of abstract methods like getPrice, setPrice, sell, returnToStore, etc. We would then have BoardGame \cf4 implement\cf0  this interface. The BoardGame class would have code for each of the abstract methods in Product.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can use a BoardGame object in a Game variable. We can call Game methods since BoardGame is a subclass. And we can use a BoardGame object in a Product variable, since we know BoardGame implements all the needed methods for a Product.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 7:37:25 pm
+\fs26 \
+Can you have a class descended from multiple interfaces?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. We'll see some examples of that later. You can have your class implement as many interfaces as you please. That is pretty simple.
+\b0 \
+\pard\pardeftab720
+\cf5 AkshajK\cf0  
+\fs20 7:37:57 pm
+\fs26 \
+so essentially an interface is a completely abstract class.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It is, essentially (maybe not literally), a completely abstract class that doesn't have any instance variables.
+\b0 \
+\pard\pardeftab720
+\cf5 williamyin08\cf0  
+\fs20 7:39:11 pm
+\fs26 \
+Wait, then if BoardGame defines all the Product classes, how would another object like VideoGame use those same Product method definitions?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm confused by this question. I think it will become clearer once we start seeing some examples, so let's put this on hold for now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can we create Game objects?
+\b0 \
+\pard\pardeftab720
+\cf5 eyl766\cf0  
+\fs20 7:39:58 pm
+\fs26 \
+no\
+\cf5 Tungsten\cf0  
+\fs20 7:39:58 pm
+\fs26 \
+Yes.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If Game is an abstract class, no. But if it isn't, we can. What about Product?
+\b0 \
+\pard\pardeftab720
+\cf5 puwei99\cf0  
+\fs20 7:40:20 pm
+\fs26 \
+no\
+\cf5 MSTang\cf0  
+\fs20 7:40:20 pm
+\fs26 \
+No, it's an interface.\
+\cf5 connor0728\cf0  
+\fs20 7:40:20 pm
+\fs26 \
+no\
+\cf5 JRY\cf0  
+\fs20 7:40:20 pm
+\fs26 \
+no\
+\cf5 chutney\cf0  
+\fs20 7:40:20 pm
+\fs26 \
+Nope\
+\cf5 MathWolf\cf0  
+\fs20 7:40:20 pm
+\fs26 \
+No\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, since Product is an interface, by definition, it is abstract. You can never make objects from an interface.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (You can, however, declare the type of a variable to be Product and then initialize that variable to some concrete class that implements a Product interface.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The good news is that a class can implement as many interfaces as you want. All that means is that the class (or one of its subclasses, if it is itself abstract) will provide code for the methods in all of the interfaces.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Enough talk. Let's look at a concrete example. Shapes are one kind of thing that can be drawn. But other things can be drawn too: people, animals, bitmaps, etc. So let's make an interface Drawable to represent this concept.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Go into Eclipse, right click on the project you're planning to put your work for today's class in, and select New then Interface. You'll get a popup that's a bit smaller than the one you get for a class. Under Name, enter Drawable. Then click Finish.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that instead of public class Drawable, the header is \cf4 public 
+\i \cf4 interface
+\i0 \cf4  Drawable\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can add method declarations to the interface in the same way we can add abstract methods to an abstract class. In fact, it's even simpler since we don't need the word \cf4 abstract\cf0 . That's implied by being an interface.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public interface Drawable \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  draw\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this example, we've added a method to Drawable. So if you make a class that implements Drawable, it (or a subclass) must have complete definitions of the draw method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions so far? Everybody with me?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's make Triangle implement the interface. Go into Triangle.java and change the header line of the class to:\
+public class Triangle extends Shape implements Drawable\{
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's a version of Triangle.java in the Handouts you can use if you don't have yours from last week.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You will also find Shape.java there.
+\b0 \
+\pard\pardeftab720
+\cf5 spower4\cf0  
+\fs20 7:45:18 pm
+\fs26 \
+does drawable have to be in the same project as triangle?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes.
+\b0 \
+\pard\pardeftab720
+\cf5 ReciterOfPi\cf0  
+\fs20 7:45:48 pm
+\fs26 \
+does the semicolon indicate that draw is abstract?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The semicolon goes after draw because we are not defining draw here. I would say you see a semicolon there as a consequence of the fact that draw is abstract here, but it's not there specifically to indicate that draw is abstract.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody have Triangle and Shape so we can proceed?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, picking up where I was:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's make Triangle implement the interface. Go into Triangle.java and change the header line of the class to:\
+public class Triangle extends Shape implements Drawable\{
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note the new and hopefully not surprising keyword \cf4 implements\cf0 . As soon as you put that in, Triangle gets a red line under it. Why?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 7:49:17 pm
+\fs26 \
+We need a draw method\
+\cf5 mattpi\cf0  
+\fs20 7:49:17 pm
+\fs26 \
+We haven't defined draw() yet\
+\cf5 Tungsten\cf0  
+\fs20 7:49:17 pm
+\fs26 \
+You need to override the draw() method in Drawable.\
+\cf5 JRY\cf0  
+\fs20 7:49:17 pm
+\fs26 \
+Triangle should contain draw()\
+\cf5 MathWolf\cf0  
+\fs20 7:49:17 pm
+\fs26 \
+We didn't implement draw()\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because you're not actually implementing the interface yet in the code. Again Java provides a sanity check. So let's add the code. If we really wanted to draw it, we'd pass a Graphics object and draw lines and such. We'll just print something instead for our simple example:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  draw\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Drawing the triangle"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now in main, we can make a Drawable variable and assign a Triangle object to it:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Drawable d \cf8 =\cf0  new Triangle\cf6 (\cf11 "Isoceles triangle"\cf0 , \cf12 3\cf0 , \cf12 3\cf0 , \cf12 4\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0d.\cf10 draw\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For the purposes of just getting the code to run, you can either create a main method in Triangle or you can modify the code in ShapeDriver.
+\b0 \
+\pard\pardeftab720
+\cf5 jprosk\cf0  
+\fs20 7:51:15 pm
+\fs26 \
+wouldn't you have to give a parameter for the window to draw in?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we were trying to literally draw something, yes, we would need to muck around with doing all that graphics jazz. For now, we're just having our "draw" method print some text to the system output.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we tried this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 Shape\cf0  s \cf8 =\cf0  new Triangle\cf6 (\cf11 "Equilateral triangle"\cf0 , \cf12 3\cf0 , \cf12 3\cf0 , \cf12 3\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Drawable d \cf8 =\cf0  s\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Would that work?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 With our current code, does the Shape class implement Drawable?
+\b0 \
+\pard\pardeftab720
+\cf5 chenjamin\cf0  
+\fs20 7:53:42 pm
+\fs26 \
+no; shape and drawable aren't related\
+\cf5 moppr\cf0  
+\fs20 7:53:42 pm
+\fs26 \
+cannot convert from shape to drawable\
+\cf5 williamyin08\cf0  
+\fs20 7:53:42 pm
+\fs26 \
+No! A Shape is not the same exact thing as a Drawable\
+\cf5 ScottBusche\cf0  
+\fs20 7:53:42 pm
+\fs26 \
+No, it can't convert...\
+\cf5 chenjamin\cf0  
+\fs20 7:53:42 pm
+\fs26 \
+No\
+\cf5 chutney\cf0  
+\fs20 7:53:42 pm
+\fs26 \
+No\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. Even though s is actually a Triangle object, Java can't tell that from the variable. s could be any Shape at all, and a Shape subclass does not have to implement Drawable. Java won't let you compile the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can make all Shapes Drawable by having Shape implement Drawable as well:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public abstract class \cf9 Shape\cf0  implements Drawable\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's all we'd need. We can push off the implementation of the draw method to the subclass. If a subclass did not implement the interface, it would have to be declared abstract, even if it filled in perimeter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions at this point?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I've discussed interfaces in terms of multiple inheritance, but that's probably the least likely reason to use one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sometimes you want to ensure a class has a particular functionality. For example, suppose you want to put a list in order. This assumes there actually is a particular ordering for comparing the elements of the list.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java has a sort method in the Arrays class. To use it, the class of objects in the array must have a compareTo method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How can we ensure the class has the compareTo method?
+\b0 \
+\pard\pardeftab720
+\cf5 ReciterOfPi\cf0  
+\fs20 7:56:48 pm
+\fs26 \
+With an interface\
+\cf5 Tungsten\cf0  
+\fs20 7:56:48 pm
+\fs26 \
+Have it implement an Interface with a compareTo method?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The class must implement an interface containing the compareTo method. Java actually has an interface exactly for this purpose. It's called Comparable (and I'm glad I'm typing it, as I'm never sure how to pronounce it!).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Like ArrayList, Comparable is generic. So if I want to make Triangles comparable, then Triangle would implement Comparable<Triangle>. We would then have to add a compareTo method to Triangle that took a Triangle as a parameter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the new header:\
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Triangle extends \cf9 Shape\cf0  implements Drawable, Comparable\cf8 <\cf0 Triangle\cf8 >\cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note the comma separating the two interfaces. Remember you can only extend one class, but you can implement as many interfaces as you like.
+\b0 \
+\pard\pardeftab720
+\cf5 AkshajK\cf0  
+\fs20 7:58:33 pm
+\fs26 \
+so the < > takes a parameter?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The < > takes the name of a class, just like it does for ArrayList.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 7:59:01 pm
+\fs26 \
+How do you make generic classes/interfaces?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's a whole other can of worms we won't discuss in this course.
+\b0 \
+\pard\pardeftab720
+\cf5 puwei99\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+what is Comparable<Triangle>?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Comparable is a generic interface. Comparable<Triangle> is a specific interface that says "objects of the class that implements this interface can be compared with Triangle objects".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I was saying:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note the comma separating the two interfaces. Remember you can only extend one class, but you can implement as many interfaces as you like.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To add a template for the method automatically, put your cursor over Triangle in the header. A little quick fix popup should appear. Click the link to add unimplemented methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You would then add in code to compare two Triangles. Something like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0@Override\
+\'a0\'a0\'a0\'a0public \cf7 int\cf0  compareTo\cf6 (\cf0 Triangle arg0\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\i \cf13 // TODO Auto-generated method stub
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf6 (\cf0 this.\cf10 perimeter\cf6 ()\cf0  \cf8 -\cf0  arg0.\cf10 perimeter\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This uses the sum of the sides as the basis for comparison. Why take the difference?
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 8:02:56 pm
+\fs26 \
+So you can compare them\
+\cf5 ScottBusche\cf0  
+\fs20 8:02:56 pm
+\fs26 \
+If it's 0, the perimeters are the same.\
+\cf5 MathWolf\cf0  
+\fs20 8:02:56 pm
+\fs26 \
+Positive means greater than and negative less than.\
+\cf5 mattpi\cf0  
+\fs20 8:02:56 pm
+\fs26 \
+to see if the difference is 0, then if so, say that the perimeters are the same\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because just like with Strings, compareTo must return a negative number if this is smaller, a positive number if arg0 is smaller, and 0 if they are equal.
+\b0 \
+\pard\pardeftab720
+\cf5 williamyin08\cf0  
+\fs20 8:04:04 pm
+\fs26 \
+Just like with Strings how? How is comopareTo related to Strings again?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When we discussed comparing strings (I forget which week right now), I pointed out that that method returns an integer which is negative if the string is (basically) alphabetically before the string it's being compared with, 0 if they're the same string, and positive if it's alphabetically later.
+\b0 \
+\pard\pardeftab720
+\cf5 AkshajK\cf0  
+\fs20 8:05:52 pm
+\fs26 \
+why not just do boolean\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because, as I pointed out in a message board post a few weeks ago, it is sometimes useful to be able to make a three way distinction (less than, equal to, greater than).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can't get that with a boolean.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Returning to the discussion: Another important use of interfaces is to provide information hiding. An interface is like an API (Application Programming Interface); \cf4 it specifies what classes that implement the interface can do\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There may be other methods in the class, but the interface tells us about the ones we need to use.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If I have a class I need you to code, I can give you the interface. That tells you what you need to do, but it does not specify how you do it. I can write my code independently of your code just calling methods from the interface.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a specific example. We've worked with ArrayList. It has methods that allow you to update the list and access particular members.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 ArrayList implements the List interface in Java. There are other classes that implement this interface, like LinkedList. The difference is how the classes implement the List methods. ArrayLists use an array, while LinkedLists use references to other parts of the list. We'll learn more about linked lists later in the course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we can choose which kind of List we want based on the specific requirements of the problem. And we can add new kinds of Lists that we build which will be compatible with any code using Lists.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're done with the section of today's class specifically about interfaces. Any questions before we press on?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay. Let's switch gears and discuss:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 PART 2: EXCEPTIONS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Make a new class called ExceptionTest with a main method in it. Here's a program that asks the user for two integers and prints the result of dividing the first by the second.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+import \cf14 java.util.Scanner\cf8 ;\cf0 \
+public class ExceptionTest \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  new Scanner\cf6 (\cf9 System\cf0 .\cf10 in\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter numerator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  numerator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter denominator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  denominator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf5 williamyin08\cf0  
+\fs20 8:10:18 pm
+\fs26 \
+New project?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure. You can put this exceptions stuff together in a new project if you want.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This code is also available on the handouts page under the filename ExceptionTestOld.java. If you get it from there, make sure you save it as ExceptionTest.java to match the class name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me know when you've got ExceptionTest.java ready to go.
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 8:11:24 pm
+\fs26 \
+Are we going to divide by zero!?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Gasp! I think we might try!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\fs24 \cf0 {{\NeXTGraphic tongue.gif \width320 \height320 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 My code assumes the user will be nice to me. Let's remove that assumption. I can think of two ways in which the user could cause my program to fail. What are they?
+\b0 \
+\pard\pardeftab720
+\cf5 puwei99\cf0  
+\fs20 8:12:36 pm
+\fs26 \
+put 0 for denominator\
+\cf5 ScottBusche\cf0  
+\fs20 8:12:36 pm
+\fs26 \
+Divide by 0.\
+\cf5 MathWolf\cf0  
+\fs20 8:12:36 pm
+\fs26 \
+denominator = 0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One is if I enter 0 for the denominator. Division by 0 is not allowed.
+\b0 \
+\pard\pardeftab720
+\cf5 moppr\cf0  
+\fs20 8:13:01 pm
+\fs26 \
+the user either doesn't input integers or decides to divide by 0\
+\cf5 chenjamin\cf0  
+\fs20 8:13:01 pm
+\fs26 \
+enter 0 for the denominator, and not enter an integer\
+\cf5 Tungsten\cf0  
+\fs20 8:13:01 pm
+\fs26 \
+Silly input (e. g. asgaethaergqaerga) and 0 as the denominator.\
+\cf5 k77frank\cf0  
+\fs20 8:13:01 pm
+\fs26 \
+not enter a number\
+\cf5 JRY\cf0  
+\fs20 8:13:06 pm
+\fs26 \
+inputed numbers are not integers\
+\cf5 FerozeM\cf0  
+\fs20 8:13:06 pm
+\fs26 \
+Enter a string instead of a number\
+\cf5 spower4\cf0  
+\fs20 8:13:11 pm
+\fs26 \
+put a double\
+\cf5 jprosk\cf0  
+\fs20 8:13:14 pm
+\fs26 \
+enter the wrong type\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other is if I enter something that is not an integer for either of the two numbers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's focus on division by 0 for the moment. We'll come back to non-integer input shortly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what happens if we enter 0 for the denominator (try it yourself!):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+Enter numerator\cf8 :\cf0  \cf12 56\cf0 \
+Enter denominator\cf8 :\cf0  \cf12 0\cf0 \
+\pard\pardeftab720
+\cf9 Exception\cf0  in thread \cf11 "main"\cf0  java.\cf10 lang\cf0 .\cf9 ArithmeticException\cf8 :\cf0  \cf8 /\cf0  by zero\
+\'a0\'a0\'a0\'a0at ExceptionTest.\cf10 main\cf6 (\cf0 ExceptionTest.\cf10 java\cf8 :\cf12 15\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf5 Tungsten\cf0  
+\fs20 8:14:38 pm
+\fs26 \
+Eeps! An error!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We get an \cf4 exception\cf0 . This is the term for a Java error that occurs when we run the program. Notice that our code itself doesn't get any red lines in Eclipse. There are no compile errors here. The mistake only happens when we execute the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you suggest a strategy to avoid this exception? Suppose we want to print an error message when this occurs instead. How do we do that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a world where we didn't yet know about exceptions, how could we do that?
+\b0 \
+\pard\pardeftab720
+\cf5 piis3141592653\cf0  
+\fs20 8:15:48 pm
+\fs26 \
+if/else to test if the denominator is 0\
+\cf5 spower4\cf0  
+\fs20 8:15:48 pm
+\fs26 \
+if denominator is 0 print error?\
+\cf5 bel3900989\cf0  
+\fs20 8:15:48 pm
+\fs26 \
+if statements before actual division\
+\cf5 puwei99\cf0  
+\fs20 8:15:48 pm
+\fs26 \
+using an if-statement\
+\cf5 ScottBusche\cf0  
+\fs20 8:15:48 pm
+\fs26 \
+if (denominator==0)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We just use an if statement before the print to deal with the case when denominator is 0. Show me what the code would look like.
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 8:17:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0   
+\f1\b if
+\f4\b0  \cf6 (\cf0 denominator\cf8 ==\cf12 0\cf6 )\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Error: divide by 0."\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 Tungsten\cf0  
+\fs20 8:17:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f4\b0  \cf6 (\cf0 denominator \cf8 ==\cf0  \cf12 0\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Why u try to make my math sense sad? 
+\f3\fs24 \cf0 {{\NeXTGraphic frown.gif \width320 \height320 \noorient
+}¬}
+\f4\fs26 \cf11 "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f4\b0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf7 int
+\f4\b0 \cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 AkshajK\cf0  
+\fs20 8:17:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 import
+\f4\b0  \cf14 java.util.Scanner\cf8 ;\cf0 \
+
+\f1\b public
+\f4\b0  
+\f1\b class
+\f4\b0  ExceptionTest \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b public
+\f4\b0  
+\f1\b static
+\f4\b0  
+\f1\b \cf7 void
+\f4\b0 \cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  
+\f1\b new
+\f4\b0  Scanner\cf6 (\cf9 System\cf0 .\cf10 in\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter numerator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf7 int
+\f4\b0 \cf0  numerator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter denominator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf7 int
+\f4\b0 \cf0  denominator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f4\b0 \cf6 (\cf0 denominator\cf8 ==\cf12 0\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "AN ERROR HAS OCCURED OH NO"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f4\b0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf7 int
+\f4\b0 \cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 ReciterOfPi\cf0  
+\fs20 8:17:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f4\b0  \cf6 (\cf0 denominator \cf8 ==\cf0  \cf12 0\cf6 )\cf0  \cf6 \{\cf0  \cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, we cannot divide by 0."\cf6 )\cf0  \cf6 \}\cf0  
+\f5\i \cf13 // 
+\f3\i0\fs24 \cf0 {{\NeXTGraphic bigsmile.gif \width320 \height320 \noorient
+}¬}
+\f4\fs26 \
+\pard\pardeftab720
+
+\f0 \cf5 MathWolf\cf0  
+\fs20 8:17:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 f \cf6 (\cf0 denominator\cf8 ==\cf12 0\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Error : division by zero"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f4\b0 \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf7 int
+\f4\b0 \cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 want2learn\cf0  
+\fs20 8:17:59 pm
+\fs26 \
+if (denominator == 0) \{ System.out.println("Enter nonzero denominator:"); denominator = Scan.nextInt();\}\
+\cf5 connor0728\cf0  
+\fs20 8:18:22 pm
+\fs26 \
+if(denominater==0)\{System.out.println("ERROR")\} \
+else\{ int answer = numerator/denominator;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0System.out.printf("%d divided by %d is %d",numerator,denominator,answer);\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These are close enough to what I had in mind
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 denominator\cf8 !=\cf12 0\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, division by 0 is not allowed"\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could also check if denominator==0 and reverse the order of the true and false cases.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is actually a great way of dealing with this particular problem, because it results in the cleanest executable code. But in other situations, coming up with an if test for an exception may be tricky.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's another approach. We write code to \cf4 catch\cf0  the generated exception. This will use a new Java structure called try-catch.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The structure has, as the name implies, two parts. In the first part, called the try block, we include the code that might cause the exception and any code relying on the exception-causing code to work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the catch block, we give the code to execute when the exception happens. As soon as an exception is generated in the try block, Java jumps out of the try block and goes straight to the corresponding catch block.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Look at my original code. To deal with division by 0, which lines belong in the try block?
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 8:21:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0   
+\f1\b \cf7 int
+\f4\b0 \cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0   \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 Tungsten\cf0  
+\fs20 8:21:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf7 int
+\f4\b0 \cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need the declaration and initialization of answer, since that's where the bad division can occur. We also need the printf, since that relies on answer being correct.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what this looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0try\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The new keyword is \cf4 try\cf0 . The code we want to try to do is enclosed in curly braces. Notice I followed the convention of indenting the code within a block.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we must immediately have a catch block. It's possible that there are multiple exceptions that can occur in a piece of code. So our catch block must indicate what kind of exception it should handle. (As we'll see later today, we can have multiple catch blocks after a try to catch different exceptions.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What kind of exception is generated when we try to divide by zero?
+\b0 \
+\pard\pardeftab720
+\cf5 williamyin08\cf0  
+\fs20 8:23:03 pm
+\fs26 \
+Oh, I get it. So the try block is a judge trying a criminal (the exception), and if it's convicted, then it'll be "caught" (catch).\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, the try block puts the contained piece of code on trial. It may be found guilty or not guilty depending on how things work out.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What kind of exception is generated when we try to divide by zero?
+\b0 \
+\pard\pardeftab720
+\cf5 mattpi\cf0  
+\fs20 8:23:52 pm
+\fs26 \
+ArithmeticExcption\
+\cf5 manbugbeebee\cf0  
+\fs20 8:23:52 pm
+\fs26 \
+an Arithmetic exception\
+\cf5 moppr\cf0  
+\fs20 8:23:52 pm
+\fs26 \
+ArithmeticException\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you look at the error from the output I showed you, you see that an ArithmeticException was generated. Note that is all one "word". So that's what we need to catch.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the first line of the catch block we want here:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf9 ArithmeticException\cf0  ae\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have the word \cf4 catch\cf0  followed by parentheses. In the parentheses, we have the type of exception that occurred and a variable name to store the exception in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That last bit may sound a bit weird. Java actually creates objects to represent the exceptions. We'll see some of the benefits of this as we go today.
+\b0 \
+\pard\pardeftab720
+\cf5 ReciterOfPi\cf0  
+\fs20 8:24:52 pm
+\fs26 \
+So is the ae like a variable name or something?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes.
+\b0 \
+\pard\pardeftab720
+\cf5 AkshajK\cf0  
+\fs20 8:25:02 pm
+\fs26 \
+what if you wanted to catch every single type of exception\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll get to that in a bit.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I said, the code in the catch block is what to do when a problem occurred in the try block. Here we want to print a friendly error message:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf9 ArithmeticException\cf0  ae\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, division by 0 is not allowed"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the whole thing:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  new Scanner\cf6 (\cf9 System\cf0 .\cf10 in\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter numerator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  numerator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter denominator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  denominator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0try\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf9 ArithmeticException\cf0  ae\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, division by 0 is not allowed"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can run it to verify that the ugly red exception no longer occurs with a 0 denominator.
+\b0 \
+\pard\pardeftab720
+\cf5 ReciterOfPi\cf0  
+\fs20 8:26:25 pm
+\fs26 \
+But ugly's an opinion!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure, but it's easier to get students to remember things if you put in emotional words here and there. It spices things up!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It should also be fine if you enter two integers. Note that the catch block is skipped if no exceptions occur.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 However, it still occurs if we enter a non-integer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+Enter numerator\cf8 :\cf0  x\
+\pard\pardeftab720
+\cf9 Exception\cf0  in thread \cf11 "main"\cf0  java.\cf10 util\cf0 .\cf10 InputMismatchException\cf0 \
+\'a0\'a0\'a0\'a0at java.\cf10 util\cf0 .\cf10 Scanner\cf0 .\cf10 throwFor\cf6 (\cf0 Unknown Source\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0at java.\cf10 util\cf0 .\cf10 Scanner\cf0 .\cf10 next\cf6 (\cf0 Unknown Source\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0at java.\cf10 util\cf0 .\cf10 Scanner\cf0 .\cf10 nextInt\cf6 (\cf0 Unknown Source\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0at java.\cf10 util\cf0 .\cf10 Scanner\cf0 .\cf10 nextInt\cf6 (\cf0 Unknown Source\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0at ExceptionTest.\cf10 main\cf6 (\cf0 ExceptionTest.\cf10 java\cf8 :\cf12 6\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here the red text goes on for a while because the exception really occurs while running the nextInt method. The important thing for us is that an InputMismatchException gets generated.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's fix this code to handle this problem. Again we use a try-catch block.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What code should be inside the try block?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Where can stuff go wrong as far as entering non-integers is concerned?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just like with our example for division by 0, you need to include in your try block the code that could go wrong and also the code that depends on that code working correctly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can actually remove the original try block since this one is going to supersede that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll actually need to include almost everything. The first thing that can go wrong is the assignment to numerator. The assignment of answer and thus the print are based on that working. So we may as well extend the try block we already have to include that first assignment. Since the prompt for numerator is related to the nextInt line following it, we should have that in there too:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0try\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter numerator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  numerator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter denominator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  denominator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This try block already has the catch for division by zero. We still need that catch. Fortunately we can have multiple catch blocks for a single try block.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you add another catch block right after the one we have? It should print a message like "That's not an integer!".
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:33:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b catch
+\f4\b0  \cf6 (\cf0 InputMismatchException ime\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Enter integers, you bad person."\cf6 )\cf8 ;\cf0  
+\f5\i \cf13 // Reprimand the user harshly for their bad input.
+\f4\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 AkshajK\cf0  
+\fs20 8:33:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 catch
+\f4\b0 \cf6 (\cf0 InputMismatchException ime\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "That's not an integer!"\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 chutney\cf0  
+\fs20 8:33:20 pm
+\fs26 \
+catch (InputMismatchException ime) \{ System.out.println("That's not an integer! 
+\f3\fs24 {{\NeXTGraphic angry.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 ");\}\
+\cf5 ReciterOfPi\cf0  
+\fs20 8:33:20 pm
+\fs26 \
+catch (InputMismatchException ime) \{ System.out.println("That\
+\cf5 MathWolf\cf0  
+\fs20 8:33:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 catch
+\f4\b0 \cf6 (\cf0 InputMismatchException me\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Error : not an integer"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 puwei99\cf0  
+\fs20 8:33:48 pm
+\fs26 \
+catch (InputMismatchException a)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0System.out.println("Hey, thats not an integer.");\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf0 InputMismatchException ime\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, that was not an integer!"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Like Scanner, InputMismatchException is part of the java.util package. So it needs to be imported for the code to run.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Test it out to make sure the code works.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do we have to do to make it also work for denominator?
+\b0 \
+\pard\pardeftab720
+\cf5 chenjamin\cf0  
+\fs20 8:34:36 pm
+\fs26 \
+nothing?\
+\cf5 ReciterOfPi\cf0  
+\fs20 8:34:36 pm
+\fs26 \
+Nothing, right? It covers both.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nothing! The assignment to denominator is also within the try block. So if either nextInt call gives an error, we will go to the catch block.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is a case where it's more convoluted to check for the exception with an if statement. We'd have to read the input from the keyboard as a String first, and then analyze the string to make sure it had entirely digits, and then we'd have to convert it to a number and store it in the appropriate variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now adapt this code so rather than just print the error message on a bad input, we ask the user to enter the numerator and denominator again. What kind of programming structure do we need for this?
+\b0 \
+\pard\pardeftab720
+\cf5 mattpi\cf0  
+\fs20 8:36:36 pm
+\fs26 \
+while loop?\
+\cf5 chenjamin\cf0  
+\fs20 8:36:36 pm
+\fs26 \
+while\
+\cf5 piis3141592653\cf0  
+\fs20 8:36:36 pm
+\fs26 \
+while loop?\
+\cf5 MathWolf\cf0  
+\fs20 8:36:36 pm
+\fs26 \
+while loop\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'd have to put our try-catch block inside a loop. We'll use a while loop here controlled by a boolean variable called goAgain.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf6 (\cf0 goAgain\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0try\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter numerator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  numerator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter denominator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  denominator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf9 ArithmeticException\cf0  ae\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, division by 0 is not allowed"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf0 InputMismatchException ime\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, that was not an integer!"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, if you want to indent an entire section of code in Eclipse, highlight it, go to the Source menu, and choose Shift Right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Or you should be able to do CTRL-I to auto-indent.)
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 8:37:24 pm
+\fs26 \
+I think you can also press Tab to do that\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Maybe Tab works too.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How should goAgain be initialized prior to the loop?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:37:59 pm
+\fs26 \
+true\
+\cf5 puwei99\cf0  
+\fs20 8:37:59 pm
+\fs26 \
+boolean goAgain = true;\
+\cf5 ScottBusche\cf0  
+\fs20 8:37:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0   
+\f1\b \cf7 boolean
+\f4\b0 \cf0  goAgain\cf8 =
+\f1\b \cf7 true
+\f4\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 chenjamin\cf0  
+\fs20 8:37:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf7 boolean
+\f4\b0 \cf0  goAgain \cf8 =\cf0  
+\f1\b \cf7 true
+\f4\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 moppr\cf0  
+\fs20 8:38:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf7 boolean
+\f4\b0 \cf0  goAgain \cf8 =\cf0  
+\f1\b \cf7 true
+\f4\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 JRY\cf0  
+\fs20 8:38:06 pm
+\fs26 \
+true, so that we go through the loop the first time\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to make sure we do the loop once, so goAgain should be true:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 boolean\cf0  goAgain \cf8 =\cf0  \cf7 true\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do we change in the body of the loop?
+\b0 \
+\pard\pardeftab720
+\cf5 chenjamin\cf0  
+\fs20 8:39:23 pm
+\fs26 \
+put goAgain = false; at the end of the try block\
+\cf5 JRY\cf0  
+\fs20 8:39:23 pm
+\fs26 \
+if we finish the try block set goAgain = false;\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to make sure the loop stops when everything is good. So we set goAgain to false at the very end of the try block.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's what we have (not counting imports):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class ExceptionTest \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  new Scanner\cf6 (\cf9 System\cf0 .\cf10 in\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 boolean\cf0  goAgain \cf8 =\cf0  \cf7 true\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf6 (\cf0 goAgain\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0try\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter numerator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  numerator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf6 (\cf11 "Enter denominator: "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  denominator \cf8 =\cf0  scan.\cf10 nextInt\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  answer \cf8 =\cf0  numerator\cf8 /\cf0 denominator\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%d divided by %d is %d"\cf0 ,numerator,denominator,answer\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0goAgain \cf8 =\cf0  \cf7 false\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf9 ArithmeticException\cf0  ae\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, division by 0 is not allowed"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf0 InputMismatchException ime\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, that was not an integer!"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try it. See how it works. (It won't work exactly right yet.)
+\b0 \
+\pard\pardeftab720
+\cf5 williamyin08\cf0  
+\fs20 8:39:49 pm
+\fs26 \
+Can't we just use do while?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We might have used a do while. I opted to go with a while.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What goes wrong with our code so far?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 8:40:27 pm
+\fs26 \
+It prints the exception so many times....\
+\cf5 moppr\cf0  
+\fs20 8:40:27 pm
+\fs26 \
+it loops endlessly\
+\cf5 chenjamin\cf0  
+\fs20 8:40:27 pm
+\fs26 \
+infinite loop! 
+\f3\fs24 {{\NeXTGraphic 1__#$!@%!#__frown.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\cf5 ScottBusche\cf0  
+\fs20 8:40:27 pm
+\fs26 \
+Infinite loop!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Uh oh. If you enter good input, everything is fine. But if you enter a bad value for the numerator (or the denominator), you get something like:\
+Enter numerator: Sorry, that was not an integer!\
+Enter numerator: Sorry, that was not an integer!\
+Enter numerator: Sorry, that was not an integer!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Handy reminder: \cf4 If your code is doing this, remember in Eclipse you can click the red square at the top of the Console tab to make the program stop.
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is one of Java's more annoying issues. The issue is that scan.nextInt() does not remove bad input from consideration. So if I enter, say, X, causing an exception, the X remains to be processed by the Scanner.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the series of steps that happens in that unfortunate loop so we can see better what's going on. Java prompts for the numerator. We enter a bad value. That causes the exception with the error message in the catch block. Java goes back to the top of the while loop. goAgain is still true, so we repeat. Java prompts again.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The problem is that since the bad value is still in the Scanner, scan.nextInt() tries to process that bad value a second time. It's still not an integer, so the exception occurs again. We get the error message, repeat the loop, and re-prompt. It's a vicious cycle.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\i\b \cf0 What we need to do is get rid of the bad input
+\i0 . We can call scan.nextLine() to grab that input. We don't have to do anything with it; we just want it out of the way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So let's put in scan.nextLine() somewhere to make all our problems go away.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Where does the call to scan.nextLine() have to go?
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 8:42:39 pm
+\fs26 \
+In the catch.\
+\cf5 puwei99\cf0  
+\fs20 8:42:39 pm
+\fs26 \
+in the catch section\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Which one?
+\b0 \
+\pard\pardeftab720
+\cf5 piis3141592653\cf0  
+\fs20 8:42:54 pm
+\fs26 \
+both\
+\cf5 Tungsten\cf0  
+\fs20 8:42:58 pm
+\fs26 \
+Both\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We only need to use scan.nextLine() to clear out the junk when there was an issue, so the call needs to go within the catch blocks. Here's the new code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf9 ArithmeticException\cf0  ae\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, division by 0 is not allowed"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  temp \cf8 =\cf0  scan.\cf10 nextLine\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf0 InputMismatchException ime\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Sorry, that was not an integer!"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  temp \cf8 =\cf0  scan.\cf10 nextLine\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The variable temp shows up with a yellow line, since Java is confused why we're creating a variable that we don't use later. Java will still let the program run, so we can ignore it.
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 8:43:58 pm
+\fs26 \
+Do we have to assign it to something?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope. This is like clearing out your garbage disposal.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You just need to run the machine to shake out the garbage.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:44:46 pm
+\fs26 \
+Why save the icky input?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You actually can just run scan.nextLine() and not set it equal to anything. That would also work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I think.)
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 8:45:34 pm
+\fs26 \
+My code works with it only in the InputMismatchException catch.\
+\cf5 JRY\cf0  
+\fs20 8:45:34 pm
+\fs26 \
+Why do you need to use scan.nextLine for the ArithmeticException? I only get an infinite loop for the second case...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hm. Maybe we only need it for the InputMismatchException. Fair enough! You can remove it from the ArithmeticException catch block if you want.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try the code now. You should be able to enter a bad value and be told to re-enter the data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A few moments ago, I said that exceptions were objects. Just like normal classes, exception classes are arranged in a hierarchy. Exception is at the top. ArithmeticException is a subclass of RunTimeException. InputMismatchException is a direct subclass of NoSuchElementException.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we want to do the same thing for multiple exceptions, then we can use a superclass as the kind of Exception we catch. For example, in the second catch block, we could use NoSuchElementException instead after importing it. Try it!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Success?
+\b0 \
+\pard\pardeftab720
+\cf5 k77frank\cf0  
+\fs20 8:49:06 pm
+\fs26 \
+yes\
+\cf5 chenjamin\cf0  
+\fs20 8:49:06 pm
+\fs26 \
+eet wurks!\
+\cf5 MathWolf\cf0  
+\fs20 8:49:06 pm
+\fs26 \
+YES\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Cool.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens if we use Exception in the second catch block?
+\b0 \
+\pard\pardeftab720
+\cf5 chutney\cf0  
+\fs20 8:49:38 pm
+\fs26 \
+Seems to be working\
+\cf5 JRY\cf0  
+\fs20 8:49:38 pm
+\fs26 \
+it still works\
+\cf5 chenjamin\cf0  
+\fs20 8:49:41 pm
+\fs26 \
+still works\
+\cf5 k77frank\cf0  
+\fs20 8:49:41 pm
+\fs26 \
+still works\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The program behaves exactly as before. Now put InputMismatchException back in the second catch block, and put Exception instead of ArithmeticException in the first block. What happens?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Go ahead and try it and see what Eclipse says.)
+\b0 \
+\pard\pardeftab720
+\cf5 k77frank\cf0  
+\fs20 8:51:14 pm
+\fs26 \
+Error\
+\cf5 JesseLin\cf0  
+\fs20 8:51:14 pm
+\fs26 \
+error\
+\cf5 k77frank\cf0  
+\fs20 8:51:14 pm
+\fs26 \
+Says that it was already handled by the first catch (Exeption)\
+\cf5 JRY\cf0  
+\fs20 8:51:14 pm
+\fs26 \
+Red lines: Unreachable catch block for InputMismatchException. It is already handled by the catch block for Exception\
+\cf5 puwei99\cf0  
+\fs20 8:51:14 pm
+\fs26 \
+the second exception never happens\
+\cf5 moppr\cf0  
+\fs20 8:51:14 pm
+\fs26 \
+the second block gets ugly red lines because the first block already does its job\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can't even get it to run. What's the error?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java claims you can't get to the second block. Why?
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 8:51:43 pm
+\fs26 \
+The first catch will catch everything.\
+\cf5 k77frank\cf0  
+\fs20 8:51:43 pm
+\fs26 \
+It was already covered by the first\
+\cf5 piis3141592653\cf0  
+\fs20 8:51:43 pm
+\fs26 \
+already handled by first block\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Exception is so general that it catches any exception at all. So the first block deals with both ArithmeticException and InputMismatchException. Every exception goes to the first catch block.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why did it work with Exception in the second block?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:52:57 pm
+\fs26 \
+The ArithmeticException was handled separately from the Exception, and was more specific, so it was called?\
+\cf5 puwei99\cf0  
+\fs20 8:53:01 pm
+\fs26 \
+because the first exception was specifi\
+\cf5 k77frank\cf0  
+\fs20 8:53:04 pm
+\fs26 \
+because it was more general than the first block\
+\cf5 piis3141592653\cf0  
+\fs20 8:53:07 pm
+\fs26 \
+because the first block does not handle all of the second block exception.\
+\cf5 ReciterOfPi\cf0  
+\fs20 8:53:18 pm
+\fs26 \
+Because we hadn't covered it yet when we addressed it.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The specific ArithmeticException goes to the first block. Then any other exception is caught by the second block. The only other problem we can have is an input mismatch. Hence we don't see a difference when running it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions before we move on to working with files?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have a section about files and a section about writing your own exceptions left to get to today.
+\b0 \
+\pard\pardeftab720
+\cf5 puwei99\cf0  
+\fs20 8:54:11 pm
+\fs26 \
+is it good programming practice to have the last exception a general Exception\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Depends on what kind of exceptions you want to catch and deal with.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That seems more like the kind of thing you'd want to decide on a case by case basis.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 PART 3: FILES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A \cf4 file\cf0  is a collection of related data stored on a disk. Java has the ability to read different kinds of files. We're going to focus today on the most common version -- the text file.\
+We'll do this in the context of reading a set of grades stored in a file and determining their average. Go to the course home page and download the code in AverageFinder.java. It's basically code we've seen before to compute the average of a set of numbers in an array. For now, I assign the array values directly in the code. We'll switch it so the input comes from a file instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, we'll create a file outside of Java that our program could then read. You could do that in your favorite text editor like Notepad in Windows. You could use Microsoft Word or another fancy word processor, but be careful to save your work as a text file. Word has lots of hidden characters that it adds in invisibly; they would mess up your Java programs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another choice would be to just make the text file you need using Eclipse. Go to File, then New. Choose the option for "File" about two-thirds down the menu. You'll get a window asking you to choose the parent folder. Choose the one for the project where the average code we've been working on is. Then in the "File name:" box, enter grades.txt and then click Finish.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You should get a completely blank tab opened for grades.txt. On the left side of the window in the Package Explorer, you should also see grades.txt. Notice that your Java code appears in the src folder (short for source), but grades.txt is not in that folder.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Figuring out where the file goes so Java can read it is probably the trickiest part of using files in a program! You always want it in the top level directory of your project.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (It is also possible to access other files on your system, but I'd rather not deal with that complication today.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Enter a series of grades in the file, one per line. Just use integers in the range of 0 to 100. I put in 50 60 70 80 90 in mine.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Make sure the cursor is right after the last number in the file. You don't want additional spaces or lines in the file. (We could write code to make our program more robust against such unexpected extra stuff, but I don't want to spend time on that tangent right now. Let's just keep things simple.) Then save the file -- the third icon under the menus is an old-time floppy disk. Click it to save. You should notice the star in the filename in the tab disappear when you do. Java will save your 
+\i code
+\i0  for you when you re-compile and run the program, but it won't do the same for your data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me know when you've got that ready to go.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, looks like people are ready to continue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll now change our average program to read the grades from the file instead of have them hard-coded. The good news is that we can use a Scanner; we just have to attach it to a file instead of the console.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As you might guess, Java has a class to represent files. As you might also guess, it's called File.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Add the following line to the beginning of main:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 File\cf0  f \cf8 =\cf0  new \cf9 File\cf6 (\cf11 "grades.txt"\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You get red lines when you enter this. How do we fix it?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 9:01:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 mport java.\cf10 io\cf0 .\cf9 File\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 Tungsten\cf0  
+\fs20 9:01:06 pm
+\fs26 \
+We need to import the File class!\
+\cf5 chenjamin\cf0  
+\fs20 9:01:06 pm
+\fs26 \
+import File\
+\cf5 MSTang\cf0  
+\fs20 9:01:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 import
+\f4\b0  \cf14 java.io.File\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 williamyin08\cf0  
+\fs20 9:01:06 pm
+\fs26 \
+import java.io.file;\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It looks like we need an import. File is part of the java.io package. What does io stand for?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 9:01:27 pm
+\fs26 \
+input/output\
+\cf5 moppr\cf0  
+\fs20 9:01:27 pm
+\fs26 \
+input output\
+\cf5 Tungsten\cf0  
+\fs20 9:01:27 pm
+\fs26 \
+Input/output\
+\cf5 ScottBusche\cf0  
+\fs20 9:01:32 pm
+\fs26 \
+I/O?\
+\cf5 chenjamin\cf0  
+\fs20 9:01:32 pm
+\fs26 \
+input/output\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's input/output. Since we'll use multiple parts of this package, we'll import everything. What line do we add at the top?
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 9:01:57 pm
+\fs26 \
+import java.io.*;\
+\cf5 connor0728\cf0  
+\fs20 9:01:57 pm
+\fs26 \
+import java.io.*;\
+\cf5 Tungsten\cf0  
+\fs20 9:01:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 import
+\f4\b0  \cf14 java.io.*\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+import \cf14 java.io.*\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf5 MSTang\cf0  
+\fs20 9:02:09 pm
+\fs26 \
+Is it substantially slower to import everything vs. just importing the bits needed?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I don't think so. The things that need to get worked out if you import everything should get handled at compile time. You shouldn't see any hit in performance at run time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 While you're up there, put in the import for Scanner.
+\b0 \
+\pard\pardeftab720
+\cf5 AkshajK\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+then why don't you just always do import java.*?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That makes your code less readable to other programmers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One of the benefits of saying explicitly what things you're importing is it helps a person reading your code see what's going to get used.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The parameter to the constructor is the name of the file. Remember Java expects this to be at the top level folder of the project. You can give the full \cf4 path name\cf0  of the file, stating exactly where it is on the disk (like "C:\\Users\\sweiss\\Java\\Week9\\grades.txt" for example).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we can make a Scanner object that gets input from f. This is called \cf4 opening\cf0  the file. It's pretty much the same as what we've done in the past with Scanner, except we don't use System.in. Can you figure out what the line is?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:06:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  
+\f1\b new
+\f4\b0  Scanner\cf6 (\cf0 f\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what to put in:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  new Scanner\cf6 (\cf0 f\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh, great. More red lines! What's wrong now? Even if you imported Scanner on top, we still have red lines.
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 9:07:07 pm
+\fs26 \
+It thinks we need to catch an exception...\
+\cf5 williamyin08\cf0  
+\fs20 9:07:07 pm
+\fs26 \
+FileNotFoundException!?!\
+\cf5 puwei99\cf0  
+\fs20 9:07:12 pm
+\fs26 \
+FileNotFoundException\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The error says (if you put your cursor over the red line) that your code does not deal with a FileNotFoundException. We may be asking Java to open a file that doesn't exist or, more likely, isn't where we think it is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's not saying we have actually encountered such an error. It's saying we haven't made accommodation for handling that exception if it were to occur.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are two ways we could deal with the exception. One way is to add in a try-catch block as we did before. You'll do that as a message board problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another choice is to let it crash the program by passing the exception out of main to the operating system. We then have to let Java know that this method can cause an exception.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I mean, if the exception were to come up, we'd allow it to crash the program and back out to the OS.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The magic word to do that is the opposite of catch: \cf4 throws\cf0 . This is the new header line for main:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  throws \cf9 FileNotFoundException\cf0  \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is the first quick fix Eclipse offers. Note we could also say the method throws an \cf4 IOException\cf0 . That's the superclass for all of the I/O-related exceptions, so it will cover any file-related mishap.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One problem with file-reading is that the file could be of any length. How will this affect how we store the grades in our program (once we get them out of the file)?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we use an array, we'd have to know how many numbers are in the file. Unfortunately, there's no easy way to tell this. In a message board problem, you'll write a function that takes a File object and returns the number of lines in it. Alternatively, we can change the structure of the file so it includes the number of grades in it as the first line (so we would start with a 5 in my example). This solution requires the user to do a little extra work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instead, we just won't use an array! What structure can we use instead?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 9:11:25 pm
+\fs26 \
+ArrayList\
+\cf5 MSTang\cf0  
+\fs20 9:11:25 pm
+\fs26 \
+ArrayList\
+\cf5 connor0728\cf0  
+\fs20 9:11:25 pm
+\fs26 \
+ArrayList\
+\cf5 spower4\cf0  
+\fs20 9:11:25 pm
+\fs26 \
+arraylist\
+\cf5 moppr\cf0  
+\fs20 9:11:25 pm
+\fs26 \
+ArrayList\
+\cf5 MathWolf\cf0  
+\fs20 9:11:25 pm
+\fs26 \
+ArrayList\
+\cf5 Onemanarmy\cf0  
+\fs20 9:11:28 pm
+\fs26 \
+arraylist\
+\cf5 mattpi\cf0  
+\fs20 9:11:31 pm
+\fs26 \
+ArrayList\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can do an ArrayList. We'll just add each number into the list as we get them from the file. The ArrayList will grow as needed to accommodate all of the values.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, if all we want is the average of the numbers in the file, then we could solve this without using arrays or ArrayLists. I'll save that for another message board problem. We'll assume we may want the grades for other purposes later. Reading from a file is slower than getting the grades from the computer's memory, so we'd rather just read the file once.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So this means we need to change the int array grades into an ArrayList. Can you tell me how?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do we need to change about the declaration line?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:13:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  grades \cf8 =\cf0  
+\f1\b new
+\f4\b0  ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  \cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 MSTang\cf0  
+\fs20 9:13:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  nums\
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  grades \cf8 =\cf0  new ArrayList\cf8 <\cf0 Integer\cf8 >\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember to import java.util.ArrayList at the top. Notice the use of the generic. We make an ArrayList of Integers, not ints.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we're ready to get our numbers. We need code that repeats a bunch of times until we run out of numbers. What control structure does that sort of thing?
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+while loop\
+\cf5 MSTang\cf0  
+\fs20 9:14:00 pm
+\fs26 \
+while\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sounds like a while loop. For that to work, we need to know if there are still numbers in the file to read. This requires a new (to us) Scanner function called 
+\i hasNext
+\i0 :
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf6 (\cf0 scan.\cf10 hasNext\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 hasNext is true if and only if there is more data in the file to read. If there is data, we want to get it from the file and put it into the ArrayList. You already know how to do both of these things from your previous work with Scanners and ArrayLists. So can you fill in the body of the loop?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 9:15:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f4\b0  \cf6 (\cf0 s.\cf10 hasNext\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades.\cf10 add\cf6 (\cf0 s.\cf10 nextInt\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 chenjamin\cf0  
+\fs20 9:15:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f4\b0 \cf6 (\cf0 scan.\cf10 hasNext\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades.\cf10 add\cf6 (\cf0 scan.\cf10 nextInt\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 JRY\cf0  
+\fs20 9:15:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f4\b0  \cf6 (\cf0 scan.\cf10 hasNext\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades.\cf10 add\cf6 (\cf0 scan.\cf10 nextInt\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have. It turns out the braces aren't necessary since the body of the loop is one line. I'll leave them in anyway:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf6 (\cf0 scan.\cf10 hasNext\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades.\cf10 add\cf6 (\cf0 scan.\cf10 nextInt\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's something else to do before we can get the program to work. Do you see what it is?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What needs to change about getAverage
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 ?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:16:11 pm
+\fs26 \
+We need to modify the getAverage() method to make it work with ArrayLists\
+\cf5 spower4\cf0  
+\fs20 9:16:11 pm
+\fs26 \
+change parameter to arrayList\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Our getAverage method takes an array, not an ArrayList. So we have to make the appropriate changes. In the interest of time, I'll just say what those changes are.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to change the type of the parameter to the method. We also have to changes nums.length to nums.size() in the final calculation of the average:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf7 float\cf0  getAverage\cf6 (\cf0 ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  nums\cf6 )\cf0  throws BadGradeException\
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 float\cf0  total \cf8 =\cf0  \cf12 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf7 int\cf0  grade \cf8 :\cf0  nums\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0total \cf8 +=\cf0  grade\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return total\cf8 /\cf0 nums.\cf10 size\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf5 Tungsten\cf0  
+\fs20 9:16:48 pm
+\fs26 \
+Why does getAverage() return a float instead of a double?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No special reason. I (actually Scott) just decided to use a float instead of a double.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The enhanced for loop works with the ArrayList, so most of the body of the method can be left alone.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We might get to what BadGradeException is about if we make it to part 4 today about writing our own exceptions.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The enhanced for loop works with the ArrayList, so most of the body of the method can be left alone.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can run it now, but there's one more bit of housekeeping we should do. When you open a file, you should \cf4 close\cf0  it when you're done. It's more important for writing than reading, but we should do it in both cases. Closing the file tells the operating system that the file can be accessed by other programs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, at the bottom of the main method, add in the line:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0scan.\cf10 close\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Run the program to see what happens. If you use the 50 60 70 80 90 example, you'll get 70.0000 for the average. You can then change the numbers in the file (make sure you save it!) to see the effect. Try some negatives or too large values.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody got it working?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Comment out the BadGradeException for now if that's the source of your problems.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we'll look at outputting data to a file. We'll need a couple of new classes for this. Instead of File, we use \cf4 FileOutputStream\cf0 . A \cf4 stream\cf0  is a sequence of bits of data. All of our sources for input and destinations for output have been examples of streams.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's just one way to read from a file, but there are two ways we could write to it. Anyone know what they are?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could overwrite whatever's there already (if anything), or we can add to the end of the file, which is called appending. In this case, we'll overwrite. Here's how we define the FileOutputStream object. You can place it just after the declaration of the Scanner:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 FileOutputStream\cf0  fos \cf8 =\cf0  new \cf9 FileOutputStream\cf6 (\cf11 "answer.txt"\cf0 , \cf7 false\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That second parameter tells Java to overwrite. We use true to append. Since I didn't give a full path for the new file, it will place it in the top level folder for the project.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We also need an equivalent for Scanner. We'll use PrintWriter. Like Scanner, it takes a stream as a parameter to its constructor:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 PrintWriter\cf0  pw \cf8 =\cf0  new \cf9 PrintWriter\cf6 (\cf0 fos\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now that we have our PrintWriter object, we can use it in the same way as we use System.out. PrintWriter objects have print, printf, and println. So we can just replace System.out with pw in the code we have now:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0pw.\cf10 printf\cf6 (\cf11 "The average of the grades is: %f\cf15 \\n\cf11 "\cf0 , getAverage\cf6 (\cf0 grades\cf6 ))\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I'll put up the full code in a moment for those who are having problems.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One more housekeeping task, similar to what we had to with the file we were reading from. What is it?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:25:30 pm
+\fs26 \
+Close the PrintWriter?\
+\cf5 JesseLin\cf0  
+\fs20 9:25:30 pm
+\fs26 \
+pw.close()\
+\cf5 puwei99\cf0  
+\fs20 9:25:43 pm
+\fs26 \
+pw.close();\
+\cf5 ScottBusche\cf0  
+\fs20 9:25:43 pm
+\fs26 \
+Close it?\
+\cf5 jprosk\cf0  
+\fs20 9:25:43 pm
+\fs26 \
+pw.close();\
+\cf5 k77frank\cf0  
+\fs20 9:25:43 pm
+\fs26 \
+closing it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to close the file. Again the method is close:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0scan.\cf10 close\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0pw.\cf10 close\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can try out the program now. If you give it good input, you shouldn't see any response in the console. Go to File then Open File, and browse to the location of the project. You should be able to open answer.txt from there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the later version of the code that also includes the definition of BadGradeException. (I'll just leave that in since we'll spend our last 5 minutes on getting such things to work anyway.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 mport java.\cf10 io\cf0 .\cf8 *;\cf0 \
+import \cf14 java.util.ArrayList\cf8 ;\cf0 \
+import \cf14 java.util.Scanner\cf8 ;\cf0 \
+class BadGradeException extends \cf9 Exception\cf0 \
+\pard\pardeftab720
+\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public BadGradeException\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public BadGradeException\cf6 (\cf9 String\cf0  message\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super\cf6 (\cf0 message\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\cf6 \}\cf0 \
+public class AverageFinder \cf6 \{\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0
+\f2\i \cf2 /**\
+\'a0\'a0\'a0\'a0 * @param args\
+\'a0\'a0\'a0\'a0 */
+\f1\i0 \cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public static \cf7 float\cf0  getAverage\cf6 (\cf0 ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  nums\cf6 )\cf0  throws BadGradeException\
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 float\cf0  total \cf8 =\cf0  \cf12 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf7 int\cf0  grade \cf8 :\cf0  nums\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 grade \cf8 <\cf0  \cf12 0\cf0  \cf8 ||\cf0  grade \cf8 >\cf0  \cf12 100\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0throw new BadGradeException\cf6 (\cf11 "Bad grade: "\cf8 +\cf0 grade\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0total \cf8 +=\cf0  grade\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return total\cf8 /\cf0 nums.\cf10 size\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  throws \cf9 FileNotFoundException\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  grades \cf8 =\cf0  new ArrayList\cf8 <\cf0 Integer\cf8 >\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 File\cf0  f \cf8 =\cf0  new \cf9 File\cf6 (\cf11 "grades.txt"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  new Scanner\cf6 (\cf0 f\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 FileOutputStream\cf0  fos \cf8 =\cf0  new \cf9 FileOutputStream\cf6 (\cf11 "answer.txt"\cf0 , \cf7 false\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 PrintWriter\cf0  pw \cf8 =\cf0  new \cf9 PrintWriter\cf6 (\cf0 fos\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf6 (\cf0 scan.\cf10 hasNext\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades.\cf10 add\cf6 (\cf0 scan.\cf10 nextInt\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0try \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0pw.\cf10 printf\cf6 (\cf11 "The average of the grades is: %f\cf15 \\n\cf11 "\cf0 , getAverage\cf6 (\cf0 grades\cf6 ))\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf0 BadGradeException iae\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf0 iae.\cf10 getMessage\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0scan.\cf10 close\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0pw.\cf10 close\cf6 ()\cf8 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Rather than linger on this piece of code, let's press on to see what we can get through in this last part.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 PART 4: CREATING OUR OWN EXCEPTIONS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So far, we've seen how we can deal with exceptions caused by Java. Now we'll look at how we can cause a program to make an exception.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you think of a reason why we may want to cause an exception?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here are some ideas I had.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The user may enter data that doesn't work for our particular problem. For example, consider a web browser. The user may enter the name for a site that is not a correct address. We might want that to cause an exception rather than try to go to the website.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:28:22 pm
+\fs26 \
+What if there is silly input in the grades.txt file?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 My numbers look like reasonable grades (well, getting a 50 isn't so good.) Of course, there's nothing to stop us putting negative numbers into the array or numbers bigger than 100. Our function will happily average them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's change our function so we get an exception if we try to average numbers outside the range of 0 to 100.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When would we know if there was a problem? At what point in the function?
+\b0 \
+\pard\pardeftab720
+\cf5 chenjamin\cf0  
+\fs20 9:29:04 pm
+\fs26 \
+when we run getAverage\
+\cf5 ScottBusche\cf0  
+\fs20 9:29:04 pm
+\fs26 \
+When we scanned the bad grade.\
+\cf5 Tungsten\cf0  
+\fs20 9:29:04 pm
+\fs26 \
+When we get to that grade in the for loop?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Inside the for loop, we can look at grade and determine whether or not it is in the correct range. How would we make that determination? What's the code?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Time's up. I'm going to go over by 10-15 minutes for those who want to stay, since you'll probably want to know how to write exceptions for the next homework. Be sure to check the transcript later if you need to go now.)
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:30:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f4\b0  \cf6 (\cf0 grade \cf8 <\cf0  \cf12 0\cf0  \cf8 ||\cf0  grade \cf8 >\cf0  \cf12 100\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 chenjamin\cf0  
+\fs20 9:30:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f4\b0 \cf6 (\cf0 grade \cf8 <\cf0  \cf12 0\cf0  \cf8 ||\cf0  grade \cf8 >\cf0  \cf12 100\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 piis3141592653\cf0  
+\fs20 9:30:27 pm
+\fs26 \
+if (grade < 0 || grade > 100)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 grade \cf8 <\cf0  \cf12 0\cf0  \cf8 ||\cf0  grade \cf8 >\cf0  \cf12 100\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To cause an exception in this case, we need another magic word. To deal with an exception that occurred, we catch it. To make one happen, we\'85
+\b0 \
+\pard\pardeftab720
+\cf5 chenjamin\cf0  
+\fs20 9:30:59 pm
+\fs26 \
+throw it\
+\cf5 MathWolf\cf0  
+\fs20 9:30:59 pm
+\fs26 \
+throw\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Throw it. In this case, the problem is that the array we passed has bad values in it. So we'll make the built-in IllegalArgumentException. Here's what it looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 grade \cf8 <\cf0  \cf12 0\cf0  \cf8 ||\cf0  grade \cf8 >\cf0  \cf12 100\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0throw new \cf9 IllegalArgumentException\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0total \cf8 +=\cf0  grade\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (As you can see in my stickied code, we'll modify that exception in a bit.)
+\b0 \
+\pard\pardeftab720
+\cf5 AkshajK\cf0  
+\fs20 9:32:03 pm
+\fs26 \
+so throw is different from throws\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. Both keywords pertain to things having to do with exceptions. throws says "This method can throw such and such exception." throw says "Throw this exception."
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Given how English works, this is not too surprising.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the new line, we have the keyword throw. Then since we are creating an object, we use new as usual. Then the name of the class followed by parentheses. Why the parentheses?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:33:31 pm
+\fs26 \
+Because it's a constructor\
+\cf5 ScottBusche\cf0  
+\fs20 9:33:31 pm
+\fs26 \
+You're creating an object.\
+\cf5 chutney\cf0  
+\fs20 9:33:36 pm
+\fs26 \
+Constructor\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because since we're creating an object, we need to call the constructor of the class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the problem occurs, our method immediately stops. So the change to total and the remainder of the loop never happens. If there's no exception, we just continue as normal.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can see what happens if you run with a negative value or a very large value in the grades array in main.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:34:45 pm
+\fs26 \
+What if the teacher gives out extra credit?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No grades over 100. This teacher is old school.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Walked uphill through the snow both ways to work. Stuff like that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do we have to add to the code so you don't get a nasty red error when you run the code?
+\b0 \
+\pard\pardeftab720
+\cf5 chenjamin\cf0  
+\fs20 9:36:25 pm
+\fs26 \
+try and catch\
+\cf5 Tungsten\cf0  
+\fs20 9:36:25 pm
+\fs26 \
+A try/catch block that catches IllegalArgumentExceptions?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The solution is to use a catch block. We have two choices where we could use it. We could put it inside the function or in main. I recommend the latter. Can you think of a reason why?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What might be a problem if we try to catch the error inside the function?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What does the function need to do if it is to return normally?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: return...
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:37:54 pm
+\fs26 \
+It needs to return something.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we put our catch inside the function, then our function will need to return a value. But the array is bad, so there really isn't a legal value to return. We could return -1 or some other impossible number, but then main needs to check for that value anyway. We may as well just have main catch the exception.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Write code that adds the try-catch block to main.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You almost have the solution in the sticky box. You just need to modify it to get it to work with our current version of the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, we don't have BadGradeExceptions yet.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:40:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b try
+\f4\b0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0pw.\cf10 printf\cf6 (\cf11 "The average of the grades is: %f
+\f1\b \cf15 \\n
+\f4\b0 \cf11 "\cf0 , getAverage\cf6 (\cf0 grades\cf6 ))\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b catch
+\f4\b0  \cf6 (\cf9 IllegalArgumentException\cf0  iag\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "There was silly input in the grades file! 
+\f3\fs24 \cf0 {{\NeXTGraphic surprise.gif \width320 \height320 \noorient
+}¬}
+\f4\fs26 \cf11 "\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's how I did it:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  grades \cf8 =\cf0  new ArrayList\cf8 <\cf0 Integer\cf8 >\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 File\cf0  f \cf8 =\cf0  new \cf9 File\cf6 (\cf11 "grades.txt"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf8 =\cf0  new Scanner\cf6 (\cf0 f\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 FileOutputStream\cf0  fos \cf8 =\cf0  new \cf9 FileOutputStream\cf6 (\cf11 "answer.txt"\cf0 , \cf7 false\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 PrintWriter\cf0  pw \cf8 =\cf0  new \cf9 PrintWriter\cf6 (\cf0 fos\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf6 (\cf0 scan.\cf10 hasNext\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades.\cf10 add\cf6 (\cf0 scan.\cf10 nextInt\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0try \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0pw.\cf10 printf\cf6 (\cf11 "The average of the grades is: %f\cf15 \\n\cf11 "\cf0 , getAverage\cf6 (\cf0 grades\cf6 ))\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf9 IllegalArgumentException\cf0  iae\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Bad grade in list"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This error message is fine, but it's not particularly helpful. We might like to know what the bad grade is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fortunately, when we cause an exception manually, we can change the constructor of the exception to include a \cf4 message\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what the new throw statement would look like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 grade \cf8 <\cf0  \cf12 0\cf0  \cf8 ||\cf0  grade \cf8 >\cf0  \cf12 100\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0throw new \cf9 IllegalArgumentException\cf6 (\cf11 "Bad grade: "\cf8 +\cf0 grade\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We give a string for the message as a parameter to the constructor. Here I'm using string concatenation to put the grade into the message.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we can actually use the "parameter" in the catch block. Each exception has a method called 
+\i getMessage
+\i0 . Normally the message just has the type of exception in it. But now that we've set it when we throw the exception, we can print it in the catch block:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0catch \cf6 (\cf9 IllegalArgumentException\cf0  iae\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf0 iae.\cf10 getMessage\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Run it and you'll get the information about which grade caused the problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we don't think one of the built-in exception classes fits with what we're doing, we can also write our own. To do this, we make a subclass of what class?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:42:25 pm
+\fs26 \
+Exception\
+\cf5 ScottBusche\cf0  
+\fs20 9:42:25 pm
+\fs26 \
+Exception\
+\cf5 chenjamin\cf0  
+\fs20 9:42:25 pm
+\fs26 \
+Exception\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Exception at the top of the hierarchy is the typical choice, but you can extend any of the exception classes if you like.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's do that for this problem. We'll make a BadGradeException. Rather than make a new file, we'll put the code for this class just above the other code we have so far.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we do that, the header of the class is a little different. We don't declare the class \cf4 public\cf0 ; you can have only one public class in a file.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So given that, can you give me the first line?
+\b0 \
+\pard\pardeftab720
+\cf5 moppr\cf0  
+\fs20 9:43:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 class
+\f4\b0  BadGradeException 
+\f1\b extends
+\f4\b0  \cf9 Exception\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 Tungsten\cf0  
+\fs20 9:43:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 class
+\f4\b0  BadGradeException 
+\f1\b extends
+\f4\b0  \cf9 Exception\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:43:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+class BadGradeException extends \cf9 Exception\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (If you're not sure where to put that, just check the stickied code, since we're now starting to write that stuff.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you make an exception class, at a minimum, you should include two constructors. What parameters should they take? (Hint: look at how we've used the IllegalArgumentException.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What two versions of IllegalArgumentException's constructor did we use?
+\b0 \
+\pard\pardeftab720
+\cf5 piis3141592653\cf0  
+\fs20 9:45:19 pm
+\fs26 \
+a Sting: message\
+\cf5 Tungsten\cf0  
+\fs20 9:45:19 pm
+\fs26 \
+One with none, and another with a message for the exception?\
+\cf5 chenjamin\cf0  
+\fs20 9:45:19 pm
+\fs26 \
+default, and one with a message\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One is a default constructor. So it takes no parameters. The other is one that takes a String as a parameter for the message.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The good news is that the Exception constructor can do all the work for us. We just need to call it appropriately.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So can you write these two constructors?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:45:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f4\b0  BadGradeException\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b super
+\f4\b0 \cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0
+\f1\b public
+\f4\b0  BadGradeException\cf6 (\cf9 String\cf0  message\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b super
+\f4\b0 \cf6 (\cf0 message\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 chenjamin\cf0  
+\fs20 9:45:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f4\b0  BadGradeException\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b super
+\f4\b0 \cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b public
+\f4\b0  BadGradeException\cf6 (\cf9 String\cf0  message\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b super
+\f4\b0 \cf6 (\cf0 message\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here they are. All they have to do is call super:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public BadGradeException\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public BadGradeException\cf6 (\cf9 String\cf0  message\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super\cf6 (\cf0 message\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course you can add more instance variables and methods if you want to. One of the forum problems will have you do that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now go into both getAverage and main and replace IllegalArgumentException with BadGradeException.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Uh oh. Red lines! Java's not happy with us.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (We'll be done in about two minutes, in case anybody's getting anxious.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The explanation is a little complex. There are actually two kinds of exceptions in Java: \cf4 unchecked\cf0  and \cf4 checked\cf0 . An unchecked exception is one that a Java program does not have to deal with. When they occur, we don't need a try-catch block to handle them. If there's no block, then the exception is passed along to the caller. If the caller doesn't handle it, the exception goes to \cf4 its\cf0  caller, and so forth. Eventually the exception reaches main, and if main doesn't deal with it, the program crashes with lots of red lines.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:47:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I mean red lines in system output indicating a run time error, not red squiggles in Eclipse.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:47:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 All the exceptions we've seen so far are unchecked. Checked exceptions require explicit code to tell Java what to do when they occur. Exceptions we make as subclasses of Exception are checked. Other examples include those that deal with file input and output that we saw earlier.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:47:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could solve the red lines here by putting a try-catch block in getAverage instead; that would take care of the exception. But as I said earlier, we want getAverage to pass along the exception to the caller. So we need to tell Java that that could happen.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:48:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you tell me how to fix the header?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:49:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Hint: How did we handle the checked error about file I/O that we dealt with in main?)
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:49:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f4\b0  
+\f1\b static
+\f4\b0  
+\f1\b \cf7 float
+\f4\b0 \cf0  getAverage\cf6 (\cf0 ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  nums\cf6 )\cf0  
+\f1\b throws
+\f4\b0  BadGradeException 
+\f5\i \cf13 // It's getting long!
+\f4\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 chenjamin\cf0  
+\fs20 9:49:15 pm
+\fs26 \
+append throws BadGradeException onto it\
+\cf5 JesseLin\cf0  
+\fs20 9:49:15 pm
+\fs26 \
+public static float getAverage(ArrayList<Integer> nums) throws BadGradeException\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:49:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf7 float\cf0  getAverage\cf6 (\cf0 ArrayList\cf8 <\cf0 Integer\cf8 >\cf0  nums\cf6 )\cf0  throws BadGradeException\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:49:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This tells Java that two things could happen explicitly with this method: it returns a float "normally", or it creates an exception.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:49:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note the "s" in throws. We use throw to create an exception. We use throws to tell Java an exception could happen. throws is only used in the header of a method. throw appears in the body.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:49:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you add this line and changed both occurrences of IllegalArgumentException to BadGradeException, the code should now work fine. You can run it again to see.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:49:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why does getMessage still work inside the catch block in main? We didn't code it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because we inherit that method from Exception.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 PART 5: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This week, we finished our discussion of abstract classes by learning about interfaces. We saw how to create them and how to make classes that implement them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We then looked at exceptions, errors that occur during the execution of a program. Normally these errors crash a program. We saw how we can add a try-catch block to code to recognize that an exception occurred and then deal with the exception appropriately.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We also discussed how we can create (or throw) our own exceptions in code. We can also make our own exception classes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Finally we learned about reading and writing from structured text files.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week, we will go back to graphical programs. Instead of just drawing pictures, we'll look at how to make more interactive applications. See you then!}

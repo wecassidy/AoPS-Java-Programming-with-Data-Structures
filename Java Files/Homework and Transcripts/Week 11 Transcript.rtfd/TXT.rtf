@@ -1,0 +1,5471 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fmodern\fcharset0 Courier-Bold;\f2\fmodern\fcharset0 Courier;
+\f3\fswiss\fcharset0 Helvetica;\f4\fmodern\fcharset0 Courier-Oblique;\f5\fmodern\fcharset0 Courier-BoldOblique;
+}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red0\green0\blue83;\red18\green139\blue2;\red43\green139\blue39;\red190\green74\blue193;\red1\green32\blue135;
+\red11\green85\blue38;\red0\green0\blue255;\red0\green0\blue135;\red83\green83\blue83;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 11: Recursion
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Welcome back everbody!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I hope you had a good break.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this course so far, we've been focusing on various aspects of Java. Much of what we've discussed is covered in other basic programming classes, just in terms of whatever language that course uses.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Today we start to transition to more advanced topics in computer science. We're still going to discuss programming, but we'll be looking at a problem solving technique that can be applied in multiple programs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: RECURSION BASICS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 At some point in your life, you have probably needed to look something up in a book. Maybe you're trying to find someone's phone number in a directory. Maybe you're looking for the definition of a word in a dictionary. Or maybe you're trying to find an item in an index to a textbook. (Or maybe you don't since all the information you need is on a computer. If that's the case, humor me for this example.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A phone directory, a dictionary, and an index all have an important property that a regular book doesn't have. What is it?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 7:32:51 pm
+\fs26 \
+ordered access\
+\cf4 jprosk\cf0  
+\fs20 7:32:51 pm
+\fs26 \
+Organization\
+\cf4 ScottBusche\cf0  
+\fs20 7:32:51 pm
+\fs26 \
+The things inside have an order in which they appear.\
+\cf4 JRY\cf0  
+\fs20 7:32:51 pm
+\fs26 \
+Their contents are arranged somehow\
+\cf4 Tungsten\cf0  
+\fs20 7:32:51 pm
+\fs26 \
+They are in a certain order?\
+\cf4 moppr\cf0  
+\fs20 7:32:51 pm
+\fs26 \
+It's sorted\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Each consists of a sequence of entries. The entries appear in alphabetical order. Words beginning with A appear at the beginning of the dictionary, words with M in the middle, and words with Z towards the end.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why do the entries appear in alphabetical order?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:33:16 pm
+\fs26 \
+So you can find them easily.\
+\cf4 moppr\cf0  
+\fs20 7:33:16 pm
+\fs26 \
+To make it easier to find things\
+\cf4 connor0728\cf0  
+\fs20 7:33:16 pm
+\fs26 \
+easy to fins things\
+\cf4 teachm\cf0  
+\fs20 7:33:16 pm
+\fs26 \
+so they are easier to find\
+\cf4 MSTang\cf0  
+\fs20 7:33:16 pm
+\fs26 \
+To be easy to access\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To make it easier to find a particular entry. If the entries were in a random order, then the only way to systematically find one is to look at every single page.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose you have a dictionary, and you want to look up the word "lachrymose". (Lachrymose means "tearful" or "relating to or inducing tears", in case you're wondering.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For simplicity, let's pretend this dictionary of ours has extremely large type, so there's exactly one definition per page.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How would you start your search for the word "lachrymose"?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:34:04 pm
+\fs26 \
+Go to L\
+\cf4 connor0728\cf0  
+\fs20 7:34:04 pm
+\fs26 \
+fins the l's\
+\cf4 ScottBusche\cf0  
+\fs20 7:34:04 pm
+\fs26 \
+Open it somewhere in the middle.\
+\cf4 chenjamin\cf0  
+\fs20 7:34:04 pm
+\fs26 \
+go to the "l" section\
+\cf4 JRY\cf0  
+\fs20 7:34:04 pm
+\fs26 \
+Look for a word that begins with L\
+\cf4 manbugbeebee\cf0  
+\fs20 7:34:04 pm
+\fs26 \
+Start roughly in the middle\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since L is in the middle of the alphabet, you would probably try opening the dictionary to somewhere in the middle. You might even try a little before the middle. You want to get as close to the L section as possible. (Some dictionaries even have tabs that tell you where each letter starts. We'll assume the dictionary we're using doesn't have those.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then you look at the word on the page you turn to. Suppose that word is "lucky". What does that tell you to do?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+go back\
+\cf4 connor0728\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+move back wards\
+\cf4 ScottBusche\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+Go back a few pages.\
+\cf4 FerozeM\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+flip back\
+\cf4 manbugbeebee\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+Look a little earlier in the text\
+\cf4 Tungsten\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+You are too far forward in the dictionary.\
+\cf4 EmeraldBot\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+You have to go back\
+\cf4 Dragon18\cf0  
+\fs20 7:34:41 pm
+\fs26 \
+go back\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You need to look to some previous page in the dictionary, since "lachrymose" comes before "lucky" alphabetically.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This means, as far as this search is concerned, we can now disregard the second part of the dictionary. Our word definitely isn't there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the problem now becomes how can we find "lachrymose" in the first part of the dictionary? That is to say, we've just reduced our problem to a smaller version of the original problem. (Smaller in the sense that we're looking at a smaller set of pages.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we proceed with this smaller set?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 7:36:12 pm
+\fs26 \
+We know we're close by, so only go back a little\
+\cf4 ScottBusche\cf0  
+\fs20 7:36:12 pm
+\fs26 \
+Open it somewhere near the back, but not at the back.\
+\cf4 Tungsten\cf0  
+\fs20 7:36:12 pm
+\fs26 \
+Open to the middle of it.\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:36:12 pm
+\fs26 \
+Turn about 10 pages to the left.\
+\cf4 piis3141592653\cf0  
+\fs20 7:36:12 pm
+\fs26 \
+go towards to the back of the first part.\
+\cf4 teachm\cf0  
+\fs20 7:36:14 pm
+\fs26 \
+look near the end (go back a few pages)\
+\cf4 Dragon18\cf0  
+\fs20 7:36:17 pm
+\fs26 \
+look halfway between the next part\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Wee know this set ends with "lucky" (or, more precisely, the word just before "lucky"), so we should try looking at a page close to the end of this set.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose the next page we land on has the word "label". Now what do we do?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:36:44 pm
+\fs26 \
+Flip forward a little bit\
+\cf4 MathWolf\cf0  
+\fs20 7:36:44 pm
+\fs26 \
+go forward one page\
+\cf4 teachm\cf0  
+\fs20 7:36:44 pm
+\fs26 \
+between the two, but biased toward label\
+\cf4 manbugbeebee\cf0  
+\fs20 7:36:44 pm
+\fs26 \
+Go forward a bit more\
+\cf4 Tungsten\cf0  
+\fs20 7:36:44 pm
+\fs26 \
+Move forward a couple pages.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can now disregard all the pages before "label". Now we just need to search the pages we have (between "label" and "lucky"). "Lachrymose" is very likely to be closer to "label" than "lucky", so we'll look at a page very close to the beginning of this set.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When does this process stop?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+When we find the word.\
+\cf4 MSTang\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+When we get the word we want\
+\cf4 manbugbeebee\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+When we find the word we're looking for.\
+\cf4 Dragon18\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+when we find lachrymose\
+\cf4 chenjamin\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+when we get to lachrymose\
+\cf4 moppr\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+When we find the word\
+\cf4 piis3141592653\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+when we find lachrymose.\
+\cf4 JRY\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+When we find "lachrymose"\
+\cf4 Tungsten\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+When we find "lachrymose".\
+\cf4 k77frank\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+when you get to the word\
+\cf4 JesseLin\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+when you get the word\
+\cf4 MathWolf\cf0  
+\fs20 7:37:16 pm
+\fs26 \
+when we find the word\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 OR?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 7:37:46 pm
+\fs26 \
+The word isn't in the book\
+\cf4 JRY\cf0  
+\fs20 7:37:46 pm
+\fs26 \
+When we find out the word isn't in the dictionary?\
+\cf4 MSTang\cf0  
+\fs20 7:37:46 pm
+\fs26 \
+When we get to the place where it should be but it's not there\
+\cf4 connor0728\cf0  
+\fs20 7:37:46 pm
+\fs26 \
+when you get the two words that are surrounding it\
+\cf4 shivammisra\cf0  
+\fs20 7:37:46 pm
+\fs26 \
+it isn't in the dictionary?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The process can stop in one of two ways, which we might call the "happy" and "unhappy" outcomes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The happy outcome is when the page we open to happens to have the word we're looking for. Then we don't have to keep going.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The unhappy outcome is that we might reach a point where we can conclude that "lachrymose" actually isn't in our dictionary. That would occur when our set gets down to one page, but our word is not on that page. (At which point we might become lachrymose!)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here are the important aspects of this algorithm:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It solves a problem by shrinking it down to a smaller version of the problem. We search the entire dictionary by finding the part that contains the word we want and searching that section. This idea of solving a problem by repeatedly reducing the problem at hand to simpler versions of itself, until, after finitely many steps, you get down to a level where the solution is trivial (at which point you can then use the solution you just got to solve the next higher problem and so on up until you have a solution to the original problem) is called \cf3 recursion\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The solution to the smaller version involves repeating the algorithm. For example, in our dictionary problem, at each step we (effectively) split the remaining part of the dictionary into two parts and determined which part our word would be in, then in the next step, we applied the same idea to that smaller part, and so on. The process automatically loops. This repetition is called the \cf3 recursive step\cf0  of the algorithm.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But we can't keep shrinking forever, or we will never stop, so we will never get an answer. In order for recursion to be useful, we need it to be the case that we will eventually (after only finitely many steps) hit a version of the problem that we can immediately solve. These very simple versions that we can solve directly are called the \cf3 base cases\cf0  of the problem. In our dictionary example, there are two base cases: when the page we check has the word, or we get down to only one page that doesn't have the word.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A few of you who have a fair bit of math experience may have dealt with proof by induction before. Recursion and induction are pretty much the same idea. If you haven't heard of induction, don't worry about it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions on that before we press on with more examples?
+\b0 \
+\pard\pardeftab720
+\cf4 Dragon18\cf0  
+\fs20 7:39:57 pm
+\fs26 \
+at which point we might become lachrymose\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we were to discover that the word we wanted wasn't in our dictionary.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: A CLASSIC RECURSIVE PROBLEM
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll revisit the searching problem later in the course. For now, we're going to code a classic first example of recursion in action.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyone know what factorial is (as in n!)?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:40:57 pm
+\fs26 \
+multiply all numbers from 1 to n.\
+\cf4 connor0728\cf0  
+\fs20 7:40:57 pm
+\fs26 \
+n*(n-1)*(n-2)...*2*1\
+\cf4 ScottBusche\cf0  
+\fs20 7:40:57 pm
+\fs26 \
+n*(n-1)*(n-2)*...*1\
+\cf4 chutney\cf0  
+\fs20 7:40:57 pm
+\fs26 \
+n*n-1*...*2*1\
+\cf4 mattpi\cf0  
+\fs20 7:40:57 pm
+\fs26 \
+n*(n-1)*(n-2)*...*3*2*1\
+\cf4 manbugbeebee\cf0  
+\fs20 7:40:57 pm
+\fs26 \
+(n)*(n-1)*(n-2)*...*2*1\
+\cf4 Tungsten\cf0  
+\fs20 7:40:57 pm
+\fs26 \
+It is the product of all the integers from n to 1, inclusive.\
+\cf4 Dragon18\cf0  
+\fs20 7:41:07 pm
+\fs26 \
+n*n-1*n-2...*1\
+\cf4 JRY\cf0  
+\fs20 7:41:07 pm
+\fs26 \
+n x (n-1) x (n-2) x ... x 1\
+\cf4 piis3141592653\cf0  
+\fs20 7:41:07 pm
+\fs26 \
+it's n*n-1*n-2*...*2*1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's the product of the integers from 1 to n. So 5! = 5*4*3*2*1 = 120.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is a fairly easy function to write using a simple for loop. Can you do it? The header is:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public static \cf5 int\cf0  factorial\cf6 (\cf5 int\cf0  n\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm looking for a solution using a for loop right now. We'll do a recursive solution in a bit.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you only see how to solve it recursively, then take a few moments to think how you might write it using a for loop.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:44:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  factorial\cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  n\cf6 )\{\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  total\cf7 =\cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i\cf7 =\cf8 1\cf7 ;\cf0  i\cf7 <=\cf0 n\cf7 ;\cf0  i\cf7 ++\cf6 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0total\cf7 *=\cf0 n\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  total\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 7:44:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  factorial\cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  n\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  product \cf7 =\cf0  \cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf8 2\cf7 ;\cf0  i \cf7 <=\cf0  n\cf7 ;\cf0  i \cf7 ++\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0product \cf7 *=\cf0  i\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  product\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 7:44:13 pm
+\fs26 \
+for (int b = n; b > 0; b--) \{ product = product * b; \} return product;\
+\cf4 piis3141592653\cf0  
+\fs20 7:44:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  factorial\cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  n\cf6 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  product \cf7 =\cf0  \cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0 \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf8 1\cf7 ;\cf0  i \cf7 <=\cf0  n\cf7 ;\cf0  i\cf7 ++\cf6 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0product \cf7 *=\cf0  i\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  i\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 7:44:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  factorial\cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  n\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  ans \cf7 =\cf0  \cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf8 2\cf7 ;\cf0  i \cf7 <=\cf0  n\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ans\cf7 *=\cf0 i\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  ans\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 AkshajK\cf0  
+\fs20 7:44:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  factorial\cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  n\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  ans \cf7 =\cf0  \cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0 \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i\cf7 =\cf8 1\cf7 ;\cf0  i\cf7 <=\cf0 n\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ans \cf7 *=\cf0  i\
+\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  ans\cf7 ;\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 EmeraldBot\cf0  
+\fs20 7:44:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 for
+\f2\b0  \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf8 0\cf7 ;\cf0  i \cf7 <\cf0  \cf8 0\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0total \cf7 =\cf0  total \cf7 *\cf0  i\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  factorial\cf6 (\cf5 int\cf0  n\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  answer \cf7 =\cf0  \cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  i\cf7 =\cf8 1\cf7 ;\cf0  i \cf7 <=\cf0  n\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer \cf7 =\cf0  answer \cf7 *\cf0  i\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We make a variable starting at 1, and we multiply it by each number from 1 up to n.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now let's think about this in a recursive way. Remember that the key is to transform the problem into a smaller or simpler version of itself. In this case, we want to use a "simpler" factorial to solve a larger one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So consider 5!. What's a slightly smaller factorial than that?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 connor0728\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 piis3141592653\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 MathWolf\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 williamyin08\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 JRY\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 moppr\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+(5-1)!\
+\cf4 connor0728\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!=24\
+\cf4 puwei99\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 Tungsten\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 FerozeM\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 Dragon18\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\cf4 manbugbeebee\cf0  
+\fs20 7:45:22 pm
+\fs26 \
+4!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next smallest would seem to be 4!.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the search problem, the answer to the search of the smaller dictionary immediately gave us the answer to the larger one. If it's in the small one, it's in the large one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But here the answer to 5! (120) is not the answer to 4! (24). So what can we do to 4! to get the answer to 5!?
+\b0 \
+\pard\pardeftab720
+\cf4 Dragon18\cf0  
+\fs20 7:46:03 pm
+\fs26 \
+multiply by 5\
+\cf4 connor0728\cf0  
+\fs20 7:46:03 pm
+\fs26 \
+MULTIPLY BY 5\
+\cf4 manbugbeebee\cf0  
+\fs20 7:46:03 pm
+\fs26 \
+multiply by 5\
+\cf4 connor0728\cf0  
+\fs20 7:46:03 pm
+\fs26 \
+*5\
+\cf4 Tungsten\cf0  
+\fs20 7:46:03 pm
+\fs26 \
+5! = 5 * 4!\
+\cf4 AkshajK\cf0  
+\fs20 7:46:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\fs24 \cf0 {{\NeXTGraphic 64afde95b3488e85780fc9e0e367af1974fa045d.png \width2380 \height360 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:46:03 pm
+\fs26 \
+5*4!\
+\cf4 shivammisra\cf0  
+\fs20 7:46:03 pm
+\fs26 \
+multiply it by the next int: 5\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We multiply it by 5. 5! = 5 * 4!.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And, to solve 4!, we would need to solve 3!. What do we do to 3!?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 7:46:25 pm
+\fs26 \
+Multiply that by 4\
+\cf4 connor0728\cf0  
+\fs20 7:46:25 pm
+\fs26 \
+multiply by 4\
+\cf4 manbugbeebee\cf0  
+\fs20 7:46:25 pm
+\fs26 \
+3! * 4 = 4!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Multiply that by 4. And this shrinking process continues.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When does it stop? What's the simplest version of factorial to solve?
+\b0 \
+\pard\pardeftab720
+\cf4 piis3141592653\cf0  
+\fs20 7:46:42 pm
+\fs26 \
+1! = 1\
+\cf4 MSTang\cf0  
+\fs20 7:46:42 pm
+\fs26 \
+0! = 1\
+\cf4 connor0728\cf0  
+\fs20 7:46:42 pm
+\fs26 \
+1!=1\
+\cf4 EmeraldBot\cf0  
+\fs20 7:46:42 pm
+\fs26 \
+1!\
+\cf4 moppr\cf0  
+\fs20 7:46:42 pm
+\fs26 \
+1! or 0! both stop at 1\
+\cf4 k77frank\cf0  
+\fs20 7:46:42 pm
+\fs26 \
+1!=1\
+\cf4 manbugbeebee\cf0  
+\fs20 7:46:42 pm
+\fs26 \
+1!, which is just 1\
+\cf4 Tungsten\cf0  
+\fs20 7:46:42 pm
+\fs26 \
+1!\
+\cf4 bluebandit21\cf0  
+\fs20 7:46:48 pm
+\fs26 \
+1!\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:46:48 pm
+\fs26 \
+1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We know that 1! = 1. (As some of you pointed out, it is also conventional to set 0! = 1. For the purposes of this discussion, we will ignore that detail.) So once we need to solve 1!, we don't shrink anymore. We just give the answer of 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the complete set of equations that this process does to get down to the base case of 1!:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 5! = 5 * 4! = 5 * (4 * 3!) = 5 * (4 * (3 * 2!)) = 5 * (4 * (3 * (2 * 1!)))
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we replace 1! by 1. Once we have two actual numbers, we can perform the multiplications:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 5 * (4 * (3 * (2 * 1!))) = 5 * (4 * (3 * (2 * 1))) = 5 * (4 * (3 * 2)) = 5 * (4 * 6) = 5 * 24 = 120.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We use recursion to expand out to the base case, and then we roll the results back up to get the final answer we need.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions before we examine the general case?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, pressing on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's generalize what we've done for 5!. Suppose we have n!. Can you define what n! is in terms of (n-1)!?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+n! = n*(n-1)!\
+\cf4 ScottBusche\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+(n-1)!*n\
+\cf4 Tungsten\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+n! = n * (n-1)!\
+\cf4 chenjamin\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+n * (n-1)!\
+\cf4 manbugbeebee\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+(n-1)! * n\
+\cf4 connor0728\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+n*(n-1)!\
+\cf4 puwei99\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+n * (n-1)!\
+\cf4 MathWolf\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+n*(n-1)!\
+\cf4 bluebandit21\cf0  
+\fs20 7:49:22 pm
+\fs26 \
+n*(n-1)!\
+\cf4 k77frank\cf0  
+\fs20 7:49:26 pm
+\fs26 \
+(n-1)!*n\
+\cf4 piis3141592653\cf0  
+\fs20 7:49:26 pm
+\fs26 \
+(n-1)! * n\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 n! = n * (n-1)!. This describes the recursive step. To prevent shrinking forever, we need the base case that 1! = 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll now translate the recursion into Java. We'll use the same header as before:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  factorial\cf6 (\cf5 int\cf0  n\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Make sure your name doesn't conflict with the loop version if you have that in the same class. You should rename the loop version of the function to something else.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The key to writing a recursive function in Java is that to solve the simpler version of the function, we use the function itself. We can compute factorial(n) by computing factorial(n-1).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But first we should check to see if the parameter has reached the base case. Remember our base case is when we compute 1!. So can you give me the if test we'll need?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 n \cf7 ==\cf0  \cf8 1\cf6 )\cf0  
+\f1\b return
+\f2\b0  \cf8 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 n\cf7 ==\cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  \cf8 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+if (n==1)\
+\cf4 moppr\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 n \cf7 ==\cf0  \cf8 1\cf6 )\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  \cf8 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+if(n=1)\{return 1;\}\
+\cf4 Tungsten\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 n \cf7 ==\cf0  \cf8 1\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  \cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+if (n == 1)\
+\cf4 JRY\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 n \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  \cf8 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 7:51:04 pm
+\fs26 \
+if (n == 1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We must check if n is 1. Here's what we do:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  factorial\cf6 (\cf5 int\cf0  n\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 n \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When we reach 1, we know what the answer is. We return the answer of 1. Here's the whole thing so far:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  factorial\cf6 (\cf5 int\cf0  n\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 n \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf8 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the parameter is not 1, then we apply the recursive step: n! = n * (n-1)!. In this case, n! is represented by factorial(n). So can you supply the code in the else case?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:52:24 pm
+\fs26 \
+You don't need an else case.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's, strictly speaking, true. But it enhances clarity of the code to put the else in explicitly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, people are not logic machines. They're all squishy and benefit from helpful cues.
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 7:53:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 return
+\f2\b0  n \cf7 *\cf0  factorial\cf6 (\cf0 n\cf7 -\cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 7:53:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 return
+\f2\b0  n \cf7 *\cf0  factorialRecursive\cf6 (\cf0 n\cf7 -\cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 7:53:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  n\cf7 *\cf0 factorial\cf6 (\cf0 n\cf7 -\cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 7:53:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 return
+\f2\b0  n\cf7 *\cf0 factorial\cf6 (\cf0 n\cf7 -\cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 EmeraldBot\cf0  
+\fs20 7:53:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0factorial\cf6 (\cf0 n\cf7 -\cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 7:53:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  factorial\cf6 (\cf0 n\cf7 -\cf8 1\cf6 )\cf7 *\cf0 n\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 7:53:37 pm
+\fs26 \
+else \{return (n * factorial(n-1)) \}\
+\cf4 Tungsten\cf0  
+\fs20 7:53:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  n \cf7 *\cf0  factorial\cf6 (\cf0 n \cf7 -\cf0  \cf8 1\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what you should have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  factorial\cf6 (\cf5 int\cf0  n\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 n \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return n \cf7 *\cf0  factorial\cf6 (\cf0 n\cf7 -\cf8 1\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Take a moment to compare the two versions of the factorial function we've written. I have them both up in the sticky box.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The loop version is the top one. The recursive version is the bottom one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Our recursive version of the factorial function is done. You can test it with a main like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "5! = %d\cf12 \\n\cf11 "\cf0 , factorial\cf6 (\cf8 5\cf6 ))\cf7 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Run it, and verify that you get 120.
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 7:55:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf8 120\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 7:55:37 pm
+\fs26 \
+Works for me 
+\f3\fs24 {{\NeXTGraphic smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\cf4 MathWolf\cf0  
+\fs20 7:55:37 pm
+\fs26 \
+Yep!\
+\cf4 Tungsten\cf0  
+\fs20 7:55:37 pm
+\fs26 \
+It works! We don't have to be lachrymose!\
+\cf4 williamyin08\cf0  
+\fs20 7:55:37 pm
+\fs26 \
+Woah 
+\f3\fs24 {{\NeXTGraphic boggle.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sweet. B)
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 7:55:52 pm
+\fs26 \
+Yup, it works!\
+\cf4 puwei99\cf0  
+\fs20 7:55:59 pm
+\fs26 \
+which is faster recursion or a loop aproach?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 An iterative solution often runs faster, if you can see how to write an iterative solution cleanly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sometimes a recursive solution, however, is overwhelmingly simpler to write, so you go with that one instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It may still seem odd to you that we're calling the function we're trying to define. You can think of it as just another case of a function call. If we call a function, we transfer control to the code of that function. When the function is done, we return and pick up where we left off. Recursive functions work exactly the same way. It's just the code we transfer to happens to be the same task we're working on.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:57:49 pm
+\fs26 \
+What if we recurse too many times?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Indeed, that can in principle happen, which brings me to my next point.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's make a few tweaks to the program to see the effects. Comment out all the lines in the body of the function except the last return (return n * factorial(n-1);). What happens when you run the problem to compute factorial(5)?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+Infinite loops!\
+\cf4 moppr\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+we get a StackOverflowError\
+\cf4 piis3141592653\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+FOREVER ERRORS\
+\cf4 chenjamin\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+StackOverflowError\
+\cf4 ScottBusche\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+Large amounts of red lines.\
+\cf4 JRY\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+Exception in thread "main" java.lang.StackOverflowError at Recursion.factorial\
+\cf4 k77frank\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+infinite loop\
+\cf4 Tungsten\cf0  
+\fs20 7:59:20 pm
+\fs26 \
+Ahhhhhhhhhhh StackOverflowError\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You get something like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 Exception in thread "main" java.lang.StackOverflowError\
+\'a0\'a0\'a0\'a0at RecursionExamples.factorial(RecursionExamples.java:20)\
+\'a0\'a0\'a0\'a0at RecursionExamples.factorial(RecursionExamples.java:20)\
+\'a0\'a0\'a0\'a0at RecursionExamples.factorial(RecursionExamples.java:20)\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The "at" line gets repeated many many times. The issue is that, without the base case, our programs keep trying lower and lower factorials: 3!, 2!. 1!, 0!, (-1)!, (-2)!, (-3)!, etc.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Each time we call the function, we have to remember where we left off, so we can resume it. That takes up memory to store where you were. You need to know the line of code, the values of all the variables you had at the time, and who called you. The area where all these are stored is called the \cf3 function stack\cf0 . Eventually we run out of room for new calls, and we get a stack overflow error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The lesson is that we need the base case to make sure the function stops calling itself. We can't get an infinite loop since we'll use up the computer's memory first, but we still won't have an answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Uncomment the lines so you can get the full function. Even in this version, there's a way for us to cause a stack overflow error. Do you see how?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:00:45 pm
+\fs26 \
+enter a large number\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That actually won't cause a 
+\i stack
+\i0  overflow. Our variables are ints (which can't be larger than some number I don't remember right now) so our program would just fail to produce the right answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Stack overflows happen when you make too many unresolved function calls.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:02:57 pm
+\fs26 \
+enter a negative number\
+\cf4 Dragon18\cf0  
+\fs20 8:02:57 pm
+\fs26 \
+enter a negative number\
+\cf4 Dragon18\cf0  
+\fs20 8:02:57 pm
+\fs26 \
+negative number\
+\cf4 Dragon18\cf0  
+\fs20 8:02:57 pm
+\fs26 \
+you can enter in a negative number\
+\cf4 AkshajK\cf0  
+\fs20 8:02:57 pm
+\fs26 \
+enter in a negative number\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you call our function with a negative number or 0, our base case test is never true. We'll just keep decrementing. There's an easy fix to our base case test to handle this. What is it?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:03:42 pm
+\fs26 \
+if n<=1\
+\cf4 moppr\cf0  
+\fs20 8:03:42 pm
+\fs26 \
+Change == to <=\
+\cf4 chutney\cf0  
+\fs20 8:03:42 pm
+\fs26 \
+<= 1\
+\cf4 AkshajK\cf0  
+\fs20 8:03:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0 \cf6 (\cf0 i \cf7 <=\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  \cf8 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:03:42 pm
+\fs26 \
+n<=1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just test if n<=1 instead. (You might argue that negative factorials don't exist and so should not be 1. You can handle this by throwing an exception or making sure you never call the method with a negative parameter.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we used n<=2 for the test instead. What happens?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:04:47 pm
+\fs26 \
+factorial/2\
+\cf4 moppr\cf0  
+\fs20 8:04:47 pm
+\fs26 \
+All our answers would be half of what they were supposed to be\
+\cf4 Tungsten\cf0  
+\fs20 8:04:47 pm
+\fs26 \
+All factorials for numbers >= 2 are half as large as they should be.\
+\cf4 FerozeM\cf0  
+\fs20 8:04:47 pm
+\fs26 \
+we would get 2! = 1, which is incorrect\
+\cf4 connor0728\cf0  
+\fs20 8:04:47 pm
+\fs26 \
+prints our your answer divided by 2\
+\cf4 MSTang\cf0  
+\fs20 8:04:52 pm
+\fs26 \
+We get 2! = 1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then the base case stops the recursion early, and we don't multiply 2 into the answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens if we use factorial(n) in the second return instead of factorial(n-1)?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:05:30 pm
+\fs26 \
+stack overflow\
+\cf4 puwei99\cf0  
+\fs20 8:05:30 pm
+\fs26 \
+stack overflow\
+\cf4 ScottBusche\cf0  
+\fs20 8:05:30 pm
+\fs26 \
+StackOverflowError\
+\cf4 Tungsten\cf0  
+\fs20 8:05:30 pm
+\fs26 \
+We get infinite recursion because we never decremented n\
+\cf4 MathWolf\cf0  
+\fs20 8:05:30 pm
+\fs26 \
+StackOverFlowError\
+\cf4 piis3141592653\cf0  
+\fs20 8:05:30 pm
+\fs26 \
+STACK OVERFLOW ERROR\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we were computing, say, factorial(5), then we call factorial(5) again, which calls factorial(5) again, which calls factorial(5) again, and so on until we get a stack overflow. Again the problem is that we need to make sure we call the function for a "simpler" problem, i.e. one that is closer to the base case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens if we remove n* from the second return?
+\b0 \
+\pard\pardeftab720
+\cf4 piis3141592653\cf0  
+\fs20 8:06:49 pm
+\fs26 \
+it says 1.\
+\cf4 MathWolf\cf0  
+\fs20 8:06:49 pm
+\fs26 \
+1\
+\cf4 chenjamin\cf0  
+\fs20 8:06:49 pm
+\fs26 \
+we get 1 alwyas\
+\cf4 FerozeM\cf0  
+\fs20 8:06:49 pm
+\fs26 \
+it returns 1\
+\cf4 connor0728\cf0  
+\fs20 8:06:49 pm
+\fs26 \
+returns 1 for every number\
+\cf4 MathWolf\cf0  
+\fs20 8:06:49 pm
+\fs26 \
+always 1\
+\cf4 JRY\cf0  
+\fs20 8:06:49 pm
+\fs26 \
+If we use return factorial(n-1) we get 1 all the time\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then we don't multiply by n when we finish the recursive call. So 1 is rippled back up as the result of each call, and the final answer is always 1 no matter what n is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we change return 1 to return 0, what happens?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+we always get 0\
+\cf4 moppr\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+0 is always returned\
+\cf4 MathWolf\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+0 always\
+\cf4 ScottBusche\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+You always get 0.\
+\cf4 piis3141592653\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+it returns 0.\
+\cf4 k77frank\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+returns 0, because anything * 0 is 0\
+\cf4 connor0728\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+multiplies everything by 0, so returns 0\
+\cf4 puwei99\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+the base case is 0\
+\cf4 JRY\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+it always returns 0\
+\cf4 shivammisra\cf0  
+\fs20 8:08:23 pm
+\fs26 \
+the result is 0\
+\cf4 manbugbeebee\cf0  
+\fs20 8:08:23 pm
+\fs26 \
+we always get 0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then we just multiply a bunch of numbers with 0, so 0 is the final answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Last one. Suppose we used + instead of *. Now what?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:09:28 pm
+\fs26 \
+You get the sum of all the numbers less than or equal to n.\
+\cf4 moppr\cf0  
+\fs20 8:09:28 pm
+\fs26 \
+You get triangular numbers instead of factorials.\
+\cf4 williamyin08\cf0  
+\fs20 8:09:28 pm
+\fs26 \
+5+4+3+2+1 instead of 5!\
+\cf4 MathWolf\cf0  
+\fs20 8:09:28 pm
+\fs26 \
+Add all numbers from 1 to n\
+\cf4 chutney\cf0  
+\fs20 8:09:28 pm
+\fs26 \
+That would result in triangular numbers!\
+\cf4 JRY\cf0  
+\fs20 8:09:28 pm
+\fs26 \
+we get triangular numbers instead of factorials (1+2+...n instead of 1*2*...*n)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then it's the sum of the first n numbers, instead of the product. If n was 5, we'd get 1+2+3+4+5 or 15.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:09:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\fs24 \cf0 {{\NeXTGraphic 6ea74063a74fb6ff6f3d32b04c867a905a1490cf.png \width6640 \height1620 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Indeed, it is true that the sum of the first n integers is n(n+1)/2
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions before we move on away from this factorial example?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: RECURSION AND ARRAYS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's write a function to compute the largest element in an array of integers. Again this could be done by a for loop. Can you write it? Call your function maximum.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll give you a minute or two before I pass some solutions.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:14:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf5 int
+\f2\b0 \cf0  max \cf7 =\cf0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i\cf7 =\cf8 1\cf7 ;\cf0  i\cf7 <\cf0 array.\cf10 length\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 max \cf7 <\cf0  array\cf6 [\cf0 i\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  array\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  max\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:14:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  maxFor\cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0 ... \cf10 nums\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  max \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  num \cf7 :\cf0  nums\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  num \cf7 >\cf0  max \cf7 ?\cf0  num \cf7 :\cf0  max\cf7 ;\cf0  
+\f4\i \cf13 // If num > max, set max to num, otherwise set max to max
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:14:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0   
+\f1\b public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  maximum \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf6 []\cf0  array\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  max \cf7 =\cf0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf8 1\cf7 ;\cf0  i \cf7 <\cf0  array.\cf10 length\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 array\cf6 [\cf0 i\cf6 ]\cf0  \cf7 >\cf0  max\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  array\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:14:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  maximum\cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  \cf6 []\cf0  n\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  max \cf7 =\cf0  n\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0 \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf8 1\cf7 ;\cf0  i \cf7 <\cf0  n.\cf10 length\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0 \cf6 (\cf0 n\cf6 [\cf0 i\cf6 ]\cf0  \cf7 >\cf0  max\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  n\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:14:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b static
+\f2\b0  
+\f1\b \cf5 int
+\f2\b0 \cf0  maximum\cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf6 []\cf0  nums\cf6 )\{\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  max \cf7 =\cf0  nums\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf5 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf8 0\cf7 ;\cf0  i \cf7 <\cf0  nums.\cf10 length\cf7 ;\cf0  i\cf7 ++\cf6 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 nums\cf6 [\cf0 i\cf6 ]\cf0  \cf7 >\cf0  max\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  nums\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  biggest \cf7 =\cf0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  i\cf7 =\cf8 1\cf7 ;\cf0  i \cf7 <\cf0  array.\cf10 length\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 biggest \cf7 <\cf0  array\cf6 [\cf0 i\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0biggest \cf7 =\cf0  array\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return biggest\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a main you can use to test this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  myArray \cf7 =\cf0  \cf6 \{\cf8 10\cf0 , \cf8 50\cf0 , \cf8 34\cf0 , \cf8 87\cf0 , \cf8 23\cf0 , \cf8 19\cf6 \}\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "Maximum is: %d\cf12 \\n\cf11 "\cf0 , maximum\cf6 (\cf0 myArray\cf6 ))\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It should output Maximum is: 87
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody happy with that first kind of solution?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll do it a recursive way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Note: We'll write this in two passes. The first way we'll write our recursive solution should be pretty concrete and intuitive, but it won't be terribly efficient as far as memory is concerned. We'll write a similar but more memory-efficient version after that. There are actually much better recursive solutions to this problem than what we'll discuss today, however. We might talk about some of them later in this course. I only chose this particular example solution for its simplicity.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to figure out how to make the problem simpler. What's a way we can make an array "simpler"?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:17:11 pm
+\fs26 \
+Take the first element out\
+\cf4 ScottBusche\cf0  
+\fs20 8:17:11 pm
+\fs26 \
+Cut off the first element.\
+\cf4 Tungsten\cf0  
+\fs20 8:17:11 pm
+\fs26 \
+Chop off the first entry.\
+\cf4 moppr\cf0  
+\fs20 8:17:11 pm
+\fs26 \
+Shorten it\
+\cf4 teachm\cf0  
+\fs20 8:17:11 pm
+\fs26 \
+take an item out?\
+\cf4 piis3141592653\cf0  
+\fs20 8:17:18 pm
+\fs26 \
+make it shorter\
+\cf4 chenjamin\cf0  
+\fs20 8:17:18 pm
+\fs26 \
+decrease its length\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could shorten the array by removing one of the elements. Suppose we remove the first element. Then we can recursively find the maximum of the remaining elements. Once we have this maximum, how do we use it to find the answer for the entire array?
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 8:18:20 pm
+\fs26 \
+compare it to the first element\
+\cf4 ScottBusche\cf0  
+\fs20 8:18:20 pm
+\fs26 \
+Check if it's bigger than the cut-off element.\
+\cf4 Tungsten\cf0  
+\fs20 8:18:20 pm
+\fs26 \
+Check if the element we chopped off is larger than the new array and return the larger one.\
+\cf4 JRY\cf0  
+\fs20 8:18:20 pm
+\fs26 \
+compare that maximum to the first element and take the bigger one as the answer\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We take that maximum and compare it to the element we removed. Whichever one is larger is the maximum of the entire array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody see how that's going to work?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The argument (like induction) just assumes that our function will give us the correct max of whatever we pass to it. What we just said simply represents what happens in the recursive step.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In order for our recursion to work, we need a base case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the base case here?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:20:56 pm
+\fs26 \
+Only 1 element in array.\
+\cf4 piis3141592653\cf0  
+\fs20 8:20:56 pm
+\fs26 \
+size 1 array\
+\cf4 Tungsten\cf0  
+\fs20 8:20:56 pm
+\fs26 \
+The array is of length 1\
+\cf4 JRY\cf0  
+\fs20 8:20:56 pm
+\fs26 \
+the array only has one element\
+\cf4 connor0728\cf0  
+\fs20 8:20:56 pm
+\fs26 \
+1\
+\cf4 MSTang\cf0  
+\fs20 8:20:56 pm
+\fs26 \
+If the array is one element big\
+\cf4 MathWolf\cf0  
+\fs20 8:20:59 pm
+\fs26 \
+numbers.length<=1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The simplest array to find the maximum of is a 1-element array. In that case, the one element is the maximum.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So to summarize: if the array is of size 1, return the one element in the array. If the array is larger than length 1, find the maximum of everything after the first element. Compare that value to the first element, and return the larger value.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:21:57 pm
+\fs26 \
+can we use an array list instead of an array\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could if you wanted to. I'll write my answer in terms of arrays.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's write this function. We'll use the same first line as in the loop version:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're putting this code in the same class as the loop version, change the name of the loop version of the function to something else.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you give me the code to handle the base case?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that testing array.length <= 1 doesn't make much sense here. If your array has length 0, it's empty, and it won't have a maximum element.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 array.\cf10 length\cf7 ==\cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 nums.\cf10 length\cf0  \cf7 ==\cf0  \cf8 1\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  nums\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 array.\cf10 length\cf0  \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+if (arrayName.length == 1) \{return arrayName[0];\}\
+\cf4 moppr\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 array.\cf10 length\cf0  \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0 \cf6 (\cf0 array.\cf10 length\cf0  \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 bluebandit21\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+if(array.length=1)\{return array[0];\}\
+\cf4 piis3141592653\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0    
+\f1\b if
+\f2\b0 \cf6 (\cf0 array.\cf10 length\cf0  \cf7 ==\cf0  \cf8 1\cf6 )\{\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf8 1\cf6 ]\cf7 ;\cf0  \cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 array.\cf10 length\cf0  \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that if you pass this a 0-length array, you'll be in trouble. I'll assume, for simplicity right now, that won't happen. If we were writing this function for serious use, we'd probably want to throw an exception if it did.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we're not in the base case, we're going to need to get an array without that first element in it. I want to make sure I keep the original array intact. Remember that changes we make to array are reflected outside the function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we'll make a copy of array called newArray. We could do this ourselves by making a new array of the right size and looping through array. Instead, I'll use the static copyOfRange method from the Arrays class:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 array.\cf10 length\cf0  \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  newArray \cf7 =\cf0  \cf9 Arrays\cf0 .\cf10 copyOfRange\cf6 (\cf0 array, \cf8 1\cf0 , array.\cf10 length\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The last line is new. The method takes three parameters. The first is where the values are coming from. The second is the position to start taking elements from. Since we're skipping the first element, we start at index 1 rather than index 0. Finally, we have the position 
+\i one after
+\i0  the last element we want. We use array.length here to go all the way to the end.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:29:09 pm
+\fs26 \
+Why are we skipping the first element?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because that's what our recursive step does. We peel off the first element and pass the rest of the array (recursively) back into our maximum function. Then we compare which of the two numbers we get (either the first element or whatever maximum applied to the rest of the array gives us) is bigger and return that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody on board with our plan of attack?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What comes next?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:33:25 pm
+\fs26 \
+take maximum of the newArray\
+\cf4 ScottBusche\cf0  
+\fs20 8:33:25 pm
+\fs26 \
+Pass newArray back to maximum.\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:33:25 pm
+\fs26 \
+maximum(newArray)?\
+\cf4 MathWolf\cf0  
+\fs20 8:33:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf5 int
+\f2\b0 \cf0  nMax \cf7 =\cf0  max\cf6 (\cf0 newArray\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want to know what the maximum is of the newArray. So we make our recursive call. Since we can't return this right away like we did with factorial, we need to put it into a variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  max \cf7 =\cf0  maximum\cf6 (\cf0 newArray\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 JRY\cf0  
+\fs20 8:33:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 return
+\f2\b0  \cf9 Math\cf0 .\cf10 max\cf6 (\cf0 array\cf6 [\cf8 0\cf6 ]\cf0 , maximum\cf6 (\cf0 newArray\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:33:43 pm
+\fs26 \
+Return the greater of (array[0], max(newArray))\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It is true I could do this as one step, as JRY and Tungsten have pointed out, but I'm going to break it up into a few steps. Hopefully this will make the code easier to read and understand.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we can use max to decide what value we want to return. Can you provide the appropriate if statement?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:36:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 max \cf7 >\cf0  array\cf6 [\cf8 0\cf6 ])\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, and then?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:36:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 max \cf7 >\cf0  array\cf6 [\cf8 0\cf6 ])\cf0  \cf6 \{
+\f1\b \cf0 return
+\f2\b0  max\cf7 ;\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, that's half of what we need.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:40:23 pm
+\fs26 \
+if (array[0] > max) \{\
+return array[0];\
+\}\
+else \{\
+return max;\
+\}\
+\cf4 ScottBusche\cf0  
+\fs20 8:40:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 max \cf7 >\cf0  array\cf6 [\cf8 0\cf6 ])\cf0  \cf6 \{
+\f1\b \cf0 return
+\f2\b0  max\cf7 ;\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  \cf6 \{
+\f1\b \cf0 return
+\f2\b0  array\cf6 [\cf8 0\cf6 ]\}\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 teachm\cf0  
+\fs20 8:40:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 array\cf6 [\cf8 0\cf6 ]\cf0  \cf7 >\cf0  maximum\cf6 (\cf0 newArray\cf6 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  maximum\cf6 (\cf0 newArray\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 8:40:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 array\cf6 [\cf8 0\cf6 ]\cf0  \cf7 >\cf0  maximum\cf6 (\cf0 newArray\cf6 ))\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f1\b return
+\f2\b0  array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f1\b else
+\f2\b0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f1\b return
+\f2\b0  maximum\cf6 (\cf0 newArray\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These work, but note that teachm and puwei99's code is slightly wasteful.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Each time you call maximum(newArray) you're asking Java to do it all over again. (Maybe there are some compiler optimizations that can rectify some of that, but you shouldn't rely on the compiler to fix stuff that you can fix yourself.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So it would be better, like I illustrated by already setting int max = maximum(newArray), to hold on to the answer and work with it directly with the variable max.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 array.\cf10 length\cf0  \cf7 ==\cf0  \cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  newArray \cf7 =\cf0  \cf9 Arrays\cf0 .\cf10 copyOfRange\cf6 (\cf0 array, \cf8 1\cf0 , array.\cf10 length\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  max \cf7 =\cf0  maximum\cf6 (\cf0 newArray\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 max \cf7 >\cf0  array\cf6 [\cf8 0\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return array\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try it out with the main we used to test the looping version. You should get the same answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  myArray \cf7 =\cf0  \cf6 \{\cf8 10\cf0 , \cf8 50\cf0 , \cf8 34\cf0 , \cf8 87\cf0 , \cf8 23\cf0 , \cf8 19\cf6 \}\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "Maximum is: %d\cf12 \\n\cf11 "\cf0 , maximum\cf6 (\cf0 myArray\cf6 ))\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 piis3141592653\cf0  
+\fs20 8:44:54 pm
+\fs26 \
+what if 2+ indexes are the same?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The else case covers that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Either max > array[0] or max <= array[0]
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Either way, we'll get the correct returned value.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other questions?
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 8:46:43 pm
+\fs26 \
+why am i getting the error "Arrays can not be resolved"?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may have neglected to import java.util.Arrays to support Arrays.copyOfRange... in the topmost else clause.
+\b0 \
+\pard\pardeftab720
+\cf4 EmeraldBot\cf0  
+\fs20 8:47:43 pm
+\fs26 \
+Why do we return array[0] twice?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first is the base case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's what we do when we're feeding a 1 element array to our maximum function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other place you see return array[0] is in the recursive step (the else clause). That's happening because array[0] happens to be larger than the maximum value in the rest of the array.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:49:58 pm
+\fs26 \
+Which is easier to write, in your opinion: the loop or the recursion?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This example isn't the best example of recursion because it is obvious how to write the loop based solution. I would have started with a more impressive example, but I wanted to do something simple at first to make sure everybody could easily see what's going on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, in this case, I think the loop version is easier to write, but that's not always the case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I said before we began this example, the way we've written this solution is a bit wasteful with memory. Let's try to fix that now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, the problem is that we shrunk the array here by (unnecessarily) building a brand-new one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The impact of this is that we take up more memory every time we make a recursive call. We start off with the original n-element array. Then we make a new n-1-element array. Then an n-2 element array. And so on. These all take up space inside the computer. Plus it does take some time to copy the elements every time, even though it's just one function call in the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since we want to keep the same elements in the same order as in the original array, we can instead just tell the recursive function what section of the array to use. Then we can simply pass a reference to the same array from call to call. Only one copy of the array is required in memory.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In order to do this, we have to add an additional parameter to the function. It will be the starting location of the section we're looking at. Why don't we need the ending location too?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:53:56 pm
+\fs26 \
+it's always the length of the array\
+\cf4 MSTang\cf0  
+\fs20 8:53:56 pm
+\fs26 \
+it always ends at the very end\
+\cf4 Tungsten\cf0  
+\fs20 8:53:56 pm
+\fs26 \
+Because the array always ends at the end\
+\cf4 ScottBusche\cf0  
+\fs20 8:54:00 pm
+\fs26 \
+The ending location is the length of the array.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because that's always the end of the array. So here's our new method header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array, \cf5 int\cf0  start\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll have to change the parts of the method. Let's look at the base case. How does the test change?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can't just look at the array length anymore. We need to know how long the current section is. 
+\i When will the current section be of length 1?
+\i0\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:55:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 start \cf7 ==\cf0  nums.\cf10 length\cf0  \cf7 -\cf0  \cf8 1\cf6 )\cf0  \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 8:55:51 pm
+\fs26 \
+when start = array.length - 1\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:55:51 pm
+\fs26 \
+start = array.length - 1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the start refers to the last element, then we're processing a 1-element section. So what's the test?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array, \cf5 int\cf0  start\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 start \cf7 ==\cf0  array.\cf10 length\cf7 -\cf8 1\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And what do we do in this case?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:57:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 array.\cf10 length\cf0  \cf7 ==\cf0  start\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 8:57:18 pm
+\fs26 \
+return array[start]\
+\cf4 Tungsten\cf0  
+\fs20 8:57:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 return
+\f2\b0  nums\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:57:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 return
+\f2\b0  array\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array, \cf5 int\cf0  start\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 start \cf7 ==\cf0  array.\cf10 length\cf7 -\cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return array\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the base case, since we keep removing the front of the array each time, when we're done, we're left with the last element. That's at position array.length-1, which is the same as start in this case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that so far?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now on to the recursive case. We don't need to make a new array anymore. Instead, we can go right to assigning max to be the result of the recursive call. It's a slightly different call than before. Can you give the line?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Sorry for the extra piece of code cluttering up the sticky box. Everything's gone buggy and I can't remove that one line in particular.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So for this part, just like our previous solution, we want to set "int max = ..."
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You just need to tell me what goes in that "..."
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:01:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf5 int
+\f2\b0 \cf0  max \cf7 =\cf0  maximum\cf6 (\cf0 array, start\cf7 +\cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:01:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf5 int
+\f2\b0 \cf0  max \cf7 =\cf0  maximum\cf6 (\cf0 array, start \cf7 +\cf0  \cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 9:01:48 pm
+\fs26 \
+int max = maximum(array,start+1);\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:01:48 pm
+\fs26 \
+max = maximum(array, start+1);\
+\cf4 teachm\cf0  
+\fs20 9:01:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf5 int
+\f2\b0 \cf0  max \cf7 =\cf0  maximum\cf6 (\cf0 array, start\cf7 +\cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 9:01:48 pm
+\fs26 \
+int max = maximum(array, start+1);\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array, \cf5 int\cf0  start\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 start \cf7 ==\cf0  array.\cf10 length\cf7 -\cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return array\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  max \cf7 =\cf0  maximum\cf6 (\cf0 array, start\cf7 +\cf8 1\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we have to supply the starting position of the new section as a parameter. That begins one after the point we just started at. So the second parameter is start+1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next comes the \cf3 if\cf0  to compare max to the element at the beginning of the original section. Can you give the code?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 9:03:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 max \cf7 >\cf0  array\cf6 [\cf0 start\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:03:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 max \cf7 >\cf0  array\cf6 [\cf0 start\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  array\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here it is in the complete method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array, \cf5 int\cf0  start\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 start \cf7 ==\cf0  array.\cf10 length\cf7 -\cf8 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return array\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  max \cf7 =\cf0  maximum\cf6 (\cf0 array, start\cf7 +\cf8 1\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 max \cf7 >\cf0  array\cf6 [\cf0 start\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return array\cf6 [\cf0 start\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens when you run this method with the main we had before?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Trick question! You can't. Why not?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:04:04 pm
+\fs26 \
+maximum needs two parameters\
+\cf4 puwei99\cf0  
+\fs20 9:04:04 pm
+\fs26 \
+you need a second parameter for maximum which is start\
+\cf4 moppr\cf0  
+\fs20 9:04:04 pm
+\fs26 \
+Our call in main doesn't have the second param\
+\cf4 MSTang\cf0  
+\fs20 9:04:04 pm
+\fs26 \
+different parameters\
+\cf4 k77frank\cf0  
+\fs20 9:04:08 pm
+\fs26 \
+you don't have the parameters\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because in main, the maximum method just took the array as a parameter. Now it needs two parameters. What should the second parameter be?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:04:26 pm
+\fs26 \
+0\
+\cf4 MSTang\cf0  
+\fs20 9:04:26 pm
+\fs26 \
+0\
+\cf4 Tungsten\cf0  
+\fs20 9:04:26 pm
+\fs26 \
+0\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:04:26 pm
+\fs26 \
+0\
+\cf4 k77frank\cf0  
+\fs20 9:04:29 pm
+\fs26 \
+0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It should be 0, since the start of the array is, well, at the start.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a little awkward, though, to have a 0 in the call within main. If I'm a programmer who wants to use your maximum method, I'd just want to give the array as a parameter. I shouldn't need to stick a 0 in just to make your function happy.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a situation like this, we can please both sides by putting a function in between. The programmer of main uses a 1-parameter version. That version then immediately calls the 2-parameter version that does all the work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So let's put in a new function for the 1-parameter version:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  maximum\cf6 (\cf5 int\cf6 []\cf0  array\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return maximum\cf6 (\cf0 array, \cf8 0\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The return is important, since we want the result of the 2-parameter version as the final answer. You may see the 1-parameter version called a \cf3 helper\cf0  method, since it sets up the extra parameters required for the recursion.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's step through an example of how this all works, since we've got a few moving parts at this point.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose the array is just \{10, 50, 34\}. We begin by calling the 2-parameter version with start=0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Are we in the base case yet?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:06:38 pm
+\fs26 \
+No.\
+\cf4 MSTang\cf0  
+\fs20 9:06:38 pm
+\fs26 \
+no\
+\cf4 chenjamin\cf0  
+\fs20 9:06:38 pm
+\fs26 \
+nope\
+\cf4 puwei99\cf0  
+\fs20 9:06:38 pm
+\fs26 \
+no\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, the length of the array is 3, so we're in the base case when start is 2. So what call do we make?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (That is to say, what call will our newly written maximum function make next?)
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:07:38 pm
+\fs26 \
+maximum(array, 1)\
+\cf4 Tungsten\cf0  
+\fs20 9:07:38 pm
+\fs26 \
+2-param version with start = 1\
+\cf4 chenjamin\cf0  
+\fs20 9:07:38 pm
+\fs26 \
+we call maximum(array, 1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We call maximum(array, 1). This puts our call to maximum(array, 0) on hold. Are we now in the base case?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 9:08:15 pm
+\fs26 \
+still no\
+\cf4 Tungsten\cf0  
+\fs20 9:08:15 pm
+\fs26 \
+No\
+\cf4 JRY\cf0  
+\fs20 9:08:15 pm
+\fs26 \
+No, not yet\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not yet, we still don't have start at 2. So what happens?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 9:08:53 pm
+\fs26 \
+we call maximum(array, 2)\
+\cf4 moppr\cf0  
+\fs20 9:08:53 pm
+\fs26 \
+maximum(array, 2) is called which is when we hit the base\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We call maximum(array, 2), putting maximum(array, 1) on hold. Now are we in the base case?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:09:19 pm
+\fs26 \
+yes\
+\cf4 moppr\cf0  
+\fs20 9:09:19 pm
+\fs26 \
+yep!\
+\cf4 ScottBusche\cf0  
+\fs20 9:09:19 pm
+\fs26 \
+Yes.\
+\cf4 chenjamin\cf0  
+\fs20 9:09:19 pm
+\fs26 \
+yes\
+\cf4 JRY\cf0  
+\fs20 9:09:19 pm
+\fs26 \
+yes\
+\cf4 Tungsten\cf0  
+\fs20 9:09:19 pm
+\fs26 \
+Yes\
+\cf4 manbugbeebee\cf0  
+\fs20 9:09:24 pm
+\fs26 \
+yes\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Finally yes! So what happens?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What does our 2-parameter maximum function do at this point as it unravels its way back out? What happens first?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:10:21 pm
+\fs26 \
+We return array[start]\
+\cf4 chenjamin\cf0  
+\fs20 9:10:21 pm
+\fs26 \
+the call returns 34\
+\cf4 ScottBusche\cf0  
+\fs20 9:10:21 pm
+\fs26 \
+We return 34.\
+\cf4 JRY\cf0  
+\fs20 9:10:21 pm
+\fs26 \
+max = array[2] = 34\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We return array[2], which in my particular example is 34.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then where do we go back to? Which call does array[2] = 34 get passed to?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:11:16 pm
+\fs26 \
+maximum(array, 1)\
+\cf4 ScottBusche\cf0  
+\fs20 9:11:16 pm
+\fs26 \
+The call with start=1\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:11:16 pm
+\fs26 \
+maximum(array,1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's maximum(array, 1). So max in this call is 34. What's the result of this call?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 9:11:50 pm
+\fs26 \
+comparing with 50 which is array[1]\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:11:50 pm
+\fs26 \
+50\
+\cf4 ScottBusche\cf0  
+\fs20 9:11:50 pm
+\fs26 \
+50>34, so 50.\
+\cf4 JRY\cf0  
+\fs20 9:11:50 pm
+\fs26 \
+50\
+\cf4 teachm\cf0  
+\fs20 9:11:50 pm
+\fs26 \
+50\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's 50. We compare array[1] to 34, and array[1] (i.e. 50) is bigger. So maximum(array, 1) is 50.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now what?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 9:12:19 pm
+\fs26 \
+now compares to array[0]\
+\cf4 MathWolf\cf0  
+\fs20 9:12:19 pm
+\fs26 \
+we compare with 0 which is 10\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We go back to maximum(array, 0), comparing 50 to 10. 50 is bigger, so that's what's returned.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now where are we?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Now where are we assuming we started off from the 1-parameter call to our helper function from main?)
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:13:11 pm
+\fs26 \
+The 1-parameter method returns 50.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're in the 1-parameter version of maximum. That just simply returns the 50 we just computed. And we're done!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ok. Let's press on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: REALLY RECURSIVE PROBLEMS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 At this point, you may be wondering why we're bothering with recursion. We've spent a lot of time to code two problems which were pretty easy to do with loops in the first place.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And, in fact, if you can see a good looping (or, if you want to sound fancier, \cf3 iterative\cf0 ) way of solving a problem, you should do that. Unless you're very careful and clever with how you structure your solution, an iterative solution will pretty much always be faster than the recursive way, since you won't have the overhead of remembering all of those recursive calls.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Well, 
+\i you
+\i0  won't have that overhead, but your program/computer will.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That "if", though, is important. Some problems are much easier to solve if you think about them in a recursive way. We'll finish up today by looking at a few.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose you want a list of all of the files on your computer. What makes this problem interesting is how the files are organized on your hard drive. How do you organize your files?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:15:07 pm
+\fs26 \
+In folders\
+\cf4 puwei99\cf0  
+\fs20 9:15:07 pm
+\fs26 \
+into folders\
+\cf4 Tungsten\cf0  
+\fs20 9:15:07 pm
+\fs26 \
+In folders.\
+\cf4 MSTang\cf0  
+\fs20 9:15:07 pm
+\fs26 \
+folders\
+\cf4 MathWolf\cf0  
+\fs20 9:15:07 pm
+\fs26 \
+On your disc into folders\
+\cf4 ScottBusche\cf0  
+\fs20 9:15:07 pm
+\fs26 \
+In folders of folders of folders...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You probably have them in a bunch of \cf3 folders\cf0  or \cf3 directories\cf0 . If we want to list your files, we have to list the contents of each directory.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And what might be in those directories?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:15:35 pm
+\fs26 \
+More directories.'\
+\cf4 Wilderc\cf0  
+\fs20 9:15:35 pm
+\fs26 \
+Folders I suppose\
+\cf4 moppr\cf0  
+\fs20 9:15:35 pm
+\fs26 \
+more directories!\
+\cf4 Tungsten\cf0  
+\fs20 9:15:35 pm
+\fs26 \
+More folders! 
+\f3\fs24 {{\NeXTGraphic 1__#$!@%!#__smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In addition to files, you could also have \cf3 more directories\cf0 , which we will also have to go through. And so forth.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Trying to code the printing problem in an iterative way is possible, but it would be tricky, since we'd potentially have many levels of sub-directories to look at.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, in Java, both regular files and directories are examples of File objects. Directories are just special kinds of Files whose contents point to other Files.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's try to think of this recursively. We want to write a function called showFiles that will take a File object as a parameter and print the names of the file (which might in fact be a directory, since Java's File objects don't immediately distinguish between files and directories) and all of the files contained in it including the contents of all further subdirectories.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the base case here?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:16:41 pm
+\fs26 \
+The file is actually a file.\
+\cf4 MSTang\cf0  
+\fs20 9:16:41 pm
+\fs26 \
+If the file is alone, print it\
+\cf4 Tungsten\cf0  
+\fs20 9:16:41 pm
+\fs26 \
+The File has no subfiles?\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:16:41 pm
+\fs26 \
+a single file\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the base case we have a regular file. In other words, it's not a directory. So what do we do?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just display its name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fortunately Java's File class has methods that will tell us if a File is a directory or not and that will tell us the name of the file. Here's the corresponding code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  showFiles\cf6 (\cf9 File\cf0  file\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf7 !\cf0 file.\cf10 isDirectory\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%s\cf12 \\n\cf11 "\cf0 ,file.\cf10 getName\cf6 ())\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'll need to import java.io.File for this.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens in the case when it is a directory?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:18:15 pm
+\fs26 \
+Call showFiles on everything in the directory.\
+\cf4 MSTang\cf0  
+\fs20 9:18:15 pm
+\fs26 \
+Go through each of its contents and recurse on them\
+\cf4 moppr\cf0  
+\fs20 9:18:15 pm
+\fs26 \
+We make a recursive call one level deeper\
+\cf4 teachm\cf0  
+\fs20 9:18:15 pm
+\fs26 \
+calls itself with a file in the directory\
+\cf4 Tungsten\cf0  
+\fs20 9:18:15 pm
+\fs26 \
+We loop through the files and directories in the directory, and call showFiles() on each of them.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to get the contents of that directory. It will be a set of Files. And what do we do with each one?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We call showFiles on it to list it or its contents.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again we get some help from a File method called listFiles:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0   public static \cf5 void\cf0  showFiles\cf6 (\cf9 File\cf0  file\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf7 !\cf0 file.\cf10 isDirectory\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%s\cf12 \\n\cf11 "\cf0 ,file.\cf10 getName\cf6 ())\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf9 File\cf0  f \cf7 :\cf0  file.\cf10 listFiles\cf6 ())\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What one line goes in the for loop?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 9:19:57 pm
+\fs26 \
+showFiles(f);\
+\cf4 JRY\cf0  
+\fs20 9:19:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 showFiles\cf6 (\cf0 f\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 9:19:57 pm
+\fs26 \
+showFiles(f);\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:19:57 pm
+\fs26 \
+showFiles(f)\
+\cf4 puwei99\cf0  
+\fs20 9:19:57 pm
+\fs26 \
+showFiles(f)\
+\cf4 Tungsten\cf0  
+\fs20 9:19:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 showFiles\cf6 (\cf0 f\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's showFiles(f); So here's the whole method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0    public static \cf5 void\cf0  showFiles\cf6 (\cf9 File\cf0  file\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf7 !\cf0 file.\cf10 isDirectory\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%s\cf12 \\n\cf11 "\cf0 ,file.\cf10 getName\cf6 ())\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf9 File\cf0  f \cf7 :\cf0  file.\cf10 listFiles\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0showFiles\cf6 (\cf0 f\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what a sample call might look like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 File\cf0  myDirectory \cf7 =\cf0  new \cf9 File\cf6 (\cf11 "C:\cf12 \\\\\cf11 Users\cf12 \\\\\cf11 sweiss\cf12 \\\\\cf11 Documents\cf12 \\\\\cf11 AOPS\cf12 \\\\\cf11 JavaDS\cf12 \\\\\cf11 javaWorkspace\cf12 \\\\\cf11 Recursion"\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0showFiles\cf6 (\cf0 myDirectory\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is on my (actually Scott Weiss's) PC. I give the full path to a folder in my Eclipse workspace. Note the double backslashes at each point. As you know, Java uses a single backslash to indicate a special character like a newline (\\n). So we need \\\\ to tell Java that we actually want a slash character in the string.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And here's the output I get:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 .classpath\
+.project\
+org.eclipse.jdt.core.prefs\
+RecursionExamples.class\
+RecursionExamples.java\
+\pard\pardeftab720
+
+\f0\b0 \cf4 puwei99\cf0  
+\fs20 9:20:56 pm
+\fs26 \
+wow i never knew we could do all of this with recursion\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah. Navigating trees (which is what a file system is, when you stop to think about it) is a classic application of recursion.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In case you're curious, here's what an iterative solution to the problem might look like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  printDirectory\cf6 (\cf9 File\cf0  dir\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf13 // iterative version of showFiles
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ArrayList\cf7 <\cf0 File\cf7 >\cf0  files \cf7 =\cf0  new ArrayList\cf7 <\cf0 File\cf7 >\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf9 File\cf0  f \cf7 :\cf0  dir.\cf10 listFiles\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0files.\cf10 add\cf6 (\cf0 f\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  i\cf7 =\cf8 0\cf7 ;\cf0  i\cf7 <\cf0 files.\cf10 size\cf6 ()\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 File\cf0  current \cf7 =\cf0  files.\cf10 get\cf6 (\cf0 i\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 current.\cf10 isDirectory\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf9 File\cf0  f \cf7 :\cf0  current.\cf10 listFiles\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0files.\cf10 add\cf6 (\cf0 i\cf7 +\cf8 1\cf0 ,f\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "%s\cf12 \\n\cf11 "\cf0 ,current.\cf10 getName\cf6 ())\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this solution, we form a list of all of the files within this file (which may be just itself). Then we go through each one. It's printed if it's a regular file. If it's not, we put all of its contents back onto the list.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:22:41 pm
+\fs26 \
+Hum that's a little longer\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not only longer, but (I think) it's also less obvious what it's doing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It takes a bit more thought to see what's going on with it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Perhaps you agree that the recursive version is easier to read. It's certainly shorter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have 7 minutes left.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I think we'll be able to get through most of this last example in 7 minutes. [crosses fingers]
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's another example. A \cf3 set\cf0  is a collection of 
+\i distinct
+\i0  elements. So \{2,3,4\} is a set, but \{2,3,3,4\} is not. \{\} is a set too; it's called the \cf3 empty set\cf0  or \cf3 null set\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A \cf3 subset\cf0  of a set S is another set containing zero or more elements from S. For example, if S is the set \{2,3,4\}, then \{2,4\} is a subset of S. Note that \{4, 2\} is considered to be the same set as \{2, 4\}; order doesn't matter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What other subsets does my example set S have?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 9:24:50 pm
+\fs26 \
+\{3,4\} \{2,3\}\
+\cf4 ScottBusche\cf0  
+\fs20 9:24:50 pm
+\fs26 \
+\{2, 3\}, \{3, 4\{\
+\cf4 MSTang\cf0  
+\fs20 9:24:50 pm
+\fs26 \
+\{\}, \{2\}, \{3\}, \{4\}, \{2, 3\}, \{2, 4\}, \{3, 4\}, \{2, 3, 4\}\
+\cf4 ScottBusche\cf0  
+\fs20 9:24:50 pm
+\fs26 \
+\{2, 3\}, \{3, 4\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the whole list: \{\}, \{2\}, \{3\}, \{4\}, \{2, 3\}, \{3, 4\}, \{2, 4\}, \{2,3,4\}.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that the empty list is a subset of every set. Also a set is always a subset of itself.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If a set has n elements, how many subsets does it have?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Sorry about that. A fuse tripped and it shut off my comp.)
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:27:54 pm
+\fs26 \
+2^n\
+\cf4 chenjamin\cf0  
+\fs20 9:27:54 pm
+\fs26 \
+2^n\
+\cf4 JRY\cf0  
+\fs20 9:27:54 pm
+\fs26 \
+2^n because every element can either be in or out of a certain subset\
+\cf4 AkshajK\cf0  
+\fs20 9:27:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\fs24 \cf0 {{\NeXTGraphic 4a0fb6d4d4be55cfa0d6d904b5af52c377dff12b.png \width4260 \height320 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 9:27:54 pm
+\fs26 \
+2^n because each element can either be in the list or out of it\
+\cf4 mattpi\cf0  
+\fs20 9:27:54 pm
+\fs26 \
+2^N\
+\cf4 shivammisra\cf0  
+\fs20 9:27:54 pm
+\fs26 \
+2^n subsets\
+\cf4 teachm\cf0  
+\fs20 9:27:58 pm
+\fs26 \
+2 to the power of n subsets\
+\cf4 moppr\cf0  
+\fs20 9:27:58 pm
+\fs26 \
+2 to the power of n\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It has $2^n$ subsets. We call the set of all subsets of S the \cf3 power set\cf0  of S. So, for my example, the power set would be \{\{\}, \{2\}, \{3\}, \{4\}, \{2, 3\}, \{3, 4\}, \{2, 4\}, \{2,3,4\}\}. Note the curly braces around the whole thing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can represent a set in Java by an ArrayList. (Actually Java has Set classes too, but we'll get to those in a few weeks.) Let's write a function that, given a set of Integers, returns the power set of that set.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So what kind of Java object will our function return?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One set would be an ArrayList. We want a set of those.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:29:24 pm
+\fs26 \
+ArrayList<ArrayList<Integer>>\
+\cf4 moppr\cf0  
+\fs20 9:29:24 pm
+\fs26 \
+arraylist or arraylists\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A power set is a set of sets. Our basic set is an ArrayList<Integer>. So we want an ArrayList of those, namely an ArrayList<ArrayList<Integer>>.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's the header line for our function:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static ArrayList\cf7 <\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >>\cf0  powerSet\cf6 (\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >\cf0  set\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As always, we begin by identifying the base case. What's the simplest set to work with?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 9:29:58 pm
+\fs26 \
+nullset\
+\cf4 Tungsten\cf0  
+\fs20 9:29:58 pm
+\fs26 \
+The empty set?\
+\cf4 ScottBusche\cf0  
+\fs20 9:29:58 pm
+\fs26 \
+The empty set.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The empty set is the simplest set. What's the power set of the empty set? Hint: it's not \{\}.
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\{ \{\} \}\
+\cf4 puwei99\cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\{\{\}\}\
+\cf4 moppr\cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\{\{\}\}\
+\cf4 ScottBusche\cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\{\{\}\}\
+\cf4 MathWolf\cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\{\{\}\}\
+\cf4 chenjamin\cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\{\{\}\}\
+\cf4 Tungsten\cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\{\{\}\}\
+\cf4 mattpi\cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\{\{\}\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember every set is a subset of itself. So \{\} is a subset of \{\}. That's the only subset, so the power set is \{ \{\} \}.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll translate this idea into Java. How do we know if the parameter 
+\i set
+\i0  is empty?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I'm going to press on for another five-ten minutes. You can go now if you need to. As always, just check back later for what you miss.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:31:48 pm
+\fs26 \
+If it's size is 0.\
+\cf4 JRY\cf0  
+\fs20 9:31:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf6 (\cf0 set.\cf10 size\cf6 ()\cf0  \cf7 ==\cf0  \cf8 0\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are actually two ways. The ArrayList class has a method called isEmpty(). So we could write if (set.isEmpty()). Alternatively, we could check if the size is 0:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static ArrayList\cf7 <\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >>\cf0  powerSet\cf6 (\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >\cf0  set\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 set.\cf10 size\cf6 ()\cf0  \cf7 ==\cf0  \cf8 0\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this base case, we want to return a set containing (as its only element) an empty set. It takes three lines: one to create the set, one to put an empty set in it, and one to return it. Can you do it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, if our set is empty, then we just need to create our ArrayList of ArrayLists of Integers (which represents our power set) and put the empty set (an empty ArrayList of Integers) into it.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:35:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf6 (\cf0 set.\cf10 size\cf6 ()\cf0  \cf7 ==\cf0  \cf8 0\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ArrayList\cf7 <\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >>\cf0  emptySet \cf7 =\cf0  
+\f1\b new
+\f2\b0  ArrayList\cf7 <\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >>\cf0  \cf6 (\cf8 1\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0emptySet.\cf10 add\cf6 (
+\f1\b \cf0 new
+\f2\b0  ArrayList\cf7 <\cf0 Integer\cf7 >\cf0  \cf6 (\cf8 0\cf6 ))\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  emptySet\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer so far:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static ArrayList\cf7 <\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >>\cf0  powerSet\cf6 (\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >\cf0  set\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 set.\cf10 size\cf6 ()\cf0  \cf7 ==\cf0  \cf8 0\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0ArrayList\cf7 <\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >>\cf0  answer \cf7 =\cf0  new ArrayList\cf7 <\cf0 ArrayList\cf7 <\cf0 Integer\cf7 >>\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer.\cf10 add\cf6 (\cf0 new ArrayList\cf7 <\cf0 Integer\cf7 >\cf6 ())\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now to the recursive case. How do we make a set smaller?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I'll just sketch this and we can move the completion of this problem to the message board.)
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:36:19 pm
+\fs26 \
+Remove an element.\
+\cf4 Tungsten\cf0  
+\fs20 9:36:19 pm
+\fs26 \
+Lop off an element.\
+\cf4 puwei99\cf0  
+\fs20 9:36:19 pm
+\fs26 \
+removing the first number\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We take something out. Let's look at our \{2,3,4\} example.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here\'92s the power set of \{2,3,4\} again: \{\{\}, \{2\}, \{3\}, \{4\}, \{2,3\}, \{2,4\}, \{3,4\}, \{2,3,4\}\}.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we take out 2, we get \{3,4\}. Its power set is \{\{\}, \{3\}, \{4\}, \{3, 4\}\}.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the relationship between the power set of \{3, 4\} and the power set of \{2, 3, 4\}?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:37:12 pm
+\fs26 \
+all of the powerset of \{3, 4\} is also part of that of \{2, 3, 4\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not only that. What can you say about the part of the power set of \{2,3,4\} that doesn't immediately come from the power set of \{3, 4\}?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:37:50 pm
+\fs26 \
+and the rest of the power set of \{2,3,4\} comes from adding 2 to all the sets in the power set of \{3, 4\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ah!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first is a subset of the second. All the subsets of \{3, 4\} are also subsets of \{2, 3, 4\}. Notice that we have four of the eight subsets of \{2,3,4\}.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the power set of \{3, 4\} gives us half of the subsets we need to find the power set of \{2, 3, 4\}.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the other half: \{2\}, \{2, 3\}, \{2, 4\}, \{2, 3, 4\}. What do they have in common?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They all have the 2 that we took out to make the set smaller. And if you take 2 out of each of those sets, what do you get?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You get the power set of \{3, 4\} again! Here's how to think about it. The power set of \{2,3,4\} is the subsets that don't have 2 plus the subsets that do have 2. The subsets without 2 are all subsets of \{3,4\}. We add 2 to each of those to get the subsets that do have 2.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To generalize: Pull the first element out of the set. Find the power set recursively of the remaining smaller set. That gives you half of the answer. Form the other half by adding the removed element to each of those sets.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I should end, so I'll let you mull over how you would write up this last part to constitute your recursive step.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Don't worry. I'll start a thread on the message board where we can discuss this last part.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This week, we saw the coding technique of recursion. Remember the key ideas:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To apply recursion, look for how the solution to a problem can be found by solving a simpler version of the same problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need a "base case" for it to work. There needs to be a simplest version of the problem we can solve without needing recursion.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Recursion is useful for certain problems that are easier to understand with recursive techniques. But it is generally more expensive in terms of computer resources than an iterative solution.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week we'll take a little break from programming to instead figure out how to analyze code to figure out how efficient it is.}

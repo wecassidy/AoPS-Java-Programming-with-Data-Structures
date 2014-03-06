@@ -1,0 +1,5622 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier;
+\f3\fmodern\fcharset0 Courier-Bold;\f4\fmodern\fcharset0 Courier-BoldOblique;\f5\fmodern\fcharset0 Courier-Oblique;
+\f6\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red18\green139\blue2;\red1\green32\blue135;\red43\green139\blue39;\red11\green85\blue38;\red0\green0\blue83;
+\red190\green74\blue193;\red0\green0\blue255;\red83\green83\blue83;\red38\green38\blue38;\red196\green196\blue196;
+\red11\green86\blue1;\red249\green249\blue249;\red133\green35\blue39;\red87\green197\blue83;\red154\green151\blue213;
+\red162\green165\blue6;\red109\green109\blue109;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid401\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid501\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid601\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid7}
+{\list\listtemplateid8\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid701\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid8}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}{\listoverride\listid8\listoverridecount0\ls8}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 17: Trees
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Last week, we discussed some data structures that allow access to elements in specific places. In general, though, we might want to access any element in the structure.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Consider the chat room manager program we wrote several weeks ago to test our list code (NameManager.java). In that application, we needed to determine whether or not a certain name appears in the list.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is the algorithm we used to solve that problem?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:32:10 pm
+\fs26 \
+Looping through the list\
+\cf4 Tungsten\cf0  
+\fs20 7:32:10 pm
+\fs26 \
+Go through every name in the list and check if that name is the desired one.\
+\cf4 ScottBusche\cf0  
+\fs20 7:32:10 pm
+\fs26 \
+Go through every element in the list.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You start at the beginning and move forward to each successive element. You'll either eventually hit the one you're looking for, or you'll look at everything.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the running time of this approach?
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 7:33:26 pm
+\fs26 \
+O(N)\
+\cf4 spower4\cf0  
+\fs20 7:33:26 pm
+\fs26 \
+O(N)\
+\cf4 ScottBusche\cf0  
+\fs20 7:33:26 pm
+\fs26 \
+O(N)\
+\cf4 JRY\cf0  
+\fs20 7:33:26 pm
+\fs26 \
+O(N) where N is the size of the list\
+\cf4 chenjamin\cf0  
+\fs20 7:33:26 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 7:33:26 pm
+\fs26 \
+O(N)\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:33:26 pm
+\fs26 \
+O(N)\
+\cf4 piis3141592653\cf0  
+\fs20 7:33:26 pm
+\fs26 \
+O(x)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the worst case, this approach is linear time, O(N) where N is the number of elements in the list, since you may need to look at every element.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Way back in week 11, one of the message board problems discussed another approach for looking for an element in a list. In that problem, you had to code an algorithm called \cf3 binary search\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's review how that worked.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instead of starting at the first element, where did we start?
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 7:34:43 pm
+\fs26 \
+middle\
+\cf4 connor0728\cf0  
+\fs20 7:34:43 pm
+\fs26 \
+middle\
+\cf4 Dragon18\cf0  
+\fs20 7:34:43 pm
+\fs26 \
+the halfway point\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You first look at the middle element and you compare it to the element you're looking for. For example, suppose you're looking for "search" and the middle element, the first element you look at, is "middle". To which part of the list does the algorithm now tell you to narrow your search?
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 7:35:24 pm
+\fs26 \
+second half\
+\cf4 chenjamin\cf0  
+\fs20 7:35:24 pm
+\fs26 \
+the half where the element is in\
+\cf4 Dragon18\cf0  
+\fs20 7:35:24 pm
+\fs26 \
+the second half\
+\cf4 JRY\cf0  
+\fs20 7:35:24 pm
+\fs26 \
+The second half\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You narrow your search to the second half of the list, the stuff after the middle element, since "search", the piece of data we're hoping to find, alphabetically comes after "middle", the element of the list we just examined. Carrying on in this fashion, you locate the middle element of the part of the list you've decided you need to search in and compare its value to the value of the data element you're trying to find. You search the left half of the remaining part of the list if the middle element comes 
+\i after
+\i0  what you're looking for; you search the right side if it comes before.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions on that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a tough question. What is the running time of binary search?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 At each step, we throw away half of the elements. In the worst case, we have to do this until there is one element left. So we need to know the number of times we can divide n by 2 until we first get a value between 0 and 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Does that give anyone any ideas what the running time should be?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:38:15 pm
+\fs26 \
+O(log_2 N)\
+\cf4 AkshajK\cf0  
+\fs20 7:38:15 pm
+\fs26 \
+O(log n)\
+\cf4 chenjamin\cf0  
+\fs20 7:38:15 pm
+\fs26 \
+O(log N)\
+\cf4 ScottBusche\cf0  
+\fs20 7:38:15 pm
+\fs26 \
+O(log N)\
+\cf4 Dragon18\cf0  
+\fs20 7:38:15 pm
+\fs26 \
+O(log(base2)N)\
+\cf4 bel3900989\cf0  
+\fs20 7:38:15 pm
+\fs26 \
+O(log_2(N))\
+\cf4 Tungsten\cf0  
+\fs20 7:38:15 pm
+\fs26 \
+O(log (n))?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In other words, to determine how many steps we're going to need to do, we just need to answer the question, "What value of x makes 2^x = n?" The answer to that question, by definition, is the logarithm in base 2 of n. So the running time of our algorithm is O(log n).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's much better than the O(n) search of looking at everything. The moral of this story is that we'd much rather do a binary search than a so-called \cf3 sequential search\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The catch, however, is that for the binary search algorithm to work, we need to make a major assumption about the list. What is it?
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 7:40:43 pm
+\fs26 \
+the list is sorted\
+\cf4 connor0728\cf0  
+\fs20 7:40:43 pm
+\fs26 \
+it has to be in order\
+\cf4 chenjamin\cf0  
+\fs20 7:40:43 pm
+\fs26 \
+it is ordered\
+\cf4 Tungsten\cf0  
+\fs20 7:40:43 pm
+\fs26 \
+It is in order?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to assume our list is already in order. If the list is scrambled, there's no reason to expect "search" to follow "middle" in the list. We're pretty much stuck looking at every element.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we'll need to make sure that the list is always in order. That means we can't just throw a new element on the front or the back. We need to move through until we find the right spot and stick it in between existing elements. That turns a constant time insertion into linear time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's also another issue with binary search concerning linked lists. There's something binary search needs to do that is very efficient in an array-based list but is inefficient in linked lists. What is it?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:41:58 pm
+\fs26 \
+Find the middle element.\
+\cf4 Tungsten\cf0  
+\fs20 7:41:58 pm
+\fs26 \
+Move to a given position\
+\cf4 JRY\cf0  
+\fs20 7:41:58 pm
+\fs26 \
+It needs to know where the half-, quarter-, etc. places are in the list\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The problem is finding the location (in memory) of the middle element. Array elements are stored in consecutive memory locations. So given the first element's location and the size of the list, we can compute exactly where the middle is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But a linked list's nodes can be 
+\i anywhere
+\i0  in memory. The only way to find the middle is to follow the nodes' \cf3 next\cf0  pointers. This means that finding the middle element in a linked list, as opposed to an array based list, is a linear-time operation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This discussion brings us to our goal for today. We want a structure that does an efficient search that also is efficient in keeping the nodes ordered. And it should be linked, so we can make better use of memory.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: TREES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What we'll end up with is a special case of a general structure called a \cf3 tree\cf0 . Here's a picture of a tree:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic tree1.png \width7560 \height5745 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As in our linked list, we call each of the circles in the picture a \cf3 node\cf0 . Each node holds one piece of data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nodes then have links to other nodes. The key difference between trees and linked lists is that in a tree, we can have 
+\i multiple
+\i0  links to other nodes. In my picture, I didn't draw the links as arrows. However, you can think of all the line segments you see as arrows that point down.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll say that again, since I'm going to refer several times to arrow heads in the upcoming discussion. 
+\i We will think of all the line segments you see as arrows that point down.
+\i0\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The node labeled A in my picture is different from all the others. How?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:44:38 pm
+\fs26 \
+It has 3 arrows pointing from it.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's true. It is the only one that has 3 arrows coming out of it. That's not yet what I'm looking for though. What else?
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 7:45:26 pm
+\fs26 \
+it's on the top. no nodes point to it\
+\cf4 JRY\cf0  
+\fs20 7:45:26 pm
+\fs26 \
+It has no arrows going into it\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:45:26 pm
+\fs26 \
+It doesn't have anything above it.\
+\cf4 Tungsten\cf0  
+\fs20 7:45:26 pm
+\fs26 \
+There are no node pointing to it, and it has 3 arrows coming out of it\
+\cf4 piis3141592653\cf0  
+\fs20 7:45:26 pm
+\fs26 \
+there's nothing that points down to it, aka it's the head\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The node labeled A has no links from nodes pointing 
+\i to
+\i0  it. We call this node the \cf3 root\cf0  of the tree. We can think of everything as growing out of the root. It's a little strange that the root is typically drawn at the top as opposed to the bottom.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you want, every time you see a tree drawn with the root at the top, which is pretty much always how they're drawn, you could just do a headstand, or pretend the tree was drawn by someone in Australia. 
+\f1\b0\fs24 {{\NeXTGraphic smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:46:46 pm
+\fs26 \
+It's like a waterfall instead of a tree.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Indeed. It's like a waterfall that breaks up into separate branches as it descends.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Look at our example of a tree. Is it possible to make any loops starting at a given vertex and always following the direction of the arrows -- meaning always going down in this case since the convention we're using is that our arrows always point downward? (In the language of graph theory, we would call such a loop a \cf3 cycle\cf0 .)
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 7:49:02 pm
+\fs26 \
+no\
+\cf4 ScottBusche\cf0  
+\fs20 7:49:02 pm
+\fs26 \
+No.\
+\cf4 JRY\cf0  
+\fs20 7:49:02 pm
+\fs26 \
+No\
+\cf4 chenjamin\cf0  
+\fs20 7:49:02 pm
+\fs26 \
+nope\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. If you're 
+\i always going downward
+\i0 , it certainly isn't possible ever to get back up to where you started. There aren't any cycles in our example tree. More generally, trees are never allowed to have cycles; hence they are called \cf3 acyclic\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Some more terminology. In my tree, node B points at node E. In this case, we say that B is the \cf3 parent\cf0  of E. E is a \cf3 child\cf0  of B.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note it's 
+\i the
+\i0  parent and 
+\i a
+\i0  child. Every node (except the root) has exactly one parent, but it could have any number of children.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since E and F share a parent, what shall we call them? (Hint: There are a few terms in ordinary English you might choose. Go for the gender-neutral one.)
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 7:50:23 pm
+\fs26 \
+siblings\
+\cf4 spower4\cf0  
+\fs20 7:50:23 pm
+\fs26 \
+siblings\
+\cf4 ScottBusche\cf0  
+\fs20 7:50:23 pm
+\fs26 \
+Siblings?\
+\cf4 manbugbeebee\cf0  
+\fs20 7:50:23 pm
+\fs26 \
+siblings\
+\cf4 AkshajK\cf0  
+\fs20 7:50:23 pm
+\fs26 \
+sibling\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can call them \cf3 siblings\cf0 . You could also define other family relationships, like "grandparent", meaning exactly what you'd expect it to mean.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:50:43 pm
+\fs26 \
+how about great-grandparent\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep, that would make sense too, as well as aunt/uncle, niece/nephew, cousin, second cousin, etc. All that stuff is fair game, though you usually don't need any of the fancy stuff to make yourself understood.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's generally enough to be able to refer to parents, children, and siblings.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unless every node in your tree has infinitely many descendents, there must be nodes in it that have no children. Such nodes are called \cf3 leaves\cf0 . (For our purposes, considering trees as data structures, we can assume all our trees have finitely many vertices, so such infinite descent is impossible.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Which nodes are the leaves in my example?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:52:44 pm
+\fs26 \
+E, J, K, G, H, I\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:52:44 pm
+\fs26 \
+E J K G H I\
+\cf4 Tungsten\cf0  
+\fs20 7:52:44 pm
+\fs26 \
+E, G, H, I, J, and K\
+\cf4 manbugbeebee\cf0  
+\fs20 7:52:44 pm
+\fs26 \
+E,J,K,G,H,I\
+\cf4 JRY\cf0  
+\fs20 7:52:44 pm
+\fs26 \
+E, J, K, G, H, I\
+\cf4 spower4\cf0  
+\fs20 7:52:44 pm
+\fs26 \
+E, G, H, I, J, K\
+\cf4 chenjamin\cf0  
+\fs20 7:52:44 pm
+\fs26 \
+E, J, K, G, H, I\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:52:50 pm
+\fs26 \
+E, G, H, I, J, and K, right? They have no children.\
+\cf4 Dragon18\cf0  
+\fs20 7:52:50 pm
+\fs26 \
+E,J,K,G,H,I\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 E, G, H, I, J, and K.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We say a node's \cf3 level\cf0  is the number of links from the root to the node. The root is always at level 0, since you don't take any links to get from the root to itself.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is H's level in my example?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:53:54 pm
+\fs26 \
+2\
+\cf4 Dragon18\cf0  
+\fs20 7:53:54 pm
+\fs26 \
+2\
+\cf4 manbugbeebee\cf0  
+\fs20 7:53:54 pm
+\fs26 \
+2\
+\cf4 JRY\cf0  
+\fs20 7:53:54 pm
+\fs26 \
+2\
+\cf4 Tungsten\cf0  
+\fs20 7:53:54 pm
+\fs26 \
+2\
+\cf4 spower4\cf0  
+\fs20 7:53:54 pm
+\fs26 \
+2\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's 2. We go from A to D to H. Three nodes mean two intermediate links.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The \cf3 height\cf0  of a tree is the largest level of any node. What is the height of my example tree?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:54:44 pm
+\fs26 \
+3\
+\cf4 spower4\cf0  
+\fs20 7:54:44 pm
+\fs26 \
+3\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:54:44 pm
+\fs26 \
+3.\
+\cf4 manbugbeebee\cf0  
+\fs20 7:54:44 pm
+\fs26 \
+3\
+\cf4 JRY\cf0  
+\fs20 7:54:44 pm
+\fs26 \
+3\
+\cf4 bluebandit21\cf0  
+\fs20 7:54:44 pm
+\fs26 \
+3\
+\cf4 Dragon18\cf0  
+\fs20 7:54:44 pm
+\fs26 \
+3\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's 3, since that's the level for both J and K. Note that the height is always the level of a leaf. If it's not for a leaf, then the node in question would have children, and we can extend the number of links by at least 1 to get to that child.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So far so good? Any questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Take a look at this picture.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic subtree.png \width7560 \height5745 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this image, I've circled D and all the nodes underneath D. What kind of structure is in the big circle?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:57:05 pm
+\fs26 \
+Another tree.\
+\cf4 JRY\cf0  
+\fs20 7:57:05 pm
+\fs26 \
+Another tree\
+\cf4 Tungsten\cf0  
+\fs20 7:57:05 pm
+\fs26 \
+A tree?\
+\cf4 Dragon18\cf0  
+\fs20 7:57:05 pm
+\fs26 \
+a tree?\
+\cf4 manbugbeebee\cf0  
+\fs20 7:57:05 pm
+\fs26 \
+a smaller tree?\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:57:05 pm
+\fs26 \
+a tree?\
+\cf4 chenjamin\cf0  
+\fs20 7:57:05 pm
+\fs26 \
+a tree\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's another tree! We call it a \cf3 subtree\cf0  of the original. Specifically, it's the subtree rooted at D.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How many nodes are in the subtree rooted at B?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Don't forget that the root is part of the tree!
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:58:06 pm
+\fs26 \
+5\
+\cf4 bluebandit21\cf0  
+\fs20 7:58:06 pm
+\fs26 \
+5\
+\cf4 manbugbeebee\cf0  
+\fs20 7:58:06 pm
+\fs26 \
+5\
+\cf4 JRY\cf0  
+\fs20 7:58:06 pm
+\fs26 \
+5\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:58:06 pm
+\fs26 \
+5\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:58:06 pm
+\fs26 \
+5\
+\cf4 connor0728\cf0  
+\fs20 7:58:06 pm
+\fs26 \
+5\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are 5: B, E, F, J, and K.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This notion of the subtree naturally gives us recursive ways of thinking about trees. Let's take height as an example and come up with a recursive definition for it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What would be the base case? What's the simplest tree we could have?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:58:54 pm
+\fs26 \
+One of the leaves.\
+\cf4 Dragon18\cf0  
+\fs20 7:58:54 pm
+\fs26 \
+a leaf\
+\cf4 Tungsten\cf0  
+\fs20 7:58:54 pm
+\fs26 \
+A tree with only one node.\
+\cf4 manbugbeebee\cf0  
+\fs20 7:58:54 pm
+\fs26 \
+a leaf\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:58:54 pm
+\fs26 \
+a root\
+\cf4 bluebandit21\cf0  
+\fs20 7:58:54 pm
+\fs26 \
+one node\
+\cf4 mattpi\cf0  
+\fs20 7:58:54 pm
+\fs26 \
+just one node\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a 1-element tree, just a root. What's its height?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that height is the largest level we can have and the level is the number of links we can traverse starting from the root.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:59:52 pm
+\fs26 \
+0\
+\cf4 bluebandit21\cf0  
+\fs20 7:59:52 pm
+\fs26 \
+0\
+\cf4 spower4\cf0  
+\fs20 7:59:52 pm
+\fs26 \
+0\
+\cf4 JRY\cf0  
+\fs20 7:59:52 pm
+\fs26 \
+0\
+\cf4 manbugbeebee\cf0  
+\fs20 7:59:52 pm
+\fs26 \
+0\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:59:52 pm
+\fs26 \
+Zip-O.\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:59:52 pm
+\fs26 \
+0\
+\cf4 ScottBusche\cf0  
+\fs20 7:59:52 pm
+\fs26 \
+0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The root is always at level 0, so a 1-node tree has height 0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we consider the recursive case. We make a tree "smaller" by removing its root. That gives us several smaller trees whose heights we can find recursively.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we use those to find the height of the tree overall?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:00:43 pm
+\fs26 \
+Compare the heights of the subtrees and take the maximum\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Almost!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The problem there is that the height won't be the height of the bigger of the two subtrees. There's something missing...
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:01:43 pm
+\fs26 \
+The biggest one+1\
+\cf4 manbugbeebee\cf0  
+\fs20 8:01:43 pm
+\fs26 \
+a tree's height is the height of the largest subtree, plus 1\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:01:43 pm
+\fs26 \
+maximum + 1\
+\cf4 JRY\cf0  
+\fs20 8:01:43 pm
+\fs26 \
+Add 1, for the link between the root and the root of the subtree\
+\cf4 Tungsten\cf0  
+\fs20 8:01:43 pm
+\fs26 \
+Return the height of the larger of the subtrees plus 1?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Pick the largest subtree height and add 1 to it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, we could also make the base case the empty tree: one with no nodes in it. For the recursion to work properly, what should we would define the height of the empty tree to be?
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 8:02:05 pm
+\fs26 \
+0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It can't be 0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 0 is the height of a tree with exactly one element, the root.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:02:36 pm
+\fs26 \
+-1 
+\f1\fs24 {{\NeXTGraphic boggle.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\cf4 manbugbeebee\cf0  
+\fs20 8:02:36 pm
+\fs26 \
+-1\
+\cf4 chenjamin\cf0  
+\fs20 8:02:36 pm
+\fs26 \
+-1\
+\cf4 JRY\cf0  
+\fs20 8:02:36 pm
+\fs26 \
+-1\
+\cf4 Dragon18\cf0  
+\fs20 8:02:36 pm
+\fs26 \
+-1?\
+\cf4 spower4\cf0  
+\fs20 8:02:36 pm
+\fs26 \
+-1\
+\cf4 bluebandit21\cf0  
+\fs20 8:02:36 pm
+\fs26 \
+-1\
+\cf4 Tungsten\cf0  
+\fs20 8:02:38 pm
+\fs26 \
+-1?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It would have to be -1. If we have a 1-element tree, its subtrees are empty. So when we add 1 to an empty subtree's height, we need to get 0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're almost done with our introductory discussion of trees. We'll start coding them up in a moment.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Before we do, let's consider some places where we might see (or have seen) trees showing up.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What "real life" situations can be modeled with a tree? We've already hinted at family trees with the parent/child terminology. What other examples can you think of?
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 8:04:36 pm
+\fs26 \
+subclasses and superclasses?\
+\cf4 ScottBusche\cf0  
+\fs20 8:04:36 pm
+\fs26 \
+Class hierarchy.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure, we could use trees to draw pictures of class hierarchies.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Continuing that idea, trees can capture the relationships between various entities, sort of like a family tree. Here's one from biology, illustrating the connections between different species:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic phylo.png \width6555 \height2625 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any other suggestions? Anything at all.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is just an opportunity to do some brainstorming.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:05:51 pm
+\fs26 \
+A real tree, the system of directories on a computer.\
+\cf4 moppr\cf0  
+\fs20 8:05:51 pm
+\fs26 \
+...Real trees?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I suppose a diagram of the branches of a real tree could technically count.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 the system of directories in a computer's file system takes the form of a tree in all the standard operating systems I know of, sure!
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:06:52 pm
+\fs26 \
+evolution trees\
+\cf4 spower4\cf0  
+\fs20 8:06:52 pm
+\fs26 \
+food chain\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's another.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can use a tree to trace all the possible outcomes of a series of events. Here's an example showing the possible ways we could flip a coin three times:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic coinflipTree.png \width4380 \height2625 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could also use a tree to help us determine how a particular game may play out. The nodes represent positions and the links indicate we can make a move to transform one position into another. If you took my Python game programming class, you may remember us discussing these kinds of trees.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And there are, of course, other examples.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But now I think we should start writing some code!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: BINARY TREES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To accomplish our goal of efficient search, we'll take advantage of a tree node's multiple children to best organize our data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Having an arbitrary number of children does make implementing a tree more complex. Instead, we will focus on \cf3 binary trees\cf0  where nodes can have at most two children.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For purposes that will be clearer a little later, we'll call the two children of a node the \cf3 left child\cf0  and the \cf3 right child\cf0 . The order turns out to be important. Having B on the left and C on the right is different from having C on the left and B on the right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's start writing some code that could implement a binary tree. Make a class called AOPSTree. (Unlike in previous weeks, I'm going to skip an interface.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's nothing wrong with setting up an interface, I just think you've already absorbed that idea, so I'll leave it to you to make something like that later on if you want.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll again have our tree hold Strings as the data. And again, we'll use a private class to represent the node. Can you give the definition of that inner class?
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 8:10:14 pm
+\fs26 \
+private class Node \{\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm looking for more than that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'd like the whole internal Node class definition (or something reaching in that direction).
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 8:11:00 pm
+\fs26 \
+private class Node\
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public String data;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node next;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node(String data, Node next) \{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.data = data;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.next = next;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\
+\'a0\'a0\'a0\'a0 \}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not quite. Not yet.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, our nodes will need both a left child and a right child.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But I do like that you included a constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I have three answers I can pass so far. Anyone else want to throw his or her hat into the ring?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  
+\f3\b class
+\f2\b0  Node\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf6 String\cf0  data\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node RChild\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node LChild\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node\cf5 (\cf6 String\cf0  data, Node r, Node l\cf5 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 data\cf7 =\cf0 data\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 RChild\cf7 =\cf0 r\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 LChild\cf7 =\cf0 l\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+private class Node\
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public String data;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node leftChild;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node rightChild;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node(String data, Node left, Node right) \{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.data = data;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.leftChild = left;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.rightChild = right;\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\}\
+\cf4 JRY\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  
+\f3\b class
+\f2\b0  Node \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf6 String\cf0  data\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node left\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node right\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node\cf5 (\cf6 String\cf0  data, Node left, Node right\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 data\cf0  \cf7 =\cf0  data\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 left\cf0  \cf7 =\cf0  left\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 right\cf0  \cf7 =\cf0  right\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 bluebandit21\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+java private class Node\{public String data;public Node left;public Node right;public Node(String left,String right,String data)\{this.right=right;this.left=left;this.data=data;\}\}\
+\cf4 Tungsten\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  
+\f3\b class
+\f2\b0  Node \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node left\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node right\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf6 Object\cf0  data\cf7 ;\cf0 \
+\'a0\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  Node\cf5 (\cf0 Node left, Node right, \cf6 Object\cf0  data\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 left\cf0  \cf7 =\cf0  left\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 right\cf0  \cf7 =\cf0  right\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf8 data\cf0  \cf7 =\cf0  data\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I've got. It should look familiar from the last couple of sessions:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+public class AOPSTree \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0private class Node\
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public \cf6 String\cf0  data\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node left\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node right\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node\cf5 (\cf6 String\cf0  data, Node left, Node right\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf8 data\cf0  \cf7 =\cf0  data\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf8 left\cf0  \cf7 =\cf0  left\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf8 right\cf0  \cf7 =\cf0  right\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And, as we've done the last few weeks, we'll use a reference to keep track of the first node in the tree ( = the root). We'll initialize it to null to start:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private Node root \cf7 =\cf0  \cf9 null\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Adding nodes to a tree is a little tricky, so I'm going to postpone that a bit. Instead, we'll write a method that determines the height of the tree using the algorithm we discussed earlier.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since the Node class is private to AOPSTree, an outside class can't access it. So our public header has to look something like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 int\cf0  getHeight\cf5 ()\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hmmm, this looks a lot like it wants to be a helper method giving us a doorway into our desired recursion. Can you fill in the one-line body that will get the recursion started?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This part should be no sweat. You may as well give your recursive method the same name as this one and have that recursive method (which we're about to write) be called on the root node of the tree.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf9 int
+\f2\b0 \cf0  getHeight\cf5 ()\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  getHeight\cf5 (
+\f3\b \cf0 this
+\f2\b0 .\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Bingo!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 int\cf0  getHeight\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return getHeight\cf5 (\cf0 this.\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That turned out not to be too mysterious.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everyone happy with that? I was getting a lot of silence.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As always, please feel free to ask any questions any time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we need to get to the real heart of the matter. We need to write the recursive version. Here's the header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 int\cf0  getHeight\cf5 (\cf0 Node subroot\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll use the base case where the subtree pointed at by subroot is empty. Remember such a tree has height -1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How would you write that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In case you want to align with the notation I'm using, I'm using the label \cf3 subroot\cf0  to refer to the parameter being passed into the recursive getHeight method.
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:22:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0 \cf5 (\cf0 subroot \cf7 ==\cf0  
+\f3\b \cf9 null
+\f2\b0 \cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf7 -\cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:22:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0  \cf5 (\cf0 subroot \cf7 ==\cf0  
+\f3\b \cf9 null
+\f2\b0 \cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf7 -\cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:22:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf5 (\cf0 subroot\cf7 ==
+\f3\b \cf9 null
+\f2\b0 \cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf7 -\cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 piis3141592653\cf0  
+\fs20 8:22:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0 \cf5 (\cf0 subroot \cf7 ==\cf0  
+\f3\b \cf9 null
+\f2\b0 \cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf7 -\cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 int\cf0  getHeight\cf5 (\cf0 Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot \cf7 ==\cf0  \cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf7 -\cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice we don't want to check \cf3 this.root==null\cf0 , since the parameter we're passing in is just a particular Node, not a whole tree, so this.root is always just going to refer to the root of the whole tree, which won't be the what we want.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Even if our parameter was a whole tree, this.root==null would still not be the right condition to check, since we'd need to be checking that parameter tree's root, not the root of the tree on which the recursive method was being called initially.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we deal the case when there are nodes in the subtree. So we need to calculate the heights of the children of the root of the subtree. Can you do that? Put the heights in the variables maxLeft and maxRight respectively.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:26:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b \cf9 int
+\f2\b0 \cf0  maxRight\cf7 =\cf0 getHeight\cf5 (\cf0 subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b \cf9 int
+\f2\b0 \cf0  maxLeft\cf7 =\cf0 getHeight\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:26:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 else
+\f2\b0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b \cf9 int
+\f2\b0 \cf0  maxLeft \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b \cf9 int
+\f2\b0 \cf0  maxRight \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:26:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b \cf9 int
+\f2\b0 \cf0  maxLeft \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b \cf9 int
+\f2\b0 \cf0  maxRight \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You should have the following:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 int\cf0  getHeight\cf5 (\cf0 Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot \cf7 ==\cf0  \cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf7 -\cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  maxLeft \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  maxRight \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Or something equivalent to it. For example, you could have an else clause if you want one.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Finally we need to return 1 more than the larger of the two values. You can use Math.max to help with this, or you can use a conditional operator, or you can use an ordinary if statement. What will the code look like for that?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  
+\f3\b \cf9 int
+\f2\b0 \cf0  getHeight\cf5 (\cf0 Node subroot\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf5 (\cf0 subroot \cf7 ==\cf0  
+\f3\b \cf9 null
+\f2\b0 \cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf7 -\cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf6 Math\cf0 .\cf8 max\cf5 (\cf0 getHeight\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf0 , getHeight\cf5 (\cf0 subroot.\cf8 right\cf5 ))\cf0  \cf7 +\cf0  \cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 8:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0 \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b \cf9 int
+\f2\b0 \cf0  maxLeft \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 leftChild\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b \cf9 int
+\f2\b0 \cf0  maxRight \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 rightChild\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0 \cf5 (\cf0 maxLeft \cf7 >\cf0  maxRight\cf5 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  maxLeft\cf7 +\cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0 \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  maxRight\cf7 +\cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf6 Math\cf0 .\cf8 max\cf5 (\cf0 maxLeft, maxRight\cf5 )\cf0  \cf7 +\cf0  \cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 8:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 return
+\f2\b0  \cf6 Math\cf0 .\cf8 max\cf5 (\cf0 maxLeft, maxRight\cf5 )\cf0  \cf7 +\cf0  \cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 return
+\f2\b0  \cf6 Math\cf0 .\cf8 max\cf5 (\cf0 maxRight, maxLeft\cf5 )\cf7 +\cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 bluebandit21\cf0  
+\fs20 8:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0 \cf5 (\cf0 maxRight\cf7 >\cf0 maxLeft\cf5 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  maxRight\cf7 +\cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}
+\f3\b \cf0 else
+\f2\b0 \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  maxLeft\cf7 +\cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 return
+\f2\b0  \cf6 Math\cf0 .\cf8 max\cf5 (\cf0 maxLeft,  maxRight\cf5 )\cf0  \cf7 +\cf0  \cf10 1\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:28:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 return
+\f2\b0  \cf10 1\cf0  \cf7 +\cf0  \cf6 Math\cf0 .\cf8 max\cf5 (\cf0 maxLeft, maxRight\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are a variety of ways you could write it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the Math.max based solution:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 int\cf0  getHeight\cf5 (\cf0 Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot \cf7 ==\cf0  \cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf7 -\cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  maxLeft \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  maxRight \cf7 =\cf0  getHeight\cf5 (\cf0 subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf6 Math\cf0 .\cf8 max\cf5 (\cf0 maxLeft, maxRight\cf5 )\cf0  \cf7 +\cf0  \cf10 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This idea of recursively doing something to the left subtree, recursively doing something to the right subtree, and combining shows up often with trees.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the running time of this method?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It might help to consider how many of the nodes we visit.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Or, more generally, it might help to consider something like how many times we visit each node (or some subset of the nodes).
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:30:08 pm
+\fs26 \
+O(N)?\
+\cf4 spower4\cf0  
+\fs20 8:30:08 pm
+\fs26 \
+O(N)\
+\cf4 chenjamin\cf0  
+\fs20 8:30:08 pm
+\fs26 \
+O(N)\
+\cf4 piis3141592653\cf0  
+\fs20 8:30:08 pm
+\fs26 \
+O(N)?\
+\cf4 connor0728\cf0  
+\fs20 8:30:08 pm
+\fs26 \
+O(N)\
+\cf4 ScottBusche\cf0  
+\fs20 8:30:08 pm
+\fs26 \
+O(N)\
+\cf4 manbugbeebee\cf0  
+\fs20 8:30:25 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice we don't throw any nodes away here. We eventually touch every node exactly once. So that means it's linear time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's work on a toString method for our tree. We won't do anything fancy. We'll just list the contents in one line.\
+The trick is to make sure that we get to everything in the tree. Again we use recursion to help.\
+Here's our usual toString header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 String\cf0  toString\cf5 ()\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you fill in the body of this method? It will be similar to what we did for the parameter-less getHeight.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you need inspiration, scroll up and take a look at what we did for the parameterless getHeight. I'd like to see everyone try to answer this question.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:33:28 pm
+\fs26 \
+How is the string we return going to look? Just list them with commas, or use brackets to indicate levels?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It won't even be that fancy.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll just print the entries (in a certain order, the options for which we'll discuss shortly) without any spaces between them.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf6 String\cf0  toString\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  toString\cf5 (\cf0 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf6 String\cf0  toString\cf5 ()\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b this
+\f2\b0 .\cf8 toString\cf5 (
+\f3\b \cf0 this
+\f2\b0 .\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf6 String\cf0  toString\cf5 ()\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  toString\cf5 (
+\f3\b \cf0 this
+\f2\b0 .\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 return
+\f2\b0  toString\cf5 (
+\f3\b \cf0 this
+\f2\b0 .\cf8 root\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 8:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf6 String\cf0  toString\cf5 ()\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  toString\cf5 (
+\f3\b \cf0 this
+\f2\b0 .\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf6 String\cf0  toString\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  toString\cf5 (
+\f3\b \cf0 this
+\f2\b0 .\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 spower4\cf0  
+\fs20 8:34:53 pm
+\fs26 \
+return toString(this.root);\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 String\cf0  toString\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return toString\cf5 (\cf0 this.\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, now we need to start writing the version of the method that we're going to be calling recursively.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We get the recursion started from the root of the tree. So here's the header for the recursive version:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+   private \cf6 String\cf0  toString\cf5 (\cf0 Node subroot\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the base case?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In words, what's the base case?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's use the same base case we used for the getHeight method. What was our base case there?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What kind of tree did our base case correspond to?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:37:33 pm
+\fs26 \
+When the subtree is empty\
+\cf4 ScottBusche\cf0  
+\fs20 8:37:33 pm
+\fs26 \
+An empty one.\
+\cf4 manbugbeebee\cf0  
+\fs20 8:37:33 pm
+\fs26 \
+one with no nodes\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again we'll use the empty tree. What do we do in that case?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:38:11 pm
+\fs26 \
+Return an empty string?\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:38:11 pm
+\fs26 \
+return empty string?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want to return an empty string. So can you fill in the code?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:38:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0  \cf5 (\cf0 subroot \cf7 ==\cf0  
+\f3\b \cf9 null
+\f2\b0 \cf5 )\cf0  
+\f3\b return
+\f2\b0  \cf11 ""\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:38:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf6 String\cf0  toString\cf5 (\cf0 Node subroot\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf5 (\cf0 subroot \cf7 ==\cf0  
+\f3\b \cf9 null
+\f2\b0 \cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 ""\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:38:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf5 (\cf0 subroot\cf7 ==
+\f3\b \cf9 null
+\f2\b0 \cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 ""\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 8:38:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0 \cf5 (\cf0 subroot \cf7 ==\cf0  
+\f3\b \cf9 null
+\f2\b0 \cf5 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 ""\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf6 String\cf0  toString\cf5 (\cf0 Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot\cf7 ==\cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 ""\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we have the recursive step. We have a few choices on how to proceed. No matter what, we have to build a String for the left side and a String for the right side.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we create a String for the left side?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:40:19 pm
+\fs26 \
+Call toString on subroot.left?\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:40:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\pard\pardeftab720
+\cf6 String\cf0  left \cf7 =\cf0  toString\cf5 (\cf0 subroot.\cf8 leftChild\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:40:19 pm
+\fs26 \
+toString(subroot.left)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We call \cf3 toString(subroot.left)\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Likewise, \cf3 toString(subroot.right)\cf0  takes care of the right side.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The question is how to combine these strings with that of the root. What do you think?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:41:42 pm
+\fs26 \
+Just concatenate them?\
+\cf4 Tungsten\cf0  
+\fs20 8:41:42 pm
+\fs26 \
+Put the data of the root in the middle.\
+\cf4 MSTang\cf0  
+\fs20 8:41:42 pm
+\fs26 \
+Concatenate them, with spaces or commas\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The most natural way is to put the root node's value in between the left and the right. This is called an \cf3 inorder traversal\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I won't use commas. I'll just concatenate the values for now to keep things simple. We could worry about formatting the output more nicely later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the code that combines these ideas:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf6 String\cf0  toString\cf5 (\cf0 Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot\cf7 ==\cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 ""\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return toString\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf7 +\cf0 subroot.\cf8 data\cf7 +\cf0 toString\cf5 (\cf0 subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we're literally just concatenating together the string coming from the left subtree, the data from the subroot, and the string coming from the right subtree.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions there?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Consider this binary tree:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic bintree.png \width7830 \height6345 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that B does not have a right child and F does not have a left child. A, C, D, and E have two children. G, H, I, J, and K are leaves.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is the first letter output in an in-order traversal of this tree?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: Look at our recursive return statement. What will get put farthest to the left when we chase through those calls?
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 8:45:48 pm
+\fs26 \
+G\
+\cf4 bluebandit21\cf0  
+\fs20 8:45:48 pm
+\fs26 \
+G\
+\cf4 ScottBusche\cf0  
+\fs20 8:45:48 pm
+\fs26 \
+G\
+\cf4 mattpi\cf0  
+\fs20 8:45:48 pm
+\fs26 \
+G\
+\cf4 JRY\cf0  
+\fs20 8:45:48 pm
+\fs26 \
+G\
+\cf4 Tungsten\cf0  
+\fs20 8:45:48 pm
+\fs26 \
+G\
+\cf4 manbugbeebee\cf0  
+\fs20 8:45:56 pm
+\fs26 \
+G\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's G. We start at A and go to its left subtree. That moves us to B. Then we go to its left subtree, whose root is D. Then we move left again to G. Then one more left to null. That returns the empty string, and we back up to G. Now we can put G into the string. G's right tree is also null, so that string is empty too. So the first string we make is "G".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What are the next two letters?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:46:48 pm
+\fs26 \
+D,H\
+\cf4 ScottBusche\cf0  
+\fs20 8:46:48 pm
+\fs26 \
+DH\
+\cf4 Tungsten\cf0  
+\fs20 8:46:48 pm
+\fs26 \
+DH\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:46:48 pm
+\fs26 \
+D,H\
+\cf4 bluebandit21\cf0  
+\fs20 8:46:48 pm
+\fs26 \
+DH\
+\cf4 JRY\cf0  
+\fs20 8:46:48 pm
+\fs26 \
+DH\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've finished D's left tree, so that puts us back at D where we concatenate "G" with "D". Then we go to the right subtree of D. After traversing that tree, we get "H". So we've got "GDH" for the subtree rooted at D.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next two?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:47:42 pm
+\fs26 \
+BA\
+\cf4 Tungsten\cf0  
+\fs20 8:47:42 pm
+\fs26 \
+BA\
+\cf4 spower4\cf0  
+\fs20 8:47:42 pm
+\fs26 \
+B, A\
+\cf4 bluebandit21\cf0  
+\fs20 8:47:42 pm
+\fs26 \
+BA\
+\cf4 JRY\cf0  
+\fs20 8:47:42 pm
+\fs26 \
+BA\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next comes B (after finishing the subtree at D). Its right subtree is blank, so there's no string from that. That gives us "GDHB". Then we back up to A, and we've got "GDBHA" before doing A's right subtree.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ready to finish it? What order are the other letters in?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:48:54 pm
+\fs26 \
+I think it's GDHBA, not GDBHA.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Whoops! Yes, that was a typo. That should have said GDHBA. Thanks!
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:49:32 pm
+\fs26 \
+IEJCFK\
+\cf4 Tungsten\cf0  
+\fs20 8:49:32 pm
+\fs26 \
+IEJCFK\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:49:32 pm
+\fs26 \
+IEJCFK\
+\cf4 MSTang\cf0  
+\fs20 8:49:32 pm
+\fs26 \
+IEFCFK\
+\cf4 chenjamin\cf0  
+\fs20 8:49:32 pm
+\fs26 \
+IEJCFK\
+\cf4 JRY\cf0  
+\fs20 8:49:32 pm
+\fs26 \
+IEJCFK\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 IEJ is the subtree rooted at E. Then comes C. Then for F's tree, we have an empty string followed by F followed by K. So that whole tree is "IEJCFK".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Therefore the entire string is "GDHBAIEJCFK".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions there?
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 8:50:47 pm
+\fs26 \
+it doesn't describe the tree too well... just by looking at it I can't see what the whole tree is\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This will be somewhat inevitable since we haven't constrained our trees closely enough that every linear ordering of the vertices would correspond to precisely one tree.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But what this does tell us is the order of the data we'd get if we were to do an inorder traversal of the nodes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we at least have that going for us.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the running time?
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 8:52:30 pm
+\fs26 \
+O(N)\
+\cf4 ScottBusche\cf0  
+\fs20 8:52:30 pm
+\fs26 \
+O(N)\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:52:30 pm
+\fs26 \
+O(N)\
+\cf4 Tungsten\cf0  
+\fs20 8:52:30 pm
+\fs26 \
+O(N)\
+\cf4 JRY\cf0  
+\fs20 8:52:30 pm
+\fs26 \
+O(N)\
+\cf4 piis3141592653\cf0  
+\fs20 8:52:30 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Like getHeight, we visit every node a constant number of times. So it's linear time.
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 8:52:38 pm
+\fs26 \
+O(N)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I said earlier we have a few other options. If we decide we're going to traverse the left subtree before the right subtree, then we have two other choices depending on when we add in the root.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In our current version, we do the root in between the left and right. We could instead do the root first. That's called a \cf3 preorder traversal\cf0 :
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return subroot.\cf8 data\cf7 +\cf0 toString\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf7 +\cf0 toString\cf5 (\cf0 subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you give me the sequence of letters in the order they would be visited by this traversal?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Tip: Pretend you didn't already see the answer and try to reason through it.)
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:55:25 pm
+\fs26 \
+ABDGHCEIJFK\
+\cf4 Tungsten\cf0  
+\fs20 8:55:25 pm
+\fs26 \
+ABDGHCEIJFK\
+\cf4 JRY\cf0  
+\fs20 8:55:25 pm
+\fs26 \
+ABDGHCEIJFK\
+\cf4 manbugbeebee\cf0  
+\fs20 8:55:25 pm
+\fs26 \
+AGDHBIEJCFK\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The root is first, so that's A. Then we do the left side. It starts with B, and we go left again. Then we hit D, followed by G and H. So we have ABDGH so far.\
+For the right side, it starts with C. The left side is EIJ. The right side is FK.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Therefore the sequence is ABDGHCEIJFK.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the other choice for how we do the traversal? And can you guess its name?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:56:12 pm
+\fs26 \
+postorder transversal! root after\
+\cf4 ScottBusche\cf0  
+\fs20 8:56:12 pm
+\fs26 \
+postorder?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a \cf3 postorder traversal\cf0 , we do the left side, then the righr side, 
+\i then
+\i0  the root. Here's the code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return toString\cf5 (\cf0 subroot.\cf8 left\cf5 )\cf7 +\cf0 toString\cf5 (\cf0 subroot.\cf8 right\cf5 )\cf7 +\cf0 subroot.\cf8 data\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What sequence do we get now?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:59:06 pm
+\fs26 \
+GHDBIJEKFCA\
+\cf4 Tungsten\cf0  
+\fs20 8:59:06 pm
+\fs26 \
+GHDBIJEKFCA\
+\cf4 chenjamin\cf0  
+\fs20 8:59:06 pm
+\fs26 \
+GHDBIJEKFCA\
+\cf4 JRY\cf0  
+\fs20 8:59:06 pm
+\fs26 \
+GHDBIJEKFCA\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:59:06 pm
+\fs26 \
+GHDBIJEKFCA\
+\cf4 MSTang\cf0  
+\fs20 8:59:06 pm
+\fs26 \
+GHDBIJEKFCA\
+\cf4 spower4\cf0  
+\fs20 8:59:06 pm
+\fs26 \
+GHDBIJKEFCA\
+\cf4 bluebandit21\cf0  
+\fs20 8:59:06 pm
+\fs26 \
+GHDBIJEKFCA\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Like an inorder traversal, we go all the way left first. So we start with G. Then comes H, and D.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The right child of B doesn't exist. Hence after GHD, we go right to B.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next is the right side of the whole tree. We do IJE first. Then KF from the right of C. Then C as the right tree's root, then A for the root of the whole tree.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the answer is GHDBIJEKFCA.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that post-order is \cf3 not\cf0  simply the reverse of pre-order, since the right side still follows the left.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: BINARY SEARCH TREES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (We'll get back to coding in a few minutes, but first we need to discuss something we can do with trees to make searching more effective.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The tree I showed you had the elements in a fairly random order. We can take advantage of the binary tree structure to make search more efficient.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To do that, we have to put new elements in specific places. We end up enforcing the following rule:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For every node, let N be the value stored at that node. Then, for each node, all the values in the left subtree of the node have values smaller than N, and all the values in the right subtree have values greater than N.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's a bit wordy, so here's a picture to help. This one uses numbers:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic bst.png \width7830 \height6345 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll refer to the nodes by their values in this discussion. The root is 30. All the nodes to the left of 30 (20, 15, 25, and 23) are smaller than 30. All the nodes to the right of 30 (40, 35, 50, 45, 57) are bigger than 30. You see something similar for every other node. 50 is bigger than 45 and smaller than 57.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So which child you are is very important. 23 must be a left child of 25; it can't go on the right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When a binary tree has this special property, we call it a \cf3 binary search tree\cf0  or \cf3 BST\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Consider this tree of integers. Is it a BST?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic bstFalse.png \width7830 \height6345 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 9:02:53 pm
+\fs26 \
+no\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, it is not. Which one number is in the wrong place?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: The rule we gave wasn't only for direct children, it was for the subtrees as a whole.
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 9:03:51 pm
+\fs26 \
+no, because 63 is on the left side and the root is only 60\
+\cf4 teachm\cf0  
+\fs20 9:03:51 pm
+\fs26 \
+63\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:03:51 pm
+\fs26 \
+63\
+\cf4 piis3141592653\cf0  
+\fs20 9:03:51 pm
+\fs26 \
+63\
+\cf4 Tungsten\cf0  
+\fs20 9:03:51 pm
+\fs26 \
+63\
+\cf4 AkshajK\cf0  
+\fs20 9:03:51 pm
+\fs26 \
+63\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 63 should not be in the left subtree of 60. What integer could you replace it with so that the BST property holds?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's actually only one correct answer to this question.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 9:04:43 pm
+\fs26 \
+so inequalities are strict?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes.
+\b0 \
+\pard\pardeftab720
+\cf4 Wilderc\cf0  
+\fs20 9:04:53 pm
+\fs26 \
+59\
+\cf4 JRY\cf0  
+\fs20 9:04:53 pm
+\fs26 \
+59\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:04:53 pm
+\fs26 \
+59\
+\cf4 bluebandit21\cf0  
+\fs20 9:04:53 pm
+\fs26 \
+59\
+\cf4 AkshajK\cf0  
+\fs20 9:04:53 pm
+\fs26 \
+59\
+\cf4 spower4\cf0  
+\fs20 9:04:53 pm
+\fs26 \
+59\
+\cf4 teachm\cf0  
+\fs20 9:04:53 pm
+\fs26 \
+59\
+\cf4 manbugbeebee\cf0  
+\fs20 9:04:53 pm
+\fs26 \
+59\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It has to be smaller than 60, bigger than 50, and larger than 58. The only integer that satisfies all three constraints is 59.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A couple of other notes about the BST property. For this to make sense, there needs to be a way to compare the elements in the tree. How do we compare Strings?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 9:05:17 pm
+\fs26 \
+lexicographically\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:05:17 pm
+\fs26 \
+alphabetically\
+\cf4 bluebandit21\cf0  
+\fs20 9:05:17 pm
+\fs26 \
+alphabetical order\
+\cf4 ScottBusche\cf0  
+\fs20 9:05:17 pm
+\fs26 \
+Alphabetical order.\
+\cf4 Tungsten\cf0  
+\fs20 9:05:26 pm
+\fs26 \
+String.compareTo()\
+\cf4 MSTang\cf0  
+\fs20 9:05:26 pm
+\fs26 \
+lexicographically (in alphabetical order)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We use the compareTo method, which looks at dictionary order. "banana" would be in the left subtree of "cat". "catalog" would be in the right subtree, since it starts with "cat".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we know, or more importantly, how does Java know if a given object has a compareTo method?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Hint: How do you ever get to guarantee a given class has some desired method?)
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:06:26 pm
+\fs26 \
+If it implements Comparable<[itself]>\
+\cf4 Tungsten\cf0  
+\fs20 9:06:26 pm
+\fs26 \
+It checks if the class implements the Comparable<E> interface.\
+\cf4 JRY\cf0  
+\fs20 9:06:26 pm
+\fs26 \
+If it's a Comparable object\
+\cf4 ScottBusche\cf0  
+\fs20 9:06:32 pm
+\fs26 \
+Use an interface.\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:06:32 pm
+\fs26 \
+interface...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It would implement the Comparable interface.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other thing to note about my definition of the BST property is that it doesn't allow duplicate elements in the tree. We could adapt it so that equal elements are always left or always right. Or we could add a count variable to a node that says how many occurrences of the element are in the tree. You'll do the latter as a homework problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's discuss how the BST property helps us to figure out where a node is in the tree (if it's there at all). Suppose we're looking for the number 35 in the BST I stickied (the one with 30 as the root).\
+We begin by starting at the root. Since that has a 30 in it, which subtree should we move to next?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:07:30 pm
+\fs26 \
+right\
+\cf4 Dragon18\cf0  
+\fs20 9:07:30 pm
+\fs26 \
+the right one\
+\cf4 ScottBusche\cf0  
+\fs20 9:07:30 pm
+\fs26 \
+The right one.\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:07:30 pm
+\fs26 \
+right child= 40\
+\cf4 Tungsten\cf0  
+\fs20 9:07:30 pm
+\fs26 \
+The one to the right.\
+\cf4 bluebandit21\cf0  
+\fs20 9:07:30 pm
+\fs26 \
+right\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 35 > 30, so that means 35 should be in the right subtree. We look at the right child of 30, which is 40. And now we go which way?
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 9:07:50 pm
+\fs26 \
+left\
+\cf4 bluebandit21\cf0  
+\fs20 9:07:50 pm
+\fs26 \
+left\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:07:50 pm
+\fs26 \
+left, 35\
+\cf4 Dragon18\cf0  
+\fs20 9:07:50 pm
+\fs26 \
+left\
+\cf4 chenjamin\cf0  
+\fs20 9:07:50 pm
+\fs26 \
+left\
+\cf4 spower4\cf0  
+\fs20 9:07:53 pm
+\fs26 \
+left\
+\cf4 MSTang\cf0  
+\fs20 9:07:53 pm
+\fs26 \
+left\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To the left, since 35 < 40. And look, there's 35!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we were looking for 29. What sequence of nodes would we look at?
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 9:08:51 pm
+\fs26 \
+30, 20, 25\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Keep going...
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:09:10 pm
+\fs26 \
+30->20->25->null right child\
+\cf4 Dragon18\cf0  
+\fs20 9:09:10 pm
+\fs26 \
+left, right, right\
+\cf4 MSTang\cf0  
+\fs20 9:09:10 pm
+\fs26 \
+30-20-25-oops\
+\cf4 bluebandit21\cf0  
+\fs20 9:09:10 pm
+\fs26 \
+left right right(which doesn't actually exist)\
+\cf4 manbugbeebee\cf0  
+\fs20 9:09:10 pm
+\fs26 \
+left, right, right\
+\cf4 Tungsten\cf0  
+\fs20 9:09:10 pm
+\fs26 \
+Left, Right, Right\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Starting at the root, we look at 30, then left to 20, then right to 25, then right again to null. Since we hit null, that means the value is not there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's consider how to code this method. I'm actually going to do it two ways. The first way will be recursively similar to what we did for getHeight and toString.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So add a method to our AOPSTree class with the following header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 boolean\cf0  containsRecursive\cf5 (\cf6 String\cf0  value\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you add in the one line for this method's body? Hint: It can call a method called contains instead of containsRecursive.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just from a sensibility standpoint, we're going to need to pass in both a node to go to and a value we're looking for.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:11:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf9 boolean
+\f2\b0 \cf0  containsRecursive\cf5 (\cf6 String\cf0  value\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  containsRecursize\cf5 (\cf0 value, 
+\f3\b this
+\f2\b0 .\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:11:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf9 boolean
+\f2\b0 \cf0  containsRecursive\cf5 (\cf6 String\cf0  value\cf5 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  contains\cf5 (
+\f3\b \cf0 this
+\f2\b0 .\cf8 root\cf0 , value\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As in the other methods, we call a version of the method with the root added as a parameter:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 boolean\cf0  containsRecursive\cf5 (\cf6 String\cf0  value\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return contains\cf5 (\cf0 value, this.\cf8 root\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So that leads to this method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value, Node subroot\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have several cases to check here. The first is the same as in the other methods: when subroot is null. What do we do in that case?
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 9:13:04 pm
+\fs26 \
+return false;\
+\cf4 ScottBusche\cf0  
+\fs20 9:13:04 pm
+\fs26 \
+return False;\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:13:04 pm
+\fs26 \
+return false\
+\cf4 piis3141592653\cf0  
+\fs20 9:13:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 return
+\f2\b0  
+\f3\b \cf9 false
+\f2\b0 \cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If it's null, we fell off the tree without finding the value. So the value isn't there, and we should return false.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That leads to this code so far:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value, Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot\cf7 ==\cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 false\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We actually have a second base case here. Can you fill in the test for it and what we do when it occurs? Hint: It's almost the opposite of the first case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Bigger hint: If subroot is null, that means we failed. What would be the opposite of that, and what should we do?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, our data here are Strings, which are reference types.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Reminder: == doesn't work the way you might naively expect when you use it on reference types. == checks whether the two items are the exactly identical entry in memory. It doesn't check whether the Strings match letter for letter, which would be what we want here.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:16:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0  \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b \cf9 true
+\f2\b0 \cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:16:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b \cf9 true
+\f2\b0 \cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:16:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0  \cf5 (\cf0 subroot.\cf8 data\cf0 .\cf8 equals\cf5 (\cf0 value\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b \cf9 true
+\f2\b0 \cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 9:16:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 else
+\f2\b0  
+\f3\b if
+\f2\b0  \cf5 (\cf0 subroot.\cf8 data\cf0 .\cf8 equals\cf5 (\cf0 value\cf5 ))\cf0  
+\f3\b return
+\f2\b0  
+\f3\b \cf9 true
+\f2\b0 \cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:16:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b \cf9 true
+\f2\b0 \cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 9:16:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f3\b if
+\f2\b0 \cf5 (\cf0 subroot.\cf8 data\cf0 .\cf8 equals\cf5 (\cf0 value\cf5 ))\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f3\b return
+\f2\b0  
+\f3\b \cf9 true
+\f2\b0 \cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second base case is when we find the node with the value we want:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value, Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot\cf7 ==\cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 true\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (So we needed to use the \cf3 equals\cf0  method to check for equality in this case, because equals for Strings is the method that checks whether the two Strings you passed in match character for character.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To say that more succinctly: We need to use the equals method or value.compareTo(subroot.data)==0. value==subroot.data won't work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we have two recursive cases. Can you fill in the one for going into the left subtree? Hint: Use compareTo, not < or >.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can use < or > after you call compareTo, however.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, compareTo returns a negative value (which negative value you get depends on how different the two strings are at the first character where they differ; I think the difference is measured in terms of the unicode value) then that means the String you called compareTo on comes alphabetically before the String you passed in as a parameter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For a refresher on the details, you can check the message board post I made about compareTo way back in one of the first weeks of the course.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:21:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0  
+\f3\b if
+\f2\b0  \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 ==\cf0  \cf7 -\cf10 1\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  containsRecursive\cf5 (\cf0 value, subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 9:21:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 else
+\f2\b0  
+\f3\b if
+\f2\b0  \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  contains\cf5 (\cf0 value, subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 9:21:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f3\b else
+\f2\b0  
+\f3\b if
+\f2\b0 \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f3\b return
+\f2\b0  contains\cf5 (\cf0 value, subroot.\cf8 leftChild\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:21:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 else
+\f2\b0  
+\f3\b if
+\f2\b0  \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  contains\cf5 (\cf0 value, subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 9:21:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 else
+\f2\b0  
+\f3\b if
+\f2\b0  \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  contains\cf5 (\cf0 value, subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:21:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0  
+\f3\b if
+\f2\b0  \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  containsRecursive\cf5 (\cf0 value, subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value, Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot\cf7 ==\cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return contains\cf5 (\cf0 value, subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the key thing to remember: x.compareTo(y) is negative if x<y.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Almost done! Can you wrap it up?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:22:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  contains\cf5 (\cf0 value, subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 piis3141592653\cf0  
+\fs20 9:22:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  contains\cf5 (\cf0 value, subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:22:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  containsRecursive\cf5 (\cf0 value, subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 9:22:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\pard\pardeftab720
+
+\f3\b \cf0 return
+\f2\b0  contains\cf5 (\cf0 value, subroot.\cf8 rightChild\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the full method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value, Node subroot\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 subroot\cf7 ==\cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return contains\cf5 (\cf0 value, subroot.\cf8 left\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return contains\cf5 (\cf0 value, subroot.\cf8 right\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We don't need to explicitly compare value and subroot.data in the last case. If it's not smaller or equal, it must be greater.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that in this method, if it makes a recursive call, that call is the last thing done in the method. That's different from toString; that method made two recursive calls.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When a method finishes in this way, we say it is \cf3 tail recursive\cf0 . Any tail recursive method could be implemented in an iterative way. As we said when we discussed recursion several weeks ago, iteration is always more efficient in terms of resource utilization.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Pro-tip: Compilers will optimize tail recursive code to transform it into iterative code. But just as a point of comparison, we'll do an iterative version of contains too.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's how it starts:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value\cf5 )\cf0  
+\f4\i \cf12 // not recursive
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node subroot \cf7 =\cf0  this.\cf8 root\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instead of subroot being a parameter, it's now just a local variable. In the recursive version, we used an if statement next. But here since we need a loop, we should use what instead?
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 9:24:50 pm
+\fs26 \
+for?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hm, I think it'd be nicer if we use for's older brother.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:25:27 pm
+\fs26 \
+A while loop.\
+\cf4 Tungsten\cf0  
+\fs20 9:25:27 pm
+\fs26 \
+A while loop?\
+\cf4 MSTang\cf0  
+\fs20 9:25:27 pm
+\fs26 \
+while\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want a while loop to keep going until we hit the bottom of the tree:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value\cf5 )\cf0  
+\f4\i \cf12 // not recursive
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node subroot \cf7 =\cf0  this.\cf8 root\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 subroot \cf7 !=\cf0  \cf9 null\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I think the while loop feels more natural in this case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then we check the same non-null cases as before:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value\cf5 )\cf0  
+\f4\i \cf12 // not recursive
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node subroot \cf7 =\cf0  this.\cf8 root\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 subroot \cf7 !=\cf0  \cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we have a match at the node we're on, we return true. The second case is when the value is smaller than the one at the node we're on. What happens then?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 9:27:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 subroot \cf7 =\cf0  subroot.\cf8 left\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 PiCrazy31415\cf0  
+\fs20 9:27:05 pm
+\fs26 \
+subroot = subroot.left\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We move subroot to the left:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value\cf5 )\cf0  
+\f4\i \cf12 // not recursive
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node subroot \cf7 =\cf0  this.\cf8 root\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 subroot \cf7 !=\cf0  \cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0subroot \cf7 =\cf0  subroot.\cf8 left\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The third case is to move subroot to the right:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value\cf5 )\cf0  
+\f4\i \cf12 // not recursive
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node subroot \cf7 =\cf0  this.\cf8 root\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 subroot \cf7 !=\cf0  \cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0subroot \cf7 =\cf0  subroot.\cf8 left\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0subroot \cf7 =\cf0  subroot.\cf8 right\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That doesn't end the method, though. What else do we have to do?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (What case haven't we accounted for yet?)
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 9:28:01 pm
+\fs26 \
+return false\
+\cf4 Tungsten\cf0  
+\fs20 9:28:01 pm
+\fs26 \
+Return false if we get past the while loop.\
+\cf4 MSTang\cf0  
+\fs20 9:28:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 return
+\f2\b0  
+\f3\b \cf9 false
+\f2\b0 \cf7 ;\cf0  
+\f5\i \cf12 // at the end
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:28:01 pm
+\fs26 \
+if we come out of the while loop then we should return false\
+\cf4 bluebandit21\cf0  
+\fs20 9:28:01 pm
+\fs26 \
+after the while loop put "return false;"\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we get through the whole loop and never find the value, that means it's not there. So we return false. Here's the complete method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 boolean\cf0  contains\cf5 (\cf6 String\cf0  value\cf5 )\cf0  
+\f4\i \cf12 // not recursive
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node subroot \cf7 =\cf0  this.\cf8 root\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 subroot \cf7 !=\cf0  \cf9 null\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 value.\cf8 equals\cf5 (\cf0 subroot.\cf8 data\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 value.\cf8 compareTo\cf5 (\cf0 subroot.\cf8 data\cf5 )\cf0  \cf7 <\cf0  \cf10 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0subroot \cf7 =\cf0  subroot.\cf8 left\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0subroot \cf7 =\cf0  subroot.\cf8 right\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It looks like we won't have time to discuss inserting Nodes into the tree.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's important however, and I don't want to go over time today, so I'll make a message board post about it after class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's wrap up by discussing the running time of the contains method. It depends on the structure of the tree. Consider a tree that looks like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic balanced.png \width7830 \height6345 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I didn't bother putting values in. This tree has 15 nodes in it. What is the maximum number of links that the contains method will follow?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, we keep charging ahead until we find what we're looking for or hit null.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is a BST, so we won't need to visit all the nodes.
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 9:30:15 pm
+\fs26 \
+4\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If a value is not present, it will follow four links from the root to a null node.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We would say this tree is \cf3 balanced\cf0 . It has the same size subtree on the left as on the right. The BST I stickied previously would also be considered balanced even though it has one more node on the right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a balanced tree with N nodes, the worst-case running time of contains is O(log N). That's because we can ignore about half of the nodes at each step. This is similar to how binary search works on a sorted array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now look at this tree:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic unbalanced.png \width7830 \height6345 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How many links do we follow here in the worst case?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, we keep going until we find what we're looking for or hit null.
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 9:31:31 pm
+\fs26 \
+7\
+\cf4 Tungsten\cf0  
+\fs20 9:31:31 pm
+\fs26 \
+7\
+\cf4 MSTang\cf0  
+\fs20 9:31:31 pm
+\fs26 \
+7\
+\cf4 manbugbeebee\cf0  
+\fs20 9:31:31 pm
+\fs26 \
+7\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could follow up to seven links. Notice that this is more than the balanced case, even though this tree has less than half the nodes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Take a moment to soak that in. That means a balanced binary search tree is pretty good for searching!)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Generalizing this, in an unbalanced tree of N nodes, the worst case search time is O(N). So how you build the tree turns out to be very important.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a balanced binary search tree, the worst case search time is O(log N).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Today we learned about trees. They show up a lot in computer science.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We saw how we can use the recursive structure of a tree to easily code some important algorithms.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We also looked at the binary search tree data structure that, if organized well, can achieve O(log N) time for search, insert, and delete.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (On the message board I will cover inserting and deleting.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week, we'll wrap up the course with two different structures. One hopes to achieve constant time for search, insertion, and deletion. One uses tree properties to optimize certain useful operations. See you then!\
+\
+\pard\pardeftab720
+
+\b0\fs24 \cf0 We'll next look at a simple way to build a BST. It mimics how we look for nodes.\
+\
+Look again at our example binary search tree.\
+\
+
+\f1 {{\NeXTGraphic 1__#$!@%!#__bst.png \width7830 \height6345 \noorient
+}¬}
+\f0 \
+\
+Suppose we want to add the number 18 in as a leaf. Where would it go?\
+\
+It must go in as the right child of 15. If you place it anywhere else as a leaf, it would violate the BST property. (Take a second to convince yourself of that.)\
+\
+Placing new nodes in as leaves results in the least tinkering with the tree. We only need to adjust the parent's pointer.\
+\
+The downside is that if you put the elements in increasing or decreasing order, the tree will end up unbalanced. There are more complex insertion algorithms that re-balance as you go, but they're beyond the scope of this course.\
+\
+Again we could do this method in a recursive way or an iterative way. I'll leave the recursive one for you to do as homework.\
+\
+Here's the header for our iterative method:\
+\
+\pard\pardeftab720
+
+\f6\b\fs18 \cf13 \cb14 Code:
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0
+\f2\fs24 \cf15 \cb16 {\listtext	1.	}\'a0 
+\f3\b \cf0 public
+\f2\b0 \cf15  \cf17 void\cf15  insert\cf18 ({\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f3\b \cf19 String}}\cf15  value\cf18 )\cf15 \
+\pard\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+The first thing this method will do is create the new node that will go into the tree. We'll call it 
+\b newNode
+\b0 . \
+\
+\pard\pardeftab720
+
+\f6\b\fs18 \cf13 \cb14 Code:
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0
+\f2\fs24 \cf15 \cb16 {\listtext	1.	}\'a0 \'a0
+\f3\b \cf0 public
+\f2\b0 \cf15  \cf17 void\cf15  insert\cf18 ({\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f3\b \cf19 String}}\cf15  value\cf18 )\cf15 \
+{\listtext	2.	}\'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 Node newNode = 
+\f3\b \cf0 new
+\f2\b0 \cf15  Node\cf18 (\cf15 value, 
+\f3\b \cf0 null
+\f2\b0 \cf15 , 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 ;\
+\pard\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+Since this will be a leaf, its left and right children will be null.\
+\
+The simplest tree to insert into is an empty tree. Our new node becomes the new root.\
+\
+Here's my code for that:\
+\
+\pard\pardeftab720
+
+\f6\b\fs18 \cf13 \cb14 Code:
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls3\ilvl0
+\f2\fs24 \cf15 \cb16 {\listtext	1.	}\'a0 \'a0
+\f3\b \cf0 public
+\f2\b0 \cf15  \cf17 void\cf15  insert\cf18 ({\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f3\b \cf19 String}}\cf15  value\cf18 )\cf15 \
+{\listtext	2.	}\'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 Node newNode = 
+\f3\b \cf0 new
+\f2\b0 \cf15  Node\cf18 (\cf15 value, 
+\f3\b \cf0 null
+\f2\b0 \cf15 , 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 ;\
+{\listtext	4.	}\'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (
+\f3\b \cf0 this
+\f2\b0 \cf15 .root == 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 \
+{\listtext	5.	}\'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	6.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
+\f3\b \cf0 this
+\f2\b0 \cf15 .root = newNode;\
+{\listtext	7.	}\'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	8.	}\'a0 \'a0 \'a0 \'a0 \cf20 else\cf15 \
+{\listtext	9.	}\'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+\pard\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+Otherwise, we start at the root and keep moving until we hit the bottom. There are a few ways we could structure the loop to handle this process. I'll use a boolean flag called 
+\b done
+\b0 . When 
+\b done 
+\b0 becomes true, we stop the loop:\
+\
+\pard\pardeftab720
+
+\f6\b\fs18 \cf13 \cb14 Code:
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls4\ilvl0
+\f2\fs24 \cf15 \cb16 {\listtext	1.	}\'a0 \'a0
+\f3\b \cf0 public
+\f2\b0 \cf15  \cf17 void\cf15  insert\cf18 ({\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f3\b \cf19 String}}\cf15  value\cf18 )\cf15 \
+{\listtext	2.	}\'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 Node newNode = 
+\f3\b \cf0 new
+\f2\b0 \cf15  Node\cf18 (\cf15 value, 
+\f3\b \cf0 null
+\f2\b0 \cf15 , 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 ;\
+{\listtext	4.	}\'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (
+\f3\b \cf0 this
+\f2\b0 \cf15 .root == 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 \
+{\listtext	5.	}\'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	6.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
+\f3\b \cf0 this
+\f2\b0 \cf15 .root = newNode;\
+{\listtext	7.	}\'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	8.	}\'a0 \'a0 \'a0 \'a0 \cf20 else\cf15 \
+{\listtext	9.	}\'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	10.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 Node subroot = 
+\f3\b \cf0 this
+\f2\b0 \cf15 .root;\
+{\listtext	11.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf17 boolean\cf15  done = 
+\f3\b \cf0 false
+\f2\b0 \cf15 ;\
+{\listtext	12.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 while\cf15  \cf18 (\cf15 !done\cf18 )\cf15 \
+{\listtext	13.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+\pard\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+We'll ignore the case of trying to insert a value that's already in the tree. So the value will either be smaller or larger than the value at subroot.\
+\
+If the value is smaller, we have two possibilities. Either there isn't any left child for the subroot, or there is:\
+\
+\pard\pardeftab720
+
+\f6\b\fs18 \cf13 \cb14 Code:
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls5\ilvl0
+\f2\fs24 \cf15 \cb16 {\listtext	1.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0Node subroot = 
+\f3\b \cf0 this
+\f2\b0 \cf15 .root;\
+{\listtext	2.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf17 boolean\cf15  done = 
+\f3\b \cf0 false
+\f2\b0 \cf15 ;\
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 while\cf15  \cf18 (\cf15 !done\cf18 )\cf15 \
+{\listtext	4.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	5.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 value.compareTo\cf18 (\cf15 subroot.data\cf18 )\cf15  < \cf10 0\cf18 )\cf15 \
+{\listtext	6.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	7.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 subroot.left == 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 \
+\pard\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+What do we do in the case where there is no left child? There are two things we need to do. We have to attach the new node as the new left child. Then we need to set 
+\b done 
+\b0 to true to stop the loop:\
+\
+\pard\pardeftab720
+
+\f6\b\fs18 \cf13 \cb14 Code:
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls6\ilvl0
+\f2\fs24 \cf15 \cb16 {\listtext	1.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0Node subroot = 
+\f3\b \cf0 this
+\f2\b0 \cf15 .root;\
+{\listtext	2.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf17 boolean\cf15  done = 
+\f3\b \cf0 false
+\f2\b0 \cf15 ;\
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 while\cf15  \cf18 (\cf15 !done\cf18 )\cf15 \
+{\listtext	4.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	5.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 value.compareTo\cf18 (\cf15 subroot.data\cf18 )\cf15  < \cf10 0\cf18 )\cf15 \
+{\listtext	6.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	7.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 subroot.left == 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 \
+{\listtext	8.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	9.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 subroot.left = newNode;\
+{\listtext	10.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 done = 
+\f3\b \cf0 true
+\f2\b0 \cf15 ;\
+{\listtext	11.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+\pard\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+What happens if there is a left child?\
+\
+Then we move subroot to that child:\
+\
+\pard\pardeftab720
+
+\f6\b\fs18 \cf13 \cb14 Code:
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls7\ilvl0
+\f2\fs24 \cf15 \cb16 {\listtext	1.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0Node subroot = 
+\f3\b \cf0 this
+\f2\b0 \cf15 .root;\
+{\listtext	2.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf17 boolean\cf15  done = 
+\f3\b \cf0 false
+\f2\b0 \cf15 ;\
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 while\cf15  \cf18 (\cf15 !done\cf18 )\cf15 \
+{\listtext	4.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	5.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 value.compareTo\cf18 (\cf15 subroot.data\cf18 )\cf15  < \cf10 0\cf18 )\cf15 \
+{\listtext	6.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	7.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 subroot.left == 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 \
+{\listtext	8.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	9.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 subroot.left = newNode;\
+{\listtext	10.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 done = 
+\f3\b \cf0 true
+\f2\b0 \cf15 ;\
+{\listtext	11.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	12.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 else\cf15 \
+{\listtext	13.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 subroot = subroot.left;\
+{\listtext	14.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+\pard\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+The loop then continues. The right-side case is similar. Here's the complete method:\
+\
+\pard\pardeftab720
+
+\f6\b\fs18 \cf13 \cb14 Code:
+\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720
+\ls8\ilvl0
+\f2\fs24 \cf15 \cb16 {\listtext	1.	}\'a0 
+\f3\b \cf0 public
+\f2\b0 \cf15  \cf17 void\cf15  insert\cf18 ({\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f3\b \cf19 String}}\cf15  value\cf18 )\cf15 \
+{\listtext	2.	}\'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 Node newNode = 
+\f3\b \cf0 new
+\f2\b0 \cf15  Node\cf18 (\cf15 value, 
+\f3\b \cf0 null
+\f2\b0 \cf15 , 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 ;\
+{\listtext	4.	}\'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (
+\f3\b \cf0 this
+\f2\b0 \cf15 .root == 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 \
+{\listtext	5.	}\'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	6.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
+\f3\b \cf0 this
+\f2\b0 \cf15 .root = newNode;\
+{\listtext	7.	}\'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	8.	}\'a0 \'a0 \'a0 \'a0 \cf20 else\cf15 \
+{\listtext	9.	}\'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	10.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 Node subroot = 
+\f3\b \cf0 this
+\f2\b0 \cf15 .root;\
+{\listtext	11.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf17 boolean\cf15  done = 
+\f3\b \cf0 false
+\f2\b0 \cf15 ;\
+{\listtext	12.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 while\cf15  \cf18 (\cf15 !done\cf18 )\cf15 \
+{\listtext	13.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	14.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 value.compareTo\cf18 (\cf15 subroot.data\cf18 )\cf15  < \cf10 0\cf18 )\cf15 \
+{\listtext	15.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	16.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 subroot.left == 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 \
+{\listtext	17.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	18.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 subroot.left = newNode;\
+{\listtext	19.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 done = 
+\f3\b \cf0 true
+\f2\b0 \cf15 ;\
+{\listtext	20.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	21.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 else\cf15 \
+{\listtext	22.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 subroot = subroot.left;\
+{\listtext	23.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	24.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 else\cf15  
+\f5\i \cf21 // > 0
+\f2\i0 \cf15 \
+{\listtext	25.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	26.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 if\cf15  \cf18 (\cf15 subroot.right == 
+\f3\b \cf0 null
+\f2\b0 \cf18 )\cf15 \
+{\listtext	27.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \{\cf15 \
+{\listtext	28.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 subroot.right = newNode;\
+{\listtext	29.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 done = 
+\f3\b \cf0 true
+\f2\b0 \cf15 ;\
+{\listtext	30.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	31.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf20 else\cf15 \
+{\listtext	32.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 subroot = subroot.right;\
+{\listtext	33.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	34.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	35.	}\'a0 \'a0 \'a0 \'a0 \cf18 \}\cf15 \
+{\listtext	36.	}\'a0 \'a0 \cf18 \}\cf15 \
+\pard\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+Now for a word or two about deletion. Suppose we want to delete a leaf node from the tree, like 45 in the stickied picture. How do you do it?\
+\
+Just set the link from its parent to null. So, for 45, we set 50's left child link to null.\
+\
+What if we want to delete a node with one child, like 25?\
+\
+Then we set the parent's link to instead point to the one child. So, to delete 25, we set 20's right child to 23. (And now 23 is to the right of a node, instead of to the left.)\
+\
+The interesting case is when a node we want to delete has two children, like 30 at the root. We can't just erase it, since that disconnects the tree. Even for non-roots, the problem becomes that we can't have a left or right child be two different nodes.\
+\
+The solution is to keep the node but replace its value with something else. What could we replace 30 with so as to retain the BST property for the entire tree?\
+\
+There are two possibilities: 25 and 35. Everything else in the left subtree is smaller than 25, and everything in the right subtree is bigger than 25. Similar statements hold for 35.\
+\
+What we want is the 
+\i largest
+\i0  element of the 
+\i left 
+\i0 subtree or the 
+\i smallest 
+\i0 element in the 
+\i right
+\i0 .\
+\
+Where will the largest element be in the left subtree?\
+\
+It will be all the way on the right hand side of the left subtree. Similarly, the smallest element on the right is all the way to the left.\
+\
+Because of this, we know the moved element has at most one child. (For example, 25 in our example BST has 23 as a left child.) So after we copy the value over, we can easily delete the node by adjusting its parent's pointer.\
+\
+In other words, if we wanted to delete the 30 node in our example BST and we wanted to do it by grabbing the largest element in the left subtree, we would first locate that element (that would be 25 in our example). Next we'd write over the data in 30 to 25. Finally, we would adjust 25's parent to now point at what had been 25's child, the node containing the value 23.\
+\
+The running time of both insert and delete is O(log N) for a balanced tree.}

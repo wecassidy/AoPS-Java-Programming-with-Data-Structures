@@ -1,0 +1,5317 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fmodern\fcharset0 Courier-Bold;\f2\fmodern\fcharset0 Courier;
+\f3\fmodern\fcharset0 Courier-Oblique;\f4\fmodern\fcharset0 Courier-BoldOblique;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red18\green139\blue2;\red0\green0\blue83;\red43\green139\blue39;\red83\green83\blue83;\red1\green32\blue135;
+\red11\green85\blue38;\red30\green91\blue156;\red190\green74\blue193;\red0\green0\blue255;\red0\green0\blue135;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 5: Defining Classes
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The plan this week is to learn how to create our own classes in Java. This is an extremely fundamental topic and you'll refer back to the ideas we'll discuss today basically for every Java program you write from now on. We'll then see how to use those classes in our programs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You probably had some experience with objects and the concept of object-oriented programming or OOP in other languages. Along the way, I'll compare how it's done in Java with Python and C++.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The good news is that we've got a small headstart, since you've been creating classes since Week 1. Every Java program is contained within a class. You've also seen how to create methods, although most of them have been static. Last week, the classes we made for drawing with the paintComponent method are closer to the kinds of classes we'll make today.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: CLASSES AND OBJECTS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, we've been using the terms \cf3 classes\cf0  and \cf3 objects\cf0 . What's the difference?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A class describes a generic type of thing. An object describes a specific thing. The object is a member of the type represented by the class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As a very general example to illustrate that you've always known what classes and objects are, you can think of "cars" as a class. A particular object in that class would be "my blue Toyota Camry". Another would be "my neighbor's Dodge Ram pickup truck". Any particular car is an example of an object in the class of cars.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As another general example, you can think of "people" as a class. I am an object of that class, as are you.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm sure you can come up with lots and lots and lots of other examples.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another analogy, closer to how the notion of classes and objects gets used in programming contexts, would be the blueprint for a house. In this analogy, the blueprint represents the code for a class. The house we build from it would be the object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that having the blueprint for a house does not necessarily mean I have a house. \cf3 I have to take action to build the house from the blueprint.\cf0  Similarly, code for a class doesn't do anything until I create (or \cf3 instantiate\cf0 ) a corresponding object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What a blueprint allows me to do is create many houses with the same underlying structure. Similarly, we can create as many objects as we need from a given class. Like the houses, the objects are similar on a structural level but different in their particular details. For example, two houses with the same organization of rooms can have different families living in them, or different street addresses, or different outside colors, etc. We would say the two house objects have different values for their \cf3 fields\cf0  or \cf3 attributes\cf0 . Every house has an address, but the specific addresses can be different.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions so far?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Besides attributes, what's the other major kind of component of a class? (Hint: We talked about them a couple weeks ago.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:36:07 pm
+\fs26 \
+Methods?\
+\cf4 ScottBusche\cf0  
+\fs20 7:36:07 pm
+\fs26 \
+Methods!\
+\cf4 mrturtle\cf0  
+\fs20 7:36:07 pm
+\fs26 \
+methods!\
+\cf4 AkshajK\cf0  
+\fs20 7:36:07 pm
+\fs26 \
+methods\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:36:07 pm
+\fs26 \
+Methods?\
+\cf4 connor0728\cf0  
+\fs20 7:36:07 pm
+\fs26 \
+method\
+\cf4 MathWolf\cf0  
+\fs20 7:36:07 pm
+\fs26 \
+methods\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Those are methods. We've already spent a lot of time talking about them. In Object Oriented Programming (OOP), the methods are the actions we can perform with or to the objects from a class. With a house class, we may have methods like ring the doorbell, set the thermostat, open the garage, etc.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:36:22 pm
+\fs26 \
+Are there any differences between a field and an attribute?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope. When I said "or", I meant to indicate those terms mean the same thing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They're synonyms in this context.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We enjoy two major benefits from organizing our code around the use of classes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first is abstraction.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Continuing our house analogy, suppose I ring the doorbell of your house. What actually happens to cause a sound to occur somewhere inside? The answer is, "I have no idea how your house's doorbell works, and, more to the point, I don't need to know those details in order to use it." What I do know is what a doorbell is, how to activate it, and what the effect will be when I do. The inner details are hidden from me, and frankly, I don't have any reason to care about them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Abstraction is the idea of taking a situation and hiding the details that are not required to understand the situation. Mathematicians and scientists use abstraction all the time when they build an equation or model to represent a complex environment. The model has what is relevant to solve the problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've already made use of abstraction whenever we've called methods of existing classes. We can use nextInt on a Scanner, because we know how to call it, what it returns, and what it is supposed to do. We don't care about the exact mechanism it uses to get data from the keyboard.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other benefit is encapsulation. This involves a couple of things. One is making a "capsule". We put together all the information related to a single thing in 
+\i one
+\i0  place. Why is this good?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:38:25 pm
+\fs26 \
+It's easier to find the information\
+\cf4 ScottBusche\cf0  
+\fs20 7:38:25 pm
+\fs26 \
+Easy access.\
+\cf4 Tungsten\cf0  
+\fs20 7:38:25 pm
+\fs26 \
+It is easier to find everything relevant to whatever you are doing?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because it makes it easier to find that information. It's better organized and easier to understand.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any other suggestions?
+\b0 \
+\pard\pardeftab720
+\cf4 mrturtle\cf0  
+\fs20 7:39:01 pm
+\fs26 \
+so that it is easy to access the information\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can develop this idea even further.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In fact, encapsulation allows us to 
+\i control
+\i0  access to information.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's return to the house analogy. To get into your house, you need a key with a certain pattern. The house has to "know" what that pattern is. If we can access the pattern, then we could get into the house.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 With programming, controlling access to a class's information is not really a matter of security, but more of a way to ensure the program works the way you designed it to work. If my methods use the values stored in a class's fields to do a calculation, an unwitting user could easily mess up the method by changing a field's value in an unexpected way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, if I'm writing software for a teacher, I might want to allow the teacher to set a student's exam grade or ask for the final letter grade. But I might not want her to set the final letter grade directly as that should be based on an average.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ultimately, the main idea behind controlling access to a class's information is that if you, the programmer who's using a class I wrote, don't know how something works, and you can't get inside it, then you will have to use it in a specific way (as the manufacturer intended, so to speak).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This prevents you from making my code and your code too intermingled, which would make it hard for either of us to edit our code if we needed to without breaking everything.
+\b0 \
+\pard\pardeftab720
+\cf4 mrturtle\cf0  
+\fs20 7:43:10 pm
+\fs26 \
+is that what the public in front of the classes and methods we've been writing is for?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:43:26 pm
+\fs26 \
+private is the opposite\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep. We'll discuss public and private in a few moments.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions before we press on?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:44:19 pm
+\fs26 \
+so if i say private int abc = 42;, then i can't change the value of abc ever again?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll get to that later today. The short answer is "No, there are ways to change it."
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: INSTANCE VARIABLES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Go into Eclipse and make a new Java Project. The defaults are fine. Call it whatever you want.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then make a new class called Circle. \cf3 Unlike the other classes, do not tick the check box for main.\cf0  (Or, if you did, for whatever reason, tick the check box for main, you can always just delete the main method that Eclipse sticks in manually. No big deal.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What should come up is hardly anything:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Circle \cf5 \{\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Eclipse puts in a blank line between the curly braces, but that won't translate well to the classroom.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You've seen this header before, of course. We'll talk more about the keyword \cf3 public\cf0  today. Recall that here it indicates that the class can be used by other parts of a program. Every Java file you write should have 
+\i at most one
+\i0  public class in it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The name of the class is Circle. We're going to design our Circle class so that each one of its objects will represent some circle in the plane, just like in math class!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Usually a class represents some entity that our program needs to interact with. It's generally good to try to design a class so it could be used in multiple programs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first step whenever you're designing a class is to decide 
+\i what kinds of things are important to know about the entity
+\i0  and 
+\i what kinds of things the entity should do or have done to it
+\i0 . The former are the attributes, and the latter are the methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll focus on the attributes to start. What are some features of a circle that our class might need to model?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try to whittle everything down to just the most basic information you need.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, if we can compute one thing from another, we don't need both.
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 7:48:36 pm
+\fs26 \
+radius, center position\
+\cf4 manbugbeebee\cf0  
+\fs20 7:48:36 pm
+\fs26 \
+size, location\
+\cf4 k77frank\cf0  
+\fs20 7:48:36 pm
+\fs26 \
+radius, x and y coordinates\
+\cf4 dlennon\cf0  
+\fs20 7:48:36 pm
+\fs26 \
+The radius\
+\cf4 ScottBusche\cf0  
+\fs20 7:48:36 pm
+\fs26 \
+The radius and the coordinates of the center.\
+\cf4 jprosk\cf0  
+\fs20 7:48:36 pm
+\fs26 \
+radius, center coordinates\
+\cf4 JRY\cf0  
+\fs20 7:48:36 pm
+\fs26 \
+The circle's location and its size.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These will work just fine.
+\b0 \
+\pard\pardeftab720
+\cf4 jdaimax\cf0  
+\fs20 7:49:04 pm
+\fs26 \
+Radius, border colour, fill colour\
+\cf4 connor0728\cf0  
+\fs20 7:49:04 pm
+\fs26 \
+color?\
+\cf4 teachm\cf0  
+\fs20 7:49:06 pm
+\fs26 \
+color, line thickness\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These extra attributes about how the circle might get drawn could also be relevant, but I'll leave them out of this example to keep things simple.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To summarize, we want the location of the center, which we'll express as usual by x and y-coordinates. We'll also need the radius of the circle. We can write methods to determine diameter, area, or circumference. To simplify things for now, I'll leave off any specific graphical attributes (like color, line thickness, and so forth).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Attributes are sometimes referred to in code as \cf3 instance variables\cf0 . An attribute has to be stored in a variable in memory. The word "instance" is used here as a synonym for "object". Every object has a different value for an attribute. Every house has an address, but each address is different from house to house. Every circle has a center, but the centers are different (possibly). So each object will have an individual copy of each instance variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As you know, variables need to be declared. In order to be able to pass these coordinates to a Graphics object with minimal fussing later today, let's use integer coordinates for the center. So that leads to these declarations (shown in context of the class):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Circle \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerY\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 int\cf0  is the type, and centerX/centerY are the variable names. That's nothing new. What is different is the word \cf3 private\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 private\cf0  is the opposite of \cf3 public\cf0 . A variable or method with private in the header is not accessible by code outside of the class definition. The purpose of this is make it possible for us, the programmers, to set up and enforce the encapsulation that we discussed earlier. Someone using our Circle class won't be able to tell that there are variables called centerX and center, and even if he knew about them, he wouldn't be able to alter them directly.
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 7:52:02 pm
+\fs26 \
+if you don't write anything is it private or public?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In fact it is neither of those. We'll get to that in a minute or two.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other questions?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:52:36 pm
+\fs26 \
+How does Java make attributes private?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The compiler just creates an error and refuses to go further until you follow its rules.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What I mean is that if you try to use a variable (or method) in a way that is not consistent with the fact that it's private, that's when you'd get an error.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 7:54:53 pm
+\fs26 \
+Can't the programmer just edit the program?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not if the programmer does not have access to the source code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, all those packages that we've been using, Scanner, Random, and so forth, those are written in Java.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But you don't necessarily have the source code for those.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Actually, I think you can get the source for all of those things in the libraries, but there are cases where you can use the classes without having access to the source code.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now take a moment to give a quick comparison of Java with C++ and Python. C++ also uses the qualifiers public and private. If you've done OOP in C++, you've seen that you write \cf3 private:\cf0  on one line and then the declarations of all the private variables on following lines:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 private:\
+\'a0\'a0\'a0\'a0int centerX, centerY;\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In Python, we don't really have "private variables", but we get basically the same effect by putting underscores in front of the instance variable name, as in self.__centerX. When Python encounters names like this in class definitions, it changes the name you picked to an alternate name that is more complex. (This is called "name mangling", if you'd like to know more about this.) This is different from private variables in C++ and Java in that, if you know the complex name that Python created, you can still access the variable. In Java it is impossible for anything that's not in the given class definition to access a private variable .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In Java, there are four possibilities for the "access modifier" on an instance variable. We just discussed \cf3 private\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can also use \cf3 public\cf0 , but because its use invalidates encapsulation, it is not recommended to make your instance variables public. If you think you need to make your instance variable public, you're almost certainly doing something foolish and should go back and redesign your class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Later on, after we've discussed inheritance in a few weeks, we'll see the keyword \cf3 protected\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I won't say any more about it for now. Stay tuned!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Finally, you could omit a qualifier altogether, as we did last week when we made variables for user input in our graphics program. When we don't use any qualifier, it's called "package access". Only code defined in the same package can access the fields or methods directly.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 7:59:03 pm
+\fs26 \
+What's a package?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A package is a way in Java of grouping related classes together.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, Scanner and Random are both in the java.util package.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 JPanel and JFrame are both in the javax.swing package.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:00:00 pm
+\fs26 \
+So basically if we omit a qualifier, then anything in the program can use it?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope! If you omit a qualifier, then anything in the same package as your class will be able to access that variable (or method, as we'll discuss later) directly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 An omitted qualifier corresponds to "package access".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Global access, which in the broadest since of "anything in the program" is only permitted if you use the public access modifier.
+\b0 \
+\pard\pardeftab720
+\cf4 jprosk\cf0  
+\fs20 8:02:05 pm
+\fs26 \
+is a project similar to a package\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A project is just Eclipse's term for a top-level directory.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A package is (omitting details) just a directory inside that directory.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:02:51 pm
+\fs26 \
+How about final variables?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Final is a different keyword altogether. It has nothing to do with controlling access to a class's internal information.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:03:20 pm
+\fs26 \
+We almost always use public classes and methods. How come you haven't told us not to use them?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The things that should not be public are 
+\i instance variables
+\i0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It is fine for your classes and methods to be public.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+what's so bad about an instance variable being public?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's bad in the same way that leaving a clock's gears exposed to the outside world is bad.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you don't put the gears in the case, the end-user might unwittingly reach in and really gum things up, and then the clock won't work anymore!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're still missing one more instance variable in our Circle class. Can you fill in the other instance variable declaration we'll need? (Let's not restrict the radius to be an integer.)
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:06:47 pm
+\fs26 \
+private double radius;\
+\cf4 k77frank\cf0  
+\fs20 8:06:47 pm
+\fs26 \
+private double radius;\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:06:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 private
+\f2\b0  
+\f1\b \cf6 double
+\f2\b0 \cf0  radius\cf7 ;\cf0  
+\f3\i \cf8 // is this right?
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 8:06:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 private
+\f2\b0  
+\f1\b \cf6 double
+\f2\b0 \cf0  radius\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 williamyin08\cf0  
+\fs20 8:06:47 pm
+\fs26 \
+private double radius;\
+\cf4 ScottBusche\cf0  
+\fs20 8:06:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0    
+\f1\b private
+\f2\b0  
+\f1\b \cf6 double
+\f2\b0 \cf0  radius\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 teachm\cf0  
+\fs20 8:06:47 pm
+\fs26 \
+private double radius;\
+\cf4 adrianu\cf0  
+\fs20 8:06:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 private
+\f2\b0  
+\f1\b \cf6 double
+\f2\b0 \cf0  radius\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 connor0728\cf0  
+\fs20 8:06:49 pm
+\fs26 \
+private double radius;\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The radius doesn't have to be an integer length, so a double seems more appropriate:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf6 double\cf0  radius\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 AkshajK\cf0  
+\fs20 8:07:23 pm
+\fs26 \
+what if we wanted to increase or decrease the radius? then it would have to be public righ\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll get to that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: METHODS I: CONSTRUCTORS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now that we have the variables, we want to put values in them. We could put an assignment within the declaration, and I'll come back to that approach in a few minutes. But let me show you the most common way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that instance variables are tied to a particular object. So we want to initialize the variables when we actually create the corresponding object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In main, how do we create an object? For example, what have we done to create Scanner objects?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+Scanner scan = new Scanner(System.in);\
+\cf4 connor0728\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+use new\
+\cf4 chenjamin\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 Scanner scan \cf7 =\cf0  
+\f1\b new
+\f2\b0  Scanner\cf5 (\cf9 System\cf0 .\cf10 in\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 piis3141592653\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+Scanner scan = new Scanner();\
+\cf4 MathWolf\cf0  
+\fs20 8:08:58 pm
+\fs26 \
+Use new\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We use the keyword \cf3 new\cf0 . Something like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0Scanner scan \cf7 =\cf0  new Scanner\cf5 (\cf9 System\cf0 .\cf10 in\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 mattpi\cf0  
+\fs20 8:09:08 pm
+\fs26 \
+<type> <name> = new <type>(args);\
+\cf4 manbugbeebee\cf0  
+\fs20 8:09:08 pm
+\fs26 \
+we write 'new'\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:09:11 pm
+\fs26 \
+Scanner scan = new Scanner(System.in);\
+\cf4 JRY\cf0  
+\fs20 8:09:14 pm
+\fs26 \
+Scanner scan = new Scanner(System.in);\
+\cf4 chutney\cf0  
+\fs20 8:09:14 pm
+\fs26 \
+Scanner scan = new Scanner(system.in);\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It may not look like it, but this is actually calling a method of the Scanner class that takes {\field{\*\fldinst{HYPERLINK "http://system.in/"}}{\fldrslt \cf11 System.in}} as a parameter. That method is called a \cf3 constructor\cf0  of the Scanner class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's write a constructor for the Circle class. Like Scanner's constructor takes System.in to denote where the data is coming from, we'll pass the coordinates and radius of the circle as parameters to the constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a possible header line:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY, \cf6 double\cf0  newRadius\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The qualifier public is the first word. That indicates the method can be accessed out of the class. This is important, as otherwise the main method, if it's defined in a different class, can't make Circle objects.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In general, the methods of the classes we write will be public, although occasionally we might define private methods, for example to do complicated internal subtasks that the end user does not need to have access to. We'll see some examples of this much later on in the course when we will be discussing data structures.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:11:33 pm
+\fs26 \
+Where do we write this?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is a method of the Circle class, so it goes inside the Circle class definition.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next, you may have noticed something missing in the header. What's missing?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:12:33 pm
+\fs26 \
+static!\
+\cf4 Tungsten\cf0  
+\fs20 8:12:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 static
+\f2\b0 \
+\pard\pardeftab720
+
+\f0 \cf4 williamyin08\cf0  
+\fs20 8:12:33 pm
+\fs26 \
+static!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's true that this method is not static. That's not precisely what I'm looking for here, but I'll also comment on this.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Recall that static methods are tied to the class as a whole and not individual objects. But here the whole point is to make a single object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (That's all I have to say about the absence of the keyword static here.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What else is missing?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:13:49 pm
+\fs26 \
+The type of return value\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:13:49 pm
+\fs26 \
+a return type\
+\cf4 ScottBusche\cf0  
+\fs20 8:13:49 pm
+\fs26 \
+What it returns.\
+\cf4 MathWolf\cf0  
+\fs20 8:13:49 pm
+\fs26 \
+a return type\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Bingo!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Usually at this point in a method header, we indicate the return type. Constructors are different in this way; they don't have a return type. They will automatically return the constructed object.
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 8:14:21 pm
+\fs26 \
+void\
+\cf4 connor0728\cf0  
+\fs20 8:14:21 pm
+\fs26 \
+void\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope! Not even void.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You just don't indicate any return type at all.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The name of the constructor method is Circle, which happens to be the name of the class. That's no coincidence. The constructor for a class must always use the name of the class.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:15:01 pm
+\fs26 \
+Whoa! So that was completely correct?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. The header I originally gave for the constructor was 100% correct.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The name of the constructor method is Circle, which happens to be the name of the class. That's no coincidence. The constructor for a class must always use the name of the class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is the same as in C++, but different from Python, where the constructor for a class is called __init__.
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:15:52 pm
+\fs26 \
+If you don't put a return type, does Java assume that the method is a constructor?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. The thing that tells Java "This method is a constructor" is that the name of the method is the same as the name of the class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And you just need to remember that constructors don't have a return type.
+\b0 \
+\pard\pardeftab720
+\cf4 gkaops\cf0  
+\fs20 8:16:57 pm
+\fs26 \
+In java, if you do not indicate a return type, does it return an object?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Constructors are the only methods that do not indicate a return type.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I guess technically a constructor returns the new object it creates, but I'd rather not say it like that because then you'll get confused and think you need to give a return type for your constructors, which you don't.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The last part of the header is where we give the parameters to the constructor. As I said before, we're going to give it the values for the three instance variables.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The body of the method is very boring. It just assigns the parameters' values to the appropriate instance variables. Can you give me that code?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:20:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:20:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the complete constructor:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY, \cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:21:17 pm
+\fs26 \
+Could you define "constructor"?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A constructor is a special method in a class that you use to create objects of that class.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:22:19 pm
+\fs26 \
+So all classes need constructors?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you don't define a constructor explicitly, Java will create a default one that does basically nothing beyond the absolute minimum that needs to happen, namely create a spot in memory.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To show how we might use a Circle class, add a new class to your project. Call it CircleTester, and now make sure the box for main IS checked.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because CircleTester is in the same project, and hence the same package, as Circle, we don't need to do any imports in order for CircleTester to use the Circle class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Within main, we call the constructor for Circle in pretty much the same way as we did for Scanner:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle smallCircle \cf7 =\cf0  new Circle\cf5 (\cf12 40\cf0 , \cf12 40\cf0 , \cf12 20.0\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody with me? Have you created a new CircleTester class and put this code in main?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first part (\cf3 Circle smallCircle\cf0 ) declared that smallCircle is a variable of type Circle. Since we've already defined the Circle class, Java is able to figure out what it means for a variable to be of type Circle. The second part, after the equals sign, activates the constructor, passing in the three numbers in order. So smallCircle is a Circle centered at (40, 40) with radius 20.
+\b0 \
+\pard\pardeftab720
+\cf4 mduong14\cf0  
+\fs20 8:26:01 pm
+\fs26 \
+but you still need a return type?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 "Return types" only come up in the context of defining method headers. We're not defining any method headers here.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:26:33 pm
+\fs26 \
+do we have to put Circle tester in a separate file under the same project? is circle tester public or private?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. CircleTester goes in a separate file in the SAME project.
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 8:26:56 pm
+\fs26 \
+i have an error on every single line! i have exactly what you posted. whats wrong? do i need a main?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 CircleTester does need a main, yes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay. Let's back up. Let me see if I can track down the code so we can be sure we're on the same page.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what your Circle.java should look like so far, if I didn't miss anything. (As in the past, I'm editing a later version of the code, so let me know if I did miss something and I'll comment on what needs to be fixed.)\
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\
+public class Circle \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 double\cf0  radius\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY, \cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And here's CircleTester.java
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class CircleTester \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf6 void\cf0  main\cf5 (\cf9 String\cf5 []\cf0  args\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle smallCircle \cf7 =\cf0  new Circle\cf5 (\cf12 40\cf0 , \cf12 40\cf0 , \cf12 20.0\cf5 )\cf7 ;\cf0  
+\f4\i \cf8 // creates a Circle
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That help?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, returning to what I was saying.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first part (\cf3 Circle smallCircle\cf0 ) declared that smallCircle is a variable of type Circle. Since we've already defined the Circle class, Java is able to figure out what it means for a variable to be of type Circle. The second part, after the equals sign, activates the constructor, passing in the three numbers in order. So smallCircle is a Circle centered at (40, 40) with radius 20.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can even run this code now, but it doesn't do anything useful. It'll just stop right away.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note I chose very different names in the constructor's header for the parameters than the instance variables they correspond to. If I reused centerX, centerY, and radius, then it would be confusing which one I meant if I said centerX in the constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In fact, if I used the same name for a parameter as an instance variable, Java "forgets" the instance variable temporarily and uses only the parameter. So if you wrote this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  centerX, \cf6 int\cf0  centerY, \cf6 double\cf0  radius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  centerY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  radius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 you would end up assigning the parameters back to themselves! In other words, you would end up accomplishing nothing. The instance variables would be untouched, leaving them with default values of 0.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So that didn't quite work. But, with a small modification, in fact there is a way to resolve the ambiguity if you have an instance variable and another variable (either a local variable or a parameter) in a method that have the same name. The trick is that Java provides a special keyword called \cf3 this\cf0  which always refers to the current object. For a constructor, \cf3 this\cf0  is a reference to the object being constructed. If you have Python experience, \cf3 this\cf0  works (more or less) exactly the same as \cf3 self\cf0 .
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:36:03 pm
+\fs26 \
+Do you need to say this every time you use a variable?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, you don't always HAVE to. Just look at our original constructor for the Circle class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What I will be talking about right now, though, is a situation where you would have to.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:36:52 pm
+\fs26 \
+Should you use it ?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I think it's a good idea to use it, as the following discussion may make clear, but I don't have a strong feeling about this particular point.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:37:22 pm
+\fs26 \
+How do you use "this" in this situation?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well let's see, shall we?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If Java comes across some variable name inside a method and can't find a local variable declared, then it will use an instance variable of that name instead (if there is one). If, however, you want to 
+\i force
+\i0  Java to use the instance variable, or make it explicit (for the benefit of your fellow programmers) that it is an instance variable, then you precede the variable with \cf3 this.\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Long story short, we can use centerX for both the instance variable and the parameter if we precede the instance variable with \cf3 this.\cf0 :
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  centerX, \cf6 int\cf0  centerY, \cf6 double\cf0  radius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 centerX\cf0  \cf7 =\cf0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 centerY\cf0  \cf7 =\cf0  centerY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 radius\cf0  \cf7 =\cf0  radius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now, the variable to the left of the assignment operator is the instance variable, and the variable to the right is the parameter.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:38:13 pm
+\fs26 \
+Is it considered good or bad form to always use this?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's your call.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The key is code clarity.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If using "this" makes your code clearer and easier to read and understand, use it. If not, don't.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:39:24 pm
+\fs26 \
+so we don't have to use "this" if we like the other way better?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You don't HAVE to use it unless you create a situation for yourself, like in my example above, where there is ambiguity in what centerX referred to. Then you did have to use this to resolve the ambiguity.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions about this? (pun intended)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could also have used \cf3 this\cf0  in the first constructor we wrote:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY, \cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 centerX\cf0  \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 centerY\cf0  \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 radius\cf0  \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The reason we didn't need to do this in our first version of the constructor is that, in that version, there isn't any ambiguity. There's only one thing that centerX could mean, so the extra \cf3 this\cf0  isn't required. Some programmers like to make the instance variable explicit in any case by adding \cf3 this\cf0  in front. I don't have strong feelings one way or the other, but if you're not sure what you should do while you're learning, go ahead and always mark instance variables inside your methods using \cf3 this.\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is one of the few places where Python is more stringent than Java. In Python, you must precede instance variables with \cf3 self.\cf0 . In Java, \cf3 this.\cf0  is often not necessary.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now move on to another topic: overloading methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The constructor we wrote requires values for all of the instance variables. But you may think of examples where we wouldn't need that. For example, suppose you knew that nearly all the circles you were going to create would have a radius of length 10.0. It would be redundant to always have to put 10.0 as a parameter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instead we could write two constructors. One takes all three values as parameters, and the other just takes the coordinates of the center. If we write \cf3 new Circle(30,30)\cf0 , we must be referring to the two-parameter version, while \cf3 new Circle(30, 30, 15.0)\cf0  is the three-parameter version.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you write the two-parameter version of the constructor? Remember I want it to make the radius be equal to 10.0.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:45:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  Circle\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  centerX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  centerY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerX\cf0  \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerY\cf0  \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:45:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  Circle\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:45:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  Circle\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 radius\cf0  \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerX\cf0  \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerY\cf0  \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 8:45:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0    
+\f1\b public
+\f2\b0  Circle\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:45:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  Circle\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 bluebandit21\cf0  
+\fs20 8:45:52 pm
+\fs26 \
+public Circle(int newX,int newY)\{this.centerX=newX;this.centerY=newY;this.radius=10.0;\}\
+\cf4 chenjamin\cf0  
+\fs20 8:45:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  Circle\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my version:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This idea is called \cf3 overloading\cf0  the constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In fact, you can overload any method in Java by defining different versions of a method with the same name but different parameters and/or return types. Either the number of parameters or the types must be different; otherwise, Java won't know which to use.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note, however, that the parameter 
+\i names
+\i0  don't matter. It is impossible to overload a method by using different parameter names. For example, Java will consider
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 to be the same as
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public Circle\cf5 (\cf6 int\cf0  a, \cf6 int\cf0  b\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 which is the same as
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public Circle\cf5 (\cf6 int\cf0  firstInput, \cf6 int\cf0  secondInput\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 which is the same as
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public Circle\cf5 (\cf6 int\cf0  newY, \cf6 int\cf0  newX\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 since they all have two integer parameters. In other words, if you try to do something like this, Java will give you an error because it won't be able to resolve the ambiguity you created.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another version of the constructor is what's known as a \cf3 default constructor\cf0 . This is the overloaded version that takes no parameters. It essentially gives you a default version of the corresponding object. We used a default constructor when we created Random objects in week 3 and when we created the panels with our drawings in them last week.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For our Circle example, let's set up the default constructor to set the center as (100, 100) with radius 10.0. Can you write this?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:49:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  Circle\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:49:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  Circle\cf5 ()\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerX\cf0  \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerY\cf0  \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 radius\cf0  \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 teachm\cf0  
+\fs20 8:49:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 ublic Circle\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ReciterOfPi\cf0  
+\fs20 8:49:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  Circle\cf5 ()\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 manbugbeebee\cf0  
+\fs20 8:49:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  Circle\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX\cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, if you give values for the instance variables as part of the declaration (like we did last week when getting user input), those values are automatically assigned when a default constructor is called.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In other words, instead of writing a separate default constructor, we could have done this instead:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Circle \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerX \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerY \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 double\cf0  radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Personally, I prefer to make the default constructor explicit. I think it's easier then to follow what's going on.
+\b0 \
+\pard\pardeftab720
+\cf4 Sir_cumference\cf0  
+\fs20 8:50:56 pm
+\fs26 \
+What is all the code so far?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 CircleTester hasn't changed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me throw together Circle so far.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Circle \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 double\cf0  radius\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY, \cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setRadius\cf5 (\cf0 newRadius\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Circle \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 int\cf0  centerY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0private \cf6 double\cf0  radius\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY, \cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setRadius\cf5 (\cf0 newRadius\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  \cf12 100\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 k77frank\cf0  
+\fs20 8:52:35 pm
+\fs26 \
+what is setRadius(newRadius);?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's something from an upcoming version of the code that I forgot to edit out.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Whoops!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We already had a correct version of that method, so I'll let you sort out that detail..
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: METHODS II: SETTERS AND GETTERS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are several other classic categories of methods that are often included when developing a new class. While constructors are a must, the next few categories are ones that may be nice to have.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll start with ways that allow you to work with the instance variables. Suppose you would like to know what the radius is of a particular circle object. Why isn't the following definition of the main method in our CircleTester class valid?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 void\cf0  main\cf5 (\cf9 String\cf5 []\cf0  args\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle smallCircle \cf7 =\cf0  new Circle\cf5 (\cf12 40\cf0 , \cf12 40\cf0 , \cf12 20.0\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf5 (\cf13 "The circle's radius is: %f\cf14 \\n\cf13 "\cf0 , smallCircle.\cf10 radius\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 ScottBusche\cf0  
+\fs20 8:55:27 pm
+\fs26 \
+The value is private.\
+\cf4 Tungsten\cf0  
+\fs20 8:55:27 pm
+\fs26 \
+radius is a private attribute!\
+\cf4 williamyin08\cf0  
+\fs20 8:55:27 pm
+\fs26 \
+It's private!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 While we can access variables using the dot notation like we can for methods, here the issue is that the radius attribute is private, and so it cannot be referenced directly in main. We can only access variables or methods outside the class where we defined them if we've qualified them as public (or, if main is in the same package, as package).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, to handle this restriction, we provide a method that main can call to find out what the radius of the circle is. We call this method a \cf3 getter\cf0  or an \cf3 accessor\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here\'92s a getter method we can use for the radius:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 double\cf0  getRadius\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return radius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You should put this inside your Circle class definition.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The header line tells us the method is public, as it should be. You don't see static, since this method must be tied to a particular object; we want the radius of a specific circle.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What does \cf3 double\cf0  tell us?
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 8:57:04 pm
+\fs26 \
+return type\
+\cf4 spower4\cf0  
+\fs20 8:57:04 pm
+\fs26 \
+the return type\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's the return type. Since the radius is a double, this should give us back a double.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then comes the name of the method with the parameters. Why doesn't this method need any parameters?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:58:04 pm
+\fs26 \
+because it already has the radius\
+\cf4 MathWolf\cf0  
+\fs20 8:58:04 pm
+\fs26 \
+It doesn't need them to function.\
+\cf4 Tungsten\cf0  
+\fs20 8:58:04 pm
+\fs26 \
+Because it just returns an attribute of its class\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because the information we need is already stored within the object in its instance variable. We need nothing else from outside the object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The body of the method is one line; it simply gives back the value that's in the instance variable. You could also write this as \cf3 return this.radius;\cf0  to make the use of the instance variable explicit.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:58:42 pm
+\fs26 \
+Where do we put the method?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java doesn't care what order you put the methods in within the class definition. You can put getRadius anywhere in the class definition in Circle.java
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now revise the line we wrote for main (in CircleTester) so it correctly uses this method. Can you do it? (Make sure you save the Circle class first, so Eclipse knows about the new method.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:59:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf5 (\cf13 "The circle's radius is: %f
+\f1\b \cf14 \\n
+\f2\b0 \cf13 "\cf0 , smallCircle.\cf10 getRadius\cf5 ())\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:59:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf5 (\cf13 "The circle's radius is: %f
+\f1\b \cf14 \\n
+\f2\b0 \cf13 "\cf0 , smallCircle.\cf10 getRadius\cf5 ())\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:59:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf5 (\cf13 "The circle's radius is: %f
+\f1\b \cf14 \\n
+\f2\b0 \cf13 "\cf0 , smallCircle.\cf10 getRadius\cf5 ())\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what your main should look like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 void\cf0  main\cf5 (\cf9 String\cf5 []\cf0  args\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle smallCircle \cf7 =\cf0  new Circle\cf5 (\cf12 40\cf0 , \cf12 40\cf0 , \cf12 20.0\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf5 (\cf13 "The circle's radius is: %f\cf14 \\n\cf13 "\cf0 , smallCircle.\cf10 getRadius\cf5 ())\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We call the method in the same way you've called nextInt on a Scanner. We give the name of the object (smallCircle) then a dot then the method name followed by parentheses. If there were parameters to this method, they would be in the parentheses.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can run the program now. It actually gives output!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Working for everybody?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you provide the getter for the x-coordinate of the center?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:02:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 int
+\f2\b0 \cf0  getCenterX\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  
+\f1\b this
+\f2\b0 .\cf10 centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:02:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 int
+\f2\b0 \cf0  getCenterX\cf5 ()\cf0  \cf5 \{
+\f1\b \cf0 return
+\f2\b0  
+\f1\b this
+\f2\b0 .\cf10 centerX\cf7 ;\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 spower4\cf0  
+\fs20 9:02:19 pm
+\fs26 \
+public double getCenterX()\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return centerX;\
+\'a0\'a0\'a0\'a0\}\
+\cf4 moppr\cf0  
+\fs20 9:02:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 int
+\f2\b0 \cf0  getX\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:02:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 double
+\f2\b0 \cf0  getCenterX\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 spower4\cf0  
+\fs20 9:02:19 pm
+\fs26 \
+public int getCenterX()\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return centerX;\
+\'a0\'a0\'a0\'a0\}\
+\cf4 bluebandit21\cf0  
+\fs20 9:02:19 pm
+\fs26 \
+;java public double getX()\
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return centerX;\
+\'a0\'a0\'a0\'a0\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 int\cf0  getCenterX\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that there's no particular ordering to where these methods have to go in the class. You put the methods first with the instance variables at the end. You can mix constructors and getters. It doesn't matter to Java.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also, if you're using Eclipse, and your window is getting cluttered with lots of methods, you can click the little circle with a minus sign over to the left of the method header. That will hide the body of the code defining that method. You can click the circle again to expand it (it should now have a plus in it) or just hover your mouse over the circle to get a little pop-up with the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The opposite of a getter is a \cf3 setter\cf0  or \cf3 mutator\cf0 . It is a method used to change the value of an instance variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the simplest form of mutator you could have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 void\cf0  setRadius\cf5 (\cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The return type of this method is void. Remember that means the method doesn't return anything. Instead it changes the object whose radius we are setting, i.e. the one referred to by \cf3 this\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also, unlike the getter, the setter also takes a parameter for the new value of the instance variable. The body simply assigns the parameter to the instance variable, just like in the constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody got those getters and setters in Circle.java now?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Change over to the CircleTester class so we can see the mutator in action. Change main to the following:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 void\cf0  main\cf5 (\cf9 String\cf5 []\cf0  args\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle smallCircle \cf7 =\cf0  new Circle\cf5 (\cf12 40\cf0 , \cf12 40\cf0 , \cf12 20.0\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf5 (\cf13 "The circle's radius is: %f\cf14 \\n\cf13 "\cf0 , smallCircle.\cf10 getRadius\cf5 ())\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0smallCircle.\cf10 setRadius\cf5 (\cf12 10.0\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf5 (\cf13 "The circle's radius is: %f\cf14 \\n\cf13 "\cf0 , smallCircle.\cf10 getRadius\cf5 ())\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 Tungsten\cf0  
+\fs20 9:05:22 pm
+\fs26 \
+Should I create mutators for the other attributes?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can later. I don't think we'll need them right now, but that would be a sensible thing to do.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that the second and fourth lines are the same statements. The call to the mutator in between changes the output for the second printf.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The call to setRadius is on a line all by itself. It's not assigned to anything, and it's not part of a print or any other larger statement. Since void methods don't return values, they must be called in this isolated way. As I said before, the call simply alters the contents of the object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you provide a setter that would allow the user to change both centerX and centerY at once?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:08:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setXY\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 9:08:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setCoordinates\cf5 (
+\f1\b \cf6 double
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 double
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:08:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setCoordinates\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:08:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setCenter\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newCenterX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newCenterY\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerX\cf0  \cf7 =\cf0  newCenterX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerY\cf0  \cf7 =\cf0  newCenterY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 9:08:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setCoordinates\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  centerX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  centerY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerX\cf0  \cf7 =\cf0  centerX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 centerY\cf0  \cf7 =\cf0  centerY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 manbugbeebee\cf0  
+\fs20 9:08:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setCoordinates\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newcenterX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newcenterY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newcenterX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newcenterY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:08:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setCenter\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ReciterOfPi\cf0  
+\fs20 9:08:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setXandY\cf5 (
+\f1\b \cf6 int
+\f2\b0 \cf0  newX, 
+\f1\b \cf6 int
+\f2\b0 \cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0  
+\f3\i \cf8 // How's this?
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a possible answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 void\cf0  setCenter\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This discussion may spawn a couple of questions for you. First, you may wonder why we wrote a getter for just centerX and a setter for both coordinates at once. Or maybe you already know; can anyone tell me why?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To clarify the thrust of the question, why didn't we write a getter that returns both coordinates at once?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 9:10:02 pm
+\fs26 \
+we can only return one thing\
+\cf4 puwei99\cf0  
+\fs20 9:10:02 pm
+\fs26 \
+we can't return two values\
+\cf4 ScottBusche\cf0  
+\fs20 9:10:02 pm
+\fs26 \
+We would have to return 2 ints at once.\
+\cf4 connor0728\cf0  
+\fs20 9:10:02 pm
+\fs26 \
+you have to get things seperately, while you can set both at once\
+\cf4 teachm\cf0  
+\fs20 9:10:12 pm
+\fs26 \
+can only return one value\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Methods can only return one value. So we can't return two ints. What we could do is put both integers into a Point object and return that. Of course, in order to pursue that idea, we would need a Point class. You'll create one and incorporate it here as a message board problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another question might be: If we have getRadius and setRadius, then we can access and change the radius however we like. \cf3 So why not just make the instance variable public and dispense with the methods altogether?
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, if we leave the methods as they are, we probably could do that. But one of the nice things about having a setter method is that we can control 
+\i how
+\i0  the corresponding instance variable is set.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Consider the radius of a circle, for example. Are there any values for this variable we might want to exclude?
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 9:11:10 pm
+\fs26 \
+negative numbers?\
+\cf4 moppr\cf0  
+\fs20 9:11:10 pm
+\fs26 \
+0\
+\cf4 bzzz99\cf0  
+\fs20 9:11:10 pm
+\fs26 \
+0 and negative values\
+\cf4 Tungsten\cf0  
+\fs20 9:11:10 pm
+\fs26 \
+negative numbers\
+\cf4 jdaimax\cf0  
+\fs20 9:11:10 pm
+\fs26 \
+negative values\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can't have a circle with negative radius. I suppose you could have one with radius 0, but that's just a point. So, for the sake of this example, let's say we want to enforce our Circle objects to have a positive radius. We don't have any way to do that if we give public access to the variable!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But we CAN do that using a setter method! If the code calling setRadius passes a non-positive number, we can, for example, simply leave the radius as is, without setting it to the parameter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you change the code for setRadius to implement this idea?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setRadius\cf5 (
+\f1\b \cf6 double
+\f2\b0 \cf0  newRadius\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 newRadius \cf7 >\cf0  \cf12 0\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 radius\cf0  \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setRadius\cf5 (
+\f1\b \cf6 double
+\f2\b0 \cf0  radius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 radius\cf7 >\cf12 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b this
+\f2\b0 .\cf10 radius\cf0  \cf7 =\cf0  radius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setRadius\cf5 (
+\f1\b \cf6 double
+\f2\b0 \cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 newRadius\cf7 >\cf12 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setRadius\cf5 (
+\f1\b \cf6 double
+\f2\b0 \cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 radius \cf7 <\cf0  \cf12 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf5 (\cf13 "Error: negative radius!"\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ReciterOfPi\cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setRadius\cf5 (
+\f1\b \cf6 double
+\f2\b0 \cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 newRadius \cf7 >\cf0  \cf12 0\cf5 )\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0  
+\f3\i \cf8 // I think this is correct...
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setRadius\cf5 (
+\f1\b \cf6 double
+\f2\b0 \cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 newRadius \cf7 >\cf12 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 9:13:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 void
+\f2\b0 \cf0  setRadius\cf5 (
+\f1\b \cf6 double
+\f2\b0 \cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 newRadius \cf7 >=\cf0  \cf12 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my solution:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 void\cf0  setRadius\cf5 (\cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 newRadius \cf7 >\cf0  \cf12 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Test this code (or what you wrote) by going to CircleTester and changing the parameter of setRadius to a negative number. You should find that the two prints give 20 as the radius.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There actually is still a way to have a Circle with a non-positive radius. Do you see how it is still possible for a negative radius to creep in?
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 9:15:46 pm
+\fs26 \
+when we create the object\
+\cf4 bzzz99\cf0  
+\fs20 9:15:49 pm
+\fs26 \
+initialize it with a negative radius?\
+\cf4 chenjamin\cf0  
+\fs20 9:15:54 pm
+\fs26 \
+when we use the constructor\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:15:54 pm
+\fs26 \
+in the initializing statement\
+\cf4 gkaops\cf0  
+\fs20 9:15:54 pm
+\fs26 \
+Constructor methods may allow negative values\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could pass a negative value for the radius to the constructor. We can solve this problem by adding an if-else. Why will we need to include an else clause in the constructor when we didn't need one in setRadius?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:17:02 pm
+\fs26 \
+if you didn't have one then the program would not work\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The only way for setRadius to be called is for us to have a constructed object already. Since the object invoking setRadius has already been built, it already has a radius, and we can assume it's a proper radius due to the way we've written the code (or will write it, I suppose). In other words, radius already has a value that we can leave alone if we like.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But when the constructor is called, radius does not already have a valid value. So we need to make sure it has one no matter what. Here's the new version of the three-parameter constructor:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY, \cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 newRadius \cf7 >\cf0  \cf12 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  newRadius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have two other constructors. Do we need to put any if-else in those?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:18:38 pm
+\fs26 \
+No, they're overloads that don't have radius as a parameter\
+\cf4 MathWolf\cf0  
+\fs20 9:18:38 pm
+\fs26 \
+No\
+\cf4 teachm\cf0  
+\fs20 9:18:38 pm
+\fs26 \
+nope\
+\cf4 spower4\cf0  
+\fs20 9:18:41 pm
+\fs26 \
+no, the attributes do not contain radius as one of them\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, because they already make sure radius is positive (using the same default of 10.0).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm going to skip ahead because we've got 10 minutes left and some more things to address.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: METHODS III: TOSTRING AND EQUALS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are two more specific methods I want to discuss that are often included in classes. In fact, they are automatically included by Java even if you don't explicitly define them, but we typically want to change their behavior. (You'll see why in a moment.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's suppose you want to print information about the circle to the console. You might try a line like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf5 (\cf13 "The circle is: %s\cf14 \\n\cf13 "\cf0 , smallCircle\cf5 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyone remember what %s means?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:20:22 pm
+\fs26 \
+String\
+\cf4 bluebandit21\cf0  
+\fs20 9:20:22 pm
+\fs26 \
+for strings\
+\cf4 ScottBusche\cf0  
+\fs20 9:20:22 pm
+\fs26 \
+String.\
+\cf4 mduong14\cf0  
+\fs20 9:20:22 pm
+\fs26 \
+string\
+\cf4 sanpran\cf0  
+\fs20 9:20:26 pm
+\fs26 \
+string\
+\cf4 MathWolf\cf0  
+\fs20 9:20:26 pm
+\fs26 \
+insert a string\
+\cf4 Sir_cumference\cf0  
+\fs20 9:20:26 pm
+\fs26 \
+string is inserted\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It means you are trying to print a String. Circles are not Strings, but Java does not put up an error on this line. This is because Java has a built-in method to convert any object into a String.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unfortunately, this is the sort of result the line might output:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 The circle is: Circle@1653033e\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To the left of the at sign is the name of the class. To the right is the number for the memory location where the object is stored, expressed in base 16. If that last sentence is confusing, don't worry about it. The key here is that the String we get for free is not a very useful String.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we'll replace the default behavior with one that returns a String with the center and radius in it. We've done this sort of replacement before. Can you tell me when we've written a method to replace what a class usually does?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: Think back about 7 days ago...
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 9:21:49 pm
+\fs26 \
+paintComponent?\
+\cf4 mattpi\cf0  
+\fs20 9:21:49 pm
+\fs26 \
+paintcomponent?\
+\cf4 Tungsten\cf0  
+\fs20 9:21:49 pm
+\fs26 \
+The paintComponent method!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Last week, we changed the default paintComponent behavior for a JPanel with code that draws the pictures we wanted. This is called \cf3 over
+\i \cf3 riding
+\i0 \cf0  the method (as opposed to overloading, which we discussed earlier).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In Python, the method we would override is str. In C++, instead we overload the operator << so it knows how to send a Circle object into a stream.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java's solution is closest to Python's. The method we override is called \cf3 toString\cf0 . Here is the header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 String\cf0  toString\cf5 ()\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 bluebandit21\cf0  
+\fs20 9:22:41 pm
+\fs26 \
+what is the default of paintComponent good for?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's good for being overridden, or for doing nothing when we want it to do nothing so we don't override it. That's all.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just like with paintComponent, the header needs to look exactly like what you see above. The capital S is especially important.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The body of the method builds whatever String you like from the instance variables. Here's an example:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf9 String\cf0  toString\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf13 "A Circle with radius "\cf7 +\cf0 radius\cf7 +\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf13 " and center ("\cf7 +\cf0 centerX\cf7 +\cf13 ","\cf7 +\cf0 centerY\cf7 +\cf13 ")"\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I broke the string over two lines to make it a little easier to read. Now the printf you saw before prints something helpful:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 The circle is: A Circle with radius 20.0 and center (40,40)\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody got that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that main (in CircleTester) did not need to call toString directly. Java figures out that it needs to call toString on smallCircle in order to print appropriately.
+\b0 \
+\pard\pardeftab720
+\cf4 Sir_cumference\cf0  
+\fs20 9:24:30 pm
+\fs26 \
+What is all the code so far?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sorry, no time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another thing we may want to do is compare two Circles to see if they are the same. We don't want to use == for this, since that compares the memory locations of the objects. Do you remember the name of the method we do want, from our Rock/Paper/Scissors game a couple of weeks ago?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:25:04 pm
+\fs26 \
+equals\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's \cf3 equals\cf0 . Unfortunately, that still doesn't have the behavior we want. Try this code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf6 void\cf0  main\cf5 (\cf9 String\cf5 []\cf0  args\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle smallCircle \cf7 =\cf0  new Circle\cf5 (\cf12 40\cf0 , \cf12 40\cf0 , \cf12 20.0\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle smallCircle2 \cf7 =\cf0  new Circle\cf5 (\cf12 40\cf0 , \cf12 40\cf0 , \cf12 20.0\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 smallCircle.\cf10 equals\cf5 (\cf0 smallCircle2\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf5 (\cf13 "Match!"\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 println\cf5 (\cf13 "No match!"\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:25:39 pm
+\fs26 \
+No match!\
+\cf4 ScottBusche\cf0  
+\fs20 9:25:39 pm
+\fs26 \
+No match!\
+\cf4 bluebandit21\cf0  
+\fs20 9:25:39 pm
+\fs26 \
+No match!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We get "No match!". That's because Java's 
+\i default
+\i0  behavior for what the \cf3 equals\cf0  method does is to do exactly what == does. As with toString, we want to replace what \cf3 equals\cf0  does. The steps we'll take are a little more complex than in other methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's skip to the finished product and discuss it as a whole.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 boolean\cf0  equals\cf5 (\cf9 Object\cf0  other\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf7 !\cf5 (\cf0 other instanceof Circle\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf6 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle otherCircle \cf7 =\cf0  \cf5 (\cf0 Circle\cf5 )\cf0 other\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll start with the header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The return type here is boolean.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is because we want to know whether it is True or False that the current object and the other object are equal.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The parameter may be more surprising. It's not of type Circle; it's of type Object. Every single class in Java is a kind of Object. The Object class houses the default behaviors that every object needs to have. By using Object as a parameter, we are able to compare any two things in Java.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sorry, that was not the finished code for equals.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I should have put up.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 boolean\cf0  equals\cf5 (\cf9 Object\cf0  other\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf7 !\cf5 (\cf0 other instanceof Circle\cf5 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf6 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Circle otherCircle \cf7 =\cf0  \cf5 (\cf0 Circle\cf5 )\cf0 other\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 ((\cf0 this.\cf10 centerX\cf7 ==\cf0 otherCircle.\cf10 centerX\cf5 )\cf0  \cf7 &&\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 (\cf0 this.\cf10 centerY\cf7 ==\cf0 otherCircle.\cf10 centerY\cf5 )\cf0  \cf7 &&\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 (\cf9 Math\cf0 .\cf10 abs\cf5 (\cf0 this.\cf10 radius\cf0  \cf7 -\cf0  otherCircle.\cf10 radius\cf5 )\cf0  \cf7 <\cf0  \cf12 0.0001\cf5 ))\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Back to what I was saying: The parameter may be more surprising. It's not of type Circle; it's of type Object. Every single class in Java is a kind of Object. The Object class houses the default behaviors that every object needs to have. By using Object as a parameter, we are able to compare any two things in Java.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, it doesn't make much sense to compare a Circle to, say, a Scanner. So the first thing we're going to do here is verify that the Object other is actually another Circle.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To do this, we use a new operator called \cf3 instanceof\cf0 . You give the operator an object and a class; it says \cf3 true\cf0  if the object is an instance of the class and \cf3 false\cf0  otherwise. Since it's an operator, instanceof goes in between the object and class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The ! is the boolean operator "not". So we're testing if other is not a Circle. What do we do if it isn't?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then they can't possibly be the same. So we return \cf3 false\cf0 !
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we get this far, we know that other is a Circle. Unfortunately Java isn't smart enough to know that. Since Java is strict about types, it won't let us treat other as a Circle; we won't be able to call Circle methods or access Circle instance variables.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We get around this by copying other into a Circle variable, which is what we're doing in the line Circle otherCircle = (Circle)other;
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 otherCircle is declared to be of type Circle as usual. Before other, we place in parentheses the class name Circle. This forces Java to convert the value of other from a generic Object into the appropriate type. This idea of forcing a value of one type to be of another type is called \cf3 typecasting\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now that we have otherCircle as a Circle, we can finally access the instance variables. So we could write otherCircle.centerX to get the x-coordinate of otherCircle's center.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But wait a minute! centerX is a private variable. Is this a problem?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Sorry. Anyone who needs to go now is welcome to. Just check the transcript later today or tomorrow to see the rest of this discussion. I think I'll need to run over by about 10 minutes to hit the last bits.)
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:31:46 pm
+\fs26 \
+no\
+\cf4 JRY\cf0  
+\fs20 9:31:46 pm
+\fs26 \
+No, because we're doing this in the same class as centerX is defined in\
+\cf4 sanpran\cf0  
+\fs20 9:31:46 pm
+\fs26 \
+no because you're still in the Circle class\
+\cf4 gkaops\cf0  
+\fs20 9:31:46 pm
+\fs26 \
+No it is not\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. Remember that the private qualifier restricts access for code that is \cf3 outside of the class\cf0 . Since equals is part of the Circle class, we can refer directly to the instance variables of 
+\i any
+\i0  Circle object. Of course, we could also use the public methods like otherCircle.getCenterX() instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now which Circle are we comparing otherCircle to? What's its name?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:32:23 pm
+\fs26 \
+this\
+\cf4 Tungsten\cf0  
+\fs20 9:32:23 pm
+\fs26 \
+this\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's \cf3 this\cf0 . So if we want to compare the x-coordinate of the two centers, we could use a test like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 this.centerX==otherCircle.centerX\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 or alternatively:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 centerX==otherCircle.centerX\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that if we don't indicate an object explicitly, Java assumes we're talking about an instance variable of \cf3 this\cf0 . I think in this case, putting \cf3 this\cf0  in makes the code clearer, especially with two centerXs floating around.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, so that's toString and equals.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 6: METHODS IV: ALL THE REST
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, "the rest" are usually the ones that actually do the work of the class. We'll write a couple just to show you some more examples.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We decided that having the area of the circle be an instance variable wasn't necessary, since it can be computed from the radius. Can you write a method called getArea that returns the area of the circle?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:34:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf6 double
+\f2\b0 \cf0  getArea\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  radius\cf7 *\cf0 radius\cf7 *\cf9 Math\cf0 .\cf10 PI\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:34:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf6 double
+\f2\b0 \cf0  getArea\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  radius\cf7 *\cf0 radius\cf7 *\cf9 Math\cf0 .\cf10 PI\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 double\cf0  getArea\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\i \cf8 /* Returns the area of the circle */
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 Math\cf0 .\cf10 PI\cf7 *\cf9 Math\cf0 .\cf10 pow\cf5 (\cf0 radius, \cf12 2.0\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The return type is double. It doesn't need any parameters, because the data we need is in the instance variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I included a comment after the header explaining what it does. Adding documentation like that is always a good idea.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The body of the method performs the appropriate calculation using some aspects of Math.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another example: Since a Circle is a shape, we may want to draw it in a graphical program. So let's write a method called draw.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is the name of the class that creates graphical objects for us? Hint: It's not JPanel. JPanel is what we've been using to 
+\i display
+\i0  the objects we've drawn, but it's not what we use to 
+\i draw
+\i0  them.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:35:46 pm
+\fs26 \
+Graphics\
+\cf4 bluebandit21\cf0  
+\fs20 9:35:46 pm
+\fs26 \
+Graphics?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The class we need is the Graphics class. So the parameter to our draw method will be Graphics g. (Like always, you don't have to call the parameter g. You could call it something else if you wanted.) You'll use the Graphics method drawOval here, which I hope you remember from last week. Our draw method won't return anything.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We won't be able to draw our circle exactly, since we decided to store our radius as a double. But if you write (int)radius, Java will typecast the radius to an integer, dropping any decimal places.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you write this method?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:36:52 pm
+\fs26 \
+Should I import Graphics?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, but you don't really need to think ahead about that. Eclipse will notice as soon as you try to use a Graphics object, it will complain in red and tell you how to fix it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just to keep things moving, here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf6 void\cf0  draw\cf5 (\cf9 Graphics\cf0  g\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\i \cf8 /* Draws this circle (approximately) to the Graphics object g */
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawOval\cf5 (\cf0 centerX\cf7 -\cf5 (\cf6 int\cf5 )\cf0 radius, centerY\cf7 -\cf5 (\cf6 int\cf5 )\cf0 radius, \cf5 (\cf6 int\cf5 )\cf0 radius, \cf5 (\cf6 int\cf5 )\cf0 radius\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that drawOval takes the upper-left corner of the bounding rectangle as its first two parameters. So we have to move up and left from the center by the length of the radius.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Two more parts that I'll just post (very) quickly that you can read after class: Eclipse tricks and Javadoc. Pay special attention to the part about javadoc, since that's how you can create your own helpful Eclipse popups. (javadoc is useful for more than that, but that's how it will be useful to you right now.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:40:12 pm
+\fs26 \
+Shoudln't we use (int) radius * 2 for the last 2 arfuments?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ah, yes, those should both say 2*(int)radius (or (int)(2*radius) if you want to squeeze out a little more accuracy).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 7: ECLIPSE TRICKS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since coding classes is a huge part of programming in Java, the Eclipse IDE gives you some shortcuts to help you. Go to the Source menu at the top of the window.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first section allows you to easily add and manipulate comments. The second section lets you manage indentation. The third section lets you arrange the elements of the class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The fourth is the coolest part. Eclipse can create some simple methods for you automatically.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, we didn't put in an accessor for the y-coordinate of the center. Which option do you think will help with this?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Go to "Generate Getters and Setters". A window will pop up. You'll be given a list of the instance variables in your class. Note that radius is missing, because we've already written a getter and a setter for it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Click the little triangle next to centerY. You'll see two method names appear underneath it. The first is the getter, and the second is the setter. Click the box next to the getter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can change the "insertion point" which is where Eclipse will include the new method. Change it now so this will appear after getCenterX.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The sort option is used if we were generating multiple methods. We can do the getter for a field followed by its setter, then the getter for another field followed by its setter, etc. Or we could do all the getters then all the setters.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can change whether it should be public or private. We'll leave it as public, of course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And click the box to generate method comments.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now click OK. A new method should magically appear within your code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Eclipse can automatically generate constructors, toString, and equals. It can also help you override methods that you want to change from another class (like if we wanted to change paintComponent from JPanel). Of course, you could always type the code in yourself, but Eclipse can automate some of the more monotonous methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 8: JAVADOC
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've been simply putting in comments for documentation. Typically we'll put in a comment on each method explaining what it does ,what its parameters are, and what it returns.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can also have Java create some documentation for us, organized in a way similar to the online API. Technically, it's done by a separate program called \cf3 javadoc\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Javadoc looks for special multi-line comments. What do we normally use to enclose a comment that could span over more than one line?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We put it in /* and */. If we use /** for the first one instead, we create a Javadoc comment.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Javadoc creates HTML code. Anyone know where that is used?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's for specifying webpages. HTML stands for "Hypertext Markup Language". It uses tags enclosed in < and > signs, similar to the way we use tags in brackets on the message board. The text between tags is formatted in the indicated way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's an example for the three-parameter Circle constructor:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0
+\f4\i \cf2 /**\
+\'a0\'a0\'a0\'a0 * Circle constructor<BR>\
+\'a0\'a0\'a0\'a0 * Uses given parameters to make a Circle object\
+\'a0\'a0\'a0\'a0 * @param newX x-coordinate of center of circle\
+\'a0\'a0\'a0\'a0 * @param newY y-coordinate of center\
+\'a0\'a0\'a0\'a0 * @param newRadius length of radius of the circle\
+\'a0\'a0\'a0\'a0 */
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0public Circle\cf5 (\cf6 int\cf0  newX, \cf6 int\cf0  newY, \cf6 double\cf0  newRadius\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerX \cf7 =\cf0  newX\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0centerY \cf7 =\cf0  newY\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0radius \cf7 =\cf0  \cf12 10.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setRadius\cf5 (\cf0 newRadius\cf5 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first two lines form the \cf3 description section\cf0 . It gives overview information about the particular method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's one HTML tag in the description here. Usually tags come in pairs like <B> and </B>; in that case, the text between shows up bold. But in this example, there's a single <BR> tag. Anyone know what it does?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It causes a line BReak. So the two parts of the description appear on separate lines.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next comes the \cf3 tag section\cf0 . These are Javadoc tags, not HTML tags. In this example, we're using the @param tag which is used to describe a parameter for the method. I write the name of the parameter followed by a brief description of it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other Javadoc tag I'll discuss today is @return. Here's an example:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0
+\f4\i \cf2 /**\
+\'a0\'a0\'a0\'a0 * Accessor method\
+\'a0\'a0\'a0\'a0 * @return radius of the circle\
+\'a0\'a0\'a0\'a0 */
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf6 double\cf0  getRadius\cf5 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return radius\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 After the @return tag, we just give a description of what the method returns.\
+To see the Javadoc, go to the Window menu, then Show View, and select Javadoc. A tab will pop up on the bottom of the screen where the Console is shown. You can double click on any method name for which you have Javadoc comments, and the resulting documentation will appear in the tab.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 9: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll be building lots of classes over the remainder of the course. The key about designing classes is to think about what information is useful to model and to decide on the actions/methods objects of the class need to perform.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Some of the common things that show up in classes are:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instance variables
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Constructors
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Setters and getters
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 toString and equals
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week, we'll look at our first real data structure in Java: the array. See you then!}
