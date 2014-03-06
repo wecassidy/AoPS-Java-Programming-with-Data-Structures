@@ -1,0 +1,5074 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fmodern\fcharset0 Courier-Bold;\f2\fmodern\fcharset0 Courier;
+\f3\fmodern\fcharset0 Courier-BoldOblique;\f4\fmodern\fcharset0 Courier-Oblique;\f5\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red18\green139\blue2;\red43\green139\blue39;\red10\green82\blue135;\red83\green83\blue83;\red0\green0\blue83;
+\red1\green32\blue135;\red11\green85\blue38;\red0\green0\blue255;\red0\green0\blue135;\red190\green74\blue193;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 2: Conditionals and Loops
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This week, we will take a look at the major control structures in a Java program. These are the statements that determine the order in which statements are executed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you know C++, then you've probably seen most of what we'll discuss today. If you have a Python background, things will seem familiar, although the syntax (the exact format of the code) will be a little different.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So what is the default order in which statements are executed?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:32:06 pm
+\fs26 \
+top-down\
+\cf4 ScottBusche\cf0  
+\fs20 7:32:06 pm
+\fs26 \
+Top to bottom.\
+\cf4 puwei99\cf0  
+\fs20 7:32:06 pm
+\fs26 \
+top to bottom\
+\cf4 sgtgumy\cf0  
+\fs20 7:32:06 pm
+\fs26 \
+top to bottom\
+\cf4 wazmat\cf0  
+\fs20 7:32:06 pm
+\fs26 \
+top down\
+\cf4 Tungsten\cf0  
+\fs20 7:32:06 pm
+\fs26 \
+From top to bottom.\
+\cf4 k77frank\cf0  
+\fs20 7:32:06 pm
+\fs26 \
+left to right, up to down?\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 7:32:06 pm
+\fs26 \
+top to bottom\
+\cf4 sanpran\cf0  
+\fs20 7:32:14 pm
+\fs26 \
+start to finish\
+\cf4 piis3141592653\cf0  
+\fs20 7:32:14 pm
+\fs26 \
+left to right\
+\cf4 connor0728\cf0  
+\fs20 7:32:14 pm
+\fs26 \
+from top to bottom\
+\cf4 mrturtle\cf0  
+\fs20 7:32:14 pm
+\fs26 \
+the order they're written in\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It looks like you've got the general idea, expressed in a variety of ways.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We just do them top to bottom, which is called \cf3 sequential\cf0  order. Last week, we saw a way to skip over statements we didn't need to execute. What was it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I mean skipping over statements without commenting them out. I'm looking for something that's part of the logical structure of the code.
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+if statements\
+\cf4 moppr\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+conditional IF\
+\cf4 wazmat\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+ifs\
+\cf4 Tungsten\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+If statements!\
+\cf4 mrturtle\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+if else statements\
+\cf4 chutney\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+If statements?\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 blahblahblah insert text here\cf5 )\cf0  then 
+\f1\b do
+\f2\b0  
+\f1\b this
+\f2\b0 \cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 FrozenFury\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+If statements\
+\cf4 connor0728\cf0  
+\fs20 7:33:47 pm
+\fs26 \
+if conditions?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It was the if statement. In general, it does \cf3 selection\cf0 . Today we'll look at more complex ways to structure an if.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, remember that you indicate comments using //, not \\\\.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Make sure your slashes lean the right way!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can also use /* ... */.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, that was just to fix some typos I saw a few minutes ago.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Back to what I was saying.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other major control structure is \cf3 repetition\cf0 . This is also called a loop. We'll see how to use them to repeat a set of statements multiple times.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: SELECTION
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's go back to our example from last week where we told the user he or she was old if the entered age was over 30. Here's the code again:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+import \cf7 java.util.Scanner\cf6 ;\cf0 \
+\'a0\
+\pard\pardeftab720
+
+\f3\i \cf8 /*\
+ * First program\
+ * Illustrates simple Java class, input and output via dialogs\
+ * Also integer variables and simple expressions\
+ * By: Scott Weiss\
+ */
+\f1\i0 \cf0 \
+\'a0\
+import \cf7 javax.swing.JOptionPane\cf6 ;\cf0 \
+\'a0\
+public class WelcomeDialog \cf5 \{\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public static \cf9 void\cf0  main\cf5 (\cf10 String\cf5 []\cf0  args\cf5 )\cf0  \cf5 \{\cf0  
+\f3\i \cf8 // function called when program is run
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 String\cf0  name \cf6 =\cf0  \cf10 JOptionPane\cf0 .\cf11 showInputDialog\cf5 (\cf12 "What is your name?"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 String\cf0  message \cf6 =\cf0  \cf10 String\cf0 .\cf11 format\cf5 (\cf12 "Hi, %s! Welcome to Java!\cf13 \\n\cf12 "\cf0 , name\cf5 )\cf6 ;\cf0  
+\f3\i \cf8 // give friendly message
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , message\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  ageNow \cf6 =\cf0  \cf10 Integer\cf0 .\cf11 parseInt\cf5 (\cf10 JOptionPane\cf0 .\cf11 showInputDialog\cf5 (\cf12 "How old are you?"\cf5 ))\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  ageNext \cf6 =\cf0  ageNow \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0message \cf6 =\cf0  \cf10 String\cf0 .\cf11 format\cf5 (\cf12 "You will be turning %d on your next birthday."\cf0 , ageNext\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , message\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 ageNow \cf6 >\cf0  \cf14 30\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , \cf12 "Wow, you're old!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0  
+\f3\i \cf8 // end of main method
+\f1\i0 \cf0 \
+\'a0\
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's change the code to show a message if the person's age is under 10. You could probably do this right now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What code should we add in to display the message "Wow, you must be a child prodigy!" in this case?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:36:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 mattpi\cf0  
+\fs20 7:36:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 wazmat\cf0  
+\fs20 7:36:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, ok, that's a good start.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now what does the whole thing we need to write look like?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0  
+\f4\i \cf8 // check for young person
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 ,  \cf12 "Wow, you must be a child prodigy!"\cf5 )\cf6 ;\cf0  
+\f4\i \cf8 // make nice message
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\{\cf0  \cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 , \cf12 "Wow, you must be a child prodigy!"\cf5 )\}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 wazmat\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+if (ageNow < 10)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0JOptionPane.showMessageDialog(null, "Wow, you're a child prodigy!");\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\}\
+\cf4 mario1212\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0  \cf5 \{\cf0  \cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 , \cf12 "Wow, you must be a child prodigy!"\cf5 )\cf6 ;\cf0  \cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 EmeraldBot\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 swing\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 , \cf12 "You must be a child prodigy!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 mrturtle\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 , \cf12 "Wow, you must be a child prodigy!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: I will check these answers I pass as well as I can, but I very well might miss some details because I can't make my windows wide enough to see everything at once. Take the answers I give as what is correct and please let me know if you spot a mistake.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can add this code after the if statement that is there (before the curly brace that ends the main method):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , \cf12 "Wow, you must be a child prodigy!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 mattpi\cf0  
+\fs20 7:40:51 pm
+\fs26 \
+whats the first argument for?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You must mean that "null". Don't worry about it right now. I'll be able to tell you after Week 10 when we've said more about Java's libraries for graphical user interfaces.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's basically there so you can make the message dialog pop up relative to a certain other window you've created rather than relative to the center of the screen.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:42:19 pm
+\fs26 \
+Do we need to write it, or can we just put "," ?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You must write null.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Coming back to the main discussion:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The code we just wrote is fine, but we can make it more efficient. It's impossible for the age to be higher than 30 and less than 10 at the same time. So if ageNow > 30 is true, then there's no reason to check if ageNow < 10 is true also. We may as well skip that part of the code completely.
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 7:43:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0  \cf5 \{\}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 7:43:32 pm
+\fs26 \
+Can we use else if?\
+\cf4 mrturtle\cf0  
+\fs20 7:43:32 pm
+\fs26 \
+else!\
+\cf4 MSTang\cf0  
+\fs20 7:43:32 pm
+\fs26 \
+So add an else?\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 7:43:32 pm
+\fs26 \
+use an else statement\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The magic word to do this is \cf3 else\cf0 . You've almost certainly seen this keyword in other languages. To use it in this case, we simply put else before the second if:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 ageNow \cf6 >\cf0  \cf14 30\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , \cf12 "Wow, you're old!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , \cf12 "Wow, you must be a child prodigy!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Those of you from Python have used elif as a keyword to introduce a new test. In Java, we use the two words \cf3 else if\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Add in another test to print the message "Wow, you're ancient!" if the person's age is over 60.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 7:46:27 pm
+\fs26 \
+how do we type more than one line?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can either press Shift-Enter. That let's you put in a carriage return in the classroom without submitting.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Or you can type what you need in another window, like in Eclipse, and then copy-paste.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:47:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 >\cf0  \cf14 60\cf5 )\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 ,  \cf12 "Wow, you're ancient!"\cf5 )\cf6 ;\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 7:47:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 lse 
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 >\cf0  \cf14 60\cf5 )\cf0  
+\f4\i \cf8 // Check if ageNow is over 60
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 , \cf12 "Wow, you're ancient!"\cf5 )\cf6 ;\cf0  
+\f4\i \cf8 // print very rude message
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 7:47:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0   
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 >\cf0  \cf14 60\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 , \cf12 "Wow, you're ancient!"\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 connor0728\cf0  
+\fs20 7:47:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 ageNow \cf6 >\cf14 60\cf5 )\cf0  
+\f4\i \cf8 // check for old person
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (
+\f1\b \cf9 null
+\f2\b0 \cf0 , \cf12 "Wow, you're ancient"\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 +\cf0  \cf12 "!"\cf5 )\cf6 ;\cf0  
+\f4\i \cf8 // make rude message
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 sanpran\cf0  
+\fs20 7:47:21 pm
+\fs26 \
+java; if (ageNow > 60) \{ JOptionPane.showMessageDialog(null, "Wow, you're ancient!")\};\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Maybe you added this in after the previous test:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 ageNow \cf6 >\cf0  \cf14 60\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , \cf12 "Wow, you're ancient!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 BUT this has an issue. Try running the program with the code as given. Try it with an age of 70. What happens?
+\b0 \
+\pard\pardeftab720
+\cf4 PiCrazy31415\cf0  
+\fs20 7:47:57 pm
+\fs26 \
+"Wow, you're old!"\
+\cf4 wazmat\cf0  
+\fs20 7:47:57 pm
+\fs26 \
+It only shows the 30 message.\
+\cf4 sgtgumy\cf0  
+\fs20 7:48:01 pm
+\fs26 \
+It says wow you're old\
+\cf4 spower4\cf0  
+\fs20 7:48:03 pm
+\fs26 \
+it just says "you're old"\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You only get the "Wow, you're old!" message. Why?
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 7:48:25 pm
+\fs26 \
+because it does the 30 age check first\
+\cf4 MathWolf\cf0  
+\fs20 7:48:31 pm
+\fs26 \
+Because we are older than 30, it goes through the first if statement only.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because the first test passes, so we don't bother with either of the two tests. We don't check if ageNow is over 60, so we don't have the chance to print the "ancient" message.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So let's try to fix that. What would happen if we removed else from "else if (ageNow > 60)"?
+\b0 \
+\pard\pardeftab720
+\cf4 piis3141592653\cf0  
+\fs20 7:49:29 pm
+\fs26 \
+both messages run\
+\cf4 AkshajK\cf0  
+\fs20 7:49:29 pm
+\fs26 \
+We would get two messages.\
+\cf4 teachm\cf0  
+\fs20 7:49:32 pm
+\fs26 \
+"Wow, you're old!" then "Wow, you're ancient!"\
+\cf4 dlennon\cf0  
+\fs20 7:49:36 pm
+\fs26 \
+It shows the 30 message then the 60 message\
+\cf4 WhaleVomit\cf0  
+\fs20 7:49:36 pm
+\fs26 \
+it would say Wow, you're old! AND Wow,you're ancient!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then both "Wow, you're old!" and "Wow, you're ancient!" are shown. We may be happy with this, but let's think about how we could fix it so only the more specific message appears. Any ideas?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:50:07 pm
+\fs26 \
+Put the >60 test first, and add an else before the >30 test\
+\cf4 chutney\cf0  
+\fs20 7:50:07 pm
+\fs26 \
+Put an else if on the 30 check and put it after the 60 check\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One approach is to put the most specific test first:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 ageNow \cf6 >\cf0  \cf14 60\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , \cf12 "Wow, you're ancient!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 ageNow \cf6 >\cf0  \cf14 30\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , \cf12 "Wow, you're old!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 , \cf12 "Wow, you must be a child prodigy!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's probably simplest in this case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another way is to change the test from (ageNow > 30) to make sure it excludes those that are over 60. We want to see if the age is both over 30 and at most 60.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You probably notice that word "and" in there. That's the key idea that we need to use.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java uses the symbol && to represent that concept. So the test we would use here is (ageNow > 30 && ageNow <= 60). Like in most languages, a test with && evaluates to true if both parts are true.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:51:22 pm
+\fs26 \
+can we do (60>ageNow>30)?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. I think Python supports constructions like that (right? somebody check me on that?), but Java does not.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:52:07 pm
+\fs26 \
+Python is a pretty easy language compared to java.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, Python was specifically designed to be very easy to use right from the start. Each language has its advantages, but one of Python's biggest is its intuitive clarity.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, back to && and all that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Along with && for "and", we have an operator that represents the concept of "or". In Java, it is symbolized by ||. This is a double vertical bar. To type it, hold down shift with the backslash key (just above Enter).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 x || y is true if at least one of x and y are true. So for example, (a < 5 || a > 10) is true when a is 3 because the first part is true. It's also true when a is 11 due to the second part. But if a was 9, the test is false.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What would happen if in our age example, we wrote the test (ageNow > 30 || ageNow <= 60)?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:54:19 pm
+\fs26 \
+It would work no matter what age you put in!!\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:54:19 pm
+\fs26 \
+Any age would say "Wow, you're old!"\
+\cf4 ScottBusche\cf0  
+\fs20 7:54:19 pm
+\fs26 \
+You'd always be called old.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is always true. The ranges in the two parts of the test together cover all possible numbers. So at least one of those tests is true no matter what ageNow is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's one more logical operator. "Not" flips the truth value of a test from true to false or vice versa. In Java, this is symbolized by !. So (!(ageNow > 30 && ageNow <= 60)) is true for ages outside the range of 31 to 60.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look back at the structure of our if statements (with the tests about ages 30, 10, and 60 as we had them originall). There's a set of ages where no additional message is displayed. What range?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:55:55 pm
+\fs26 \
+10-30\
+\cf4 MSTang\cf0  
+\fs20 7:55:55 pm
+\fs26 \
+10-30\
+\cf4 k77frank\cf0  
+\fs20 7:55:55 pm
+\fs26 \
+10-30\
+\cf4 MathWolf\cf0  
+\fs20 7:55:55 pm
+\fs26 \
+10-30\
+\cf4 piis3141592653\cf0  
+\fs20 7:55:59 pm
+\fs26 \
+10-30 range\
+\cf4 manbugbeebee\cf0  
+\fs20 7:55:59 pm
+\fs26 \
+10-30\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ages from 10 to 30 result in no message. If we want something in this default case, we can add an else case at the end without a corresponding if test:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 JOptionPane\cf0 .\cf11 showMessageDialog\cf5 (\cf9 null\cf0 ,  \cf12 "Thanks for running this program."\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that you could put if statements inside other if statements, like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 30\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Child"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Young"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Old"\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note in passing: This is just asking for trouble, as we'll see in a second. Use brackets to make your blocks of code clear.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember from the message board problems last week that println moves on to the next line after it displays the string to the console. What does this code print when ageNow is 18?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+Young\
+\cf4 mattpi\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+young\
+\cf4 chutney\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+Young"\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+Young\
+\cf4 spower4\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+young\
+\cf4 puwei99\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+Young and it goes to the next line\
+\cf4 wazmat\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+Young\
+\cf4 mrturtle\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+young\
+\cf4 chenjamin\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+Young\
+\cf4 Tungsten\cf0  
+\fs20 7:58:10 pm
+\fs26 \
+Young.\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:58:15 pm
+\fs26 \
+"Young"\
+\cf4 moppr\cf0  
+\fs20 7:58:20 pm
+\fs26 \
+Young and then a \\n\
+\cf4 sanpran\cf0  
+\fs20 7:58:23 pm
+\fs26 \
+young\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It prints Young. The first test passes, so it goes inside the true part and tests whether or not ageNow is also less than 10. It is not, so it goes to the else section and prints Young.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that I didn't put curly braces around the if (ageNow < 10)\'85else\'85 section. They are not needed, as Java considers the whole if to be a single statement. So the first five lines of my code could also be written as:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 30\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 ageNow \cf6 <\cf0  \cf14 10\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Child"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Young"\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The else corresponds to the 
+\i closest
+\i0  if in the absence of any braces. So an ageNow of 40 would 
+\i not
+\i0  cause Young to be printed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The moral is that Java (unlike Python) ignores indentation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You should use indentation to make your code readable by others, but remember that you should probably make sure the indentation matches the true meaning of the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But, really, there's no need to try to be a hero. Just use brackets and then you won't fall into traps like forgetting about this technicality.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: SELECTION WITH SWITCH
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java has a few other ways to perform selection beyond the if/else structure. Let's suppose you are writing a program to have the user take a multiple-choice test. The user sees a question and four possible choices numbered 1-4. The user enters the appropriate number and is told if the answer is right or wrong.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here is the start of some code for such a program. If you want to follow along in Eclipse (but you don't strictly need to) you would put it in a file called SwitchExample.java:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+import \cf7 java.util.Scanner\cf6 ;\cf0 \
+public class SwitchExample \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf9 void\cf0  main\cf5 (\cf10 String\cf5 []\cf0  args\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf5 (\cf10 System\cf0 .\cf11 in\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "What language are we studying: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "1. Python"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "2. Java"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "3. C++"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "4. English"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Please enter 1-4: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  choice \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you fill in the rest of the code using if statements? It should print "Correct!" for a right answer, "Sorry!" for a wrong answer, and "Huh??" for something that is not in the range from 1-4.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:03:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 choice \cf6 ==\cf0  \cf14 2\cf5 )\cf0 \
+\pard\pardeftab720
+\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0 \cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Correct!"\cf5 )\cf6 ;\cf0 \
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f1\b \cf0 else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 choice \cf6 ==\cf0  \cf14 1\cf0  \cf6 ||\cf0  choice \cf6 ==\cf0  \cf14 3\cf0  \cf6 ||\cf0  choice \cf6 ==\cf0  \cf14 4\cf5 )\cf0 \
+\pard\pardeftab720
+\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0 \cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Sorry!"\cf5 )\cf6 ;\cf0 \
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f1\b \cf0 else
+\f2\b0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0 \cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Huh??"\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 8:03:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 choice \cf6 ==\cf0  \cf14 2\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Correct!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 choice \cf6 ==\cf0  \cf14 1\cf0  \cf6 ||\cf0  choice \cf6 ==\cf0  \cf14 3\cf0  \cf6 ||\cf0  choice \cf6 ==\cf0  \cf14 4\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Sorry!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Huh??"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0scan.\cf11 close\cf5 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 mattpi\cf0  
+\fs20 8:03:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 choice\cf6 ==\cf14 2\cf5 )\{\cf0 \
+\'a0\'a0\'a0\'a0   \cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Correct!"\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f1\b \cf0 else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 choice\cf6 >=\cf14 0\cf0  \cf6 &&\cf0  choice\cf6 <=\cf14 4\cf5 )\{\cf0 \
+\'a0\'a0\'a0\'a0   \cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Sorry!"\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f1\b \cf0 else
+\f2\b0 \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0   \cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Huh??"\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 wazmat\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 choice \cf6 ==\cf0  \cf14 2\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  \cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Correct!"\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  \cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 ((\cf0 choice \cf6 ==\cf0  \cf14 1\cf5 )\cf6 ||\cf5 (\cf0 choice \cf6 ==\cf0  \cf14 3\cf5 )\cf6 ||\cf0  \cf5 (\cf0 choice \cf6 ==\cf14 4\cf5 ))\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  \cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Sorry!"\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  \cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  
+\f1\b else
+\f2\b0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  \cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Huh??"\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  \cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 choice\cf6 ==\cf14 2\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Correct!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 choice\cf6 ==\cf14 1\cf0  \cf6 ||\cf0  choice\cf6 ==\cf14 3\cf0  \cf6 ||\cf0  choice\cf6 ==\cf14 4\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Sorry!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Huh??"\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can rewrite this if using a structure called a \cf3 switch statement\cf0 . You use a switch when you have different things to do depending on the value of a particular variable or expression. Here we need to print different responses depending on what choice was entered.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Begin with:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0switch \cf5 (\cf0 choice\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 switch is a keyword in Java, like if or else. It is followed with the expression you are testing in parentheses. Here that expression is just a single variable. Then we have an open curly brace to indicate the code that is part of the statement.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A switch is broken up into various \cf3 cases\cf0 . Each case gives the statement(s) to execute depending on the result of the expression. We'll start here with the right answer, just like in my original if.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0case \cf14 2\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Correct!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0break\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are two new keywords here. The first is case. It's followed by the value we are looking for. The value is then followed by a colon.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next comes the statements to execute in this case. Here there's just one, but you can have as many as you like. Rather than use curly braces to group the statements, Java instead uses a \cf3 break\cf0  statement at the end.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For a wrong answer, in the if statement version, we use || to put all of the wrong answers together. In a switch, we just list all the cases that are similar:\
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0case \cf14 1\cf6 :\cf0  case \cf14 3\cf6 :\cf0  case \cf14 4\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Sorry!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0break\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We do need the word case for each one. They do not have to go on the same line; you could put each case statement on its own line.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For the Huh?? part, we don't want to list all the possible wrong answers. Like the final else in the if version, we use a final catch-all case at the end. It uses the keyword \cf3 default\cf0 :
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0default\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Huh??"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's still followed by a colon. Since we're at the end of the switch, we don't need a third break. But we do require the closed curly brace to match the one at the beginning.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now let's look at the whole thing:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0switch \cf5 (\cf0 choice\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0case \cf14 2\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Correct!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0break\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0case \cf14 1\cf6 :\cf0  case \cf14 3\cf6 :\cf0  case \cf14 4\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Sorry!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0break\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0default\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Huh??"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 MathWolf\cf0  
+\fs20 8:07:50 pm
+\fs26 \
+All wrong answers become default?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 All crazy answers become default.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We already handled the "wrong" answers (1, 3, and 4) in a separate case.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:08:28 pm
+\fs26 \
+What would happen if there weren't "break"s?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We shall look at that in a moment.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can see how this switch construction mirrors the if version we wrote before. Run the code a few times to try it out.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh, well, there we go. Go ahead and put this into eclipse and try it out.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Does everybody have that workign?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let us know one way or the other.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens if you take out the break in the case for 2? You can just put // before it to make it a comment.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 8:11:01 pm
+\fs26 \
+It says: Correct! Sorry!\
+\cf4 ScottBusche\cf0  
+\fs20 8:11:01 pm
+\fs26 \
+Answering 2 prints both correct and sorry.\
+\cf4 spower4\cf0  
+\fs20 8:11:01 pm
+\fs26 \
+it prints both correct and sorry\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you enter a 2, you get the messages "Correct!" and "Sorry!".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The issue is that break not only ends the case; it skips the rest of the switch. Without it, the code just keeps going. It doesn't check the cases; it simply executes all the remaining code (until such time as it either hits a break or finishes the code in the switch). So here after printing "Correct!", it goes on to the next case and prints "Sorry!". Then the break in that case stops the switch.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This may seem like a weird thing to do, but it's what allows us to have 1, 3, and 4 all handled by the same statement. We match case 1, and the code just falls through to the Sorry! print.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that anything you can do with a switch can be done with a chain of if/else statements. The switch just provides a little more organization for this special case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also the switch can only be used to test certain expressions for which you can give an exact match. So you can compare with an integer, since you can specify the integer exactly in that case, as we did in the previous example. In Java 7, you could also do it with a String. Here's what the code would look like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter the name: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 String\cf0  choice2 \cf6 =\cf0  scan.\cf11 nextLine\cf5 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0switch \cf5 (\cf0 choice2\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0case \cf12 "Java"\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Correct!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0break\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0case \cf12 "Python"\cf6 :\cf0  case \cf12 "C++"\cf6 :\cf0  case \cf12 "English"\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Sorry!"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0break\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0default\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Huh??"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that the case must match exactly. If we entered java instead of Java, you'll get the Huh? message.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions at this point?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:14:28 pm
+\fs26 \
+Aren't we using Java 7?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you recently installed the Java Development Kit (the JDK I was talking about last week) you should have version 7. But I can't guarantee everybody has version 7 installed.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:15:28 pm
+\fs26 \
+would you use brackets for cases?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You don't need to use brackets for cases. The break handles that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's one more mechanism for selection in Java. It's called the \cf3 conditional operator\cf0 . You can use it if you want to assign a value to a variable based on whether a Boolean test is true or false. Here's an example that assigns either "Right" or "Wrong" to the variable response:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 response \cf6 =\cf0  \cf5 (\cf0 choice \cf6 ==\cf0  \cf14 3\cf5 )\cf0  \cf6 ?\cf0  \cf12 "Right"\cf0  \cf6 :\cf0  \cf12 "Wrong"\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Gah! What does that all mean?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a schematic of how to break that down:\
+response = (
+\i condition
+\i0 ) ? 
+\i value_if_condition_is_true
+\i0  : 
+\i value_if_condition_is_false
+\i0 ;
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now take a moment to comb through the parts of this in more detail.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First we have the variable we're assigning to followed by the assignment symbol ( : ). Next we have the test to perform, in parentheses as usual. The question mark indicates the beginning of the expression to assign when the test is true. After that expression, there is a colon, followed by the expression to assign when the test is false.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's important to realize that this operator is \cf3 not\cf0  a shortcut for an if statement. An if statement changes what statements are executed. The ?: operator is used to perform a conditional assignment. If you're not loving the conditional operator right now, that's fine, you don't absolutely have to use it. It's essentially just a convenient shorthand. However, like the switch, it can be useful in certain situations, so I think it's good for you to know it exists.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:17:51 pm
+\fs26 \
+Wait, don't we have to declare "response" first?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, you would. I'm just cutting straight to the heart of the matter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm assuming you've already declared response earlier in the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions about the conditional operator?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The line\
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 response \cf6 =\cf0  \cf5 (\cf0 choice \cf6 ==\cf0  \cf14 3\cf5 )\cf0  \cf6 ?\cf0  \cf12 "Right"\cf0  \cf6 :\cf0  \cf12 "Wrong"\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Is basically equivalent to writing the following:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+if \cf5 (\cf0 choice \cf6 ==\cf0  \cf14 3\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0 response \cf6 =\cf0  \cf12 "Right"\cf6 ;\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+else \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0 response \cf6 =\cf0  \cf12 "Wrong"\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I just didn't introduce it like that because I don't want you to confuse if-then-else statements with the conditional operator.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:22:46 pm
+\fs26 \
+Are there any cases where the conditional operator and an if/else statement like you wrote aren't equivalent?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, if-then-else is a very general piece of Java grammar.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The conditional operator is basically a function you build on the fly that you can think of internally as having an if-then-else of a particular shape sitting inside it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So they're not really even the same KIND of thing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: WHILE LOOPS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In last week's message board problems, you were asked to read in five numbers and determine how many were positive, how many were negative, and how many were zero. This is a fairly straightforward problem, but if you solved it, you probably found it very tedious. The same code needs to be repeated multiple times, once for each of the numbers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As we discussed earlier, we'd like to use some sort of repetition structure to execute the similar code more than once. There are several such structures in Java. We'll discuss the simplest one first: the \cf3 while\cf0  statement. It works exactly like the one in C++ and (other than some punctuation differences) the one in Python.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:25:22 pm
+\fs26 \
+So why are we doing while loops before for loops?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just because it's the one I decided to do first.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I could also say that, from a formal standpoint, while loops are the only ones you NEED. You can build for loops out of while loops. We'll actually say more about that later this class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the basic structure of the while:\
+while (
+\i test
+\i0 )\
+\{\
+\pard\pardeftab720
+
+\i \cf0 body
+\i0 \
+\}
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First Java evaluates 
+\i test
+\i0 . If the test is true, Java executes the statements in 
+\i body
+\i0 , and then the test is evaluated again. If the test is false, the body is skipped, and Java continues with the remainder of the program. The process of evaluating the test and executing the body repeats until the test is false.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The key here is that something in the body must affect the test. The test must eventually become false; otherwise the loop continues forever. Furthermore, the test probably should be true at the start to ensure the body is executed at least once (although one could think of situations where the body should never execute).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also note that, like the if, there is \cf3 not\cf0  a semicolon after the line with the test. Java will not catch this error; it will simply assume you have a body with no statements in it. This will usually lead to an infinite loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's see how to use the while loop in an example.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's write a program that will take us through the process of reading a number and tallying whether it is positive, negative, or zero a total of five times.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To do that, we'll need to count how many times we've read and tallied numbers. This requires what's called a \cf3 counter-controlled\cf0  loop. The counter is a variable that keeps track of how many times the loop has executed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What type should have our counter have? What kind of variable is it?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 ScottBusche\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int.\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 Tungsten\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+an int\
+\cf4 k77frank\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+integer\
+\cf4 williamyin08\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+integer!\
+\cf4 spower4\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 WhaleVomit\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 chenjamin\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 FrozenFury\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+integer counter\
+\cf4 moppr\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 MathWolf\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+an integer value\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 MathWolf\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 jprosk\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+An int variable\
+\cf4 bzzz99\cf0  
+\fs20 8:30:04 pm
+\fs26 \
+int\
+\cf4 JRY\cf0  
+\fs20 8:30:07 pm
+\fs26 \
+an integer\
+\cf4 wazmat\cf0  
+\fs20 8:30:09 pm
+\fs26 \
+int\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's an int, since we need to keep track of a number, and that number doesn't need to have any decimal places.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What value should our counter have to start?
+\b0 \
+\pard\pardeftab720
+\cf4 bel3900989\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 ScottBusche\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 Tungsten\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 MSTang\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+at 0\
+\cf4 WhaleVomit\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+It should start out at 0, right?\
+\cf4 k77frank\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 teachm\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 adrianu\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 mrturtle\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+0\
+\cf4 moppr\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+0\
+\cf4 spower4\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+0\
+\cf4 williamyin08\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Looks like a lot of you like 0 as a starting value.\
+If it's counting how many times the loop body has executed so far, then it should start at 0, since the body hasn't executed yet. You 
+\i could
+\i0  also use 1 as an initial value, if you really wanted to. The counter is just data, after all. It's up to you, the thinking component of the human-machine interface, to decide how you want to 
+\i use
+\i0  that data. You just need to make sure you're consistent. Otherwise, you may get very confused and then your program might develop all kinds of errors.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you use 1 as your initial value, then you can reason about it as "the counter tells you which execution is 
+\i about to occur
+\i0 ". Before we start our loop, that would be the first iteration, hence a starting value of 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But I'll stick with the convention that uses an initial value of 0, since that is the convention that I prefer and the one that gets used pretty much universally (as far as I can tell) by established programmers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll also need variables to keep track of the tally of positives, negatives, and zeroes. They are also int(egers) that start at 0. And we need a Scanner for console input. So here's the code so far:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+import \cf7 java.util.Scanner\cf6 ;\cf0 \
+public class WhileExample \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf9 void\cf0  main\cf5 (\cf10 String\cf5 []\cf0  args\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf5 (\cf10 System\cf0 .\cf11 in\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  counter \cf6 =\cf0  \cf14 0\cf6 ;\cf0  
+\f3\i \cf8 // how many times loop has executed
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  positives \cf6 =\cf0  \cf14 0\cf6 ;\cf0  
+\f3\i \cf8 // tallies of types of numbers
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  zeroes \cf6 =\cf0  \cf14 0\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  negatives \cf6 =\cf0  \cf14 0\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Go ahead and create a class and put this code in. We'll be doing a bunch of fiddling with this example.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:32:25 pm
+\fs26 \
+Should we make a new project?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah. This is different enough it probably deserves its own project.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I'll look up the details about projects in Eclipse this week and I'll make a post on the message board to hopefully clarify when creating a project is a good idea.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:33:19 pm
+\fs26 \
+What should we call it?\
+\cf4 chenjamin\cf0  
+\fs20 8:33:19 pm
+\fs26 \
+What should we title the project\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Call it whatever you want. You can even call it WhileExampleProject if you want.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we need to code up the while loop. We need a test to decide whether or not we've read/tallied the correct amount of numbers. Remember the test should be true if we want to continue repeating. What do we want here?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:34:35 pm
+\fs26 \
+You need some brackets at the end.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, I know, this is just the start of the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're not done with it yet.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need a test to decide whether or not we've read/tallied the correct amount of numbers. Remember the test should be true if we want to continue repeating. What do we want here?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:35:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f2\b0  \cf5 (\cf0 counter \cf6 <\cf0  \cf14 5\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 wazmat\cf0  
+\fs20 8:35:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f2\b0  \cf5 (\cf0 count \cf6 <\cf0  \cf14 5\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:35:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f2\b0  \cf5 (\cf0 counter \cf6 <\cf0  \cf14 5\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want to keep going if we haven't read five numbers. So the counter should not be 5 yet. That makes the while line:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 counter \cf6 !=\cf0  \cf14 5\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 counter < 5 and counter != 5 both get the job done in this case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm not going to worry too much about splitting hairs on which is better.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:37:07 pm
+\fs26 \
+Which is faster?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any difference must be negligible, since either one must be pretty trivial for the processor to check.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we start the while loop with an open curly brace. The next two lines should print a message asking the user to enter a number and input said number from the keyboard. Can you give me those lines?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:39:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf9 int
+\f2\b0 \cf0  number \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:39:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Enter a number."\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf9 int
+\f2\b0 \cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:39:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Please enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf9 int
+\f2\b0 \cf0  x \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:39:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter an integer: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf9 int
+\f2\b0 \cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 counter \cf6 !=\cf0  \cf14 5\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could also do this with a JOptionPane dialog, but I just went with the Scanner I made earlier.
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 8:39:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f2\b0  \cf5 (\cf0 counter\cf6 <\cf14 5\cf5 )\{\cf0    \cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter number: "\cf5 )\cf6 ;\cf0  
+\f1\b \cf9 int
+\f2\b0 \cf0  x\cf6 =\cf0 scan.\cf11 nextInt\cf5 ()\cf6 ;\cf5 )\cf0  \cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we check the number to see if it is positive, negative, or zero and increment the appropriate variable. Can you do that?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:40:24 pm
+\fs26 \
+With is statements\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, we'll need some if statements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What will the code for that look like?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll pass responses if they look sensible, but I guess try to use notation that corresponds to what I have so far, if it's not a huge pain, just to keep things from getting too confusing.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:42:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 x \cf6 >\cf0  \cf14 0\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 x \cf6 <\cf0  \cf14 0\cf5 )\cf0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes \cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:42:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 +=\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 num \cf6 <\cf0  \cf14 0\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 +=\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 num \cf6 ==\cf0  \cf14 0\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes \cf6 +=\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 teachm\cf0  
+\fs20 8:42:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 inpInt \cf6 ==\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 zeroes \cf6 +=\cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 inpInt \cf6 >\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 positives \cf6 +=\cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f1\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 negatives \cf6 +=\cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 \cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 8:42:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0   
+\f1\b if
+\f2\b0  \cf5 (\cf0 number \cf6 ==\cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes\cf6 +=\cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 number \cf6 >\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives\cf6 +=\cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives\cf6 +=\cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:42:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 num \cf6 ==\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0  negatives\cf6 ++;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:42:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 num \cf6 <\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b if
+\f2\b0  \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes\cf6 ++;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 mario1212\cf0  
+\fs20 8:42:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 if
+\f2\b0  \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0  \cf5 \{\cf0  positive\cf6 ++;\cf0  \cf5 \}\cf0  
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 num \cf6 <\cf0  \cf14 0\cf5 )\cf0  \cf5 \{\cf0  negative\cf6 ++;\cf0  \cf5 \}\cf0  
+\f1\b else
+\f2\b0  
+\f1\b if
+\f2\b0  \cf5 (\cf0 num \cf6 ==\cf0  \cf14 0\cf5 )\cf0  \cf5 \{\cf0  zero\cf6 ++;\cf0  \cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 =\cf0  positives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 num \cf6 <\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 =\cf0  negatives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes \cf6 =\cf0  zeroes \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here we use a chain of ifs.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:44:12 pm
+\fs26 \
+Wait, if we reuse the variable num, will it matter that we redeclare it each time?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I like that you're looking out for performance considerations. In general, you can either declare it before the loop or inside.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The difference will probably not be measurable (if you can measure the difference, you probably have a rotten compiler).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 From a code maintenance perspective, the way we wrote it is good, since it's good to keep declarations near where they get used.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:45:56 pm
+\fs26 \
+Wait, but wouldn't it show an error if it keeps on being declared?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope. Every time we finish one pass through the loop, the variable num we declared would go out of scope and get dropped from the list of variables so there's no clash when we create a new variable with the same name on the next pass through.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's one last thing to do within the loop. What is it?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 counter\cf6 =\cf0 counter\cf6 +\cf14 1\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 dlennon\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+counter++\
+\cf4 MathWolf\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 counter \cf6 ++;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ReciterOfPi\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+increase the counter by 1.\
+\cf4 manbugbeebee\cf0  
+\fs20 8:47:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 counter \cf6 =\cf0  counter \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to increment the counter, since after executing the previous lines, we've gone through the loop body one more time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0counter \cf6 =\cf0  counter \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's what the whole loop looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 counter \cf6 !=\cf0  \cf14 5\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 =\cf0  positives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 num \cf6 <\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 =\cf0  negatives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes \cf6 =\cf0  zeroes \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0counter \cf6 =\cf0  counter \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Once the loop is complete, we can now print the values of the relevant variables:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf5 (\cf12 "Positives: %d\cf13 \\n\cf12 Negatives: %d\cf13 \\n\cf12 Zeroes: %d\cf13 \\n\cf12 "\cf0 , positives, negatives, zeroes\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Add in curly braces to close the main method and the class definition, and we're done! Compile and run the program to test it out.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let us know how the code works for you.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:48:24 pm
+\fs26 \
+Isn't it really messy to type that all on one line? It doesn't fit on my screen...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can break that last line over a line or two if you want to. It looks fine to me as is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, looks like it's working for people.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:49:23 pm
+\fs26 \
+How do you continue a line over several rows?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java ignores whitespace, so you can just hit enter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's one way that those semicolons at the end of each line are nice.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are four times in the program where we need to increment a variable. This step happens very often in programming, particularly when you're working with loops. So Java gives you some shortcuts.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, if you're doing a mathematical operation to a variable and putting the result back in the variable, Java offers a \cf3 compound assignment operator\cf0  that combines the operation and the assignment. Here's an example for addition:\
+positives += 1;\
+This is equivalent to positives = positives + 1;
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Some of you already used this in your answers above.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's also -=, *=, /=, and %=.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They do what you'd expect they do. (Ask if you're not sure what I mean.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Furthermore, there is an \cf3 increment operator\cf0  for the common operation of adding 1 to a variable:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+counter\cf6 ++;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is equivalent to counter = counter + 1;
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For those of you who learned Python, that language has the compound assignments, but not the increment.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For those of you who've worked with C++, well, there's the increment operator right in the name! Indeed, that's why C++ is called C++, since it was designed to be a successor of the C programming language.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:52:11 pm
+\fs26 \
+Can we do counter++ ++ to increase by 2? 
+\f5\fs24 {{\NeXTGraphic tongue.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Putting on my serious hat: I actually don't know. Probably not, but I'd never thought to try it!
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:52:39 pm
+\fs26 \
+Why not use += 2?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's what I would do.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:52:56 pm
+\fs26 \
+++ ++ isn't allowed. 
+\f5\fs24 {{\NeXTGraphic frown.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Actually that should be a 
+\f5\b0\fs24 {{\NeXTGraphic smile.gif \width320 \height320 \noorient
+}¬}
+\f0\b\fs26 , since ++ ++ is kind of crazy.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, here's another way of writing the loop:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 counter \cf6 !=\cf0  \cf14 5\cf5 )\cf0  
+\f3\i \cf8 // loop 5 times
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // check its sign; 3 possibilities
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 num \cf6 <\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0counter\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we wanted to let the user decide how many numbers to enter instead of having it always be 5. So the user will enter how many they want. How would the code change?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:55:16 pm
+\fs26 \
+Ask for how many numbers they will enter (n) and have while(counter !=n)\
+\cf4 connor0728\cf0  
+\fs20 8:55:16 pm
+\fs26 \
+have a variable that they input in and have while(counter!=variable)\{\
+\cf4 mrturtle\cf0  
+\fs20 8:55:16 pm
+\fs26 \
+you would need a variable to hold the number they pick, then do while (counter != variable)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For starters, we'd need to do another nextInt to get that number. Where should it go?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:55:48 pm
+\fs26 \
+before the while loop, and then change the 5 to the variable\
+\cf4 ScottBusche\cf0  
+\fs20 8:55:48 pm
+\fs26 \
+Right before the while loop.\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:55:52 pm
+\fs26 \
+before the while loop\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need it prior to the loop. So we would need something like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "How many numbers do you want to enter: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  howMany \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now what?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:56:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b while
+\f2\b0  \cf5 (\cf0 counter \cf6 !=\cf0  howMany\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 WhaleVomit\cf0  
+\fs20 8:56:34 pm
+\fs26 \
+while (counter != howMany)\
+\cf4 MSTang\cf0  
+\fs20 8:56:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f2\b0  \cf5 (\cf0 counter \cf6 <\cf0  howMany\cf5 )\cf0  \cf5 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:56:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 while
+\f2\b0  \cf5 (\cf0 counter \cf6 <\cf0  howMany\cf5 )\{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 8:56:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0   
+\f1\b while
+\f2\b0  \cf5 (\cf0 counter \cf6 !=\cf0  howMany\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:56:45 pm
+\fs26 \
+change the while loop to ;java while (counter!= howMany)\
+\cf4 sgtgumy\cf0  
+\fs20 8:56:49 pm
+\fs26 \
+change while(counter !=5) to while(counter !=howMany)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The only thing left to do is change the 5 in the while loop to howMany.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 counter \cf6 !=\cf0  howMany\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The rest of the loop body works just fine (assuming you input a value for howMany that's bigger than 0, which could be the beginning of an argument for using a < rather than != test). Try it out!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Our while examples so far have been \cf3 counter-controlled\cf0  loops. Another common example of a loop is a \cf3 sentinel-controlled\cf0  loop. We use it when we don't know before we start the loop how many times the body will be executed. Instead, we wait for a certain input value to be entered, called a \cf3 sentinel\cf0 . When we see the sentinel, we stop the loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's rewrite our example program to use a sentinel. We will use 0 as a sentinel. Typically, we do \cf3 not\cf0  want the sentinel to also be counted as a "regular" input. So we'll just count positives and negatives.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: We're going to go through a bunch of different versions to see what does and doesn't work. I'll try not to be very confusing. Please let me know if I lose you.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a start of the code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+import \cf7 java.util.Scanner\cf6 ;\cf0 \
+public class WhileExampleSentinel \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf9 void\cf0  main\cf5 (\cf10 String\cf5 []\cf0  args\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf5 (\cf10 System\cf0 .\cf11 in\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  positives \cf6 =\cf0  \cf14 0\cf6 ;\cf0  
+\f3\i \cf8 // tallies of types of numbers
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  negatives \cf6 =\cf0  \cf14 0\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 ()\cf0  
+\f3\i \cf8 // loop as many times as needed
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // check its sign; 2 possibilities
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 =\cf0  positives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else  
+\f3\i \cf8 // negative number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 =\cf0  negatives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf8 // print results
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf5 (\cf12 "Positives: %d\cf13 \\n\cf12 Negatives: %d\cf13 \\n\\n\cf12 "\cf0 , positives, negatives\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 All I did here (other than change the name of the class to WhileExampleSentinel) is remove all references to counter, zeroes, and howMany \'96 they won't be needed in this version.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Observe, in particular, that this is now just an intermediate step, not a complete, properly functioning new version of the code. For one thing, at the moment the code doesn't give us any way to get out of the while loop!)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The edits I made mean we no longer have a test in the while loop. But notice that num stores the input value, and we're looking for a 0 to stop the loop. So we could just put num != 0 as the test. Is that the only other change we need?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:02:18 pm
+\fs26 \
+You need to declare num outside of the looop.\
+\cf4 JRY\cf0  
+\fs20 9:02:18 pm
+\fs26 \
+Doesn't num need to be defined outside the loop?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. Remember we need to make sure the variables in our test have an initial value to start. In our current code, num isn't defined (or even declared!) before the start of the while loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we could try this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  num \cf6 =\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 num \cf6 !=\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // loop as many times as needed
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I gave num a value of 1 which will let us pass the test to start. Note we no longer want to declare num inside the while loop, since we've done that already. But obviously we need to reassign it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 This still doesn't work, though.\cf0  Why not?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: Try running it with a couple of numbers and then a 0. What output do you get?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:03:55 pm
+\fs26 \
+if you enter num as 0, it still counts negative once\
+\cf4 Tungsten\cf0  
+\fs20 9:03:55 pm
+\fs26 \
+0 is counted as a negative.\
+\cf4 ScottBusche\cf0  
+\fs20 9:03:55 pm
+\fs26 \
+There's an extra negative.\
+\cf4 MathWolf\cf0  
+\fs20 9:03:55 pm
+\fs26 \
+The zero gets counted as negative.\
+\cf4 chenjamin\cf0  
+\fs20 9:03:58 pm
+\fs26 \
+it counts the 0 as a negative\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 0 we enter for the last number gets counted in the tallies. Since I use a single if/else combination, it gets grouped with the negatives.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we solve this problem? There are several ways we could do it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Probably the simplest way for this particular problem is to change the if statement to have an explicit test to make sure num < 0 before incrementing negatives:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 num \cf6 !=\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // loop as many times as needed
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // check its sign; 2 possibilities
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 =\cf0  positives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 num \cf6 <\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // negative number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 =\cf0  negatives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now if the user enters 0, the value is simply ignored. Then the while test will kick us out of the loop. (Try it!)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This isn't going to work in general, though, so let me use a little longer way that could be applied in any sentinel-controlled loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want to check for the sentinel immediately after reading in an input. So we could put an if statement right after the nextInt call:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 num \cf6 !=\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // loop as many times as needed
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 !=\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // check its sign; 2 possibilities
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 =\cf0  positives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else 
+\f3\i \cf8 // negative number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 =\cf0  negatives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But this solution means the computer is doing the same thing twice. What is it doing twice?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:06:03 pm
+\fs26 \
+Checking for num != 0\
+\cf4 adrianu\cf0  
+\fs20 9:06:03 pm
+\fs26 \
+testing whether num is equal to 0\
+\cf4 williamyin08\cf0  
+\fs20 9:06:03 pm
+\fs26 \
+Check if num is equal to 0.\
+\cf4 JRY\cf0  
+\fs20 9:06:03 pm
+\fs26 \
+checking if num !=0\
+\cf4 teachm\cf0  
+\fs20 9:06:03 pm
+\fs26 \
+checking for not 0\
+\cf4 sgtgumy\cf0  
+\fs20 9:06:08 pm
+\fs26 \
+checking that num isnt zero\
+\cf4 wazmat\cf0  
+\fs20 9:06:08 pm
+\fs26 \
+Checking for the sentinel.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Checking the sentinel occurs in the if test we just added, but then it occurs again when we go back to the test in the while loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is not particularly desirable.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:06:35 pm
+\fs26 \
+Why not just subtract 1 from negatives after the loop ends?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Usually you can be sure that if you're tempted to do something hack-y like that, there must be a better way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll get to the better way shortly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The typical way of writing the sentinel-controlled loop is to ensure that the input occurs just before the while test. Right now, input occurs just \cf3 after\cf0  the test.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Would the following work?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  num \cf6 =\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 num \cf6 !=\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // loop as many times as needed
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // check its sign; 2 possibilities
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 =\cf0  positives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else 
+\f3\i \cf8 // negative number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 =\cf0  negatives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 ReciterOfPi\cf0  
+\fs20 9:09:29 pm
+\fs26 \
+No: it would add an extra positive number...\
+\cf4 Tungsten\cf0  
+\fs20 9:09:29 pm
+\fs26 \
+No. Num starts out one, so you would get an extra positive.\
+\cf4 gkaops\cf0  
+\fs20 9:09:29 pm
+\fs26 \
+no\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we get the input, go back to the top, and do the test.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unfortunately, this means the default value of 1 now gets used as a real piece of data. Our positive count will be one too high.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So what's the solution?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What we can do is replace the default assignment with an input. Then we know the first value the while loop tests will be an actual data point.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what the final version looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf5 (\cf0 num \cf6 !=\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // loop as many times as needed
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // check its sign; 2 possibilities
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives \cf6 =\cf0  positives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else 
+\f3\i \cf8 // negative number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives \cf6 =\cf0  negatives \cf6 +\cf0  \cf14 1\cf6 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You might argue here that we've just replaced extra if tests with extra inputs. So the computer is still doing more work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But that argument doesn't fly. The key is that we've moved some of the work outside the loop. Suppose we have three inputs (two real pieces of data and the sentinel). In the if version, all three inputs were read inside the loop. In this version, the first input is read outside the loop, and only two inputs are read via the loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To summarize: For a sentinel-controlled loop, you want to get a value just before the while loop, and you want to get a value again as the last thing done in the body of the loop.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 9:11:34 pm
+\fs26 \
+Can't we just subtract one from positive before printing?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. Avoid fiddling with your data in an 
+\i ad hoc
+\i0  way. What you want to strive to do to create reasonable and maintainable code is to make sure the logic you set up makes it so you don't have to reach in and make modifications like that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Looks like we have just enough time to discuss two other kind of loops Java makes available.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: OTHER LOOPS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The while loop is the only one you really 
+\i need
+\i0 , from a formal standpoint, but just like having the switch as an alternative to if, Java offers two other kinds of loops.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first is a \cf3 for\cf0  loop. It provides another way of writing a counter-controlled loop. In a while loop, the pieces related to the counter are typically in different lines of the code. The for loop brings them all together.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's our original 5-times version of the sign-counting example rewritten to use a for loop instead:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class ForExample \cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf9 void\cf0  main\cf5 (\cf10 String\cf5 []\cf0  args\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf5 (\cf10 System\cf0 .\cf11 in\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  positives \cf6 =\cf0  \cf14 0\cf6 ;\cf0  
+\f3\i \cf8 // tallies of types of numbers
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  zeroes \cf6 =\cf0  \cf14 0\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  negatives \cf6 =\cf0  \cf14 0\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf5 (\cf9 int\cf0  counter \cf6 =\cf0  \cf14 0\cf6 ;\cf0  counter \cf6 !=\cf0  \cf14 5\cf6 ;\cf0  counter\cf6 ++\cf5 )\cf0  
+\f3\i \cf8 // loop 5 times
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "Enter a number: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0  
+\f3\i \cf8 // read number
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf5 (\cf0 num \cf6 >\cf0  \cf14 0\cf5 )\cf0  
+\f3\i \cf8 // check its sign; 3 possibilities
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0positives\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf5 (\cf0 num \cf6 <\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0negatives\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zeroes\cf6 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf8 // print results
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf5 (\cf12 "Positives: %d\cf13 \\n\cf12 Negatives: %d\cf13 \\n\cf12 Zeroes: %d\cf13 \\n\cf12 "\cf0 , positives, negatives, zeroes\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf5 \}\cf0 \
+\pard\pardeftab720
+\cf5 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The key is this line:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf5 (\cf9 int\cf0  counter \cf6 =\cf0  \cf14 0\cf6 ;\cf0  counter \cf6 !=\cf0  \cf14 5\cf6 ;\cf0  counter\cf6 ++\cf5 )\cf0  
+\f3\i \cf8 // loop 5 times
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It combines three different lines from the while version. The first is the declaration and initialization of counter. It ends with a semicolon.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What about the next part? What does that do?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+tells it to stop after counter is 5\
+\cf4 mrturtle\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+tests whether or not counter is equal to 5\
+\cf4 k77frank\cf0  
+\fs20 9:15:18 pm
+\fs26 \
+while counter is not 5\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's the test we had from the while loop. What's the third part?
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 9:15:40 pm
+\fs26 \
+Increments the counter\
+\cf4 moppr\cf0  
+\fs20 9:15:40 pm
+\fs26 \
+Incrementing the counter\
+\cf4 Tungsten\cf0  
+\fs20 9:15:40 pm
+\fs26 \
+It increments counter.\
+\cf4 manbugbeebee\cf0  
+\fs20 9:15:40 pm
+\fs26 \
+counter increases by 1 each time the code is run\
+\cf4 chenjamin\cf0  
+\fs20 9:15:47 pm
+\fs26 \
+the increment\
+\cf4 piis3141592653\cf0  
+\fs20 9:15:47 pm
+\fs26 \
+add 1 to counter\
+\cf4 williamyin08\cf0  
+\fs20 9:15:47 pm
+\fs26 \
+Increments!\
+\cf4 MSTang\cf0  
+\fs20 9:15:47 pm
+\fs26 \
+incremention\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's the increment to counter that originally was at the end of the body. Note we don't have a semicolon at the end of it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the general rule for how the for works.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first part of the for is executed (int counter = 0). Then we perform the test in the second part (counter != 5). If the test is true, then we execute the body, and then the third part of the for (counter++) is executed. At that point, we recheck the test and repeat. If the check of the test gives false, then we skip the body (and the third part of the for) and move on with the program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you rewrite the version where the user enters how many values to process so it uses a for loop?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So now you need to do that howMany business from our while loop example.
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:21:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "How many numbers woul you like to input? "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf9 int
+\f2\b0 \cf0  howMany \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf5 (
+\f1\b \cf9 int
+\f2\b0 \cf0  counter \cf6 =\cf0  \cf14 0\cf6 ;\cf0  counter \cf6 !=\cf0  howMany\cf6 ;\cf0  counter\cf6 ++\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:21:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "How many numbers?"\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf9 int
+\f2\b0 \cf0  numValues \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf5 (
+\f1\b \cf9 int
+\f2\b0 \cf0  counter \cf6 =\cf0  \cf14 0\cf6 ;\cf0  counter \cf6 !=\cf0  numValues\cf6 ;\cf0  counter\cf6 ++\cf5 )\cf0  
+\f4\i \cf8 // loop numValues times
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 9:21:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 println\cf5 (\cf12 "Enter the amount of numbers: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf9 int
+\f2\b0 \cf0  howMany \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf5 (
+\f1\b \cf9 int
+\f2\b0 \cf0  counter \cf6 =\cf0  \cf14 0\cf6 ;\cf0  counter \cf6 !=\cf0  howMany\cf6 ;\cf0  counter\cf6 ++\cf5 )\cf0  
+\f4\i \cf8 // loop 5 times
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a pretty simple change. We read in howMany before the loop and change the test:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf10 System\cf0 .\cf11 out\cf0 .\cf11 print\cf5 (\cf12 "How many numbers do you want to enter: "\cf5 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 int\cf0  howMany \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf5 (\cf9 int\cf0  counter \cf6 =\cf0  \cf14 0\cf6 ;\cf0  counter \cf6 !=\cf0  howMany\cf6 ;\cf0  counter\cf6 ++\cf5 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because each part of the for is typically a single statement, we can't easily convert the sentinel-controlled loop to a for. So the rule of thumb is to use a for when you want a counter-controlled loop, and you use a while when you want a sentinel-controlled loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second alternative loop structure is a \cf3 do-while\cf0 . Suppose you want to have the user enter a number, but you want to make sure the number is positive. So if they enter a non-positive number, they need to try again.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this situation, we need to guarantee that at least one number is read. We could do something like this (I've left off the prints that ask the user for numbers):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\pard\pardeftab720
+\cf9 int\cf0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+while \cf5 (\cf0 num \cf6 <=\cf0  \cf14 0\cf5 )\cf0 \
+\'a0\'a0\'a0\'a0  num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The do-while loop, on the other hand, gives a loop structure where you are guaranteed the body is executed once. Essentially the test is just executed after the body instead of before.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what it looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+do\
+\pard\pardeftab720
+\cf5 \{\cf0 \
+\'a0\'a0\'a0\'a0num \cf6 =\cf0  scan.\cf11 nextInt\cf5 ()\cf6 ;\cf0 \
+\cf5 \}\cf0 \
+while \cf5 (\cf0 num \cf6 <=\cf0  \cf14 0\cf5 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, I'm assuming that num is declared before the loop. That's actually very important here, because otherwise Java will forget num once it exits the loop. We'll discuss that more in a later class session.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, the body is executed. Then Java checks the test. If it passes the test (i.e. is true), the body is executed again, and the test is checked again. And so on.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 9:24:42 pm
+\fs26 \
+I never learned that in Python...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I vaguely recall that Python doesn't have do-while loops.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Some languages include support for them. Some don't.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, just checked, Python doesn't have built-in support for the do-while construction.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions before we finish for the evening?
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 9:26:56 pm
+\fs26 \
+Python does have do-while loops, i thought...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope. Python has while loops. It doesn't have do-while loops.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 9:27:10 pm
+\fs26 \
+What is the diff between the two ?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a while loop, you test the condition before you do the body even once.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a do-while loop, you do the body once, then test the condition, then loop through if the condition passes the test.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 9:28:03 pm
+\fs26 \
+do-while always does it at least once, right?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, that's right. do-while always does the BODY of the loop at least once.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 9:28:39 pm
+\fs26 \
+What is the diff between a counter-controlled loop, and a sentinel-controlled loop>\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a counter controlled loop, you go through the loop a certain NUMBER of times. The condition you test is how many times you've gone through the loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a sentinel controlled loop, you just keep going through the loop until some condition is met (which can be more general than having gone through the loop a certain number of times). Sentinel-controlled can be useful, for example, when you're grabbing user input, since you (and even the user) can't necessarily say ahead of time how many times you'll want to go through the loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, say you're programming an ATM interface.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Maybe the user is done when he/she has made a withdrawal.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But maybe he/she would like to do another bank transaction.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If your loop is sentinel-controlled, you can easily test for when the user wants to end the interaction with the loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This week, we looked at the major control structures of Java. You saw how we can perform selection with the if, if/else, and switch statements. We then looked at how to do iteration via while, for, and do-while.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week, we'll look at some of the built-in objects of Java and how to use their methods. See you then!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other questions?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:32:12 pm
+\fs26 \
+What is the difference between an application and an applet?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I don't know all the details because, frankly, applets are an idea that don't seem to have taken off as much as Sun (the people who made Java) was hoping.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As far as I can tell, an applet is just a small program. The idea is that they could be deployed easily within webpages, I think.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But there are other things, like Flash, Silverlight, and JavaScript (which has nothing to do, really, with Java, other than the name which was just part of a big marketing push) which handle stuff like this these days.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:34:43 pm
+\fs26 \
+Is there going to be a report tab on the class page?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I guess not!
+\b0 \
+\pard\pardeftab720
+\cf4 gkaops\cf0  
+\fs20 9:34:58 pm
+\fs26 \
+When should one use a package in eclipse?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Organizing things into packages is part of Java, not so much Eclipse, per se.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, when you import java.util.Scanner,
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That means Scanner is in the java.util.* package.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We won't talk about creating packages in this class.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 9:36:41 pm
+\fs26 \
+What's the data type for booleans?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The data type for booleans is \cf3 boolean\cf0 .
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 9:37:13 pm
+\fs26 \
+After class are we allowed to work together on the graded free response question?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I think I made an announcement about working together last week. (Right?) I don't mind if you work together, but if you do please make sure to clearly indicate in your homework who you worked with.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The main point here is that it is okay to work together, but it is NOT okay to pass off someone else's work as your own.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So make sure you're doing your part to contribute if you're part of a collaboration and make clear if you worked with someone else.
+\b0 \
+\pard\pardeftab720
+\cf4 piis3141592653\cf0  
+\fs20 9:38:51 pm
+\fs26 \
+how did Sun come up with the name for Java?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In fact, I was just watching a video about this. The guy who created and named Java, Jim Gosling, is a very smart and capable guy but kind of bad at naming things.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First he wanted to call it "C++ ++" (which, amusingly enough, echoes something a student asked earlier in class), but that name is about as graceful as a ten ton truck in a tutu. So he thought some more and decided to name it Oak because of a tree outside his window.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oak was used by that name for a few years (as part of an effort to develop interactive TV in the 90s, though that project didn't really get anywhere and was eventually shut down). Time passed and people involved thought what the language was a new name, so one day while Gosling and some colleagues were at a coffee shop, he decided that Java would be a pretty cool name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not the most inspiring story, but that's what happened.
+\b0 \
+\pard\pardeftab720
+\cf4 bel3900989\cf0  
+\fs20 9:40:22 pm
+\fs26 \
+bad? I would say atrocious since he ended up naming language after coffee\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But coffee's so good!
+\b0 \
+\pard\pardeftab720
+\cf4 bzzz99\cf0  
+\fs20 9:40:47 pm
+\fs26 \
+when will the free response questions be graded?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They should be graded before class next week. (Hopefully. It usually depends on how quickly the graders get around to grading. I'll roll up my sleeves and grade some if things are slow.)
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 9:41:42 pm
+\fs26 \
+If you have your own package defined like chutney.mypackage.mystuff, isn't that just a bunch of folders inside each other? Doesn't that just take up memory?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Organizing things in directories doesn't take up much memory at all, especially not on modern hard drives. Space should not be a concern when putting things in directories.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:43:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I did not study up on making packages in Java, so I'd rather not try to say too much about packages. If you're dying to know about packages, ask about it on the message board (so I remember to address the question) and I'll put something together.
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:43:33 pm
+\fs26 \
+When we build Scanners, do we always have to close them before the program ends?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It is good programming practice to close your scanners, but it's really not at all a big deal for the small and simple programs we're writing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're not at risk for any memory leaks or anything that would be the reason to care about such things.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:44:58 pm
+\fs26 \
+How do you close Scanners?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If your Scanner is called scan you do scan.close()
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 MathWolf had also asked last week whether objects in Java are always created with new.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I said I'd get back to that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:47:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. As far as I can tell from the documentation I was able to find, in Java all objects are first created using new, with a few not very surprising exceptions. The exceptions are: the 8 primitive data types in Java (byte, short, int, long, float, double, boolean, and char); Strings; Arrays. You always have the option to create any object, including these exceptions, using the new keyword (assuming you use the right syntax). But for these exceptions, you also have the option not to use the new keyword and (assuming you use the right syntax) Java will still know what you mean and act accordingly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:47:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 new is what makes space in memory for the object.}

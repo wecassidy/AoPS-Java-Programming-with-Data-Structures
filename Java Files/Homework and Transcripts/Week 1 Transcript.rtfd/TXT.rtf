@@ -1,0 +1,5336 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier-Bold;
+\f3\fmodern\fcharset0 Courier-BoldOblique;\f4\fmodern\fcharset0 Courier;\f5\fmodern\fcharset0 Courier-Oblique;
+}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red30\green91\blue156;
+\red251\green0\blue7;\red83\green83\blue83;\red87\green197\blue83;\red55\green42\blue120;\red1\green32\blue135;
+\red11\green85\blue38;\red18\green139\blue2;\red0\green0\blue255;\red43\green139\blue39;\red0\green0\blue83;
+\red190\green74\blue193;\red0\green0\blue135;\red10\green82\blue135;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hello and welcome to the \cf3 Java Programming with Data Structures\cf0  class!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 My name is Dan Kneezel and I am the instructor for this course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I joined AoPS as a part-time instructor in 2012. I studied math and linguistics at the University of Rochester before going on to earn my Ph.D. in math from the University of Michigan in 2011. I have been teaching and/or tutoring mathematics from the middle school to college level since 2003. I took part in AMC and AIME throughout high school (probably the most fun I've ever had in a gymnasium). In my free time, I like to learn languages, read about physics, climb trees, and explore museums.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Before we get started, I'd like to discuss with you a few classroom procedures.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This classroom is moderated. This means that the messages you type will come to the instructors rather than going directly into the room. The instructors will choose some of the messages to share with all of the students.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Your assistants for this course will be Kevin Peng (TheWorstPlayer) and Elena Sizikova (Anna Smith).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Kevin Peng is a sophomore at MIT. He is a two-time USAMO qualifier, one-time USAJMO qualifier. He is an alumnus of the New York City Math Team. He enjoys bouncing between a variety of hobbies from time to time: playing bridge, Mahjong, and basketball. Kevin also enjoys watching anime and reading manga.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Elena is a computer science PhD student at Princeton University, interested in bioinformatics and machine learning. She graduated from University of Oxford with a degree in math and computer science in 2013, and has been involved with a variety of AoPS courses throughout the past few years. An avid high school contest participant, she is still involved with contests, now in the role of a mentor, organizer, or grader.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Please feel free to ask questions \cf3 at any time during the class\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We are here to answer all of your questions in this class. If you're confused about anything, just type your question and one of us will answer it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sometimes we'll just whisper helpful comments to you; other times we will open a window with you and chat 1-on-1 to address your questions.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this class we will be using the Java programming language. You should have Java and Eclipse installed on your computer and you should have an Eclipse window open during class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To install Java and Eclipse, see the AoPS Wiki for detailed instructions:\
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "http://www.artofproblemsolving.com/Wiki/index.php/Install_Java"}}{\fldrslt \cf4 http://www.artofproblemsolving.com/Wiki/index.php/Install_Java}}\
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "http://www.artofproblemsolving.com/Wiki/index.php/Install_Eclipse"}}{\fldrslt \cf4 http://www.artofproblemsolving.com/Wiki/index.php/Install_Eclipse}}\
+(In particular, you will notice that the Install_Java link tellls you to install the Java Development Kit. That's what you need to create your own Java programs.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're curious about sound in the classroom: There is no audio. This link explains why; you can read it later:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:34 pm
+\fs26 \
+\pard\pardeftab720
+{\field{\*\fldinst{HYPERLINK "http://www.artofproblemsolving.com/School/index.php?page=howclassroomworks"}}{\fldrslt 
+\b \cf4 http://www.artofproblemsolving.com/School/index.php?page=howclassroomworks}}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Finally, I want to make sure your computer is letting me send you images. Here are a couple pictures:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic logo-www.png \width2240 \height3000 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic logo-classroom.png \width2240 \height3000 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The images should have appeared in the classroom window, and should be identical, except the labels below the AoPS logo. Please speak up if you can't see them both.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's one more picture:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\fs24 \cf0 {{\NeXTGraphic 2aece34a55588eaf6dc55a5f2ba5c6bd09827f2e.png \width840 \height840 \noorient
+}¬}\pard\pardeftab720
+
+\f0\b\fs26 \cf0 \
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you don't see a smiley face, then let us know and we can help you fix it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the classroom is too small for you, you can resize it. You can also change the font size. Old folks like me like to make it bigger by clicking the A at the top of the room by the Clear button. You can slide dividers around and classroom boundaries around to change the sizes of various parts of the classroom.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We will also post "sticky" problems and important comments to the top of the room.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can slide the bar between the "sticky" portion of the room on the top of the classroom and the rest of the classroom to make it larger or smaller. Doing this will help you read the sticky area and the classroom.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's it for the pre-class instructions. Are there any questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 At the end of class, we'll talk about homework and other class procedures. But for now, let's start learning!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 1: Java Basics - Variables, Data Types, Assignments, Expressions
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: INTRODUCTION TO THE COURSE
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The homework for this course works as follows: On the homework tab on the home page, there will be several types of problems. One of these will be a Writing Problem. These problems will appear the day before the associated class. (The Week 1 problem appeared last week.) You should write up full solutions to these problems, being sure to add comments to your code, and submit them to us to receive feedback. Your solutions are due eight days after the class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Ah, actually, I guess I'll say some stuff about homework now. I'll also say more at the end of class.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may collaborate on the Writing Problems if you like, but if you do so, please indicate who you worked with when you submit your solutions. Your score may be affected if you neglect to do so. Don't represent someone else's work as your own.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There will also be several short answer and ungraded writing problems. You should submit solutions to these as well. Short answer problems have one correct answer. You'll keep trying until you get it right. On the other writing problems, instead of getting personal feedback, you'll see how I would approach the problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We will also post a question or two per week on the course message board. These are questions that benefit from group discussion. You can post your responses and opinions there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You cannot learn programming passively, simply attending the classes and hoping to absorb the material. \cf3 You must attempt the problems\cf0 , both the weekly problems (posted on the message board) and the writing problems (posted on the class home page). You need to do both the routine problems (to master the basic techniques and concepts) and the harder problems (to get a deeper understanding of the material). If all you do are Writing Problems, you won't get enough practice.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this class we will be using the Java programming language. You should already have installed the Java Development Kit (JDK) and an Integrated Development Environment (IDE) on your computer. I will be using the Eclipse IDE for this course. There are complete instructions on how to download and install these in links we posted above and on the class message board. If you haven't done so, you need to follow those instructions as soon as possible.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 During class, I'll ask you questions. Post your answers; the TAs and I are the only ones who will see them. Don't be shy! Then I'll post selected responses to the main chatroom.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sometimes you'll post a few lines of Java code. There are special tags you can use to make the code look nice. I'll show you those later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember you can always post a question. If I am busy with other things, the TA will respond to you. They may also touch base with you during a lecture if they think you could use assistance.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Please try to respond to most questions I ask, even if it's with "I don't know". That way, we'll be able to tell if people are following along.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I said before, though, you will need to do work outside of class as well. I can't stress this enough. \cf3 Programming is not a spectator sport.\cf0  (Indeed, learning in general is not a spectator sport.) You can't just watch other people write programs and somehow absorb how to do it. You've got to get in the trenches and work things out yourself. You all have some programming experience already. So hopefully you will easily be able to transition into Java. But it won't work unless you practice.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second part of the course moves away from Java and becomes more theoretical. We'll still do some coding, but we'll take a careful look at some constructs that show up in lots of programs. We'll look at efficient ways to look at those structures.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So please do the assignments every week and make an effort on the Challenge Problems. If not, I pretty much guarantee that you will be sad. And if you have questions about the assignments, graded or not, please post those questions in our forum. We're happy to help.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions so far?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sorry this bit wasn't very interactive. We'll get to more interactive stuff in maybe 20 minutes or so.
+\b0 \
+\pard\pardeftab720
+\cf5 teachm\cf0  
+\fs20 7:40:30 pm
+\fs26 \
+What is a data structure?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Data structures are things like lists, trees, arrays. They're just ways to store data so you can use it effectively for what you need to do and the problems you need to solve.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll go into a lot more detail later in the course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: INTRODUCTION TO JAVA
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll start by talking a little about how Java differs from other languages you may know. How many of you have experience with Python?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+Me!\
+\cf5 WhaleVomit\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+MEEEE\
+\cf5 Wilderc\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+I have.\
+\cf5 manbugbeebee\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+Me!\
+\cf5 MathWolf\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+Me!\
+\cf5 ScottBusche\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+Me!\
+\cf5 Tungsten\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+Me!\
+\cf5 connor0728\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+Me\
+\cf5 xeuryl\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+me\
+\cf5 Dragon18\cf0  
+\fs20 7:42:04 pm
+\fs26 \
+me\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That looks like About 30 of you. (I didn't pass all responses.) And how many of you have worked with C or C++?
+\b0 \
+\pard\pardeftab720
+\cf5 piis3141592653\cf0  
+\fs20 7:42:55 pm
+\fs26 \
+me, a bit.\
+\cf5 sgtgumy\cf0  
+\fs20 7:42:55 pm
+\fs26 \
+I have worked with C++\
+\cf5 spower4\cf0  
+\fs20 7:42:55 pm
+\fs26 \
+me\
+\cf5 LiGhtpupPet278\cf0  
+\fs20 7:42:55 pm
+\fs26 \
+me\
+\cf5 chenjamin\cf0  
+\fs20 7:42:55 pm
+\fs26 \
+me!\
+\cf5 connor0728\cf0  
+\fs20 7:42:55 pm
+\fs26 \
+I have\
+\cf5 sanpran\cf0  
+\fs20 7:43:08 pm
+\fs26 \
+i have, sort of\
+\cf5 Sir_cumference\cf0  
+\fs20 7:43:08 pm
+\fs26 \
+Me! (a little)\
+\cf5 EmeraldBot\cf0  
+\fs20 7:43:08 pm
+\fs26 \
+Not yet, but I plan to soon\
+\cf5 bel3900989\cf0  
+\fs20 7:43:08 pm
+\fs26 \
+moi\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That looks like 10ish people. Those are the two main ones I expect you may have worked with. Which other languages (not counting Java) do you have experience with?
+\b0 \
+\pard\pardeftab720
+\cf5 bluebandit21\cf0  
+\fs20 7:43:36 pm
+\fs26 \
+does html count as a language?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 HTML and LaTeX are more markup languages that tell a computer how to display stuff, but sure, it's a kind of computer language.
+\b0 \
+\pard\pardeftab720
+\cf5 Wilderc\cf0  
+\fs20 7:44:29 pm
+\fs26 \
+RUBY!\
+\cf5 teachm\cf0  
+\fs20 7:44:29 pm
+\fs26 \
+R, sas\
+\cf5 joberman\cf0  
+\fs20 7:44:37 pm
+\fs26 \
+python, html, css, javascript, jquery\
+\cf5 nagrawa587\cf0  
+\fs20 7:44:49 pm
+\fs26 \
+matlab, R\
+\cf5 mrturtle\cf0  
+\fs20 7:44:49 pm
+\fs26 \
+php\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep, those are all languages.
+\b0 \
+\pard\pardeftab720
+\cf5 EmeraldBot\cf0  
+\fs20 7:44:57 pm
+\fs26 \
+I've tried Haskell, but I still don't get it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh man, Haskell. It's pretty cool, but I also haven't plumbed its depths yet.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And finally how many of you know some Java already?
+\b0 \
+\pard\pardeftab720
+\cf5 mrturtle\cf0  
+\fs20 7:45:37 pm
+\fs26 \
+i do\
+\cf5 moppr\cf0  
+\fs20 7:45:37 pm
+\fs26 \
+I do\
+\cf5 MSTang\cf0  
+\fs20 7:45:37 pm
+\fs26 \
+Me\
+\cf5 MathWolf\cf0  
+\fs20 7:45:37 pm
+\fs26 \
+Me!\
+\cf5 bzzz99\cf0  
+\fs20 7:45:37 pm
+\fs26 \
+me!\
+\cf5 mattpi\cf0  
+\fs20 7:45:37 pm
+\fs26 \
+a little bit\
+\cf5 Tungsten\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+Me... Sort of...\
+\cf5 AkshajK\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+ME\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you know some Java, that's great. You'll probably find the first few weeks of this course to be a review. And if you know Python or C++, much of what we do in the beginning will seem familiar. Rest assured, we will soon get into new material.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One of the reasons for that familiarity is that Java is a direct descendant of C++, and Python is a direct descendant of Java.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java was originally designed by Sun Microsystems for consumer devices (like your iPod or smart phone). Unfortunately, Java was developed in 1991, well before such devices were used as much as they are today. Fortunately, something else became very popular in the early 1990s. Can you think what that might be?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 7:46:33 pm
+\fs26 \
+The Internet?\
+\cf5 Wilderc\cf0  
+\fs20 7:46:33 pm
+\fs26 \
+the internetz\
+\cf5 JRY\cf0  
+\fs20 7:46:33 pm
+\fs26 \
+internet?\
+\cf5 AkshajK\cf0  
+\fs20 7:46:33 pm
+\fs26 \
+the internet\
+\cf5 ReciterOfPi\cf0  
+\fs20 7:46:36 pm
+\fs26 \
+The Internet?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Indeed. The World Wide Web became incredibly popular in 1993. The people at Sun realized that Java could be used to provide dynamic (i.e. changing) content for web pages. That helped spread the use of the language.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One of the reasons Java can be used for web pages in this way is that it is designed for \cf3 portability\cf0 . Can someone tell me what that means?
+\b0 \
+\pard\pardeftab720
+\cf5 mattpi\cf0  
+\fs20 7:47:44 pm
+\fs26 \
+it can run on different operating systems\
+\cf5 connor0728\cf0  
+\fs20 7:47:44 pm
+\fs26 \
+can use on any computer enviroment\
+\cf5 ScottBusche\cf0  
+\fs20 7:47:44 pm
+\fs26 \
+Almost all operating systems can run it.\
+\cf5 wfu\cf0  
+\fs20 7:47:44 pm
+\fs26 \
+can be run on most other systems without errors\
+\cf5 miteM\cf0  
+\fs20 7:47:54 pm
+\fs26 \
+it can be moved from one thing to another?\
+\cf5 gkaops\cf0  
+\fs20 7:47:59 pm
+\fs26 \
+No code change needed for different operating systems\
+\cf5 PiCrazy31415\cf0  
+\fs20 7:48:03 pm
+\fs26 \
+ability to be carried around\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Normally if something is portable, it means you can carry it from one place to another. Here we'd like to "carry" our program from one computer to another. If it runs on mine, it should be able to run in the same way on yours too without any changes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, I'd like to take the application file from one computer, put it on a second, and just start it directly. But why might that not work?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, beyond even just differences in Operating System, the two systems might have different hardware setups! But yeah, the simplest example is if, say, I have a Windows machine and you have an Apple. The internal commands or \cf3 machine language\cf0  of your machine would be different from mine.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If I'm writing a webpage with dynamic code, I don't know who's going to visit it. I want to make sure my code works no matter what type of machine the visitor's browser is on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's how Java does it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The key is how Java code is translated and executed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are two main ways in which programming code is translated. In C++, your code is translated using a \cf3 compiler\cf0 . The compiler is a program that reads the entire text of the code and converts it into machine language. This can then be executed on the hardware.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Python, on the other hand, uses an \cf3 interpreter\cf0 . This program reads one piece of the code at a time, translates it into machine language, and executes just that piece.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can compare this to reading a book out loud. The compiler reads the entire book to herself first. She reads it to you when she's finished. The interpreter reads a section to you immediately after she has read it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What advantages does the compiler have over the interpreter? Anybody know or care to venture a guess?
+\b0 \
+\pard\pardeftab720
+\cf5 ReciterOfPi\cf0  
+\fs20 7:51:52 pm
+\fs26 \
+Could the compiler comprehend better because it would be able to do it in context?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's pretty on point.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since the compiler sees all the code, it can do a better job of translating. In particular, it is more likely to be able to resolve ambiguities in the code. It can also make the code more efficient.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Going back to the reading aloud example, if there is a sentence like:\
+\pard\pardeftab720
+
+\i \cf0 'Hello, stranger,' said a familiar voice behind me.
+\i0 \
+the compiler knows who the voice is, because she has read ahead, so she can use the appropriate voice for the character.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What about the interpreter? What advantages does it have? (If you've used Python, you might have some ideas what's useful about interpreters.)
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 7:53:19 pm
+\fs26 \
+You don't have to wait for the code to compile?\
+\cf5 manbugbeebee\cf0  
+\fs20 7:53:45 pm
+\fs26 \
+It might be faster, because you wouldn't have to wait for the compiler to read the whole thing\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, it depends on what you mean by faster. Generally compiled code is better optimized to be run by your machine.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But to be sure, its faster for you, the programmer, to get a piece of code up and running since you can develop it and test it all at once.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That is to say that interpreters are much faster in the short-term; we don't have to wait for the entire translation to be complete before we see results. If you've worked with Python, you know we can put a piece of code into the shell to test it out. You can't typically do that in a compiled language, since you need a complete program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The ability to run one piece while you translate another would seem to be very good for the web. Well, maybe not translating exactly; we'd like to be able to run the program while we're loading it (sort of like streaming video).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java uses both of these approaches. First, the source code is compiled just like in C++. However, it does not become machine language. Instead, it becomes an intermediate form called \cf3 bytecodes\cf0 . This is not intended to be run on a specific hardware configuration.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instead, the bytecodes are executed by another program called the Java Virtual Machine or JVM. The JVM can work with bytecode generated on any other machine. It then interprets the code for the specific hardware. Since interpreting is slower, as we said before, the JVM also compiles some pieces of the bytecode that will be run frequently. (This is called "just-in-time" compiling, since it is done during the execution of the bytecode.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By using the JVM, we achieve portability. And we can execute bytecode downloaded off of the web. Plus we get the efficiency of the compile process at the beginning.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions at this point?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since it might take a little bit to get Eclipse running, go ahead and start it up now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll need it in a minute.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: COMPILING AND EXECUTING JAVA
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now go through the steps of creating, compiling, and executing a Java program.
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 7:57:12 pm
+\fs26 \
+Why does it take so long to load? Python starts in a few seconds...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I don't know all the details, but Eclipse keeps track of a lot more things than the Python IDE does, so it takes longer to load it all up.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first step is to create a file with some source code in it. For our first program, we'll just download our source file from the Handouts tab on the course homepage.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So go to the Handouts section of the course home page, right click and save the file called Welcome.java (or do the Mac equivalent of that). Save it somewhere on your computer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Save it somewhere that's easy to get to, like your desktop.
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 8:00:36 pm
+\fs26 \
+Where is it?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Go to our course homepage and find the tab labeled Handouts.
+\b0 \
+\pard\pardeftab720
+\cf5 Wilderc\cf0  
+\fs20 8:01:05 pm
+\fs26 \
+Save link?\
+\cf5 pinkfluffybunnies\cf0  
+\fs20 8:01:05 pm
+\fs26 \
+we save the link?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah "Save link as..."
+\b0 \
+\pard\pardeftab720
+\cf5 JRY\cf0  
+\fs20 8:01:31 pm
+\fs26 \
+Do you have to save it in the Eclipse workspace?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not yet. Eclipse will fight you if you try to do that. This part will be easier when we get to writing our own code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ok, bring Eclipse up.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because Eclipse knows you are writing Java code, it can color some of the text to make it easier to read, it can add in parentheses or braces automatically, or it can show you helpful tips as you type. It also adds in buttons to automate much of the compiling/executing steps.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you start Eclipse for the first time, you'll get a message asking you what 
+\i workspace
+\i0  to use. This is the folder where Eclipse will store all of your code and other files. You can accept the default or change it to another place on your system.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If it's your first time, you'll get a welcome screen; you can close it by clicking the X in the tab on the upper right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ok, now let's get this code into Eclipse itself.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:03:32 pm
+\fs26 \
+If I stick the code into Eclipse, on line 13 it says that "scan" is never closed. I there anything I should do about that?\
+\cf5 jdaimax\cf0  
+\fs20 8:03:32 pm
+\fs26 \
+It gives a warning that says: resource leak: 'scan' is never closed\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can ignore that warning. If we were doing something fancy, that's something we'd need to pay attention to, but we're just doing extremely simple things right now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Eclipse is basically telling you that you forgot to turn off the lights. But it's ok, because Java will take care of that for us when it quits.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now go to File (in the upper left). Choose New, then Java Project.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A window should now pop up. The first field is labeled \cf3 Project name:\cf0 . Enter \cf3 Intro\cf0  there. You can leave all of the other fields as is. Then click Finish.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next go to File and then New again. This time, go to Class (the fourth option down). Again you'll get a pop up. You will want to add a value to the Name field. Enter \cf3 Welcome\cf0 . Then uncheck the checked box next to \cf3 Inherited abstract methods\cf0 . You can then click Finish.
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 8:05:36 pm
+\fs26 \
+Can I use an already defined Java Project?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nah. Make a new project called Intro. This project business is just a way to keep your code organized. Don't mix together stuff that doesn't go together.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the main window, an area should appear with Welcome.java appearing in a little tab above it. This is where you would enter in your Java code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For now, go to File and choose Open File\'85 Then browse to the location of Welcome.java that you downloaded. Select the java file and click the Open button. The file should open up in a separate tab. Copy and paste the code into the other Welcome.java tab, erasing any code that was already there. (Sorry about this part; trust me, this part will be simpler when you're building from scratch!)
+\b0 \
+\pard\pardeftab720
+\cf5 pinkfluffybunnies\cf0  
+\fs20 8:07:13 pm
+\fs26 \
+the welcome class should be part of intro right\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, that's right. You want the Welcome class to be in the project which we just created called Intro.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Once the code is in place, click the button towards the top of the screen that is a green circle with a white triangle inside it. It should be eighth from the left. If you can't find it, go the Run menu and choose the first option (also called Run).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you do that, another tab should open at the bottom of the program labeled Console. That's where you will find the prompt asking for your name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll wait for a minute or so to see whether people got that working.
+\b0 \
+\pard\pardeftab720
+\cf5 mario1212\cf0  
+\fs20 8:08:12 pm
+\fs26 \
+Are we allowed to delete the old "Welcome" we got from the Handouts after we copied and pasted?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, you can delete the Welcome.java copy you saved once you've got the code pasted into the version you just created in Eclipse.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Click in the Console area and enter your name followed by Enter. The welcome message should appear immediately.
+\b0 \
+\pard\pardeftab720
+\cf5 teachm\cf0  
+\fs20 8:09:22 pm
+\fs26 \
+What is your name? DR.SWAG\
+Hi, DR.SWAG! Welcome to Java!\
+\cf5 manbugbeebee\cf0  
+\fs20 8:09:22 pm
+\fs26 \
+It is working for me!\
+\cf5 k77frank\cf0  
+\fs20 8:09:22 pm
+\fs26 \
+What is your name? Frank\
+Hi, Frank! Welcome to Java!\
+\cf5 ScottBusche\cf0  
+\fs20 8:09:25 pm
+\fs26 \
+It's working for me!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay. It's working for some people. Anybody having problems?
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:09:48 pm
+\fs26 \
+What is your name? Tungsten\
+Hi, Tungsten! Welcome to Java!\
+\cf5 MathWolf\cf0  
+\fs20 8:09:48 pm
+\fs26 \
+Yay! Working!\
+\cf5 Wilderc\cf0  
+\fs20 8:09:48 pm
+\fs26 \
+What is your name? Wilder\
+Hi, Wilder! Welcome to Java!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Looking good.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that running the code in Eclipse will automatically save the Java file. If you want to save it before running it (always a smart idea), click the button with a disk on it (third from the left), or go to the File menu and choose the Save option. The Save button will be grayed out if you haven't made any changes since the last save. Another hint is that the name of the file in the tab will include an asterisk if it has not been saved recently.
+\b0 \
+\pard\pardeftab720
+\cf5 spower4\cf0  
+\fs20 8:10:22 pm
+\fs26 \
+do we run as java applet or java application?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're getting that question, then Eclipse has not recognized the file as something it can run.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Did you copy the code from what you downloaded and paste it into the Welcome.java in Eclipse that was created when you did "New...Class"?
+\b0 \
+\pard\pardeftab720
+\cf5 jdaimax\cf0  
+\fs20 8:11:21 pm
+\fs26 \
+it was so much simpler with python....\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I agree. It was much simpler with Python. But this will all get simpler as we get comfortable using it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, when you first learned to walk, it wasn't completely obvious how to do that either.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you learn new things, it almost always feels a bit wobbly at first.
+\b0 \
+\pard\pardeftab720
+\cf5 mrturtle\cf0  
+\fs20 8:12:50 pm
+\fs26 \
+i wasn't developing memories when i learned to walk, so how can i remeber?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm sure you've seen other babies. I guess I'm assuming you'll be able to extrapolate. You're right. I was being sloppy.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, presumably everybody's had a chance to speak up if the code
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 's not working by now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Shall we carry on?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 On the message board I'll also run through the steps you can do if you want to compile and run Java code from the terminal / command prompt.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You won't need to know how to do that for this class, but you might be curious.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a review of what we did.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In Eclipse:\
+1. Choose File...New...Java Project.\
+2. Enter name of project in 
+\i Project name:
+\i0  field; click Finish\
+3. Choose File..New..Class.\
+4. Enter name of class in 
+\i Name:
+\i0  field; click Finish\
+5. Enter code in tabbed window\
+6. Click Run button (green circle with white triangle) or choose Run?Run.\
+7. Program output will appear in Console tab
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: OUR FIRST PROGRAM
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now that you know how to run it, let's look at the code and figure out what's going on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll assume in this discussion that you're familiar with either Python or C++, so I'll be comparing the Java code to those two languages. If you're familiar with neither, don't worry; I'll try to make the explanations clear enough. But feel free to ask a question as we go!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh, by the way, one quick note. Throughout this course, you'll see a lot of stuff refer to \cf3 Scott Weiss\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 He's the one who developed this course and his fingerprints are everywhere, both in the code we hand out and the lesson plans I'm working form.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 *from.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If I forget to edit something and it looks like I'm calling myself Scott, that's why.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:17:10 pm
+\fs26 \
+Who is he?\
+\cf5 teachm\cf0  
+\fs20 8:17:10 pm
+\fs26 \
+who is this mystical scott weiss\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 He's another AoPS instructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, back to analyzing this code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first several lines indicate the use of a \cf3 comment\cf0 . What's a comment?
+\b0 \
+\pard\pardeftab720
+\cf5 pinkfluffybunnies\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+stuff that is not code\
+\cf5 mattpi\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+a comment is used to help you and other users understand the code\
+\cf5 bel3900989\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+note for code readers; guidelines\
+\cf5 want2learn\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+Something ignored by the compiler.\
+\cf5 EmeraldBot\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+Exactly that. A comment that can help clarify part of the code.\
+\cf5 connor0728\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+something for your own use; the computer ignores it\
+\cf5 chenjamin\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+It explains the code; it isn't compiled\
+\cf5 sanpran\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+something the compiler glances over, it's just for the programmer\
+\cf5 puwei99\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+something that is not part of a program but is for your convenience\
+\cf5 MathWolf\cf0  
+\fs20 8:18:18 pm
+\fs26 \
+It usually gives information to other coders about the code.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right. It's text that is there to tell someone looking at the code what it's for and how it works. The compiler ignores comments, but the person grading your Challenge Problem won't.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are two ways to specify a comment in Java. They are the same as in C++. For a long comment like at the beginning of this program, you begin with /* and end with */. Another example:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\pard\pardeftab720
+
+\f3\i \cf6 /* This is another example of a Java comment */
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The extra stars (before the English words) are actually added in by Eclipse to make it very clear how long the comment is. They are not required.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other way is to use two slashes: //. Anything following the slashes is also ignored by the compiler. This style is similar to Python's # for comments.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're looking at the code in Eclipse, you will notice that the comments all appear in green. Like Python's IDLE, Eclipse makes use of colors to help you immediately see what certain parts of the code are for.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you've worked a lot in Python, you know you can add what's called a docstring to put in comments that get automatically added to Python's help function. Java has a similar thing called a javadoc, which we will get into later in the course. For now, to keep things simple, we will just use regular comments. Add regular comments using /* */ or //.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Sorry, that last part didn't link up. I briefly lost my place as I switched between windows.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Following the comments (in line 6) is an \cf3 import statement\cf0 . A statement is any line of code that tells the computer to do something. In Java (like C++), every statement ends with a semicolon.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're viewing this code in Eclipse, take out the semicolon at the end of line 6. What happens?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 8:21:18 pm
+\fs26 \
+error\
+\cf5 bel3900989\cf0  
+\fs20 8:21:18 pm
+\fs26 \
+error\
+\cf5 teachm\cf0  
+\fs20 8:21:18 pm
+\fs26 \
+failure to run\
+\cf5 MathWolf\cf0  
+\fs20 8:21:18 pm
+\fs26 \
+Error\
+\cf5 ScottBusche\cf0  
+\fs20 8:21:18 pm
+\fs26 \
+An error comes up.\
+\cf5 mario1212\cf0  
+\fs20 8:21:18 pm
+\fs26 \
+Error\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A red circle with an X in it appears to the left of the line. Also the word Scanner is underlined in red. This tells you there is an error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you put your cursor over the underlined word, a little pop-up will appear telling you\
+\cf3 Syntax error on token "Scanner", ; expected after this token
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In other words, there needs to be a semicolon following Scanner.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're not using Eclipse, or some other IDE for writing Java, you won't be notified there's a problem until you try to compile your Java code. When you do, you'll get the same error. It will also tell you what line had a problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you've worked with Python, you\'92ve seen an import statement before. What does it do?
+\b0 \
+\pard\pardeftab720
+\cf5 mattpi\cf0  
+\fs20 8:23:20 pm
+\fs26 \
+it imports a package with code so that you can use it\
+\cf5 want2learn\cf0  
+\fs20 8:23:20 pm
+\fs26 \
+It brings in what you want from the Java library for use in the program.\
+\cf5 JRY\cf0  
+\fs20 8:23:20 pm
+\fs26 \
+Import a ready-made function for you to use\
+\cf5 puwei99\cf0  
+\fs20 8:23:20 pm
+\fs26 \
+enables new classes from java library\
+\cf5 Tungsten\cf0  
+\fs20 8:23:20 pm
+\fs26 \
+It adds functions that let you do stuff that the built in ones can't.\
+\cf5 connor0728\cf0  
+\fs20 8:23:20 pm
+\fs26 \
+loads defanitions from a library\
+\cf5 mrturtle\cf0  
+\fs20 8:23:20 pm
+\fs26 \
+it makes separate code available for use in your code\
+\cf5 joberman\cf0  
+\fs20 8:23:26 pm
+\fs26 \
+it imports a package which contains other classes\
+\cf5 ReciterOfPi\cf0  
+\fs20 8:23:26 pm
+\fs26 \
+It imports a file from outside of the code so that your window has all that info like definitions and classes.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It brings in the code for a module that is part of the Python library. import does the same thing in Java, although instead of modules, Java works with collections called \cf3 packages\cf0 . They're pretty much the same thing, though -- previously written code that we want to use in our program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For those of you with a C++ background, the equivalent to an import is #include.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java's packages are arranged hierarchically. In this case, we're going to the util subpackage of the main java package. From it, we extract the code for Scanner. If we were using lots of code from the util package, we could write:\
+\cf3 import java.util.*\cf0 \
+instead. That brings in all the code. You'll see other import examples as we need them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, Scanner lets us do user input. We'll discuss how in a minute.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Lines 7 and 8 are blank. They don't have to be, but having extra white space can make it easier for others to read your code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Line 9 defines a \cf3 class\cf0 . A class, like in Python or C++, creates a new kind of data that your program can work with.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In Python and C++, classes are optional. In Java, they are not! Every Java program must have at least one class. Nearly every piece of code must be contained within a function inside a class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this case, we are putting our code in a class called Welcome. We have the standard rules for what kinds of names we can use \'96 letters, digits, and underscores only; you can't start a name with a digit. Furthermore, class names by convention start with capital letters. (If you've done Python or C++, you should be used to this.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 At the beginning of the line, you see the word \cf3 public\cf0 . We'll get into more details about what this is used for. At the moment, note that almost every Java file you write will contain exactly one public class. The name of this class must match the name of the file.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, since we're defining a public class called Welcome, our file must be called Welcome.java. Case matters; welcome.java is not the same thing! Eclipse will automatically name your file correctly when you give it the name of the class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The last thing on the line before the comment is an open curly brace \{. In Java, like C++, we indicate related code (called a \cf3 block\cf0 ) by enclosing it in curly braces. In this case, we're enclosing all the code that defines the class in a set of braces.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In Python, blocks are indicated by indentation. If you see the lines following, you'll see I indented them. This is another convention to make it easy to read; you can use the indentation to help you figure out where the blocks are. But note that Java will ignore the indentation. Only the curly braces matter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That said, you should always indent the lines following an open curly brace. Readability is extremely important. Again Eclipse automatically indents for you.
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 8:26:48 pm
+\fs26 \
+Do you need those curly braces?\
+\cf5 Tungsten\cf0  
+\fs20 8:26:48 pm
+\fs26 \
+Why does Java use braces, not indentation?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In Java, yes, you need the curly braces. You need them because that's how Java was set up. It's like asking why you say "an apple" in English but might say something else in another language. The rules are just different.
+\b0 \
+\pard\pardeftab720
+\cf5 mrturtle\cf0  
+\fs20 8:28:03 pm
+\fs26 \
+so could you write entire programs on one line?\
+\cf5 want2learn\cf0  
+\fs20 8:28:03 pm
+\fs26 \
+So if you wanted to, you could write a whole program in on line?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could, but I do not recommend doing so. The whole point of higher level languages is to make them easier for HUMANS to read and think about.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you wanted to be ultra obscure, you could just write all your programs in machine code (0's and 1's) instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Don't do that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Write your code so that it is easy to read.
+\b0 \
+\pard\pardeftab720
+\cf5 Sir_cumference\cf0  
+\fs20 8:29:28 pm
+\fs26 \
+Is Python or java a higher level langueage?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. Python, Java, C, C++, Fortran, Pascal, and on and on are all "higher level" languages.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, let's get back to analyzing our code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next line of code is again something that you need to have in every Java program. The JVM will look for a function called main in your public class. It will begin by executing the code in that function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is another big change for those of you coming from Python. In Python, the interpreter just executes your code from top to bottom. For those of you who did C++, you're familiar with main already. Note, though, that the first line of main must be:\
+public static void main(String[] args) \{\
+We'll discuss all the pieces of this later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Actually, there is a special method when you write Python programs called __main__, but the difference is that you don't HAVE to use it to get your code to run in Python, depending on what you're doing.)
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:32:34 pm
+\fs26 \
+Is it possible to do public static void main(Int[] args) \{?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. It has to be String[] args.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Actually, you 
+\i could
+\i0  call it something other than "args", but that's the only choice you could have here and it's pretty common to call it args, so I don't see the point in changing that particular piece.
+\b0 \
+\pard\pardeftab720
+\cf5 FrozenFury\cf0  
+\fs20 8:33:57 pm
+\fs26 \
+So if it is always necessary to write that, why Doesnt Eclipse automatically compile that in for you when you run it so that you do not have to type it?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Actually, you can get Eclipse to put that in for you. That's mentioned in that Eclipse shortcuts video I sent in my email several days ago.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why are the next four lines indented?
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 8:34:40 pm
+\fs26 \
+Because they consist of the main block of code.\
+\cf5 MSTang\cf0  
+\fs20 8:34:40 pm
+\fs26 \
+It's part of the main program\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That indicates the code that is part of the main method. Of course, it's the curly braces that really indicate the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Lines 12 to 14 all combine to get the user to type in his or her name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In Python, we could do what's in those lines with one line of code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 name \cf7 =\cf0  \cf2 input\cf0 (\cf8 'What is your name?'\cf0 )\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unfortunately, Java needs us to do more. User input is not directly built in to Java. We have to bring in objects to help us.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this example, the object is a \cf3 Scanner\cf0 . It allows us to take a source of data; in this case, that's the keyboard. It breaks up the data coming from the source into pieces our program can work with.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 8:35:59 pm
+\fs26 \
+Is it possible to make Java automatically import it?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java won't, but Eclipse will!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's one of the things I like about working with these IDEs. They check your code for if you forgot stuff and tell you "Here's how to fix this thing you did that will lead to an error otherwise."
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Line 12 shows you how to set up a Scanner to read input from the keyboard. There are several notable pieces to talk about.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first part of the line is:\
+Scanner scan\
+This section \cf3 declares\cf0  the variable called scan. A declaration tells Java that you are making a variable. Before the name of the variable, we have to give the \cf3 type\cf0  of the variable -- what kind of thing are we making.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Python, in contrast, doesn't have variable declarations. As in my example with input, if you want a variable like name, you just use it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why bother with declarations then? What advantages does it give you?
+\b0 \
+\pard\pardeftab720
+\cf5 moppr\cf0  
+\fs20 8:39:32 pm
+\fs26 \
+Easier to avoid error or confusion\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The major reason is so the compiler can make sure \cf3 you're\cf0  not doing something dumb. Suppose that later in my code, I mistype name as mame. Python would think I've just made a new variable and will try to execute the code anyway. Java will complain that mame is not declared yet.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also Java can make sure the variable is used in the proper way. If I declare a variable as an integer but try to use it as a String, Java will realize something is going wrong.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A third, smaller benefit is that it lets the compiler optimize the code. If Java knows a variable represents a Boolean value, it can reserve a smaller amount of space for it in memory.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next comes the equals sign. What does that indicate?
+\b0 \
+\pard\pardeftab720
+\cf5 JRY\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+Defining something\
+\cf5 piis3141592653\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+is\
+\cf5 ScottBusche\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+It's the assignment operator.\
+\cf5 Tungsten\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+You are assigning some value to the variable "scan".\
+\cf5 puwei99\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+indicates that the variable is assigned a value\
+\cf5 spower4\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+set a value to the variable\
+\cf5 sanpran\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+it initializes scan as a new Scanner object\
+\cf5 gkaops\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+assignment\
+\cf5 moppr\cf0  
+\fs20 8:41:27 pm
+\fs26 \
+It's assigning a variable\
+\cf5 adrianu\cf0  
+\fs20 8:41:34 pm
+\fs26 \
+it indicates that the left variable will take on the value of the right variable or expression\
+\cf5 joberman\cf0  
+\fs20 8:41:38 pm
+\fs26 \
+what this new object is equal to\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's an assignment. The code as written actually combines the declaration with the initial assignment. You could do the two parts separately:\
+Scanner scan;\
+scan = new Scanner(System.in);
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In that example, note we only give the type (Scanner) once, the first time, then we can just refer to scan directly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first line tells Java what type of information the variable scan can hold (Scanner type information).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second line then actually puts meat on those bones.
+\b0 \
+\pard\pardeftab720
+\cf5 FrozenFury\cf0  
+\fs20 8:43:12 pm
+\fs26 \
+So if we refer to it in the future, can we refer to just scan or Scanner scan?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You refer to it as scan.
+\b0 \
+\pard\pardeftab720
+\cf5 FrozenFury\cf0  
+\fs20 8:43:36 pm
+\fs26 \
+By first line, which line are you referring to?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When I said "first line", "second line", I was talking about the snippet of code in my example:\
+Scanner scan;\
+scan = new Scanner(System.in);
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we want to create a Scanner to put in the variable. The magic word to create objects in Java is \cf3 new\cf0 . In Python, there's no magic word. So don't forget to use new here.
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 8:44:39 pm
+\fs26 \
+Every new variable needs new?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, primitive data types, like ints and booleans don't need new.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Strings don't need new.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But user created data types (all the stuff you'll be creating) should need new.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me think about that and I'll get back to you.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, back to combing through the code. Now comes the kind of object we are making, a Scanner. What kind of method are we calling here?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You might remember if you took the AoPS Python class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do we call methods that create objects?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 8:47:51 pm
+\fs26 \
+constructor\
+\cf5 ScottBusche\cf0  
+\fs20 8:47:51 pm
+\fs26 \
+A constructor.\
+\cf5 pinkfluffybunnies\cf0  
+\fs20 8:47:51 pm
+\fs26 \
+constructors\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a constructor to build an object. Inside the parentheses, we give the parameter to the constructor \'96 the information the function needs to do its work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this case, the Scanner needs to know where its data is coming from. The special object that represents the keyboard is called {\field{\*\fldinst{HYPERLINK "http://system.in/"}}{\fldrslt \cf4 System.in}}. It's called the \cf3 standard input object\cf0 . If you're coming from C++, you probably called this cin.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And notice that semicolon at the end of the line! It indicates to Java we're done with this statement. (In my two-line example above, note we had semicolons after both the declaration and the assignment.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Moving on to line 13. This one displays something so the user knows what to do when the program starts up. Without it, they'll only see a blinking cursor in the console.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are few simple text output functions in Java. The simplest is System.out.print. Just like System.in is for standard input, System.out is for standard output. System.out is equivalent to C++'s cout. The print method sends the String given as a parameter to that output.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The String here is "What is your name? ". The quotes around the text are necessary. And for you Python people, they 
+\i must
+\i0  be double quotes. There is a space after the question mark so what the user enters is not right up against it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How are we doing so far?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've only got a few more lines and then we can start tinkering.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next task is to actually read the entered name. Since it will be text, we want to store it in a variable of the class String. Unlike Scanner, String is a class that is automatically imported when you start up Java. So we declare name to be of that type.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Rather than create a new String object ourselves, we want to take the one that is typed in. To do it, we ask our Scanner object scan to call its method nextLine. This takes the entire String up to the point when the user hit Enter. The whole String is then put in the variable name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The last line displays our welcome message. Instead of print, I used printf. The f stands for "formatted". Here I want the user's name to be part of what's printed. What would have happened if I had done:\
+System.out.print("Hi, name! Welcome to Java!")
+\b0 \
+\pard\pardeftab720
+\cf5 chenjamin\cf0  
+\fs20 8:51:18 pm
+\fs26 \
+It would display Hi, name! Welcome to Java!\
+\cf5 bzzz99\cf0  
+\fs20 8:51:18 pm
+\fs26 \
+it would have given you Hi, name! Welcome to Java!\
+\cf5 pinkfluffybunnies\cf0  
+\fs20 8:51:20 pm
+\fs26 \
+it would not display the actual name\
+\cf5 bluebandit21\cf0  
+\fs20 8:51:22 pm
+\fs26 \
+it would have returned Hi, name! Welcome to Java!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then the message would have said exactly "Hi, name! Welcome to Java!" The String is printed as given. I want to fill in the appropriate name from the variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are a few ways I could have done that. printf gives me the most control. Inside the String, I use a \cf3 format specifier\cf0  as a placeholder. The specifiers always begin with a % symbol. The letter(s) following the symbol indicate the kind of data that will fill it in. Here s stands for string.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second parameter to printf gives the variable to use to fill the placeholder.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could have as many placeholders as you want in the string. Then the list of parameters would be longer \'96 you'd need a parameter for each variable separated by commas:\
+System.out.printf("Hi, %s! Welcome to %s!\\n", name, courseName);
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The last interesting bit of this line is the \\n at the end of the string. Anyone know what that does?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+new line\
+\cf5 ScottBusche\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+A newline!\
+\cf5 gkaops\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+new line\
+\cf5 want2learn\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+Newline character.\
+\cf5 Tungsten\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+Adds a new line.\
+\cf5 joberman\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+next line\
+\cf5 connor0728\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+adds a carrige return\
+\cf5 sanpran\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+makes a new line\
+\cf5 moppr\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+New line\
+\cf5 mrturtle\cf0  
+\fs20 8:52:59 pm
+\fs26 \
+creates a new line\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It makes the cursor go to the next line after printing the rest of the text. We use a backslash to indicate a character we can't type easily. n indicates a "new line". Another one you might want to use is \\t for tab to indent.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And we're done! The last couple of lines are closed curly braces to match the open ones earlier. Note the indentation and the comments to help identify which open braces they match with.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions about what we've done so far?
+\b0 \
+\pard\pardeftab720
+\cf5 bzzz99\cf0  
+\fs20 8:53:59 pm
+\fs26 \
+couldn't you also have done "Hi, " + name + " Welcome to Java!"?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, but then you'd use print, not printf.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 printf saves some of the trouble of breaking up all your strings and putting in all those pluses.
+\b0 \
+\pard\pardeftab720
+\cf5 MathWolf\cf0  
+\fs20 8:54:40 pm
+\fs26 \
+Which way is better?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It depends on the situation. You'll get a feel for it as you go.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions about what we've done so far?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ok, we've got 30 minutes left for our first class. What do you way we have some fun and start modifying some of this code?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: SILLY MATH TRICKS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's have the program now ask the user to enter his or her age. We will then tell the user how old he or she will be on their next birthday. (I told you it was silly.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Don't get your hopes up too much. This'll still be pretty simple.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the first thing we should do?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's assume we still want to ask the user his or her name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We just ALSO want the user's age.
+\b0 \
+\pard\pardeftab720
+\cf5 bel3900989\cf0  
+\fs20 8:58:15 pm
+\fs26 \
+add another input and print\
+\cf5 joberman\cf0  
+\fs20 8:58:31 pm
+\fs26 \
+Add in a line to ask name then store it then print age\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, we should print a message to the user.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: We won't need another Scanner; we can use the one we've already set up.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm going to have you supply the line for this, but first a word about posting Java to the classroom. You want to precede any Java code with the tag ";java" without the quotes on a line all by itself. The easiest way to do this is type ";java" into the classroom window, and then cut and paste your code out of Eclipse.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, modeling your answer on the code we have already, can you give the line for printing a question to the user about what to do?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's just get that one line rather than all the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This will keep things less messy.
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 ScottBusche\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "How old are you? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 mrturtle\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "How old are you?"\cf11 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 Tungsten\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 dlennon\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+System.out.print("What is your Age? ");\
+\cf5 bzzz99\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "Please enter your age: "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 joberman\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 ystem.\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0  
+\f5\i \cf6 // display prompt to user
+\f4\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 FrozenFury\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 MathWolf\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 Sytem.\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "Enter your age :"\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 chenjamin\cf0  
+\fs20 9:00:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 ystem.\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 JRY\cf0  
+\fs20 9:00:41 pm
+\fs26 \
+System.out.print("What is your age? ");\
+\cf5 piis3141592653\cf0  
+\fs20 9:00:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 sgtgumy\cf0  
+\fs20 9:00:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 puwei99\cf0  
+\fs20 9:00:41 pm
+\fs26 \
+system.out.println(What is your age? Tell me it)\
+\cf5 manbugbeebee\cf0  
+\fs20 9:00:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 Sir_cumference\cf0  
+\fs20 9:00:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 k77frank\cf0  
+\fs20 9:00:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf0 \'a0\'a0\'a0\'a0   \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "/nWhat is your age? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 sanpran\cf0  
+\fs20 9:00:47 pm
+\fs26 \
+System.out.print("How old are you?");\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine. Your text may be a little different:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\pard\pardeftab720
+\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "How old are you? "\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next step?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Age is a number that we could conceivably want to do number-ish things with (like adding, subtracting, comparing using "less than" or "greater than", and so on) so let's treat it as an int data type.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Proposals for what we should write?
+\b0 \
+\pard\pardeftab720
+\cf5 lameneses\cf0  
+\fs20 9:03:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  age \cf13 =\cf0  scan.\cf10 nextInt\cf11 ()\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 MathWolf\cf0  
+\fs20 9:03:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  age \cf13 =\cf0  scan.\cf10 nextInt\cf11 ()\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 moppr\cf0  
+\fs20 9:03:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  age \cf13 =\cf0  scan.\cf10 nextInt\cf11 ()\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 AkshajK\cf0  
+\fs20 9:03:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  age \cf13 =\cf0  scan.\cf10 nextInt\cf11 ()\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 bel3900989\cf0  
+\fs20 9:03:26 pm
+\fs26 \
+int age = scan.nextInt();\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the line we'll need:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ack!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sorry. Not nextLine.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Scanner needs us to use nextInt, since the data we're grabbing here is an integer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the line we'll need:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\pard\pardeftab720
+\cf14 int\cf0  ageNow \cf13 =\cf0  scan.\cf10 nextInt\cf11 ()\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 int is Java's type for integers. Note that it is not capitalized. Unlike String and Scanner, int is not a class. It is a so-called \cf3 primitive type\cf0 . There are only eight in Java; we'll meet the others as they go, and we'll later learn what makes them different.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The method we use is called nextInt. Like nextLine, it does not take any parameters.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we need to calculate the person's age at the next birthday. Make a variable ageNext, and assign to it the person's upcoming age. You'll need to use a mathematical expression based on ageNow to do it, but I'm sure you can figure it out.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What should that line look like? (No surprises on this one.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Don't forget your semicolon!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also remember to declare that ageNext is an int.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Otherwise, the compiler will complain at you and refuse to read your code.
+\b0 \
+\pard\pardeftab720
+\cf5 bzzz99\cf0  
+\fs20 9:06:39 pm
+\fs26 \
+int ageNext = ageNow + 1;\
+\cf5 bluebandit21\cf0  
+\fs20 9:06:39 pm
+\fs26 \
+int ageNext=age+1;\
+\cf5 joberman\cf0  
+\fs20 9:06:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  ageNext \cf13 =\cf0  ageNow \cf13 +\cf0  \cf15 1\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 WhaleVomit\cf0  
+\fs20 9:06:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  ageNext\cf13 =\cf0 age\cf13 +\cf15 1\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 want2learn\cf0  
+\fs20 9:06:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  ageNext \cf13 =\cf0  age \cf13 +\cf0  \cf15 1\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 Tungsten\cf0  
+\fs20 9:06:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  ageNext \cf13 =\cf0  ageNow \cf13 +\cf0  \cf15 1\cf13 ;\cf0  
+\f5\i \cf6 // Calculate the age next year
+\f4\i0 \cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\pard\pardeftab720
+\cf14 int\cf0  ageNext \cf13 =\cf0  ageNow \cf13 +\cf0  \cf15 1\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 All the rules you learned about making arithmetic expressions in Python or C++ (or whatever language you previously worked in) all hold here. The other symbols should be familiar: - for subtraction or negative numbers, * for multiplication, / for division.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One note about division for those of you coming from Python: there is no // operator in Java. (In Python, that gets used for "integer division" which just takes the floor of the answer). Instead, Java does division based on the types of the values in the expression.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So 7/3 is 2, because 7 and 3 are integers, so Java decides that integer division should be used and the quotient of 7 divided by 3 is 2 (with remainder 1). But 7.0/3 is 2.3333\'85 Since (at least) one of the numbers has a decimal point, the answer comes out with a decimal point as well.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Back to our program. Can you supply the last line that tells the user how old they will be? The format specifier for an integer is %d, where the d stands for "decimal" meaning base 10.
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 9:10:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "On your next birthday, you will be %d years old."\cf0 , ageNext\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 Tungsten\cf0  
+\fs20 9:10:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "Next year, you will be %d."\cf0 , ageNext\cf11 )\cf13 ;\cf0  
+\f5\i \cf6 // give the age next year
+\f4\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 sgtgumy\cf0  
+\fs20 9:10:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "Your age next year will be, %d"\cf0 , ageNext\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 manbugbeebee\cf0  
+\fs20 9:10:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "On your next birthday, you will be %d"\cf0 , ageNext \cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 AkshajK\cf0  
+\fs20 9:10:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "You will be %d years old on your next birthday!"\cf0 , ageNext\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 joberman\cf0  
+\fs20 9:10:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "You will be %d next time you have your birthday!
+\f2\b \cf16 \\n
+\f4\b0 \cf12 "\cf0 , ageNext\cf11 )\cf13 ;\cf0  
+\f5\i \cf6 // give friendly message
+\f4\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 moppr\cf0  
+\fs20 9:10:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "Your age on your next birthday will be %d"\cf0 , ageNext\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 k77frank\cf0  
+\fs20 9:10:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "On your next birthday, you will turn %d years old!
+\f2\b \cf16 \\n
+\f4\b0 \cf12 "\cf0 , ageNext\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 MathWolf\cf0  
+\fs20 9:10:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "Your age on your next birthday will be %d "\cf0 ,agenext\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Please let me know if I miss something silly on these. I have a lot of windows open on my screen and I can't always see whole lines. I'm checking them as well as I can, but might miss a few every now and then.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I did:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\pard\pardeftab720
+\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "You will be turning %d on your next birthday."\cf0 , ageNext\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Your text may be a little different.\
+Now compile and run your code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're using Eclipse, just hit the run button.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let us know what it says if it works. Also let us know if things aren't working so we can try to help.
+\b0 \
+\pard\pardeftab720
+\cf5 mrturtle\cf0  
+\fs20 9:13:06 pm
+\fs26 \
+What is your name? Steve\
+Hi, Steve! Welcome to Java!\
+How old are you? 14\
+You will be turning 15 on your next birthday.\
+\cf5 connor0728\cf0  
+\fs20 9:13:06 pm
+\fs26 \
+What is your name? Connor\
+What is your Age? 13\
+Hi, Connor.You will be 14 years old next birthday. Welcome to Java!\
+\cf5 FrozenFury\cf0  
+\fs20 9:13:10 pm
+\fs26 \
+Do we put this in another class or replace the code?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Either way works.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you want, in Eclipse you can do New...Class and call it something like WelcomeAge.java
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Or you can just edit the current file.
+\b0 \
+\pard\pardeftab720
+\cf5 FrozenFury\cf0  
+\fs20 9:14:10 pm
+\fs26 \
+So what is the total code?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I won't always supply the total code as we go along in the course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You should plan to make modifications as we go.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But since we're just getting started, hang on and I'll find it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 import \cf17 java.util.Scanner\cf13 ;\cf0  
+\f3\i \cf6 // bring in Scanner from Java library
+\f2\i0 \cf0 \
+\'a0\
+\'a0\
+public class WelcomeAges \cf11 \{\cf0  
+\f3\i \cf6 // begin class definition
+\f2\i0 \cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public static \cf14 void\cf0  main\cf11 (\cf9 String\cf11 []\cf0  args\cf11 )\cf0  \
+\'a0\'a0\'a0\'a0\cf11 \{\cf0  
+\f3\i \cf6 // function called when program is run
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf13 =\cf0  new Scanner\cf11 (\cf9 System\cf0 .\cf10 in\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // set up user input
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "What is your name? "\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // display prompt to user
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  name \cf13 =\cf0  scan.\cf10 nextLine\cf11 ()\cf13 ;\cf0  
+\f3\i \cf6 //read in entered name
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "Hi, %s! Welcome to Java!\cf16 \\n\cf12 "\cf0 , name\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // give friendly message
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "How old are you? "\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // prompt for age
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf14 int\cf0  ageNow \cf13 =\cf0  scan.\cf10 nextInt\cf11 ()\cf13 ;\cf0  
+\f3\i \cf6 // read a number
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf14 int\cf0  ageNext \cf13 =\cf0  ageNow \cf13 +\cf0  \cf15 1\cf13 ;\cf0  
+\f3\i \cf6 // add 1 to the age
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf11 (\cf12 "You will be turning %d on your next birthday."\cf0 , ageNext\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // print message
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0scan.\cf10 close\cf11 ()\cf13 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\cf11 \}\cf0  
+\f3\i \cf6 // end of main method
+\f2\i0 \cf0 \
+\'a0\
+\pard\pardeftab720
+\cf11 \}\cf0  
+\f3\i \cf6 // end of class definition
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that I defined a new class and put it in WelcomeAges.java, which is why my class is called WelcomeAges
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're just editing the code in Welcome.java, then you'd just leave it as \cf3 public class Welcome\cf0 .
+\b0 \
+\pard\pardeftab720
+\cf5 piis3141592653\cf0  
+\fs20 9:16:29 pm
+\fs26 \
+Is there a limit on how large the inputted integer can be?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There is certainly a limit. A computer can't represent an arbitrarily large integer internally.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I don't know off the top of my head what the upper bound is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll look it up and post it on the message board.
+\b0 \
+\pard\pardeftab720
+\cf5 adrianu\cf0  
+\fs20 9:17:35 pm
+\fs26 \
+it is 2^31-1 for ints\
+\cf5 wfu\cf0  
+\fs20 9:17:35 pm
+\fs26 \
+isn't it 2^32-1 or something\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, it'll be something like that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But I want to make sure I get it right, so I'll look it up.
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 9:18:05 pm
+\fs26 \
+The book says 2,147,483,647.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sounds good to me.
+\b0 \
+\pard\pardeftab720
+\cf5 mario1212\cf0  
+\fs20 9:18:25 pm
+\fs26 \
+It's big enough for our needs\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Definitely. For entering ages, that is plenty big.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's move on, we've only got 10 minutes left.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 6: DIALOG BOXES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For our last thing today, we'll see how to use \cf3 dialog boxes\cf0  to communicate with the user. These are popup boxes where the user can type stuff in or see an output.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To use them, we need a different import line:\
+import javax.swing.JOptionPane;
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 JOptionPane is a class with several methods we'll find useful. The first will give us user input. It actually allows us to collapse three of our original lines into one.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:19:18 pm
+\fs26 \
+Should I create a new class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That sounds like a good idea, since this example will be different enough you'll probably want a separate copy.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Call it something like "WelcomeDialog.java"
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you've got that set up, copy your current code over and then replace:\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0System.out.print("What is your name? "); // display prompt to user\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0String name = scan.nextLine(); //read in entered name\
+with:\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0String name = JOptionPane.showInputDialog("What is your name?");
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The method showInputDialog is tied to the JOptionPane class. That makes it a \cf3 static method\cf0 . The opposite is an \cf3 instance method\cf0  which is tied to a particular object. nextInt is an example of an instance method; we have to say which Scanner we're reading from. We'll discuss this idea in more detail in later weeks.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The parameter is the prompt that appears in the dialog box. We put the value the user enters directly into the variable name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can run this to see just the box if you comment out the statements after the first printf. Just put // in front of each line. You should then be able to run the program and see the dialog box. It may appear behind other windows on your screen. The output will appear in the console as before.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try that out. Does that work for everybody?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To have output appear in a dialog box, we need to do a little more work than before. There is no printf equivalent for dialog boxes. So we have to build the output string first and then display it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So replace:\
+System.out.printf("Hi, %s! Welcome to Java!\\n", name); // give friendly message\
+with:\
+String message = String.format("Hi, %s! Welcome to Java!\\n", name); // give friendly message
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 String.format is another static method. It creates a string rather than print it directly. Here we don't want to print it; we want it in another dialog box:\
+JOptionPane.showMessageDialog(null, message);
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A message dialog, which is what we're creating with JOptionPane.showMessageDialog(null, message), does not have user input. It does output only. The first parameter tells Java that this is not part of a larger application, so it will just display in the middle of the screen. The second part is obviously what to display.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try running it now to see the two dialog boxes in action.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Got that working?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll get the user to enter their age via a dialog box too. Unfortunately, this doesn't work:\
+int ageNow = JOptionPane.showInputDialog("How old are you?");\
+Why not?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try pasting that into Eclipse in the appropriate place. What error does Eclipse give us?
+\b0 \
+\pard\pardeftab720
+\cf5 chenjamin\cf0  
+\fs20 9:25:21 pm
+\fs26 \
+Because it's an int?\
+\cf5 bzzz99\cf0  
+\fs20 9:25:21 pm
+\fs26 \
+it returns a string?\
+\cf5 adrianu\cf0  
+\fs20 9:25:25 pm
+\fs26 \
+an int is passed when a string is required to take the input from the user\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because the input dialog gives you a String. We're trying to put String data (from the input dialog) into an int variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unfortunately, there's no method to have a dialog box directly return an integer (or anything but a String, for that matter). Fortunately, there's a method we can use to convert Strings to integers. It's called Integer.parseInt. So here's the complete line we need:\
+int ageNow = Integer.parseInt(JOptionPane.showInputDialog("How old are you?"));
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 With that in mind, can you fill in the final three lines?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (We have one last topic to cover. I think we'll go over by maybe five minutes. Sorry for that. You can go at half past the hour if you need to. Just check the transcript later to see what you missed.)
+\b0 \
+\pard\pardeftab720
+\cf5 adrianu\cf0  
+\fs20 9:28:06 pm
+\fs26 \
+will the discussions be archived to be viewed later as a review?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. You can get to the transcripts of all our classes from the course homepage.
+\b0 \
+\pard\pardeftab720
+\cf5 AkshajK\cf0  
+\fs20 9:28:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  ageNext \cf13 =\cf0  ageNow \cf13 +\cf0  \cf15 1\cf13 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  messagetwo \cf13 =\cf0  \cf9 String\cf0 .\cf10 format\cf11 (\cf12 "You will be %d years old on your next birthday!"\cf0 , ageNext\cf11 )\cf13 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 JOptionPane\cf0 .\cf10 showInputDialog\cf11 (
+\f2\b \cf14 null
+\f4\b0 \cf0 , messagetwo\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 MathWolf\cf0  
+\fs20 9:28:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf14 int
+\f4\b0 \cf0  ageNext \cf13 =\cf0  ageNow\cf13 +\cf15 1\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 MathWolf\cf0  
+\fs20 9:28:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 String\cf0  message2 \cf13 =\cf0  \cf9 String\cf0 .\cf10 format\cf11 (\cf12 "Your age on your next birthday : %d"\cf0 ,ageNext\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 MathWolf\cf0  
+\fs20 9:28:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf9 JOptionPane\cf0 .\cf10 showMessageDialog\cf11 (
+\f2\b \cf14 null
+\f4\b0 \cf0 , message2\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To keep things moving, here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf14 int\cf0  ageNext \cf13 =\cf0  ageNow \cf13 +\cf0  \cf15 1\cf13 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0message \cf13 =\cf0  \cf9 String\cf0 .\cf10 format\cf11 (\cf12 "You will be turning %d on your next birthday."\cf0 , ageNext\cf11 )\cf13 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 JOptionPane\cf0 .\cf10 showMessageDialog\cf11 (\cf14 null\cf0 , message\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note we do not have to redeclare message as a String. In fact, if you do write String message=\'85, Java will give you an error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ok, last topic for the evening, and then I'll even include my finished code for reference.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 7: CONDITIONALS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A \cf3 condition\cf0  is something that is true or false. Is it raining outside? Is the lock's combination 12345?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As you know from your previous experience, we use conditionals to decide what our program should do. If it is raining, bring an umbrella. If the combination is 12345, the lock can be opened.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's use a simple conditional in our program to print a message if the person is "old", which we'll define to be over 30.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the new code. You can put it before the brace at the end of main:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf11 (\cf0 ageNow \cf13 >\cf0  \cf15 30\cf11 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 JOptionPane\cf0 .\cf10 showMessageDialog\cf11 (\cf14 null\cf0 , \cf12 "Wow, you're old!"\cf11 )\cf13 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As in Python and C++, we use the keyword \cf3 if\cf0 . Since we're testing for a value higher than 30, we use the > symbol. What would we use if we were looking for a value of exactly 30?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (It's the same as C++ and Python.)
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 9:31:13 pm
+\fs26 \
+==\
+\cf5 ScottBusche\cf0  
+\fs20 9:31:13 pm
+\fs26 \
+==\
+\cf5 joberman\cf0  
+\fs20 9:31:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4 \cf13 ==\cf0 \
+\pard\pardeftab720
+
+\f0 \cf5 chenjamin\cf0  
+\fs20 9:31:13 pm
+\fs26 \
+==\
+\cf5 Tungsten\cf0  
+\fs20 9:31:13 pm
+\fs26 \
+==\
+\cf5 mrturtle\cf0  
+\fs20 9:31:13 pm
+\fs26 \
+==\
+\cf5 bzzz99\cf0  
+\fs20 9:31:13 pm
+\fs26 \
+==\
+\cf5 k77frank\cf0  
+\fs20 9:31:13 pm
+\fs26 \
+==\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: That's ==, not =. Remember to use one equals sign in an assignment statement and to use two for a comparison. If we wanted to check for not equal to 30, we use !=. Greater than or equal to is represented by >=, and less than or equal to is <=.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A couple of things to point out for the Python people. In Java, the expression for the test 
+\i must
+\i0  be enclosed in parentheses; that's instead of Python's colon at the end. The block of code to execute when the test is true is enclosed in curly braces. Again the indentation is for human readability only.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, since we have only one statement to execute when the test is true, the curly braces are not required. If we were doing two or more things, we would need them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, if you wrote something like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+if \cf11 (\cf0 ageNow \cf13 >\cf0  \cf15 30\cf11 )\cf0 \
+\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "You are old\cf16 \\n\cf12 "\cf11 )\cf13 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf11 (\cf12 "I mean it, that's very very old!"\cf11 )\cf13 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java would think only the first print was part of the if. So it would always do the second print no matter how old you were.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I recommend using braces all the time, even for single statements. Then you don't have to think about if you need them or not. They can't hurt.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, here's my code for this last exercise so you can compare with what you wrote:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Just a sec.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\i\b \cf6 /*\
+ * First program\
+ * Illustrates simple Java class, input, and output\
+ * By: Scott Weiss\
+ */
+\f2\i0 \cf0 \
+\'a0\
+import \cf17 javax.swing.JOptionPane\cf13 ;\cf0 \
+\'a0\
+\'a0\
+public class WelcomeDialog \cf11 \{\cf0  
+\f3\i \cf6 // begin class definition
+\f2\i0 \cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public static \cf14 void\cf0  main\cf11 (\cf9 String\cf11 []\cf0  args\cf11 )\cf0  \
+\'a0\'a0\'a0\'a0\cf11 \{\cf0  
+\f3\i \cf6 // function called when program is run
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  name \cf13 =\cf0  \cf9 JOptionPane\cf0 .\cf10 showInputDialog\cf11 (\cf12 "What is your name?"\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // dialog box for input
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  message \cf13 =\cf0  \cf9 String\cf0 .\cf10 format\cf11 (\cf12 "Hi, %s! Welcome to Java!\cf16 \\n\cf12 "\cf0 , name\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // create friendly message\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 JOptionPane\cf0 .\cf10 showMessageDialog\cf11 (\cf14 null\cf0 , message\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // put into a dialog box
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf14 int\cf0  ageNow \cf13 =\cf0  \cf9 Integer\cf0 .\cf10 parseInt\cf11 (\cf9 JOptionPane\cf0 .\cf10 showInputDialog\cf11 (\cf12 "How old are you?"\cf11 ))\cf13 ;\cf0  
+\f3\i \cf6 // read age from a dialog box
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf14 int\cf0  ageNext \cf13 =\cf0  ageNow \cf13 +\cf0  \cf15 1\cf13 ;\cf0  
+\f3\i \cf6 // add 1 to age
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0message \cf13 =\cf0  \cf9 String\cf0 .\cf10 format\cf11 (\cf12 "You will be turning %d on your next birthday."\cf0 , ageNext\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // create response
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 JOptionPane\cf0 .\cf10 showMessageDialog\cf11 (\cf14 null\cf0 , message\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // put response in a box
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf11 (\cf0 ageNow \cf13 >\cf0  \cf15 30\cf11 )\cf0  
+\f3\i \cf6 // check for old person
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 JOptionPane\cf0 .\cf10 showMessageDialog\cf11 (\cf14 null\cf0 , \cf12 "Wow, you're old!"\cf11 )\cf13 ;\cf0  
+\f3\i \cf6 // make rude message
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf11 \}\cf0 \
+\'a0\
+\'a0\
+\'a0\
+\'a0\
+\'a0\
+\'a0\'a0\'a0\'a0\cf11 \}\cf0  
+\f3\i \cf6 // end of main method
+\f2\i0 \cf0 \
+\'a0\
+\pard\pardeftab720
+\cf11 \}\cf0  
+\f3\i \cf6 // end of class definition
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Notice that I removed the import line that brought in Scanner since this code doesn't use Scanner anymore.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions before I move on to the summary?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 8: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We covered a lot today so you'd have a feel for Java. Here are the major topics:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You know how Java programs are both compiled and interpreted.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw how to use the Eclipse IDE.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw the basic setup of a Java program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You were introduced to variable declarations and assignments.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You learned how to do input and output, both in text and with dialog boxes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw how a simple if statement worked.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week, we'll do more with ifs. We'll also see how to do loops in Java.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now for a last bit of administrative information.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 9: THE COURSE HOME PAGE
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'd like to talk a little bit more about what you should do between classes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, if you haven't been to the course homepage yet, check it out right after class. You can get to it by clicking "My Classes" on the top right of any page on the AoPS website when you're logged in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The course homepage has 4 tabs: "Overview", "Homework", "Message Board", and "Report". Here's what each one is about:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 1) \cf3 Overview\cf0 \
+This tab includes a Course Introduction document, which you should read once, and also the syllabus for the course. Also, within an hour or two after every class, we'll post a transcript of everything that happened here. You can use this to review anything from class that you might not have understood at the time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 2) \cf3 Homework\cf0 \
+This tab will include a few problems to solve between classes each week. Some of these can be answered with just a number. Other problems will ask you to write an explanation of your work. Learning to explain your thinking is just as important as learning to think well in the first place! On the writing problems, you'll get written feedback from an AoPS grader.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This tab will also list readings for this week and next week. It's important that you \cf3 read the book\cf0 , and it's best if you read it \cf3 before\cf0  class! Students who keep up with the book do way better than those who don't.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 3) \cf3 Message Board\cf0 \
+The message board is where you can chat with the instructor and with other students during the week. We will post extra discussion questions after class each week that will give you all something to talk about!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can get to the course message from a link on the "Message Board" tab of the course homepage.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can also post questions on the course message board. The best way to do this is to use the "\cf3 Ask a Question\cf0 " feature on the Message Board tab of the course homepage. This will not only post your question to the course message board -- it will also e-mail the assistants and instructors to let them know that a question has been asked. This tool also lets you ask questions that are anonymous to the other students (though you needn't ever be embarrassed to ask a question!).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 4) \cf3 Report\cf0 \
+This tab will tell you how you're doing in this course. It has magic bars that track your performance on the weekly Challenge Problems and in class. Green bars mean that you've passed the task and can move on. Blue bars mean you've mastered the task. Red and orange mean "Keep going!"
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Throughout the course, you should visit the class homepage at least a couple of times a week, and use the Homework tab to make sure you're keeping up with your work.
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 9:36:38 pm
+\fs26 \
+There's also the Handouts tab.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Good point. There is also a Handouts tab.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can keep an eye on it if you want, but usually I'll let you know if there's something new in there you need.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions before I unmoderate?
+\b0 \
+\pard\pardeftab720
+\cf5 bel3900989\cf0  
+\fs20 9:37:24 pm
+\fs26 \
+I don't see the reports tab\
+\cf5 MathWolf\cf0  
+\fs20 9:37:24 pm
+\fs26 \
+I am not seeing the report tab. Will it come up at a certain point?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's weird. AoPS veterans, do you see the Report tab?
+\b0 \
+\pard\pardeftab720
+\cf5 MSTang\cf0  
+\fs20 9:37:52 pm
+\fs26 \
+Nope.\
+\cf5 ScottBusche\cf0  
+\fs20 9:37:52 pm
+\fs26 \
+No.\
+\cf5 JRY\cf0  
+\fs20 9:37:52 pm
+\fs26 \
+No\
+\cf5 miteM\cf0  
+\fs20 9:37:52 pm
+\fs26 \
+no\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I didn't mean to suggest MathWolf and bel... aren't veterns, by the way. I just meant people I've taught before.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I suppose the Report tab will show up when there's actually something to show. I'll ask HQ about that. Let me know in a week or so if it doesn't show up.
+\b0 \
+\pard\pardeftab720
+\cf5 jprosk\cf0  
+\fs20 9:39:11 pm
+\fs26 \
+How long is it until the transcript goes up? I came late to the class.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The transcript will be up just as soon as I post it. Usually within an hour after class ends. Sometimes the next day if I'm super tired after class. Almost never later than that. I get a reminder from HQ if I forget, so you don't need to worry. It'll be up there soon enough.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:40:48 pm
+\fs26 \
+There wasn't a report tab for the Python course...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh. Really? Anyway, I'll ask about it just in case. I'd think you'd want to know how you're doing in the course, and the Report tab is where you can find that.
+\b0 \
+\pard\pardeftab720
+\cf5 EmeraldBot\cf0  
+\fs20 9:41:27 pm
+\fs26 \
+Will we get a report, or a certificate when we finish the class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You won't get a certificate automatically. You'll need to request an official report at the end of the course if you want that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll mention that when the time comes.
+\b0 \
+\pard\pardeftab720
+\cf5 nagrawa587\cf0  
+\fs20 9:42:20 pm
+\fs26 \
+i cannot find the assigned readings online\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:43:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The course introduction document for this class says:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:43:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Textbook\
+There is no required textbook for this class. We recommend the reference Java Illuminated:\
+An Active Learning Approach by Anderson and Franceschi as a supplement for the course. (We do\
+not sell this book on our online bookstore.)\
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 9:43:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So there aren't any assigned readings for this class, but you can refer to the book mentioned as you deem necessary.
+\b0 \
+\pard\pardeftab720
+\cf5 sgtgumy\cf0  
+\fs20 9:43:50 pm
+\fs26 \
+Is this a class that I can take an AP exam for\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not really.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:44:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I don't know the current status of AP Computer Science. When I took it about 12 years ago, we used C++.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:44:32 pm
+\fs26 \
+Would this prepare us for an AP CS exam?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:45:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This class will cover have some overlap with some of the sorts of things you'd want to know for AP CS, but it is not at all designed to prepare you to pass that exam.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So you'll eventually want to take a dedicated course (or at least get a book) if that's what you have in mind.
+\b0 \
+\pard\pardeftab720
+\cf5 adrianu\cf0  
+\fs20 9:46:17 pm
+\fs26 \
+what does the transcript for each class include?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just the things we've said during class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:46:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Usually I also include questions that students asked after class if they're of broad interest.
+\b0 \
+\pard\pardeftab720
+\cf5 teachm\cf0  
+\fs20 9:46:56 pm
+\fs26 \
+AP CS is now Java based, but it is based on a group of classes and Methods called GridWorld\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:47:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh! They've migrated to Java. Cool. You'll still want to take an AP CS course. We very likely won't cover everything you'd need to know.
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 9:47:47 pm
+\fs26 \
+My mom asked Mr. R about this, here's his response: Greetings, \
+The designer of our Java course was one of the lead graders of the AP Computer Science test for many years. Our course should be good preparation for the AP Computer Science test, but we still recommend students take a look at an AP CS prep book to get accustomed to the test structure and terminology, just as they might with an\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:47:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Awesome. Thanks, Scott.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:48:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Mr. R = Richard Rusczyk, by the way. He's the guy who founded AoPS. I'd take his advice on this.)
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 9:48:53 pm
+\fs26 \
+It got cut off. we still recommend students take a look at an AP CS prep book to get accustomed to the test structure and terminology, just as they might with any other AP test.\
+Sincerely,\
+Richard Rusczyk. \
+\cf5 adrianu\cf0  
+\fs20 9:49:06 pm
+\fs26 \
+how will actual grades be assigned if any (other than the challenge problems)?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:49:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Grades will almost entirely be determined through scores you get on homework. There is also a small component determined by class participation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:49:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But for the most part, it's determined by homework scores.
+\b0 \
+\pard\pardeftab720
+\cf5 Tungsten\cf0  
+\fs20 9:50:07 pm
+\fs26 \
+Why didn't we make a hello world program?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Welcome.java was our Hello World.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We had plenty of other stuff we needed to cover.
+\b0 \
+\pard\pardeftab720
+\cf5 FrozenFury\cf0  
+\fs20 9:50:43 pm
+\fs26 \
+So, where would I take a dedicated CS class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:50:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You should talk to your school administrators about that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:51:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I think we can unmoderate now.
+\b0 \
+\pard\pardeftab720
+\cf5 ScottBusche\cf0  
+\fs20 9:51:24 pm
+\fs26 \
+Thanks dkneezel!\
+\cf5 MSTang\cf0  
+\fs20 9:51:26 pm
+\fs26 \
+Thanks!\
+\cf5 dlennon\cf0  
+\fs20 9:51:26 pm
+\fs26 \
+Thanks!
+\f1\fs24 {{\NeXTGraphic smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\cf5 Tungsten\cf0  
+\fs20 9:51:26 pm
+\fs26 \
+Thank you, Mr. Kneezel! 
+\f1\fs24 {{\NeXTGraphic 1__#$!@%!#__smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:51:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Thanks everybody for a stimulating first day!
+\b0 \
+\pard\pardeftab720
+\cf5 bel3900989\cf0  
+\fs20 9:51:35 pm
+\fs26 \
+thanks!\
+\cf5 lameneses\cf0  
+\fs20 9:51:36 pm
+\fs26 \
+thanks\
+\cf5 mario1212\cf0  
+\fs20 9:51:39 pm
+\fs26 \
+Thank you!\
+\cf5 adrianu\cf0  
+\fs20 9:51:44 pm
+\fs26 \
+thank you very much Mr. Kneezel and the aops mods!\
+\cf5 piis3141592653\cf0  
+\fs20 9:51:46 pm
+\fs26 \
+thanks\
+\cf5 JRY\cf0  
+\fs20 9:51:46 pm
+\fs26 \
+Thank you!\
+\cf5 TheWorstPlayer\cf0  
+\fs20 9:51:47 pm
+\fs26 \
+Thanks everyone! See you next week!\
+\cf5 FrozenFury\cf0  
+\fs20 9:51:57 pm
+\fs26 \
+Thanks!}

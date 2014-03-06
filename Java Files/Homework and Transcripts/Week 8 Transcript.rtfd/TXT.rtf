@@ -1,0 +1,3903 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fmodern\fcharset0 Courier-Bold;\f2\fmodern\fcharset0 Courier;
+\f3\fswiss\fcharset0 Helvetica;\f4\fmodern\fcharset0 Courier-BoldOblique;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red1\green32\blue135;\red18\green139\blue2;\red0\green0\blue83;\red43\green139\blue39;\red11\green85\blue38;
+\red0\green0\blue255;\red83\green83\blue83;\red190\green74\blue193;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 8: Object-Oriented Programming - Inheritance and Polymorphism
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're going to revisit the idea of building classes and objects. One of the major benefits of coding classes is \cf3 reuse\cf0 . If you have already built (or someone else has provided) a good general-purpose solution to a certain problem, it would make sense to reuse that solution wherever the problem arises rather than having to make a new version of (basically) the same solution each time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the simplest way that we can reuse a class?
+\b0 \
+\pard\pardeftab720
+\cf4 pinkfluffybunnies\cf0  
+\fs20 7:33:07 pm
+\fs26 \
+import\
+\cf4 MSTang\cf0  
+\fs20 7:33:07 pm
+\fs26 \
+import it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can just import it into a new program. Or we can make sure the file is in the same project. If we design the program well, then the classes we write could be applicable to similar programs. For example, if we have a Card class, we can use it in lots of different games.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A major difficulty, though, is that we cannot anticipate all the needs of a future program. So our class may be close to what someone else needs, but not quite right. It would be very sad to have to build something from scratch just because one method didn't work the way we needed, or if one method was missing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can even have a situation like this in the code for a single program. We may need two or more classes that are very similar to each other. For example, maybe our program could be simulating something about baby ducks and adult ducks. (So we might have a BabyDuck class and an AdultDuck class.) For the purposes of the example, let's say they both can walk around, swim, and make some kind of duck noise, but adult ducks can 
+\i also
+\i0  fly. Again it would be in our interest to reuse the code they have in common as much as possible.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can solve both of these issues by organizing our classes into a \cf3 hierarchy\cf0  or a series of levels. General classes are at the top of the hierarchy. If we wish to make a class more specific for a particular situation or implementation, we go down the hierarchy. Lower classes gain methods and attributes from the higher ones, and they can add new methods or adapt old methods to fit their needs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This important idea is called\'85
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: INHERITANCE
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I hope you saw inheritance in your previous programming experience. It's very important to both Python and C++ programming. I'll review the concepts and point out how inheritance is done in Java.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, some terminology. Suppose I have a hierarchy where class Circle inherits from class Shape. In other words, Circle is just under Shape in the hierarchy. What do I call Shape in this situation? It's the what-class?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:35:50 pm
+\fs26 \
+Superclass.\
+\cf4 puwei99\cf0  
+\fs20 7:35:50 pm
+\fs26 \
+super\
+\cf4 MSTang\cf0  
+\fs20 7:35:50 pm
+\fs26 \
+super\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:35:50 pm
+\fs26 \
+Superclass!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Shape is the \cf3 superclass\cf0 , since it appears above Circle. A superclass is sometimes called a \cf3 base class\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And what's Circle?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:36:18 pm
+\fs26 \
+Subclass.\
+\cf4 puwei99\cf0  
+\fs20 7:36:18 pm
+\fs26 \
+a subclass\
+\cf4 manbugbeebee\cf0  
+\fs20 7:36:18 pm
+\fs26 \
+subclass\
+\cf4 ScottBusche\cf0  
+\fs20 7:36:18 pm
+\fs26 \
+The subclass.\
+\cf4 Tungsten\cf0  
+\fs20 7:36:18 pm
+\fs26 \
+The subclass.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's the \cf3 subclass\cf0  or the \cf3 derived class\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Which makes more sense? Should Circle be the subclass of Shape, or should Shape be the subclass of Circle?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+Circle a subclass of Shape\
+\cf4 Tungsten\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+Circle should be a subclass of Shape.\
+\cf4 JRY\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+Circle should be the subclass because it's more specific\
+\cf4 chenjamin\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+circle is the subclass of shape\
+\cf4 ScottBusche\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+All circles are shapes.\
+\cf4 MathWolf\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+Circle is more specialized than Shape\
+\cf4 bluebandit21\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+Circle the subclass\
+\cf4 connor0728\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+Circle the subClass of shape because shape is more general\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:36:56 pm
+\fs26 \
+Circle subclass of Shape\
+\cf4 mrturtle\cf0  
+\fs20 7:37:01 pm
+\fs26 \
+circle should be the subclass\
+\cf4 spower4\cf0  
+\fs20 7:37:01 pm
+\fs26 \
+circle should be a subclass of shape\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember we get 
+\i more specific as we go down
+\i0  the hierarchy. Since a circle is a type of shape, we want Circle as the subclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In general, if we say one thing "is a" type of another thing, the first thing is usually the subclass. So since a car is a vehicle, then Car is a subclass of Vehicle. And Sedan would be a subclass of Car. Is Sedan a subclass of Vehicle?
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:37:32 pm
+\fs26 \
+Yup.\
+\cf4 k77frank\cf0  
+\fs20 7:37:32 pm
+\fs26 \
+yes\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:37:32 pm
+\fs26 \
+yes\
+\cf4 mrturtle\cf0  
+\fs20 7:37:32 pm
+\fs26 \
+yes\
+\cf4 MathWolf\cf0  
+\fs20 7:37:32 pm
+\fs26 \
+Yes\
+\cf4 miteM\cf0  
+\fs20 7:37:32 pm
+\fs26 \
+yes?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, even with Car in between, Sedan is a subclass of vehicle. (You might say the subclassing relation is "transitive", just like less than and greater than are in math class.) We might say Sedan is a \cf3 direct subclass\cf0  of Car, but it still should inherit properties from Vehicle.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that Vehicle could have more than one subclass branching off of it, like Car, Plane, Boat, Submarine, etc. The common attributes of all vehicles would be in the superclass, and each subclass would customize the information. While Car and Plane share a common superclass, they are not subclasses of each other.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:38:57 pm
+\fs26 \
+Can a class be inherited from more than one class? Like a cyborg class would be the subclass of both a human class and a robot class.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In C++, yes, this is allowed and is a source of all kinds of headaches. In Java, a particular class cannot have more than one superclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 BUT! Java does allow for "interfaces" (I had said we'll discuss interfaces today, but actually I moved that topic to next week) which allow you to get some of the functionality of having multiple superclasses while minimizing the number of resulting headaches.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:40:46 pm
+\fs26 \
+Why does it cause headaches?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'd rather not get into that right now. It would be a distraction.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've actually made specific use of subclasses already in our code. When did we build off of another class?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:41:44 pm
+\fs26 \
+graphics\
+\cf4 ScottBusche\cf0  
+\fs20 7:41:44 pm
+\fs26 \
+JPanel?\
+\cf4 bluebandit21\cf0  
+\fs20 7:41:44 pm
+\fs26 \
+graphics\
+\cf4 puwei99\cf0  
+\fs20 7:41:44 pm
+\fs26 \
+extends jpanel\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Way back in week 4 when we created code that drew simple pictures. The classes we built were subclasses of JPanel. We changed the paintComponent method of a JPanel to do the drawing that we needed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And, in fact, every class we've written automatically inherits from the class Object. The code that defines the Object class in Java says that all Objects have the methods equals and toString. That's why every class automatically has an equals method or a toString method, as we saw in Week 5.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Many Java classes have a long trail of superclasses above them. For example, JPanel is a subclass of JComponent, which is a subclass of Container, which is a subclass of Component, which is a subclass of Object. ArrayList inherits from AbstractList, which inherits from AbstractCollection, which inherits from Object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Before I continue, are there any questions?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 7:43:32 pm
+\fs26 \
+Wait, but where does the code that defines what a superclass and subclass are go?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The same place all your other definitions of classes goes. You put all the classes that your project will use in the same project folder. (Or some of them you might import from packages.)
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 7:44:18 pm
+\fs26 \
+is Object like at the top of the hierarchy\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, every object in Java is a member of the Object class.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:44:54 pm
+\fs26 \
+So... does that mean that a String has a toString function?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hm, I had never stopped to ponder that, but based on what I said, that would make sense!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's press on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyone remember the magic word we used to indicate that our classes inherited from JPanel?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:45:38 pm
+\fs26 \
+extends\
+\cf4 connor0728\cf0  
+\fs20 7:45:38 pm
+\fs26 \
+extends\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:45:38 pm
+\fs26 \
+extends\
+\cf4 chutney\cf0  
+\fs20 7:45:38 pm
+\fs26 \
+extends\
+\cf4 teachm\cf0  
+\fs20 7:45:41 pm
+\fs26 \
+extends\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It was \cf3 extends\cf0  as in:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class FirstDrawing extends \cf5 JPanel\cf0  \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's see how inheritance works with a simple example. I've posted a class called Person. A Person has a username and an address. You can download it now from the homepage. It's not particularly exciting. I mostly generated it using the Source menu in Eclipse.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me know when you have it so we can continue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, let's continue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll make a subclass of Person called Student. Can you give me the first line?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (So this will end up going in a new file in the same project as wherever you put the code for Person.java)
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:49:04 pm
+\fs26 \
+public class Student extends Person \{\
+\cf4 bzzz99\cf0  
+\fs20 7:49:04 pm
+\fs26 \
+public class Student extends Person \{\
+\cf4 mrturtle\cf0  
+\fs20 7:49:04 pm
+\fs26 \
+public class Student extends Person \{\
+\cf4 bluebandit21\cf0  
+\fs20 7:49:04 pm
+\fs26 \
+public class student extends Person \{\
+\cf4 MathWolf\cf0  
+\fs20 7:49:04 pm
+\fs26 \
+public class Student extends Person\{\
+\cf4 spower4\cf0  
+\fs20 7:49:04 pm
+\fs26 \
+public class Student extends Person\{\
+\cf4 puwei99\cf0  
+\fs20 7:49:12 pm
+\fs26 \
+public class Student extends Person\
+\cf4 mattpi\cf0  
+\fs20 7:49:12 pm
+\fs26 \
+public class Student extends Person \{\
+\cf4 k77frank\cf0  
+\fs20 7:49:12 pm
+\fs26 \
+public class Student extends Person \{\
+\cf4 Tungsten\cf0  
+\fs20 7:49:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b class
+\f2\b0  Student 
+\f1\b extends
+\f2\b0  Person \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 7:49:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b class
+\f2\b0  Student 
+\f1\b extends
+\f2\b0  Person \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 AkshajK\cf0  
+\fs20 7:49:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b class
+\f2\b0  Student 
+\f1\b extends
+\f2\b0  Person \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Student extends Person \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instead of typing that out explicitly, note that, when you make your new Student class in Eclipse, you can specify in the menu that pops up that you'd like the superclass of Student to be Person, just like we did for our drawing programs. Go ahead and create the Student class now if you haven't already.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll just give the Student one extra attribute: an age, which we'll keep as an integer. So what's the next line of the class?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 7:52:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 private
+\f2\b0  
+\f1\b \cf7 int
+\f2\b0 \cf0  age\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 bzzz99\cf0  
+\fs20 7:52:06 pm
+\fs26 \
+private int Age;\
+\cf4 JRY\cf0  
+\fs20 7:52:06 pm
+\fs26 \
+private int age;\
+\cf4 k77frank\cf0  
+\fs20 7:52:06 pm
+\fs26 \
+private int age;\
+\cf4 spower4\cf0  
+\fs20 7:52:06 pm
+\fs26 \
+private int age;\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private \cf7 int\cf0  age\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember to always keep your attributes private. What is the principle associated with that rule?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I mean, what do we call this principle?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:53:59 pm
+\fs26 \
+encapsulation\
+\cf4 Tungsten\cf0  
+\fs20 7:53:59 pm
+\fs26 \
+Encapsulation?\
+\cf4 ScottBusche\cf0  
+\fs20 7:53:59 pm
+\fs26 \
+encapsulation\
+\cf4 chenjamin\cf0  
+\fs20 7:53:59 pm
+\fs26 \
+encapsulation\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The principle is called 
+\i encapsulation
+\i0  or 
+\i information hiding
+\i0 . We don't want programs that use the class to have to know the details of how the class works. (By hiding the details of how the class works, we are free to change those details if we need to. Hiding the information also helps prevent the user from messing up how objects in the class are supposed to work, which makes everyone's life easier.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we'll write the constructor for Student. How many parameters should it take to specify everything about a Student? (Keep in mind that Students will inherit attributes from the Person class, so you won't be able to answer this question if you only look at the code for Student.)
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:55:07 pm
+\fs26 \
+3\
+\cf4 moppr\cf0  
+\fs20 7:55:07 pm
+\fs26 \
+three\
+\cf4 ScottBusche\cf0  
+\fs20 7:55:07 pm
+\fs26 \
+3\
+\cf4 Tungsten\cf0  
+\fs20 7:55:07 pm
+\fs26 \
+3\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:55:07 pm
+\fs26 \
+3: the username, address, and age.\
+\cf4 JRY\cf0  
+\fs20 7:55:07 pm
+\fs26 \
+3: username, address, and age\
+\cf4 manbugbeebee\cf0  
+\fs20 7:55:15 pm
+\fs26 \
+3- username, address, and age\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It needs three parameters. A Student has three attributes: a username, an address, and an age. The first two are inherited from Person, and the last is specific to Student. So can you give me the header line of the constructor?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:56:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  Student \cf6 (\cf5 String\cf0  name, \cf5 String\cf0  address, 
+\f1\b \cf7 int
+\f2\b0 \cf0  age\cf6 )\cf0  \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 7:56:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  Student\cf6 (\cf5 String\cf0  username, \cf5 String\cf0  address, 
+\f1\b \cf7 int
+\f2\b0 \cf0  age\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 teachm\cf0  
+\fs20 7:56:16 pm
+\fs26 \
+public Student(String username, String address, int age)\{\
+\cf4 k77frank\cf0  
+\fs20 7:56:16 pm
+\fs26 \
+public Student(String username, String address, int age) \{\
+\cf4 mrturtle\cf0  
+\fs20 7:56:16 pm
+\fs26 \
+Public Student (String username, String address, int age) \{\
+\cf4 ScottBusche\cf0  
+\fs20 7:56:16 pm
+\fs26 \
+public Student(String username, String address, int age)\
+\cf4 moppr\cf0  
+\fs20 7:56:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  Student\cf6 (\cf5 String\cf0  username, \cf5 String\cf0  address, 
+\f1\b \cf7 int
+\f2\b0 \cf0  age\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's one possible answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Student\cf6 (\cf5 String\cf0  username, \cf5 String\cf0  address, \cf7 int\cf0  age\cf6 )\cf0  \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These variable names match the attribute names, so we'll need to use this.username to distinguish the attributes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a body for the constructor:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Student\cf6 (\cf5 String\cf0  username, \cf5 String\cf0  address, \cf7 int\cf0  age\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 username\cf0  \cf8 =\cf0  username\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 address\cf0  \cf8 =\cf0  address\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 age\cf0  \cf8 =\cf0  age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Put this into Eclipse. What happens?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:57:19 pm
+\fs26 \
+I get an error...\
+\cf4 MSTang\cf0  
+\fs20 7:57:19 pm
+\fs26 \
+error\
+\cf4 chenjamin\cf0  
+\fs20 7:57:19 pm
+\fs26 \
+error\
+\cf4 MSTang\cf0  
+\fs20 7:57:19 pm
+\fs26 \
+"field not visible"\
+\cf4 moppr\cf0  
+\fs20 7:57:19 pm
+\fs26 \
+errors for the variables from the superclass\
+\cf4 connor0728\cf0  
+\fs20 7:57:25 pm
+\fs26 \
+doesn't recognize the variables\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You should get angry red error lines under the first two assignments. Why?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:57:41 pm
+\fs26 \
+Eclipse says that Person.username is not visible.\
+\cf4 mrturtle\cf0  
+\fs20 7:57:41 pm
+\fs26 \
+it wont work because username and address arent part of student, they are part of person\
+\cf4 moppr\cf0  
+\fs20 7:57:47 pm
+\fs26 \
+they are hidden from the subclass\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 username and address are private instance variables of the Person class. Since we're not in the Person class, we can't get to the variables directly!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Wait, but isn't a Student a Person? Yes, it is. So those variables do exist within a Student object. It's just that they are in a part of the object that is not directly accessible.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This may seem strange at first, but it's yet another example of encapsulation. If we were able to affect the superclass's attributes, then we could possibly break some of the superclass's methods, and our subclass would not work correctly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So how CAN we change the attributes to set up the username and address correctly?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One possibility would be to go into the Person code and change the qualifier from private to public. As you might expect from what we just discussed, and from previous discussions we've had on this topic, \cf3 this would be a very bad idea\cf0  that would very likely lead to headaches for you in the future.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java does have a qualifier that offers a sort of compromise. Instead of public, we can make Person's attributes \cf3 protected\cf0 . When an instance variable or method is protected, it is accessible only by methods of the class or its subclasses (or other classes in the same package).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So if you were to go into Person and change username and address to protected variables and save the file, when you return to Student, the angry red lines go away.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 However, this is typically also not a good strategy to employ. Again the issue is encapsulation. It may be convenient to access the superclass variables in this way, but since many times you won't have written the superclass itself, you shouldn't try to figure out how it works.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So go back and make those instance variables private again (if you changed their privacy settings). Can you think of another way to change the instance variables username and address?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+setters?\
+\cf4 mrturtle\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+a getter/setter method?\
+\cf4 connor0728\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+mutators\
+\cf4 puwei99\cf0  
+\fs20 8:03:23 pm
+\fs26 \
+setter methods of the superclass\
+\cf4 ScottBusche\cf0  
+\fs20 8:03:28 pm
+\fs26 \
+Use the setUsername and setAddress methods?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One thing we could do would be to use the public methods, which any outside class is free to access. In particular, Student inherits the public mutators from Person, so we can call them directly in Student code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Student\cf6 (\cf5 String\cf0  username, \cf5 String\cf0  address, \cf7 int\cf0  age\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setUsername\cf6 (\cf0 username\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setAddress\cf6 (\cf0 address\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 age\cf0  \cf8 =\cf0  age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But there's still a better way. Our Person class also has another method which (at a special time) lets us set the values of username and address. Which one is that?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+The constructor?\
+\cf4 MathWolf\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+The initialiser\
+\cf4 MSTang\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+constructor\
+\cf4 bzzz99\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+constructor?\
+\cf4 JRY\cf0  
+\fs20 8:04:50 pm
+\fs26 \
+In the constructor?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The Person constructor lets us set the initial values of the instance variables. It would be nice if we could use Person's constructor to initialize the Person-related stuff. Then the Student constructor can take care of the Student stuff.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Indeed, we can do that. We use the special keyword \cf3 super\cf0  to call the Person constructor from the Student constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's how it works in the Student constructor:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Student\cf6 (\cf5 String\cf0  username, \cf5 String\cf0  address, \cf7 int\cf0  age\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super\cf6 (\cf0 username, address\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 age\cf0  \cf8 =\cf0  age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this context, \cf3 super\cf0  calls the superclass constructor, passing whatever variables that constructor requires. (We'll see another related use of the super keyword in a few minutes.) Then the remaining code in the subclass constructor takes care of the rest.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:06:00 pm
+\fs26 \
+This would create a headache if there were 2 superclasses. 
+\f3\fs24 {{\NeXTGraphic tongue.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, and that's just the beginning of the horror story that is multiple inheritance.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fortunately, as I said, Java doesn't allow that! Hooray Java!
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:07:19 pm
+\fs26 \
+Wait, but what does super DO? Does it just call those variables, or set them, etc.?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 super, in the way we just used it, calls the constructor of Student's direct superclass, which is to say it calls the Person constructor.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:08:14 pm
+\fs26 \
+Does super only refer to the first superclass of a class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, by direct superclass I mean the superclass directly containing whatever class we're defining (you know what class that is because it's the one your current class \cf3 extends\cf0 .)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's no use of the keyword \cf3 new\cf0  here, since we're not creating a brand-new Person object. We're still creating just one Student object, but we need to initialize its Person parts.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As a general rule, you must always call the superclass constructor within the subclass constructor. Furthermore, it should be the first line of the body of the subclass constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now you may have noticed that we weren't calling superclass constructors in other classes we've written. Of course, we weren't using \cf3 extends\cf0  before.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 . Unfortunately, that explanation doesn't wash. Why?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Think back to what I said earlier is true about every object in Java.)
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:11:28 pm
+\fs26 \
+Everything inherits from Object\
+\cf4 ScottBusche\cf0  
+\fs20 8:11:28 pm
+\fs26 \
+It's a subclass of Object!\
+\cf4 puwei99\cf0  
+\fs20 8:11:28 pm
+\fs26 \
+every class is a subclass of Object\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:11:28 pm
+\fs26 \
+every class is a subclass of Object?\
+\cf4 Tungsten\cf0  
+\fs20 8:11:28 pm
+\fs26 \
+Every object is descended from the Object class?\
+\cf4 JRY\cf0  
+\fs20 8:11:28 pm
+\fs26 \
+We were always using the Object superclass\
+\cf4 chenjamin\cf0  
+\fs20 8:11:31 pm
+\fs26 \
+every object is a subclass of the Object class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because every class is a subclass of at least Object. So we should at least have been calling Object's constructor, right?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The answer to this seeming puzzle is that in fact we were calling Object's constructor; we just didn't do so explicitly. If you don't have a superclass constructor call in the subclass constructor, Java automatically adds one in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 "But a class may have multiple constructors," you might say. Indeed, that's true. What do you all think? Which one probably gets called if you don't explicitly call any superclass constructor yourself?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Which one needs 0 input data from the user, since if the constructor is getting called automatically, not input data can be fed in?)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:14:05 pm
+\fs26 \
+The one without any arguments?\
+\cf4 ScottBusche\cf0  
+\fs20 8:14:05 pm
+\fs26 \
+The default one?\
+\cf4 moppr\cf0  
+\fs20 8:14:05 pm
+\fs26 \
+the default one\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java calls the default constructor for you if you don't explicitly call any superclass constructor. It's as if you added the line \cf3 super();\cf0  at the beginning of the method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This does make an important assumption, however. The superclass must have a default constructor to call. So what's going on there?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The constructor rules here get a little dicey. What happens is that \cf3 if you don't write any constructors at all\cf0  (like we did with our drawing classes extending JPanel), then Java makes one for you. It calls super();, and it also assigns any instance variables whose initializations are given in the declaration.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 However, \cf3 if you do write any constructors at all for a class, then Java does not provide a default one for you\cf0 . So then you have to call the appropriate constructor from the subclass with correct parameters.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's an example.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember when we wrote this code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class SecondDrawing extends \cf5 JPanel\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\cf7 int\cf0  lines \cf8 =\cf0  \cf5 Integer\cf0 .\cf9 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf9 showInputDialog\cf6 (\cf7 null\cf0 , \cf10 "How many lines should be drawn?"\cf6 ))\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 int\cf0  startX \cf8 =\cf0  \cf5 Integer\cf0 .\cf9 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf9 showInputDialog\cf6 (\cf7 null\cf0 , \cf10 "What is the starting x-coordinate?"\cf6 ))\cf8 ;\cf0  \
+\'a0\'a0\'a0\'a0\cf7 int\cf0  startY \cf8 =\cf0  \cf5 Integer\cf0 .\cf9 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf9 showInputDialog\cf6 (\cf7 null\cf0 , \cf10 "What is the starting y-coordinate?"\cf6 ))\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The initializations of those instance variables occur when we construct a SecondDrawing object. Java puts them into the default constructor for us.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (This is an example of the first case, since when we wrote SecondDrawing, we didn't write any constructors, so Java created a default constructor for us.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In my Person class, I do have a default constructor written. So code like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public Student\cf6 (\cf5 String\cf0  username, \cf5 String\cf0  address, \cf7 int\cf0  age\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setUsername\cf6 (\cf0 username\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setAddress\cf6 (\cf0 address\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 age\cf0  \cf8 =\cf0  age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 works fine. The default constructor is called, and we overwrite the default name and address with the "real" data. If we did not have a default constructor, Java would give an error and not even let you compile the code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That is inefficient, though, so we'd rather just call the appropriate constructor to begin with. And even if you want the default constructor, it makes the code more readable to put super(); in the method directly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now create a Student object to illustrate what the constructor does. Make a new class called StudentTester. You can add a main to this one. You should not give a superclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can add this code in for main:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf5 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\i \cf11 // TODO Auto-generated method stub
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Student st \cf8 =\cf0  new Student\cf6 (\cf10 "aopsguy"\cf0 , \cf10 "100 Somewhere Street"\cf0 , \cf12 13\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf9 out\cf0 .\cf9 println\cf6 (\cf0 st\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0st.\cf9 setUsername\cf6 (\cf10 "aopsgirl"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf9 out\cf0 .\cf9 println\cf6 (\cf0 st\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you run the code, you'll get:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+aopsguy lives at \cf12 100\cf0  Somewhere Street\
+aopsgirl lives at \cf12 100\cf0  Somewhere Street\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that after creating our Student object, we are able to call Person methods on it. In particular, the println automatically converts the Student to a String using the inherited toString method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, that inherited method doesn't do anything with the age of the student. As, of course, it shouldn't; the age attribute is specific to a Student. Other Persons won't necessarily have an age.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (As was commented by a student earlier, of course Persons in the real world do all have ages. But for the purposes of this example, objects of our Person class do not get to have ages.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It would be nice if we could use a different version of toString for a Student. We can add our own code for toString in Student that will \cf3 override\cf0  what we got from Person.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you write a version of toString for Student? It should generate a string of the from "aopsguy lives at 100 Somewhere Street and is 17" (where the appropriate words/numbers are replaced with the correct values for the particular object).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that the Student class can't directly access private attributes of the Person class. You'll have to use methods to get at that information.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's one possible answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 String\cf0  toString\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return getUsername\cf6 ()\cf0  \cf8 +\cf0  \cf10 " lives at "\cf0  \cf8 +\cf0  getAddress\cf6 ()\cf0  \cf8 +\cf0  \cf10 " and is "\cf0  \cf8 +\cf0  this.\cf9 age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you run the same main as before, the age should appear at the end of the strings.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I'll wait for a moment to post people's answers.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This code isn't too bad to write, since there are only three instance variables involved. But what if the Person class had 100 instance variables? That would be tedious to code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also it feels like even my toString duplicates code that we already wrote in Person to do the first part of the String. In Student, we needed to use the public methods of Person. The Person version accesses the variables directly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So maybe we could just call the Person toString as part of Student's toString. It's a public method, so access isn't an issue. It would be similar to calling setUsername or setAddress in the constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's one (not completely correct) attempt at this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 String\cf0  toString\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return toString\cf6 ()\cf0  \cf8 +\cf0  \cf10 " and is "\cf0  \cf8 +\cf0  this.\cf9 age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens when you run the code with this Student toString method?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+stack overflow error\
+\cf4 MSTang\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+infinite looooop\
+\cf4 mattpi\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+it goes on forever\
+\cf4 connor0728\cf0  
+\fs20 8:30:45 pm
+\fs26 \
+error\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You get something like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\pard\pardeftab720
+\cf5 Exception\cf0  in thread \cf10 "main"\cf0  java.\cf9 lang\cf0 .\cf5 StackOverflowError\cf0 \
+\'a0\'a0\'a0\'a0at Student.\cf9 toString\cf6 (\cf0 Student.\cf9 java\cf8 :\cf12 11\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0at Student.\cf9 toString\cf6 (\cf0 Student.\cf9 java\cf8 :\cf12 11\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0at Student.\cf9 toString\cf6 (\cf0 Student.\cf9 java\cf8 :\cf12 11\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The last line repeats many many times.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what happened. Since we are overriding a toString method we inherited, we now have two versions of toString within this class \'96 the one we got from Person, and the one we got from Student.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Well, technically, there's also one we get from Object. But let's just focus on the two.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that getUsername was not overridden. So when we mention getUsername in the constructor or method, there's only one thing we could be talking about.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But here there are multiple versions of toString. Which one do we mean? Without further guidance, Java picks the one lowest in the hierarchy. In this case, that's Student's toString.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the toString method calls itself, which calls itself, which calls itself, and so forth until eventually our program takes up all the available memory to run in and dies.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, the idea of a method calling itself is called \cf3 recursion\cf0  and, if done correctly, it can lead to some elegant programs. We'll discuss it some more in a few weeks. But here, it is not a good idea.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What we need to do is specify that Student's toString is calling Person's toString. Any guesses as to the magic word we use? We've seen it already.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+super.toString()?\
+\cf4 moppr\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+super\
+\cf4 Tungsten\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 super
+\f2\b0 .\cf9 toString\cf6 ()\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+super\
+\cf4 JesseLin\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+super\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want to access something in the superclass, so, again, we use the keyword \cf3 super\cf0 . In this case, the way we use the keyword is that we call super.toString().
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's now the corrected method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 String\cf0  toString\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return super.\cf9 toString\cf6 ()\cf0  \cf8 +\cf0  \cf10 " and is "\cf0  \cf8 +\cf0  this.\cf9 age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 mduong14\cf0  
+\fs20 8:35:11 pm
+\fs26 \
+why we use super here\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because we want to be able to make use of the toString method that was defined in the Person class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Our Student class also has a method called toString (indeed, that's what we were just defining) so to let Java know that we wanted it to use Person's toString method, we used the keyword super.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Do you remember when we've seen super used this way before?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (We used super in a slightly different way -- in particular, we didn't use any dot notation -- when we talked about the constructor earlier today. That's why I phrased this question in terms of seeing super used this way before.)
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 8:38:00 pm
+\fs26 \
+super.paintComponent\
+\cf4 MSTang\cf0  
+\fs20 8:38:00 pm
+\fs26 \
+super.paintComponent(g);\
+\cf4 chenjamin\cf0  
+\fs20 8:38:00 pm
+\fs26 \
+JPanel; super.paintComponent()\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:38:00 pm
+\fs26 \
+in graphics!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In paintComponent in our drawing classes, we use super.paintComponent(g) to do the basic painting of a JPanel. Then our code works on top of that to show whatever picture we want.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again the main reason to use super is to distinguish between a superclass method and a subclass that overrides it. If you're inheriting a superclass method as is, you don't need to use super.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One thing to note about overriding: It's important that you match the header of the superclass's version of the method exactly. Instead of overriding toString in Student the way we just did (pretend you have commented that part of the Student class definition out for a moment), suppose we had written this method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 String\cf0  toString\cf6 (\cf7 int\cf0  someParameterWhichChangesTheHeader\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return super.\cf9 toString\cf6 ()\cf0  \cf8 +\cf0  \cf10 " and is "\cf0  \cf8 +\cf0  this.\cf9 age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This creates a second version of toString within Student. We have the one inherited from Person that takes no parameters and this one that has one parameter. Here we've \cf3 overloaded\cf0  toString instead of overriding it. So when we print st back over in main, which version of toString would get called?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:40:13 pm
+\fs26 \
+the one from person?\
+\cf4 JesseLin\cf0  
+\fs20 8:40:13 pm
+\fs26 \
+no parameter\
+\cf4 Tungsten\cf0  
+\fs20 8:40:13 pm
+\fs26 \
+The one with no arguments?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The no parameter one coming from the Person class will get called. The Student's age will not be shown.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now, it would admittedly be pretty hard to mess up the overriding in this fashion. But you could conceivably do this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 String\cf0  toSting\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return super.\cf9 toString\cf6 ()\cf0  \cf8 +\cf0  \cf10 " and is "\cf0  \cf8 +\cf0  this.\cf9 age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 See the mistake? (Look carefully.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:41:23 pm
+\fs26 \
+It's the dreaded typo monster! :o\
+\cf4 moppr\cf0  
+\fs20 8:41:23 pm
+\fs26 \
+toSting instead of toString\
+\cf4 MSTang\cf0  
+\fs20 8:41:23 pm
+\fs26 \
+toSting\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:41:23 pm
+\fs26 \
+Hehe. toSting? Whazzat?\
+\cf4 puwei99\cf0  
+\fs20 8:41:23 pm
+\fs26 \
+to Sting\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's toSting (like a bee??) instead of toString. This neither overloads nor overrides toString; it just adds a new method. So the Person version of toString gets used in main.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, one part of today's lesson down. Two to go.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How's everybody feeling about this? Any questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: POLYMORPHISM
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try this: Go into the first line of main and change the \cf3 variable\cf0  to type Person:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Person st \cf8 =\cf0  new Student\cf6 (\cf10 "aopsguy"\cf0 , \cf10 "100 Somewhere Street"\cf0 , \cf12 13\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any errors?
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 8:43:07 pm
+\fs26 \
+no\
+\cf4 Tungsten\cf0  
+\fs20 8:43:07 pm
+\fs26 \
+No! 
+\f3\fs24 {{\NeXTGraphic surprise.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\cf4 moppr\cf0  
+\fs20 8:43:07 pm
+\fs26 \
+Nope!\
+\cf4 puwei99\cf0  
+\fs20 8:43:07 pm
+\fs26 \
+no\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope. There are no red lines in sight. If you run the code, you get the same output as before.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In fact, there's nothing wrong with this line of code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is actually a remarkable thing for two reasons. First off, in every other example of using new with a constructor, the type of the variable matches the kind of object. If we make a Scanner object, it goes in a Scanner variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But here we have a mismatch. It's a Person variable with a Student object. How can Java be letting us get away with this?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:44:29 pm
+\fs26 \
+because they're related?\
+\cf4 AkshajK\cf0  
+\fs20 8:44:29 pm
+\fs26 \
+Student is a type of person\
+\cf4 moppr\cf0  
+\fs20 8:44:29 pm
+\fs26 \
+Because student is a subclass of person\
+\cf4 mattpi\cf0  
+\fs20 8:44:29 pm
+\fs26 \
+a Student is a Person\
+\cf4 MathWolf\cf0  
+\fs20 8:44:29 pm
+\fs26 \
+because of inheritance\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, exactly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Student is a subclass of Person. In other words, in the context of the code we have written for this example, a Student is a kind of Person. Therefore we can put a Student into anything that expects a Person.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Here's another example of the same idea: You could imagine setting up a class hierarchy with Animal as a superclass and things like Dog, Cat, Bird, and so on extending that. Since Dogs and Cats are special kinds of Animals, anywhere a general Animal is expected, we could choose, in particular, to stick in a Dog, or a Cat, or a Bird, etc.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To repeat the general rule: We can use an instance of a subclass wherever an instance of the superclass is expected.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:46:13 pm
+\fs26 \
+Is this like overloading classes?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Kind of. Not really.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you overload a method, you're taking advantage of the fact that the name of the method isn't all that Java looks at. It also looks at the type of data that's getting passed in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here, it's more a matter of saying you'll use some general kind of data and then feeding in more specific examples of that data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I don't know, maybe they're similar. I'll have to think about it when I'm not on the spot.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, the other remarkable thing is the output of the program. Which version of toString is being used here?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:49:44 pm
+\fs26 \
+Student\
+\cf4 Tungsten\cf0  
+\fs20 8:49:44 pm
+\fs26 \
+Student's toString?\
+\cf4 k77frank\cf0  
+\fs20 8:49:44 pm
+\fs26 \
+Student\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's Student, since the age showed up. Even though we're calling toString (implicitly) on a Person variable, we're getting the version from the subclass. That's because the object stored in the Person variable is a Student object!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me make this distinction clearer by adding a setAge method to Student:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  setAge\cf6 (\cf7 int\cf0  age\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 age\cf0  \cf8 =\cf0  age\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try to call this method in main in StudentTester to make st's age 15. What happens?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:51:16 pm
+\fs26 \
+"undefined for person"\
+\cf4 k77frank\cf0  
+\fs20 8:51:16 pm
+\fs26 \
+It is not recognized\
+\cf4 spower4\cf0  
+\fs20 8:51:16 pm
+\fs26 \
+error\
+\cf4 moppr\cf0  
+\fs20 8:51:25 pm
+\fs26 \
+error?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You get an error message: setAge is undefined for a Person.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So why did toString work?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: Maybe take a moment to look again at the definition of the Person class.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:52:50 pm
+\fs26 \
+Because it was overriden\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:52:50 pm
+\fs26 \
+Because Person has a toString function!\
+\cf4 chutney\cf0  
+\fs20 8:52:50 pm
+\fs26 \
+Because it's defined in Person too\
+\cf4 AkshajK\cf0  
+\fs20 8:52:50 pm
+\fs26 \
+because toString exists in the person class\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 toString worked because toString \cf3 is\cf0  defined for a Person; it's just that we override what it specifically does in the class definition for Student. In other words, if you create a Student object but store it in a Person variable, it will only be allowed to do things that Person objects can do, but it will do them the Student way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What you're seeing here is what's called polymorphism. When we call a method attached to a variable (in other words, when we do something like variable.methodName), Java looks at the object stored in that variable. It then uses the lowest overridden method in the hierarchy appropriate to the variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's another example. Consider these definitions:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Widget \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  doSomething\cf6 ()\cf0  \cf6 \{\cf0  \cf5 System\cf0 .\cf9 out\cf0 .\cf9 print\cf6 (\cf10 "Hello"\cf6 )\cf8 ;\cf0  \cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+public class SubWidget extends Widget \cf6 \{\}\cf0 \
+public class SubSubWidget extends SubWidget \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  doSomething\cf6 ()\cf0  \cf6 \{\cf0  \cf5 System\cf0 .\cf9 out\cf0 .\cf9 print\cf6 (\cf10 "Goodbye"\cf6 )\cf8 ;\cf6 \}\cf0 \
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then in main, we write:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+Widget w \cf8 =\cf0  new ____\cf6 ()\cf8 ;\cf0 \
+w.\cf9 doSomething\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens if we fill the blank with Widget?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:56:22 pm
+\fs26 \
+Hello\
+\cf4 MathWolf\cf0  
+\fs20 8:56:22 pm
+\fs26 \
+Hello\
+\cf4 ScottBusche\cf0  
+\fs20 8:56:22 pm
+\fs26 \
+Hello\
+\cf4 k77frank\cf0  
+\fs20 8:56:22 pm
+\fs26 \
+print Hello\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:56:22 pm
+\fs26 \
+Hello\
+\cf4 epicninjatiffy\cf0  
+\fs20 8:56:22 pm
+\fs26 \
+"Hello"\
+\cf4 puwei99\cf0  
+\fs20 8:56:22 pm
+\fs26 \
+Hello\
+\cf4 JRY\cf0  
+\fs20 8:56:26 pm
+\fs26 \
+we get "Hello"\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We get Hello printed. With SubWidget?
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 8:56:55 pm
+\fs26 \
+we get Hello\
+\cf4 ScottBusche\cf0  
+\fs20 8:56:55 pm
+\fs26 \
+Hello\
+\cf4 MathWolf\cf0  
+\fs20 8:56:55 pm
+\fs26 \
+Hello\
+\cf4 moppr\cf0  
+\fs20 8:56:55 pm
+\fs26 \
+Hello\
+\cf4 bluebandit21\cf0  
+\fs20 8:56:55 pm
+\fs26 \
+Hello\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:56:55 pm
+\fs26 \
+Hello\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You still get Hello. SubWidget does not have its own version, so we use the inherited one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And with SubSubWidget?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:58:05 pm
+\fs26 \
+Goodbye\
+\cf4 chutney\cf0  
+\fs20 8:58:05 pm
+\fs26 \
+"Goodbye"\
+\cf4 AkshajK\cf0  
+\fs20 8:58:05 pm
+\fs26 \
+goodbye\
+\cf4 spower4\cf0  
+\fs20 8:58:05 pm
+\fs26 \
+Goodbye\
+\cf4 JesseLin\cf0  
+\fs20 8:58:05 pm
+\fs26 \
+"Goodbye"\
+\cf4 chenjamin\cf0  
+\fs20 8:58:05 pm
+\fs26 \
+Goodbye\
+\cf4 Tungsten\cf0  
+\fs20 8:58:05 pm
+\fs26 \
+Goodbye\
+\cf4 connor0728\cf0  
+\fs20 8:58:10 pm
+\fs26 \
+GOodBye\
+\cf4 teachm\cf0  
+\fs20 8:58:10 pm
+\fs26 \
+BuhBye\
+\cf4 connor0728\cf0  
+\fs20 8:58:10 pm
+\fs26 \
+GoodBye\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You get Goodbye. Java uses the method for the subclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions on that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In other words, Java just keeps kicking its way up the chain from most specialized to most general until it finds a place where the method that's been called is defined. Then it uses that definition.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose the "Goodbye" definition was in SubWidget instead of SubSubWidget. How would the answers change?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:00:18 pm
+\fs26 \
+Hello, Goodbye, Goodbye\
+\cf4 teachm\cf0  
+\fs20 9:00:18 pm
+\fs26 \
+Hello, Goodbye, Goodbye\
+\cf4 ScottBusche\cf0  
+\fs20 9:00:18 pm
+\fs26 \
+SubWidget would say Goodbye, too.\
+\cf4 MathWolf\cf0  
+\fs20 9:00:18 pm
+\fs26 \
+Hello goodbye, goodbye\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:00:18 pm
+\fs26 \
+only Widget would be Hello, and the other two would be Goodbye\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:00:23 pm
+\fs26 \
+SubWidget would change to "Goodbye".\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 With SubWidget, we print Goodbye instead. SubSubWidget still uses Goodbye, since it uses SubWidget's version.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Going back to our Person/Student example, note that we 
+\i can
+\i0  manage to call setAge on st. How? We just need to explicitly tell Java what we already know -- that st is in fact a Student.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We use \cf3 typecasting\cf0  to let Java know the "real" type of the Object:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 ((\cf0 Student\cf6 )\cf0 st\cf6 )\cf0 .\cf9 setAge\cf6 (\cf12 15\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note the parentheses. As always with typecasting, we include the type name in parentheses before the appropriate variable. In this case, we want to make sure Java knows we mean to typecast st and not the result of calling setAge on st. So that explains the parentheses before the period.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you're doing this, you have to be sure the typecast is for the correct kind of object. We can't just typecast st into a String or a Scanner. Java will give us an error if we try.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One big question you may have is "Why?". What's the point of polymorphism? If we're going to make a Student object, just put it into a Student variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, consider this. Remember arrays from a couple of weeks ago? What do we have to specify when we declare or create an array?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+the type of stuff stored in the array\
+\cf4 moppr\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+the type of variable in the array\
+\cf4 JesseLin\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+attribute type\
+\cf4 MathWolf\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+The size and type\
+\cf4 ScottBusche\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+The type of data in the array\
+\cf4 Tungsten\cf0  
+\fs20 9:04:10 pm
+\fs26 \
+The type of the elements of the array?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to state what kind of things go in the array. The same goes for an ArrayList. All the elements have to be the same type.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But remember the rule: we can use a subclass where a superclass is expected. So if all the elements we want to use have a common superclass, we can make the array type be of that superclass. Now all the elements can go in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A classic example would be in a drawing program where I have many different types of shapes to display: Circle, Rectangle, Triangle, Cube, etc. If Shape is the common superclass, then I can have an array of Shapes to draw on the screen. I can put a Circle, a Rectangle, or a Triangle into this array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Even better, suppose that Shape has a draw method. The subclasses can keep this method, or override it with their own version. Then, in my code with the array, I can do the following:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+for \cf6 (\cf5 Shape\cf0  s \cf8 :\cf0  shapeArray\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0 s.\cf9 draw\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Each Shape will use its own particular draw method. If I didn't have polymorphism, then I'd have to have some sort of if statement that did one thing if the shape was a Circle, and another thing if it was a Rectangle, and yet another thing if it was a Triangle, etc.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That would be very tedious to code. If I missed a type, I'd be in trouble.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Or, what if I designed a new kind of Shape in the future, like Prism? Without polymorphism, I have to modify the code to have the right case to draw it. But with polymorphism, my code doesn't change at all! The right version of draw for a Prism is called automatically.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:06:10 pm
+\fs26 \
+So basically you could treat everything as the same, since they have the same superclass?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, the idea is that if you're in a context where you have a bunch of specific kinds of data, but you're only asking them to do things that their general parent class can do, then you can treat them all as if they weren't special and were just examples of that parent class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: ABSTRACT CLASSES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's something interesting about the idea of a Shape class for a graphics program. You never draw just a shape.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You only ever draw a circle, or a rectangle, or a cylinder... Any shape you draw can be considered a particular kind of shape.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You might argue that you could certainly draw a non-standard shape like a formless blob. But then "formless blob" is the kind of shape! You can certainly come up with some sort of name to describe it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The upshot of this discussion is that we will never make a Shape object directly, only objects from its subclasses. In particular, we will never call draw on a Shape object.
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 9:09:06 pm
+\fs26 \
+If you make an array of objects, can you put Strings and Ints into it, as they both have the Object superclass?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, Java would allow that, but then you'd only be able to treat the items in your array as members of the Object class.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:09:50 pm
+\fs26 \
+Is there much in the Object class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not a whole lot, since it is just the base class that has the bare bones to make absolutely every object anyone could ever think of work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I mentioned, it has an equals method and a toString method and some other housekeeping stuff.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, getting back to our discussion of abstract classes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We still need a Shape class, however, in order to be able to make our array of Shapes. Does Shape need to have a draw method?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:12:14 pm
+\fs26 \
+Yes?\
+\cf4 ScottBusche\cf0  
+\fs20 9:12:14 pm
+\fs26 \
+Yes.\
+\cf4 moppr\cf0  
+\fs20 9:12:14 pm
+\fs26 \
+yes, but an abstarct draw method\
+\cf4 puwei99\cf0  
+\fs20 9:12:14 pm
+\fs26 \
+yes\
+\cf4 JRY\cf0  
+\fs20 9:12:17 pm
+\fs26 \
+yes, even though we only call specific variations of draw\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, otherwise Java won't recognize that my loop where I call s.draw() on each Shape in the loop is a valid thing to do. I'm just going to use the subclass' version anyway, but I need something in draw as a placeholder.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next question is what code should I put in Shape's draw method? One answer is it doesn't matter, since the subclass will override it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But this is not a satisfying answer. Can you think of a reason why?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For one thing, if someone else uses my class, and they don't know that Shape's draw is meaningless, they might try to make Shape objects and call draw on them. That could potentially mess up the code or output of the program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Plus it's a waste of time to have to write code that shouldn't be used.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fortunately Java has a simple solution to this problem. We can declare the draw method in Shape as an \cf3 abstract method\cf0 . This indicates that draw in Shape is intended to be overridden by a subclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And, in fact, it must be. When we declare a method to be abstract, we are effectively putting a placeholder there. It's a method to be defined later. We give no definition in the superclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, in C++, abstract methods are called \cf3 virtual methods\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Python doesn't have them at all, since in Python there are no explicit types, so abstract methods aren't really needed there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's write some code to make this discussion less...abstract. We'll write a Shape class. Instead of messing around getting drawing to work, let's do something nice and simple. We'll make abstract methods for computing the area and perimeter of the shape. Every shape (at least, every shape that we will care about for the purposes of this example) has an area and perimeter, but the way you calculate them depends on the particular kind of shape.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's code for a class called Shape that has a name attribute:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class \cf5 Shape\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf5 String\cf0  name\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0public \cf5 Shape\cf6 (\cf5 String\cf0  newName\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setName\cf6 (\cf0 name\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  setName\cf6 (\cf5 String\cf0  newname\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 name\cf0  \cf8 =\cf0  newname\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public \cf5 String\cf0  getName\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return name\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll add in an abstract method for computing the perimeter. You can put this code in anywhere within the class definition. It's just one line:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public abstract \cf7 int\cf0  perimeter\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It looks like a typical method header with two important differences. The word \cf3 abstract\cf0  appears between the access qualifier and the return type. Also there are no curly braces; we just terminate the line with a semicolon.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may have noticed something unusual happened if you're working in Eclipse. What is it?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:16:53 pm
+\fs26 \
+Eclipse is complaining that Shape needs to be an abstract class to have abstract methods.\
+\cf4 chenjamin\cf0  
+\fs20 9:16:53 pm
+\fs26 \
+error; it says Shape has to be an abstract class\
+\cf4 spower4\cf0  
+\fs20 9:16:53 pm
+\fs26 \
+shape must be of abstract class\
+\cf4 connor0728\cf0  
+\fs20 9:16:55 pm
+\fs26 \
+error\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As soon as you add the line \cf3 public abstract int perimeter();\cf0 , red lines show up in two places: the class name Shape, and the method name. Both are telling you the same thing: an abstract method can only be defined in an \cf3 abstract class\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I said before, an abstract method is a method to be defined later. So our Shape class essentially has a hole in it. We need to let Java and, more importantly, users of our class know that this hole exists.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we must 
+\i also
+\i0  put the word \cf3 abstract\cf0  in the header for the class, right between \cf3 public\cf0  and \cf3 class\cf0 :
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public abstract class \cf5 Shape\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf5 String\cf0  name\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0public abstract \cf7 int\cf0  perimeter\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0public \cf5 Shape\cf6 (\cf5 String\cf0  newName\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0setName\cf6 (\cf0 name\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  setName\cf6 (\cf5 String\cf0  newname\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 name\cf0  \cf8 =\cf0  newname\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public \cf5 String\cf0  getName\cf6 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return name\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you do that, the red lines disappear.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So far so good?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 9:17:55 pm
+\fs26 \
+do we create a new class called Shape\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, go ahead and create a Shape class in Eclipse.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:18:31 pm
+\fs26 \
+Are we done with the Student and Person classes?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As you see, abstract classes can have all the usual methods and instance variables you like. However, they must have at least one abstract method. (You can try commenting out the definition of perimeter; you'll get error lines.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll try to make a Shape object in a main method. Here's some code (in a class I've called ShapeDriver):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class ShapeDriver \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf5 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 Shape\cf0  s \cf8 =\cf0  new \cf5 Shape\cf6 (\cf10 "A shape"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unfortunately we again get error lines. Java tells us we cannot "instantiate the type Shape". We can't make objects from abstract types. The problem is the hole coming from the abstract method. We don't have a completely defined class yet.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So let's now make a subclass that will fill in the hole. In particular, let's make a Triangle class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, in Eclipse, make a new class called Triangle. You can set Shape as the superclass. Notice that one of the check boxes under "method stubs" is "Inherited abstract methods". Make sure that box is checked on. Another checkbox is "Constructors from superclass". Make sure that is on too.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you make the class, you'll notice you get a lot more code than usual:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Triangle extends \cf5 Shape\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public Triangle\cf6 (\cf5 String\cf0  newName\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super\cf6 (\cf0 newName\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\i \cf11 // TODO Auto-generated constructor stub
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0@Override\
+\'a0\'a0\'a0\'a0public \cf7 int\cf0  perimeter\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\i \cf11 // TODO Auto-generated method stub
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf12 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll comment on the @Override in a minute.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We get a constructor for free that just mimics the Shape superclass, calling the Shape constructor. We also get a template for us to fill (a \cf3 stub\cf0 ) that can complete the missing method in the superclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that we don't 
+\i have
+\i0  to make Triangle fill in the gap. We can instead let it delay the responsibility to one of 
+\i its
+\i0  subclasses. But if we delay, then we would have to declare Triangle as an abstract class too. (We would not have to redeclare perimeter as abstract.)
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 9:24:45 pm
+\fs26 \
+Is the main method really supposed to be within the class ShapeDriver? Seems odd...\
+\cf4 teachm\cf0  
+\fs20 9:24:45 pm
+\fs26 \
+I thought main was a stand-alone, usually, not within another class\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. All code you ever write in Java is going to be in SOME class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember back to all those programs we've been writing since Day 1. Every single one consisted of writing at least one class. Sometimes we've written more than one class and had them interact with one another.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do we need to determine the perimeter of a triangle?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:26:46 pm
+\fs26 \
+The side lengths.\
+\cf4 k77frank\cf0  
+\fs20 9:26:46 pm
+\fs26 \
+3 side lengths\
+\cf4 ScottBusche\cf0  
+\fs20 9:26:46 pm
+\fs26 \
+The side lengths.\
+\cf4 moppr\cf0  
+\fs20 9:26:46 pm
+\fs26 \
+its sides\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need the three sides. So add those as attributes as to Triangle, and assign them via the constructor.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the code at this point:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class Triangle extends \cf5 Shape\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0private \cf7 int\cf0  s1, s2, s3\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0public Triangle\cf6 (\cf5 String\cf0  newName, \cf7 int\cf0  s1, \cf7 int\cf0  s2, \cf7 int\cf0  s3\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super\cf6 (\cf0 newName\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 s1\cf0  \cf8 =\cf0  s1\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 s2\cf0  \cf8 =\cf0  s2\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf9 s3\cf0  \cf8 =\cf0  s3\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0@Override\
+\'a0\'a0\'a0\'a0public \cf7 int\cf0  perimeter\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf12 0\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And you can probably fill in the code for perimeter at this point. Please do so.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:29:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf7 int
+\f2\b0 \cf0  perimeter\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  s1\cf8 +\cf0 s2\cf8 +\cf0 s3\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 9:29:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf7 int
+\f2\b0 \cf0  perimeter\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  s1\cf8 +\cf0 s2\cf8 +\cf0 s3\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:29:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f1\b public
+\f2\b0  
+\f1\b \cf7 int
+\f2\b0 \cf0  perimiter\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  
+\f1\b this
+\f2\b0 .\cf9 s1\cf0  \cf8 +\cf0  
+\f1\b this
+\f2\b0 .\cf9 s2\cf0  \cf8 +\cf0  
+\f1\b this
+\f2\b0 .\cf9 s3\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:29:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf7 int
+\f2\b0 \cf0  perimeter\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  s1 \cf8 +\cf0  s2 \cf8 +\cf0  s3\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 9:29:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 public
+\f2\b0  
+\f1\b \cf7 int
+\f2\b0 \cf0  perimeter\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b return
+\f2\b0  s1 \cf8 +\cf0  s2 \cf8 +\cf0  s3\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here it is:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 int\cf0  perimeter\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return this.\cf9 s1\cf8 +\cf0 this.\cf9 s2\cf8 +\cf0 this.\cf9 s3\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now let's take a moment to talk about that @Override thing that Eclipse put in for us.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 @Override is basically a promise by the person writing the code to the Java compiler that the method it's attached to is supposed to override something from the superclass. You can remove it without affecting anything. The advantage is that if you don't actually override something with the method, you get an error. It's there to work as a sanity check, so Java can let you know if you had meant to override something but somehow didn't end up doing that. This kind of thing can really be helpful when you get into creating larger, more elaborate projects.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:30:56 pm
+\fs26 \
+Or if you try to override with toSting.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, that would be one example of how one can "not end up" overriding as intended.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can see @Override do its thing by, for example, misspelling "perimeter" in the method's header.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now hop back over to main (which I had placed in ShapeDriver.java). Since Triangle is not abstract, we can make Triangle objects. Since Triangle is a subclass of Shape, we can put a Triangle object into a Shape variable. Then we can call getName or perimeter on it:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class ShapeDriver \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf7 void\cf0  main\cf6 (\cf5 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 Shape\cf0  s \cf8 =\cf0  new Triangle\cf6 (\cf10 "Equilateral triangle"\cf0 , \cf12 3\cf0 , \cf12 3\cf0 , \cf12 3\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 System\cf0 .\cf9 out\cf0 .\cf9 printf\cf6 (\cf10 "The perimeter of the shape %s is %d"\cf0 , s.\cf9 getName\cf6 ()\cf0 , s.\cf9 perimeter\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 getName is inherited straight from Shape. perimeter uses the definition provided by perimeter. So this prints out:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+The perimeter of the shape Equilateral triangle is \cf12 9\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'll add in area for the Shape class as a message board problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This week, you learned how Java uses some of the more powerful aspects of object-oriented programming:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw how we can extend one class to make a subclass that gains the attributes or methods of the superclass.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can place a subclass object into a superclass variable. With polymorphism, the appropriate subclass method gets called automatically.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We use abstract classes when we want a method common to a bunch of classes, but we want the implementation of the method left to the subclasses.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week: We'll talk about interfaces. We'll then see how we can read data from files and how to handle errors without crashing our program. (And we'll see how those last two things are related.)}

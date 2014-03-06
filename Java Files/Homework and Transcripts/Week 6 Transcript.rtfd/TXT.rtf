@@ -1,0 +1,5111 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier-Bold;
+\f3\fmodern\fcharset0 Courier;\f4\fmodern\fcharset0 Courier-Oblique;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red0\green0\blue83;\red18\green139\blue2;\red43\green139\blue39;\red190\green74\blue193;\red1\green32\blue135;
+\red83\green83\blue83;\red11\green85\blue38;\red10\green82\blue135;\red0\green0\blue255;\red0\green0\blue135;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 6: Arrays
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For the past five weeks, we've been talking exclusively about Java, to give us some foundation. This week, we will finally begin folding in discussion of the other half of the title of this course, "data structures". In particular, today we'll be looking at a simple structure called an \cf3 array\cf0 . Let's get started!!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: DATA STRUCTURES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, let's discuss what the term \cf3 data structure\cf0  means. In general, it's any programming mechanism that allows us to store a collection of related items.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Given that, what's the simplest data structure in Java you might think of? Think of the smallest number of items you could have.
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:32:40 pm
+\fs26 \
+variable\
+\cf4 chenjamin\cf0  
+\fs20 7:32:40 pm
+\fs26 \
+a variable?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah. We could just have one item. What do we call something in Java code that just stores one item?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That would be a variable. We put something into a variable using an assignment statement.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, we need to be able to extract data from a variable as well. Java makes it very easy to do that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now, you could argue that based on my original definition above, a variable is not really a data structure, since I said "items" (plural). And you'd probably be right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's cast our net a bit wider. Have we worked with anything that one could consider a 
+\i collection
+\i0  of related items?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I'm looking for things we've specifically worked with so far in THIS course.)
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:34:59 pm
+\fs26 \
+A class?\
+\cf4 Tungsten\cf0  
+\fs20 7:34:59 pm
+\fs26 \
+Classes\
+\cf4 MathWolf\cf0  
+\fs20 7:34:59 pm
+\fs26 \
+A class\
+\cf4 spower4\cf0  
+\fs20 7:35:01 pm
+\fs26 \
+a class?\
+\cf4 puwei99\cf0  
+\fs20 7:35:04 pm
+\fs26 \
+classes\
+\cf4 MSTang\cf0  
+\fs20 7:35:04 pm
+\fs26 \
+class\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure. For example, last week we built a Circle class that had three parts: an integer for the center's x-coordinate, an integer for the y-coordinate, and a double for the length of the radius. That's three things we put together.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that the three numbers stored in a Circle object each have a specific role. If we switched the numbers around, the Circle is different. centerX=3 and centerY=2 and radius=10.0 is different from centerY=3 and centerX=2 and radius=10.0. The way in which we 
+\i organize
+\i0  the data is important.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we access the data in a circle?
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:36:11 pm
+\fs26 \
+using a getter!\
+\cf4 puwei99\cf0  
+\fs20 7:36:11 pm
+\fs26 \
+accessor\
+\cf4 Tungsten\cf0  
+\fs20 7:36:11 pm
+\fs26 \
+Accessors!\
+\cf4 chenjamin\cf0  
+\fs20 7:36:11 pm
+\fs26 \
+using accesor methods\
+\cf4 williamyin08\cf0  
+\fs20 7:36:11 pm
+\fs26 \
+getters!\
+\cf4 spower4\cf0  
+\fs20 7:36:11 pm
+\fs26 \
+by using the getters\
+\cf4 k77frank\cf0  
+\fs20 7:36:15 pm
+\fs26 \
+methods\
+\cf4 LiGhtpupPet278\cf0  
+\fs20 7:36:15 pm
+\fs26 \
+methods?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But of course! We use the \cf3 accessor\cf0 , aka \cf3 get\cf0 , methods. Remember we can decide exactly how or even if we want to be able to retrieve the data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could consider a Circle or any non-trivial object to be a kind of data structure. Generally, though, we will want our data structures to be less specific. A Circle is only used in certain applications. A traditional data structure can be applied to multiple situations.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, consider the idea of a list. That's a collection of elements that come in some order. Can you give me some real situations where storing things in a list might be useful?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anything at all. Go wild.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:37:23 pm
+\fs26 \
+Telling someone what to buy at the store\
+\cf4 FerozeM\cf0  
+\fs20 7:37:23 pm
+\fs26 \
+shopping list\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could have a shopping list of items to buy at a store.
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 7:37:47 pm
+\fs26 \
+like if you need to find a student's academic record online from a school database\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We may have a list of a student's grades.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:38:28 pm
+\fs26 \
+A list of students in a Java class.\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+A roster of athletes on a sports team!\
+\cf4 Tungsten\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+A list of all the topics in this course. 
+\f1\fs24 {{\NeXTGraphic smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\cf4 ReciterOfPi\cf0  
+\fs20 7:38:48 pm
+\fs26 \
+A list of reasons why something is good or bad.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure. Here are some other ideas I had.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We may have a list of students who have turned in assignments to be graded.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can have a list of tasks to accomplish.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can have a set of points to plot on a graph.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are of course many other possibilities. The key is if we can have a structure that can store any kind of list, then we can use that in all of these applications.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another aspect of data structures that will be more important to us later in the course is how the data is organized inside the computer. That might make certain kinds of access 
+\i easier
+\i0  or 
+\i faster
+\i0  than others.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, suppose we decide that we will go down the list from top to bottom. We may want a structure that is optimized to make that kind of access faster. That may be different than one where we can access items in any order.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Or we may want to consider adding items to the list. If that is a frequent operation, then we want to ensure it can be done quickly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Later (not today) we will learn how to analyze operations on data structures so we can make educated decisions as to which one to use in a particular program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions?
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:41:05 pm
+\fs26 \
+This is off topic, but why don't I have a grade on my Week 4 homework?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh, yeah, I had meant to mention that. Sorry, the graders haven't gotten around to grading the Week 4 homework yet. I'll grade them myself if it's not ready to go in a day or two.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note before we dig in to today's main topic: If you want to be entering today's code as we work on it, make a class in Eclipse with a main method. It won't matter what you call it. As usual, we'll be posting the code on the homepage following today's lesson.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: THE ARRAY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first official data structure we'll look at is the \cf3 array\cf0 . Those of you coming from a C++ background are probably already familiar with this. Python pros will find similarities to its list structure.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we have a list of grades for ten students in a class. We could make a variable for each one: grade1, grade2, grade3, grade4, etc. up to grade10. If we want to, say, take an average, we can just write a big sum of all of the grades and divide by 10.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What are some issues with this general approach?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:44:37 pm
+\fs26 \
+# of students may change\
+\cf4 MathWolf\cf0  
+\fs20 7:44:37 pm
+\fs26 \
+What if there are 11 grades?\
+\cf4 MathWolf\cf0  
+\fs20 7:44:37 pm
+\fs26 \
+Or 9\
+\cf4 FerozeM\cf0  
+\fs20 7:44:39 pm
+\fs26 \
+there could be over 9,000 grades!\
+\cf4 Tungsten\cf0  
+\fs20 7:44:46 pm
+\fs26 \
+The code could get really ugly if you had to do more complex operations than average\
+\cf4 chutney\cf0  
+\fs20 7:44:46 pm
+\fs26 \
+Hard to handle all of the grades--you have to remember the variables and not mix them up\
+\cf4 EmeraldBot\cf0  
+\fs20 7:44:52 pm
+\fs26 \
+You can't easily adjust it if their are more or less grades\
+\cf4 ScottBusche\cf0  
+\fs20 7:44:54 pm
+\fs26 \
+What if there were 100 students? That's a lot of variables...\
+\cf4 gkaops\cf0  
+\fs20 7:45:03 pm
+\fs26 \
+If the number of students change, code would have to be modified\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These are all good points.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To summarize: One problem is that having all these variables floating around means the code will be particularly prone to typos or other errors. I could forget one of the variables in my big sum, for example, or I could accidentally enter grade4 twice.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It also makes the code very long and thus harder to read. Suppose I had 100 grades instead of 10. It would take several lines of code just to do something as simple as the addition! Or suppose I wanted to find the highest grade in the class; that would take a huge if statement to list all the combinations.
+\b0 \
+\pard\pardeftab720
+\cf4 adrianu\cf0  
+\fs20 7:46:29 pm
+\fs26 \
+the lengthiness of the code\
+\cf4 manbugbeebee\cf0  
+\fs20 7:46:29 pm
+\fs26 \
+Lots of typing, repetition\
+\cf4 bzzz99\cf0  
+\fs20 7:46:33 pm
+\fs26 \
+too many variables to make\
+\cf4 JRY\cf0  
+\fs20 7:46:39 pm
+\fs26 \
+It's inconvenient to have so many variables.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another glaring problem with making each possible entry a separate variable is that it is not particularly adaptable. What if I realized later I had 11 grades, not 10? Or 100? My code would need major changes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ideally we would like a way to write something like "I want a set of variables from grades1 up to gradesX where X=10". Then to get more variables, I can just change the value of X.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is basically what we get from an array. It gives us a collection of 
+\i n
+\i0  variables, where we can specify 
+\i n
+\i0 . This value n is called the \cf3 length\cf0  of the array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why do we call it a length? Because when we tell Java we want n variables, it puts these variables in consecutive memory locations. Think of it as reserving a row of mailboxes at the post office. This is different from Python's list object, since a Python list's contents could be stored anywhere in memory.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:47:51 pm
+\fs26 \
+Can n be changed?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll say more about this later today. The short answer is no. Once you've created your array, its length won't change. The only thing you can do to change the length of the array, if you need to, is to make a new larger array and copy entries over.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This happens because of the way that arrays get stored (sequentially) in memory.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:49:21 pm
+\fs26 \
+You can't do stuff like .append() in Python?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's right, you can't append using a Java array, but we will discuss in a few weeks a different data structure that we can make in Java that will allow for this behavior.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Coming back to the general discussion: One difference between a Python list and a Java array is that in an array, all the variables must be of the same type. The technical term for this is \cf3 homogeneous\cf0 . In Python's lists or even tuples, you can mix types; the term here is \cf3 heterogeneous\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Part of the reason for the restriction in Java is that Java is strongly typed. Everything has a particular type, all variables have to be declared with their types, and the compiler enforces those types. We'll get to the other part a little later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now dig in to how these work. You might want to make a new class to put code in. For now, we'll just put code inside a main method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To Java, an array itself is just another type of thing. So we have to declare and initialize arrays just like with other objects and variables.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is what the type declaration of an array looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  grades\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: As it happens, Java gives you a little freedom where you choose to put those square brackets for your type declaration. In particular, you could also choose to write
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf6 []\cf0  grades\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 or
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  grades\cf6 []\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 instead. All three of these mean the same thing to Java. They all tell it that the variable \cf3 grades\cf0  will refer to an array of \cf3 int\cf0 s.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:52:12 pm
+\fs26 \
+Is the String[] part of the main method definition an array?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep! We'll touch on that later today if there's time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first way I gave of writing the type declaration (int [] grades;) is the version that I'll be using in class, but I'll leave it up to you if you decide you prefer one of the other two ways more.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions so far?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:53:39 pm
+\fs26 \
+Including objects?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, to Java, a class is a kind of type, so you can make arrays of objects from a class. We won't say much about that today, but I'm sure it will come up in a few weeks.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now take a moment to talk about the key things we see in that type declaration. First we indicate the type of the data that will be stored in the array. In this example, we are storing \cf3 int\cf0 s, but you can have any type you want.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The square brackets tell Java that we are creating an array as opposed to a single value. Then we have the name for the array we're declaring.
+\b0 \
+\pard\pardeftab720
+\cf4 gkaops\cf0  
+\fs20 7:55:01 pm
+\fs26 \
+The square brackets are to be placed next to the data type or the name of the array ? What is the standard?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I said, Java makes it (maybe confusingly) up to you which you do. I'll put them before the variable name, but in the type declaration you are also free to put the square brackets after instead. It's up to you!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just as with other reference types, declaring the variable doesn't create the associated object. So we'll do that step now. As usual, making an object involves the keyword \cf3 new\cf0 :
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades \cf7 =\cf0  new \cf5 int\cf6 [\cf8 10\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first part of this line should look familiar. It's an assignment; the variable for the object is on the left.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 After \cf3 new\cf0 , things are a little different. We have the type of data stored in the array followed immediately by brackets. Inside the brackets, you put the length of the array. So in my example, we have an array of ten integers. (For this part, you don't get to choose where those square brackets go. You have to put things in the order I showed.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now let's have you try one. Can you declare and create an array of five Strings called names?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (You can either do this in two lines, similar to what I have in the sticky box already, or you can probably figure out how to turn those two lines into one line.)
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:58:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 String\cf0  \cf6 []\cf0  names\cf7 ;\cf0  names \cf7 =\cf0  
+\f2\b new
+\f3\b0  \cf9 String\cf6 [\cf8 5\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 manbugbeebee\cf0  
+\fs20 7:58:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 String\cf0  \cf6 []\cf0  names\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0names \cf7 =\cf0  
+\f2\b new
+\f3\b0  \cf9 String\cf6 [\cf8 5\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 7:58:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 String\cf0  \cf6 []\cf0  names\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0names \cf7 =\cf0  
+\f2\b new
+\f3\b0  \cf9 String\cf6 [\cf8 5\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 7:58:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 tring \cf6 []\cf0  names\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0names \cf7 =\cf0  
+\f2\b new
+\f3\b0  
+\f2\b \cf5 int
+\f3\b0 \cf6 (\cf8 5\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 7:58:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  \cf6 []\cf0  names\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0names \cf7 =\cf0  
+\f2\b new
+\f3\b0  \cf9 String\cf6 [\cf8 5\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ReciterOfPi\cf0  
+\fs20 7:58:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 String\cf0  \cf6 []\cf0  names\cf7 ;\cf0  names \cf7 =\cf0  
+\f2\b new
+\f3\b0  \cf9 String\cf6 [\cf8 5\cf6 ]\cf7 ;\cf0  
+\f4\i \cf10 // does this work?
+\f3\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 spower4\cf0  
+\fs20 7:58:57 pm
+\fs26 \
+String [] names = new String[5];\
+\cf4 Tungsten\cf0  
+\fs20 7:59:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  \cf6 []\cf0  names\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0names \cf7 =\cf0  
+\f2\b new
+\f3\b0  \cf9 String\cf6 [\cf8 5\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 adrianu\cf0  
+\fs20 7:59:10 pm
+\fs26 \
+String[] names = new String[5]\
+\cf4 chenjamin\cf0  
+\fs20 7:59:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 String\cf0  \cf6 []\cf0  names \cf7 =\cf0  
+\f2\b new
+\f3\b0  \cf9 String\cf6 [\cf8 5\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If I didn't pass your answer, it's either because you're missing the first part that declares the type of your array, or because you mistyped String as string.
+\b0 \
+\pard\pardeftab720
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:00:10 pm
+\fs26 \
+wait shouldnt it be 4\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope, it's 5 because that number in there tells Java what the LENGTH of the array is, not what the LARGEST INDEX will be (which is what you're referring to and we'll say more about in a bit).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a one-line solution:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  \cf6 []\cf0  names \cf7 =\cf0  new \cf9 String\cf6 [\cf8 5\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This solution combines the declaration and creation in one step.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that "creation" (what we're doing when we call new) is not the same thing as "initialization". new int[10] builds the array (in other words, it will have Java do the work of setting aside an appropriate place in memory where the array can be stored), but it doesn't put anything in it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The typical way to initialize an array in Java is by using a loop. We step through the array and put something in each individual location inside it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To access the locations, we refer to them by number (the corresponding number is often called an 
+\i index
+\i0 ). The first location in an array is always at position \cf3 0\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is important, and perhaps easy to forget if you're new to this convention, so I'll say it again: The first index in an array is 0, not 1. This convention is the same as for C++'s arrays or Python's lists and tuples.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In an array of length 10, what's the position number of the last element?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:02:49 pm
+\fs26 \
+9\
+\cf4 moppr\cf0  
+\fs20 8:02:49 pm
+\fs26 \
+9\
+\cf4 shivammisra\cf0  
+\fs20 8:02:49 pm
+\fs26 \
+9\
+\cf4 Tungsten\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9\
+\cf4 ScottBusche\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9?\
+\cf4 manbugbeebee\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9\
+\cf4 chenjamin\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9\
+\cf4 JRY\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9.\
+\cf4 puwei99\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9\
+\cf4 k77frank\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9\
+\cf4 bel3900989\cf0  
+\fs20 8:02:53 pm
+\fs26 \
+9\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want 10 numbers starting at 0, so that goes from 0 up to and including 9. Therefore, in this example, the last element is at position 9. In general, they go from 0 up to (L-1), where L is the length of the array.
+\b0 \
+\pard\pardeftab720
+\cf4 mduong14\cf0  
+\fs20 8:03:20 pm
+\fs26 \
+if we want to make an array when we don't know how many spot we need, how can we do it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then you either need to figure out some way how many spots you will need, or you will need to use some data structure other than an array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Or you could just create an array of some modest size, use it until you need a bigger one, then make a bigger one and copy the old entries over...)
+\b0 \
+\pard\pardeftab720
+\cf4 Wilderc\cf0  
+\fs20 8:04:35 pm
+\fs26 \
+When would you not know how many you would need?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If I have a list that keeps track of which students are logged into this classroom, for example, I won't know at the time I'm writing the program how many students that will be.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, scanning for where I left off in my notes...
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ah yes: And, just like the Python list, we use the square brackets to access elements of an array by position. Hence grades[0] refers to the first element of the array. You can use grades[0] like you would any other variable. It could be on the left or right side of an assignment; it could be passed to a method; it can be used in a larger expression (like grades[0]+grades[1]).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Be careful, though. If you use a position number that is less than 0 or greater than or equal to the length, you will get an error when you run the program. Specifically, it will cause an ArrayIndexOutOfBoundsException. This usually occurs when you have a variable for the position number, as in grades[x]. If the user entered a value for x, then, as a programmer, it'll be your responsibility to check to make sure x is valid before trying to access the array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, now that we've discussed how to access elements in an array, let's write a loop we can use to initialize the array. Which kind of loop will be better for this purpose: a while loop or a for loop?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 8:07:41 pm
+\fs26 \
+for loop\
+\cf4 spower4\cf0  
+\fs20 8:07:41 pm
+\fs26 \
+for\
+\cf4 sanpran\cf0  
+\fs20 8:07:41 pm
+\fs26 \
+for loop\
+\cf4 want2learn\cf0  
+\fs20 8:07:41 pm
+\fs26 \
+for loop\
+\cf4 gkaops\cf0  
+\fs20 8:07:41 pm
+\fs26 \
+for loop\
+\cf4 MathWolf\cf0  
+\fs20 8:07:41 pm
+\fs26 \
+We know how many spots to fill so use a for loop.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since we know exactly 
+\i how many
+\i0  locations are in the array, it's best in this situation to use a counter-controlled for loop. Of course, while and for are equivalent, so you 
+\i could
+\i0  do this using while, but for is designed for this kind of loop and is the natural choice here.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's start actually writing the loop now. What's the first line you'd write to create a for loop that will, one by one, step through each valid value of the index in our grades array?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I've got three answers so far. Anybody else want to take a stab at it?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:09:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i\cf7 =\cf8 0\cf7 ;\cf0  i\cf7 <\cf8 10\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:09:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i\cf7 =\cf8 0\cf7 ;\cf0  i\cf7 <\cf8 10\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:09:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i \cf7 =\cf0  \cf8 0\cf7 ;\cf0  i \cf7 <\cf0  \cf8 10\cf7 ;\cf0  i\cf7 ++\cf6 )\{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 8:09:42 pm
+\fs26 \
+for (int counter = 1; counter!=10; counter++)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I should go back and edit the notes for the class we did where I used != as a test in the for loop.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's not 
+\i wrong
+\i0  to do that, but it's a lot easier to predict what will happen if you use a less than comparison instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 From here on out, for for loops, I wholeheartedly recommend preferring to use less than (or greater than, should you need it).
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:12:09 pm
+\fs26 \
+Why?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, say instead of using i++, you were to count by 2's (i += 2). If you're testing when to end your for using !=, you might just jump clean over the value you're testing for if you're not being careful.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, back to the question I'd asked.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's one possibility:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  \cf8 10\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since the length is 10, we want to stop once the index hits 10. We could also have done this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <=\cf0  \cf8 9\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 JRY\cf0  
+\fs20 8:13:27 pm
+\fs26 \
+Is it better to use < than <= ?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Either one is fine. Just make sure you use it right whichever one you pick.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice, however, that the bounds we just gave for index are not quite ideal. If we wanted to change the size of our grades array, we would have to change the code in this loop. (We'd also have to change the line where we created the array, the one with new, but let's just focus on the loop here.) Here's a better way we could write our loop. Every array has a public attribute called \cf3 length\cf0  that tells you, well, what the length of the array is. So we could instead structure the loop like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'll see this for loop a lot in the array code we're going to be writing from here on out.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions at this point?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The body of the loop will do the initializing. Since a student's grade (at least in conventional US classrooms) is typically some number between 60 and 100, let's fill up our grades array with random numbers between 60 and 100, for the sake of generating some interesting data to look at that we won't have to punch in by hand. (You'll need to make them integers since we already declared to Java earlier that our grades array will be an array of integers.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyone know how we might use some things we've already learned to do that?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:16:37 pm
+\fs26 \
+random\
+\cf4 Tungsten\cf0  
+\fs20 8:16:37 pm
+\fs26 \
+We can use the Random class for random stuff\
+\cf4 Wilderc\cf0  
+\fs20 8:16:37 pm
+\fs26 \
+java.util.Random\
+\cf4 ScottBusche\cf0  
+\fs20 8:16:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 import
+\f3\b0  \cf12 java.util.Random\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:16:42 pm
+\fs26 \
+Random rand = new Random();\
+\cf4 EmeraldBot\cf0  
+\fs20 8:16:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\fs24 \cf0 {{\NeXTGraphic 2a20af9625f4a4b28491d8d1fa43f64bcfb9d120.png \width4380 \height320 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, we need a Random object. I'm going to call mine \cf3 random\cf0 . Our Random object can be created prior to the loop. Don't forget to include the necessary import line so Eclipse doesn't complain at you.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then we use our Random object's nextInt method. In particular, if we use nextInt(41), that will give us a number between 0 and 40. That's not quite what we want. What can we do to turn this random number from 0 to 40 into our desired random number between 60 and 100?
+\b0 \
+\pard\pardeftab720
+\cf4 joberman\cf0  
+\fs20 8:17:48 pm
+\fs26 \
+add 60\
+\cf4 bel3900989\cf0  
+\fs20 8:17:48 pm
+\fs26 \
+subtract from 100\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Both of those will work. I generally prefer to think in terms of adding rather than subtracting, so I'll add 60 (and would recommend everyone do likewise, for code clarity, but if you really want to subtract from 100, I guess it's ok).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Finally, we just need to put that random number in the right spot in the array. So can you give me that code? (Hint: You can actually do all that stuff I said in just one line.)
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:20:35 pm
+\fs26 \
+grades[index] = random.nextInt(41) + 60;\
+\cf4 Tungsten\cf0  
+\fs20 8:20:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 grades\cf6 [\cf0 i\cf6 ]\cf0  \cf7 =\cf0  rand.\cf11 nextInt\cf6 (\cf8 41\cf6 )\cf0  \cf7 +\cf0  \cf8 60\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:20:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 grades\cf6 [\cf0 i\cf6 ]\cf0  \cf7 =\cf0  random.\cf11 nextInt\cf6 (\cf8 41\cf6 )\cf0  \cf7 +\cf0  \cf8 60\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 8:20:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i\cf7 =\cf8 0\cf7 ;\cf0  i\cf7 <\cf0 grades.\cf11 length\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0  \cf6 \{\cf0 grades\cf6 [\cf0 i\cf6 ]\cf0  \cf7 =\cf0  
+\f2\b new
+\f3\b0  \cf9 Random\cf6 ()\cf0 .\cf11 nextInt\cf6 (\cf8 41\cf6 )\cf0  \cf7 +\cf0  \cf8 60\cf7 ;\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades\cf6 [\cf0 index\cf6 ]\cf0  \cf7 =\cf0  \cf8 60\cf0  \cf7 +\cf0  random.\cf11 nextInt\cf6 (\cf8 41\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's everything we've written so far:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  main\cf6 (\cf9 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  grades\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades \cf7 =\cf0  new \cf5 int\cf6 [\cf8 10\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 Random\cf0  random \cf7 =\cf0  new \cf9 Random\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0grades\cf6 [\cf0 index\cf6 ]\cf0  \cf7 =\cf0  \cf8 60\cf0  \cf7 +\cf0  random.\cf11 nextInt\cf6 (\cf8 41\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, you only have my word so far that this actually works. Can you now tell me a second loop that will print the values of each of the array elements?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:23:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 println\cf6 (\cf0 grades\cf6 [\cf0 index\cf6 ])\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ReciterOfPi\cf0  
+\fs20 8:23:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0  \cf6 \{\cf9 System\cf0 .\cf11 out\cf0 .\cf11 print\cf6 (\cf0 grades\cf6 [\cf0 index\cf6 ])\}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:23:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 print\cf6 (\cf0 grades\cf6 [\cf0 index\cf6 ])\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 8:23:09 pm
+\fs26 \
+for (int index = 0; index < grades.length; index++) \{System.out.printf("The grade is %d.", grades[index]);\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer, which will also print the index for each element, to make the output a little simpler to read and comprehend:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "%d %d\cf14 \\n\cf13 "\cf0 , index, grades\cf6 [\cf0 index\cf6 ])\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Running through a loop, as we discussed above, is the typical way in which arrays are initialized. Occasionally, however, you'll actually already know when you're writing the code precisely what values you want in the array. In such cases, you can combine the declaration, creation, and initialization into one line.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's an example:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  \cf6 []\cf0  seasons \cf7 =\cf0  \cf6 \{\cf13 "winter"\cf0 , \cf13 "spring"\cf0 , \cf13 "summer"\cf0 , \cf13 "fall"\cf6 \}\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first part is like a typical array declaration. We still need the square brackets. To the right of the equals sign, we have a set of curly braces (not brackets) enclosing the elements we want in the array, separated by commas.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that there is no need here for \cf3 new\cf0 , and we don't need to explicitly declare the length of the array anywhere. Java figures that out on its own.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 However, make a note that this is the 
+\i only
+\i0  time when you can use the curly brace notation to set up an array. Also note that if later on in your code, you want to change the words in seasons, then you'll have to do it in an element-by-element fashion.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here are some other things you CAN'T do with arrays: (1) Once you've created them with a certain size, that size can't change. To get the effect of "changing the array's size" what you actually need to do is create a 
+\i brand-new
+\i0  array with the new size and 
+\i copy the values over from the original array
+\i0 . (2) Also, if you have used and fallen in love with Python's slicing operators to get pieces of lists (as I have), I have some bad news for you; unfortunately Java does not have an equivalent operator.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:25:32 pm
+\fs26 \
+WHAT?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I know, it's a pain. But Java is almost 20 years old at this point, so it doesn't have all the nice syntactic shortcuts that newer languages feature.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The people who made Java were wizened old programmers making a language for fellow hardcore programmers. They already had their own ideas what was "nice" and "useful" and "intuitive".
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:27:17 pm
+\fs26 \
+Why don't the developers add list slicing?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To be honest, I don't really know. The details of actually creating a programming language is something I only know a little about. The fact that they haven't put it in even though it's an obvious thing that might be nice suggests to me it might be pretty complicated to do without breaking other stuff.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: COMMON ARRAY TASKS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since our array \cf3 grades\cf0  contains a sequence of numbers, let's write some code to determine the average of those numbers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To take an average, you add up the numbers and divide by how many we have.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How can we find the sum of the numbers?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:29:22 pm
+\fs26 \
+Another for loop.\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:29:22 pm
+\fs26 \
+do a for loop, make a sum variable, and add each index for each iteration.\
+\cf4 connor0728\cf0  
+\fs20 8:29:22 pm
+\fs26 \
+for\
+\cf4 moppr\cf0  
+\fs20 8:29:22 pm
+\fs26 \
+For loop\
+\cf4 k77frank\cf0  
+\fs20 8:29:22 pm
+\fs26 \
+make a counter and a for loop to add each number to it\
+\cf4 JRY\cf0  
+\fs20 8:29:22 pm
+\fs26 \
+Use a for loop and add each element to the sum so far\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right! We'll just use another for loop!
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 8:29:34 pm
+\fs26 \
+make a total. loop through all items in the array and add them to the total\
+\cf4 puwei99\cf0  
+\fs20 8:29:45 pm
+\fs26 \
+for (int index = 0; index < grades.length; index++) \{ sum = sum + grades[index]; \}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, we need to make a variable, I'll call it \cf3 sum\cf0 , initialized to 0 to start. This variable will hold our running tally of the sum of the entries in our array. Inside the loop, we'll just write some code to increase the value of \cf3 sum\cf0  by the value \cf3 grades[index]\cf0 . (After our loop has stepped through all the possible values of \cf3 index\cf0 , \cf3 sum\cf0  will end up equal to the sum of the values in the array.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Quick review to make sure everyone's paying attention: How do we know how many elements we have in our array?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:30:34 pm
+\fs26 \
+grades.length\
+\cf4 joberman\cf0  
+\fs20 8:30:34 pm
+\fs26 \
+grades.length\
+\cf4 JesseLin\cf0  
+\fs20 8:30:34 pm
+\fs26 \
+grade.length\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right! We simply use the \cf3 length\cf0  public attribute to have the array 
+\i come out and tell us
+\i0  how long it is!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you translate these ideas into Java? Go ahead and also include a line to print the average when you're done.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a rundown of what I'm looking for in answers:\
+Declare sum and initialize it to 0.\
+Add up the values in the grades array.\
+Print the average.
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:34:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf5 double
+\f3\b0 \cf0  sum \cf7 =\cf0  \cf8 0.0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  grades\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 double
+\f3\b0 \cf0  average \cf7 =\cf0  sum\cf7 /\cf0 grades.\cf11 length\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "The average is %f"\cf0 , average\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:34:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf5 int
+\f3\b0 \cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i\cf7 =\cf8 0\cf7 ;\cf0  i\cf7 <\cf0 grades.\cf11 length\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  grades\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 double
+\f3\b0 \cf0  average \cf7 =\cf0  \cf6 (
+\f2\b \cf5 double
+\f3\b0 \cf6 )\cf0 sum\cf7 /\cf0 grades.\cf11 length\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 println\cf6 (\cf0 average\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:34:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i \cf7 =\cf0  \cf8 0\cf7 ;\cf0  i \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  i \cf7 ++\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  grades\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 println\cf6 (\cf0 sum \cf7 /\cf0  grades.\cf11 length\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 gkaops\cf0  
+\fs20 8:34:07 pm
+\fs26 \
+int total = 0;\
+int average = 0;\
+for (int index = 0; index < grades.length; index++)\
+\{\
+total = total + grades[index];\
+\}\
+System.out.printf("Average %d\\n", total / grades.length );\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One comment in passing: In gkaops's solution, that int average variable didn't get used, and as we'll see in a second, averages aren't usually integers anyway, so that line can just be deleted.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index\cf7 =\cf8 0\cf7 ;\cf0  index \cf7 <\cf0  grades.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  grades\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "The average is: %f\cf14 \\n\cf13 "\cf0 , \cf6 (\cf5 double\cf6 )\cf0 sum \cf7 /\cf0  grades.\cf11 length\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Question: What does \cf3 (double)\cf0  do before sum in the last line?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:35:49 pm
+\fs26 \
+It turns sum into a double to avoid integer division\
+\cf4 MSTang\cf0  
+\fs20 8:35:49 pm
+\fs26 \
+Makes it a double to prevent floor division\
+\cf4 JRY\cf0  
+\fs20 8:35:55 pm
+\fs26 \
+It copies sum to a double type so that we don't do integer division\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right. It converts the value in the variable sum into a double, i.e. a number with decimal places. Remember this is called \cf3 typecasting\cf0 . Why do we need to do that here?
+\b0 \
+\pard\pardeftab720
+\cf4 sanpran\cf0  
+\fs20 8:36:28 pm
+\fs26 \
+because when you divide, you want to keep the decimal places\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we had left out that (double) typecast, both parts of the division would have been integers, so Java would do integer division and we'd lose the part of the answer after the decimal point. Since we actually want an answer like 10.5 here, we must make sure at least one of the numbers getting fed into the division is a double. If we felt like it, we could also have typecast the length of the array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What about this: (double)(sum / grades.length)? Would that have worked?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:37:26 pm
+\fs26 \
+No.\
+\cf4 k77frank\cf0  
+\fs20 8:37:26 pm
+\fs26 \
+no\
+\cf4 jdaimax\cf0  
+\fs20 8:37:26 pm
+\fs26 \
+no\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:37:26 pm
+\fs26 \
+no, it would just make the integer a double\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:37:33 pm
+\fs26 \
+no\
+\cf4 bel3900989\cf0  
+\fs20 8:37:33 pm
+\fs26 \
+no, the calculation would be done in integers\
+\cf4 JRY\cf0  
+\fs20 8:37:33 pm
+\fs26 \
+No, because we do the integer division first and eliminate decimal places, then add zeros back in with (double)\
+\cf4 Tungsten\cf0  
+\fs20 8:37:33 pm
+\fs26 \
+No, because the we still have int / int for computing the average.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, because in that way of writing it, the typecasting comes in after we've already done the division.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another alternative would be to make \cf3 sum\cf0  a double instead of an int to begin with. That would have worked, although it would have been a strange solution. We're adding integers, so it makes more sense to have sum be an integer variable and just cast its value into a double if we really need to treat it as a double.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In any case, the moral here is that you should remember that when you take an average, you need to make sure one of the values in the division is a double!
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:38:30 pm
+\fs26 \
+When you typecast, does that change the type of "sum" itself or just give us a value as a double?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It doesn't change the type of the original variable. It just gives you a copy of the value that has the desired type.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:39:25 pm
+\fs26 \
+What if we did sum / (double)grades.length?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That would also have worked.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since taking an average seems to be a good thing to be able to do, let's actually convert this bit of code into its own method. In particular, let's make it a static method (so we'll be able to call it from \cf3 main\cf0 ; more on that in a second). The method will take an array of integers as a parameter and return the average as a double.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: Why did I decide that I want to make this averaging method static? It's just because \cf3 main\cf0  is a static method and I want to be able to call our averaging method from inside of \cf3 main\cf0  without first having to fuss with creating an object of our class. Java doesn't allow you to call non-static methods from inside a static method. (You can't do it because it wouldn't make any sense. Static methods belong to the class as a whole whereas non-static methods always belong to some particular object, so if you tried to call a non-static method from a static one, which object of the class would you be referring to?)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, this detail about not being able to call non-static methods directly from static methods is a big reason why in the graphics programs we wrote a couple weeks ago, one of the few lines we called inside \cf3 main\cf0  was one that created an object of the class we were in the middle of defining. (If that sounds confusing, just take a look after class at the definitions of the \cf3 main\cf0 s that we were writing in Week 4. You'll see what I mean.) By creating an object of the class we were defining, we gave our program access to the class's non-static methods, in particular, we gained access to the non-static paintComponent method coming from JPanel that our code was overriding.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:41:14 pm
+\fs26 \
+How important is it to know these sorts of differences (public - private, static - not)?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's important to get comfortable with these details if you want to use Java in any serious way. I went into detail about this point about static versus non-static since I remember getting a lot of questions about why one might want to make some methods static and this seemed like a natural opportunity to address one reason you might make that decision.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But really, you just pick these things up over time as you get practice. If you're doing the homework and message board problems, those should be giving you the kind of practice you need to absorb the ideas.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Back to the main discussion: Can you give me a suitable header line for this averaging method?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:44:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 double
+\f3\b0 \cf0  average\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  \cf6 []\cf0  array\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:44:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 double
+\f3\b0 \cf0  Average\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  \cf6 []\cf0  array\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:44:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 double
+\f3\b0 \cf0  average\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf6 []\cf0  args\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 williamyin08\cf0  
+\fs20 8:44:57 pm
+\fs26 \
+public static double LeAverage(int demGrades[])\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 double\cf0  getAverage\cf6 (\cf5 int\cf6 []\cf0  numbers\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that, for the purposes of defining this method, I decided to call the array that's getting passed in as a parameter \cf3 numbers\cf0  to represent the fact that this method is quite general and isn't necessarily always going to be used to find the average just of grades.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note we need the brackets in this header just like we need them in any other type declaration sort of situation in Java in order to let Java know that the corresponding parameter is an array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we give the body of the method. It's essentially the code we did before with the names changed. We don't print at the end. Can you give me the code?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So now I'm looking for the complete code for the getAverage method, including its header. (I'll try to make allowances for if you have used different names.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:47:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 double
+\f3\b0 \cf0  average\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  \cf6 []\cf0  nums\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i \cf7 =\cf0  \cf8 0\cf7 ;\cf0  i \cf7 <\cf0  nums.\cf11 length\cf7 ;\cf0  i \cf7 ++\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  nums\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf6 (
+\f2\b \cf5 double
+\f3\b0 \cf6 )\cf0  sum \cf7 /\cf0  nums.\cf11 length\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 gkaops\cf0  
+\fs20 8:47:48 pm
+\fs26 \
+public static double getAverage(int [] grades)\
+\{\
+int sum = 0;\
+for (int index=0; index < grades.length; index++)\
+sum += grades[index];\
+return (double) sum / grades.length;\
+\}\
+\cf4 chenjamin\cf0  
+\fs20 8:47:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 double
+\f3\b0 \cf0  getAverage\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf6 []\cf0  numbers\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  numbers\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf6 (
+\f2\b \cf5 double
+\f3\b0 \cf6 )\cf0 sum \cf7 /\cf0  numbers.\cf11 length\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:47:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 double
+\f3\b0 \cf0  getAverage\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  \cf6 []\cf0  a\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  a.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  a\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf6 (
+\f2\b \cf5 double
+\f3\b0 \cf6 )\cf0 sum \cf7 /\cf0  a.\cf11 length\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 mduong14\cf0  
+\fs20 8:48:16 pm
+\fs26 \
+public static double getAverage(int[]numbers)\{\
+int sum=0;\
+for (int i=0; i<numbers.length; i++)\{\
+sum+=numbers
+\i ;\
+\}\
+return (double)sum/numbers.length;
+\i0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Toss a closing brace on that last one, but I'll allow it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 double\cf0  getAverage\cf6 (\cf5 int\cf6 []\cf0  numbers\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index\cf7 =\cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  numbers\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf6 (\cf5 double\cf6 )\cf0 sum \cf7 /\cf0  numbers.\cf11 length\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we can call getAverage within main!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "The average is: %f\cf14 \\n\cf13 "\cf0 , getAverage\cf6 (\cf0 grades\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that when we pass the grades array into getAverage, we don't use any brackets. We want to pass in the entire array, and the name of the array is just \cf3 grades
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:50:09 pm
+\fs26 \
+Why don't we need to specify the length of the array in the method header?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because all the method needs to do is be told by Java what the address is in memory of the array. It doesn't matter to the method how long the array is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll write a method to return the largest element in the array. The basic algorithm is similar to that of summing up the numbers. In that problem, we initialized a counter for the sum and then updated the counter after looking at each value.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this case, our "counter" will keep track of the largest value of all the values we've seen so far. I'll call the variable \cf3 max\cf0  for maximum.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How will we update max when we look at numbers[index]?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just describe it in words.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're walking down a table with a bunch of slices of cake on plates and you're only allowed to take one plate of cake, what would you do to grab the biggest piece (assuming you only allow yourself to walk down the table one time)?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:53:09 pm
+\fs26 \
+if it is larger than max assign it to max\
+\cf4 JRY\cf0  
+\fs20 8:53:09 pm
+\fs26 \
+If numbers[index] is bigger than max, let it be the new maximum\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, if max is smaller than numbers[index], replace max with numbers[index]. Otherwise, leave max alone.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to set max to something to start. Why can't we use 0 as an initial value for max?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:55:05 pm
+\fs26 \
+What if the array only consists of negative numbers?\
+\cf4 moppr\cf0  
+\fs20 8:55:05 pm
+\fs26 \
+What if the array contains all negative numbers\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Exactly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's possible that all of the numbers in the array could be negative. Then max would end up staying at 0. So what's a better initial value?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:55:45 pm
+\fs26 \
+numbers[0]\
+\cf4 MSTang\cf0  
+\fs20 8:55:45 pm
+\fs26 \
+numbers[0]\
+\cf4 MathWolf\cf0  
+\fs20 8:55:45 pm
+\fs26 \
+The first item\
+\cf4 JRY\cf0  
+\fs20 8:55:45 pm
+\fs26 \
+The first entry\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can use numbers[0] as the starting value. Then we're guaranteed that the final value of max will match that of an array element.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you now write the code, including the method header? Call the method getMax.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have 30 minutes left and a fair bit of stuff I'd like to cover, so I'm going to try to accelerate this a little.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:57:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 int
+\f3\b0 \cf0  getMax\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  \cf6 []\cf0  nums\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  max \cf7 =\cf0  nums\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i \cf7 =\cf0  \cf8 0\cf7 ;\cf0  i \cf7 <\cf0  nums.\cf11 length\cf7 ;\cf0  i \cf7 ++\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf6 (\cf0 max \cf7 <\cf0  nums\cf6 [\cf0 i\cf6 ])\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  nums\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 8:57:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 int
+\f3\b0 \cf0  getMax\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf6 []\cf0  numbers\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f4\i \cf10 /* Finds the largest integer in an array */
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  max\cf7 =\cf0 numbers\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0  
+\f4\i \cf10 // Doesn't start at 0, since they might be all negative
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i\cf7 =\cf8 0\cf7 ;\cf0  i\cf7 <\cf0 numbers.\cf11 length\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf6 (\cf0 numbers\cf6 [\cf0 i\cf6 ]\cf0  \cf7 >\cf0  max\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  numbers\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 gkaops\cf0  
+\fs20 8:57:38 pm
+\fs26 \
+public static int getMax(int[] numbers)\
+\{\
+int max = numbers[0];\
+for (int index=0; index < numbers.length; index++)\
+\{\
+if (numbers[index] > max)\
+max = numbers[index];\
+\}\
+return max;\
+\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  getMax\cf6 (\cf5 int\cf6 []\cf0  numbers\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  max \cf7 =\cf0  numbers\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index\cf7 =\cf8 1\cf7 ;\cf0  index\cf7 <\cf0 numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 max \cf7 <\cf0  numbers\cf6 [\cf0 index\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  numbers\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note I started index at 1, instead of 0. Why is that the right thing to do here?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:58:16 pm
+\fs26 \
+we don't need to check 0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right. We already handled the case of index=0 in the initialization of max.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What would have happened if we had started index=0?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 8:58:46 pm
+\fs26 \
+We would have done an unneccessary iteration of the loop\
+\cf4 MSTang\cf0  
+\fs20 8:58:46 pm
+\fs26 \
+Nothing bad, just inefficient\
+\cf4 Tungsten\cf0  
+\fs20 8:58:46 pm
+\fs26 \
+We would have had an extra iteration.\
+\cf4 bel3900989\cf0  
+\fs20 8:58:46 pm
+\fs26 \
+it would work, but redundant?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nothing special. We would compare max to index[0], but since they're the same, max would not be changed. We end up doing some unnecessary work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now supply the code in main that will print the largest element in grades.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:59:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "Largest grade: %d
+\f2\b \cf14 \\n
+\f3\b0 \cf13 "\cf0 , getMax\cf6 (\cf0 grades\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:59:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "The highest grade is: %d
+\f2\b \cf14 \\n
+\f3\b0 \cf13 "\cf0 , getMax\cf6 (\cf0 grades\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:59:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "The highest grade was: %f
+\f2\b \cf14 \\n
+\f3\b0 \cf13 "\cf0 , getMax\cf6 (\cf0 grades\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:59:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "The largest value is %d"\cf0 , getMax\cf6 (\cf0 grades\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 8:59:39 pm
+\fs26 \
+System.out.printf("The max is: %d\\n", getMax(grades));\
+\cf4 puwei99\cf0  
+\fs20 8:59:44 pm
+\fs26 \
+System.out.printf("The highest score is %d",getMax(grades));\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's how I did it:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "The maximum is %d\cf14 \\n\cf13 "\cf0 , getMax\cf6 (\cf0 grades\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One more problem. Let's write a method that returns all the numbers in the array that are higher than a given value. For example, if the numbers were \{60, 70, 80, 90, 100\}, and the target value was 80, we'd want the numbers 90 and 100.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What type of value should this method return?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:00:36 pm
+\fs26 \
+int array\
+\cf4 moppr\cf0  
+\fs20 9:00:36 pm
+\fs26 \
+int []\
+\cf4 JRY\cf0  
+\fs20 9:00:36 pm
+\fs26 \
+array\
+\cf4 Tungsten\cf0  
+\fs20 9:00:36 pm
+\fs26 \
+int array?\
+\cf4 k77frank\cf0  
+\fs20 9:00:36 pm
+\fs26 \
+an array\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want a collection of numbers, so that looks like we'll need to return another array. (There are other options which we'll see later in the course.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So can you give me the header for this method? We'll call it getLargeNums, and the target value will be val. The array will be numbers, as usual.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:01:02 pm
+\fs26 \
+Val is an int?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The input array is an array of ints, so yes, making val an int would be a sensible choice.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (There's nothing to stop you from comparing ints to, say, doubles, but that's an extra layer of complication that wouldn't make a lot of sense and I don't want to consider that.)
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:03:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 int
+\f3\b0 \cf6 []\cf0  getLargeNums\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf6 []\cf0  numbers, 
+\f2\b \cf5 int
+\f3\b0 \cf0  val\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 9:03:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  getLargeNums\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf6 []\cf0  a, 
+\f2\b \cf5 int
+\f3\b0 \cf0  val\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 connor0728\cf0  
+\fs20 9:03:50 pm
+\fs26 \
+public static int[] getLargeNums(int[] numbers, int val)\
+\cf4 shivammisra\cf0  
+\fs20 9:03:53 pm
+\fs26 \
+public static double getLargeNums(int [] numbers,int val)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  \cf6 []\cf0  getLargeNums\cf6 (\cf5 int\cf0  val, \cf5 int\cf6 []\cf0  numbers\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 EmeraldBot\cf0  
+\fs20 9:04:20 pm
+\fs26 \
+public static int[] getLargeNums(int[] nums, int val)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that we need the square brackets as part of the return type to the left of getLargeNums.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look at my example again. What is the length of the array that should be returned?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:04:49 pm
+\fs26 \
+We don't know.\
+\cf4 chenjamin\cf0  
+\fs20 9:04:49 pm
+\fs26 \
+we don't know\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In general, that's right, but in terms of my example about \{60, 70, 80, 90, 100\} and val = 80.
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:05:22 pm
+\fs26 \
+2\
+\cf4 MSTang\cf0  
+\fs20 9:05:22 pm
+\fs26 \
+2\
+\cf4 ScottBusche\cf0  
+\fs20 9:05:22 pm
+\fs26 \
+2.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are only two values to return, so our answer array should be of length 2, even though the input array was length 5. This means we need to build a different array from the input and copy the appropriate values into that array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We know the answer length for my 
+\i sample
+\i0  input, but how can we get the method to figure out the answer length in general?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:06:04 pm
+\fs26 \
+for loop?\
+\cf4 moppr\cf0  
+\fs20 9:06:04 pm
+\fs26 \
+we need a loop\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But of course!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need a loop that goes through numbers and counts how many are bigger than val. That's not too hard. Can you give me the code for that? Call the variable that's doing the counting \cf3 count\cf0 .
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 9:07:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf5 int
+\f3\b0 \cf0  count \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 1\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf6 (\cf0 numbers\cf6 [\cf0 index\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0count\cf7 ++;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 9:07:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  count \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i \cf7 =\cf0  \cf8 0\cf7 ;\cf0  i \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf6 (\cf0 numbers\cf6 [\cf0 i\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0count\cf7 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  count \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 numbers\cf6 [\cf0 index\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0count\cf7 ++;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (This is the kind of thing I had in mind when I said that if you don't know how big your array needs to be, then you need to find out in some way.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we can declare and create the answer array. Let's call the variable \cf3 largeNums\cf0 . Can you give me the line we need?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:08:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf5 int
+\f3\b0 \cf0  \cf6 []\cf0  largeNums \cf7 =\cf0  
+\f2\b new
+\f3\b0  
+\f2\b \cf5 int
+\f3\b0 \cf6 [\cf0 count\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 9:08:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf5 int
+\f3\b0 \cf6 []\cf0  largeNums \cf7 =\cf0  
+\f2\b \cf5 int
+\f3\b0 \cf6 [\cf0 count\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:08:41 pm
+\fs26 \
+int[] largeNums = new int[count];\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is what my answer looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  largeNums \cf7 =\cf0  new \cf5 int\cf6 [\cf0 count\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 MSTang\cf0  
+\fs20 9:09:07 pm
+\fs26 \
+Oops, I don't have a new. Is the new needed?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. You always need new in Java when you are creating a new object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We now need to loop through numbers a 
+\i second
+\i0  time and move the values over.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's an attempt to do it. What's wrong with it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 numbers\cf6 [\cf0 index\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeNums\cf6 [\cf0 index\cf6 ]\cf0  \cf7 =\cf0  numbers\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 k77frank\cf0  
+\fs20 9:10:18 pm
+\fs26 \
+the indexes may not align\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The problem is that the index in numbers is not the same place as where it should go in largeNums. Take my example input of \{60, 70, 80, 90, 100\}. The 90 in position 3 should go to position 0, not 3, of the answer array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we solve this issue?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:10:49 pm
+\fs26 \
+Add an index counter for the largeNums array.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need a separate variable to keep track of where we are in largeNums that's separate from index. Let's call it \cf3 largeIndex\cf0 . Can you adapt my code?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:12:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0   
+\f2\b \cf5 int
+\f3\b0 \cf0   largeIndex\cf7 =\cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf6 (\cf0 numbers\cf6 [\cf0 index\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeNums\cf6 [\cf0 index\cf6 ]\cf0  \cf7 =\cf0  numbers\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeIndex\cf7 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:12:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  largeIndex \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  nums.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf6 (\cf0 nums\cf6 [\cf0 index\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeNums\cf6 [\cf0 index\cf6 ]\cf0  \cf7 =\cf0  nums\cf6 [\cf0 largeIndex\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:12:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  i \cf7 =\cf0  \cf8 0\cf7 ;\cf0  i \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  i\cf7 ++\cf6 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf6 (\cf0 numbers\cf6 [\cf0 i\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeNums\cf6 [\cf0 largeIndex\cf6 ]\cf0  \cf7 =\cf0  numbers\cf6 [\cf0 i\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeIndex\cf7 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what it should look like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  largeIndex \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 numbers\cf6 [\cf0 index\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeNums\cf6 [\cf0 largeIndex\cf6 ]\cf0  \cf7 =\cf0  numbers\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeIndex\cf7 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One last thing to do. What is it?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:12:31 pm
+\fs26 \
+return!\
+\cf4 gkaops\cf0  
+\fs20 9:12:38 pm
+\fs26 \
+return\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return largeNums\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the whole method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  \cf6 []\cf0  getLargeNums\cf6 (\cf5 int\cf0  val, \cf5 int\cf6 []\cf0  numbers\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  count \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 numbers\cf6 [\cf0 index\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0count\cf7 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  largeNums \cf7 =\cf0  new \cf5 int\cf6 [\cf0 count\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  largeIndex \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 numbers\cf6 [\cf0 index\cf6 ]\cf0  \cf7 >\cf0  val\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeNums\cf6 [\cf0 largeIndex\cf6 ]\cf0  \cf7 =\cf0  numbers\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0largeIndex\cf7 ++;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return largeNums\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now let's go to main to call it. Let's print all the numbers in \cf3 grades\cf0  that are larger than 85.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unfortunately, this doesn't work:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "The grades higher than 85 are: %s\cf14 \\n\cf13 "\cf0 , getLargeNums\cf6 (\cf8 85\cf0 , grades\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The call is fine, but if you run your code, you'll see something like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+The grades higher than \cf8 85\cf0  are\cf7 :\cf0  \cf6 [\cf0 I@17f7be7b\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The problem is that Java can't print an array directly. Converting it to a String gives gibberish that corresponds to a particular memory location.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we solve this?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 toString won't work here because arrays in Java don't natively have a toString method (and it wouldn't work the way we'd expect even if they did; I'll say more about something that is built in later today if there's time).
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 9:15:34 pm
+\fs26 \
+for loop to seperately print each number in the array\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep! We need to use another loop to print out the array contents, just like we needed to do with \cf3 grades\cf0  earlier. But first we'll need to call the getLargeNums method and put the array into a new variable:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  larges \cf7 =\cf0  getLargeNums\cf6 (\cf8 85\cf0 , grades\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since getLargeNums has already done the job of creating the array, we don't need to use new here.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we need to do the printing. Can you fill that in for me?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Actually, I'll skip this part to move on to bigger and better things.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I did:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  larges \cf7 =\cf0  getLargeNums\cf6 (\cf8 85\cf0 , grades\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 print\cf6 (\cf13 "The grades higher than 85 are: "\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index\cf7 =\cf8 0\cf7 ;\cf0  index \cf7 <\cf0  larges.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "%d "\cf0 ,larges\cf6 [\cf0 index\cf6 ])\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 print\cf6 (\cf13 "\cf14 \\n\cf13 "\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The loop comes between code that prints some explanatory text and code that puts a new line after the numbers are all printed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 One warning/reminder about passing arrays to methods.\cf0  Consider this method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  zap\cf6 (\cf5 int\cf6 []\cf0  numbers\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index\cf7 =\cf8 0\cf7 ;\cf0  index \cf7 <\cf0  numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0numbers\cf6 [\cf0 index\cf6 ]\cf0  \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And now suppose we call it like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  \cf6 []\cf0  anArray \cf7 =\cf0  \cf6 \{\cf8 1\cf0 , \cf8 2\cf0 , \cf8 3\cf0 , \cf8 4\cf6 \}\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zap\cf6 (\cf0 anArray\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we now printed the contents of anArray, what would be in it?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:17:44 pm
+\fs26 \
+0s\
+\cf4 Tungsten\cf0  
+\fs20 9:17:44 pm
+\fs26 \
+\{0, 0, 0, 0\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 anArray would have four zeroes in it. Contrast it with this similar-looking code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  zap\cf6 (\cf5 int\cf0  number\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0number \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 with the following code later:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0   aNumber \cf7 =\cf0  \cf8 1\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0zap\cf6 (\cf0 aNumber\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you printed out \cf3 aNumber\cf0 , the result would still be 1. Any idea why there's a difference?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 It's our old friends: primitive vs. reference types.
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you pass a value of a 
+\i primitive
+\i0  type (int, float, boolean, etc.) to a method, the value of the variable gets 
+\i copied into a temporary variable in some other place in memory
+\i0 . Then, inside the method, it's the value of the copy that ends up getting altered. The original isn't touched.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But with a 
+\i reference
+\i0  type, like an array, what gets passed into the method is the address in memory where the original object lives. 
+\i No copy is made when you pass a reference type into a method.
+\i0  Any changes you make to parameters which have reference types are changes you are making to the original object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Here's a quick reminder on how you know the difference between primitive and reference types. This is very easy. There are precisely 8 primitive types in Java: \cf3 boolean, byte, short, char, int, long, float, double\cf0 . ALL other types are reference types.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So even though the name of the parameter is not the same as the name of the variable in the caller in the first version of zap, they are the same thing (the same chunk of data in memory, not a copy). That behavior actually works out pretty well here, since the intent of the method is to clear out the array. But it does occasionally lead to some weird-looking errors. So be careful!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: A NEW LOOP
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I hope by now that you're seeing that all of these array loops look very similar to each other. We set index to go from 0 up to but not including the length of the array we're working with. Then inside the loop, we write something of the form \cf3 array[index]\cf0  to access the value inside \cf3 array\cf0  located at location number \cf3 index\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 While this loop structure isn't particularly complex, there are a couple of places where you could make a crucial mistake. For one thing, you might unwittingly write index <= array.length instead of <. You might also accidentally modify \cf3 index\cf0  within the loop, causing you to skip or re-access certain elements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For these reasons, as well as for a bit of convenience, Java provides another version of the for loop, called the \cf3 enhanced for loop\cf0  that lets you cut out the index middleman. Those of you from Python will be reminded of the "for x in list" sort of construction that lets you go through a list or tuple.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Recall the seasons array example that I had cooked up to illustrate how one can (declare, create, and) initialize an array without needing to use a for loop:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\pard\pardeftab720
+\cf9 String\cf0  \cf6 []\cf0  seasons \cf7 =\cf0  \cf6 \{\cf13 "winter"\cf0 , \cf13 "spring"\cf0 , \cf13 "summer"\cf0 , \cf13 "fall"\cf6 \}\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what the enhanced for loop looks like in the context of printing the elements of the seasons array:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf9 String\cf0  season \cf7 :\cf0  seasons\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "%s\cf14 \\n\cf13 "\cf0 , season\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just like our earlier for loops declared the variable \cf3 index\cf0  as part of the loop, this enhanced for loop declares the loop variable \cf3 season\cf0 . It needs to be a String because \cf3 seasons\cf0  is an array of Strings.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me repeat that last part to emphasize an important difference between ordinary for loops and these enhanced for loops: if you're using a "regular" for loop, your variable for the array index will always be an \cf3 int\cf0 . If you're using the "enhanced" loop, your variable for the array element will have to match the type of the array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In my example, season successively takes on the value of each element of the array. So this code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  \cf6 []\cf0  seasons \cf7 =\cf0  \cf6 \{\cf13 "winter"\cf0 , \cf13 "spring"\cf0 , \cf13 "summer"\cf0 , \cf13 "fall"\cf6 \}\cf7 ;\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf9 String\cf0  season \cf7 :\cf0  seasons\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf11 out\cf0 .\cf11 printf\cf6 (\cf13 "%s\cf14 \\n\cf13 "\cf0 , season\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 prints this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+winter\
+spring\
+summer\
+fall\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In my example before where we printed the contents of the array \cf3 grades\cf0 , I printed the index number along with the element. When you want to do something like that, then you'll be better off using the "regular" loop. In the enhanced loop, there's no way to extract the position from the element.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another example of where you'll need to use the regular loop is if you wanted to return 
+\i where
+\i0  (what index) the maximum element was in the array, as opposed to just what the value of the max is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another point to note: In the regular for loop, using an integer valued loop variable called \cf3 index\cf0 , if I write \cf3 seasons[index]="autumn"\cf0 , then the value of the \cf3 seasons\cf0  array at location number \cf3 index\cf0  gets changed. But, in the enhanced for loop, if I change the variable (like if I were to write \cf3 season = "autumn"\cf0 ), the array does not get changed. So, if you want to do something that 
+\i modifies
+\i0  array elements, you'll need the regular loop for that too.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As an example, let's rewrite the method to get the average of the numbers using the enhanced for loop. Can you give me that code?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:24:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 double
+\f3\b0 \cf0  getAverage\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  \cf6 []\cf0  nums\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  num\cf7 :\cf0  nums\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  num\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf6 (
+\f2\b \cf5 double
+\f3\b0 \cf6 )\cf0  sum \cf7 /\cf0  nums.\cf11 length\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 9:24:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf5 double
+\f3\b0 \cf0  average\cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  \cf6 []\cf0  array\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf5 int
+\f3\b0 \cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b for
+\f3\b0  \cf6 (
+\f2\b \cf5 int
+\f3\b0 \cf0  num \cf7 :\cf0  array\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  num\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf6 (
+\f2\b \cf5 double
+\f3\b0 \cf6 )\cf0 sum\cf7 /\cf0 array.\cf11 length\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer. I changed the name of the method slightly:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 double\cf0  getAverage2\cf6 (\cf5 int\cf6 []\cf0  numbers\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  sum \cf7 =\cf0  \cf8 0\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  number \cf7 :\cf0  numbers\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0sum \cf7 +=\cf0  number\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf6 (\cf5 double\cf6 )\cf0 sum \cf7 /\cf0  numbers.\cf11 length\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since \cf3 numbers\cf0  is an array of ints, \cf3 number\cf0  is declared as an int.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:25:19 pm
+\fs26 \
+Is there a method that lets you get the position of an element in an array?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm not sure. I'll look after class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 My guess is no.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But you could write one if you need it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: OTHER FUN ARRAY TRICKS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here are some other things that you could do that are related to arrays.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, suppose you wanted to find the maximum of a bunch of separate variables, like x1, x2, x3, and x4. You could, of course, make an array and copy the values into it and pass the array to the method we already wrote.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's an alternative. Java allows us to create \cf3 variable-length argument lists\cf0 . Here the word "variable" means that the number of arguments can be changed from call to call. So I could write max(x1, x2, x3, x4) or max(x1, x2, x3).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The only change we'll have to make to our getMax method is to the header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 int\cf0  getMax\cf6 (\cf5 int\cf0 ... \cf11 numbers\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 int\cf0  max \cf7 =\cf0  numbers\cf6 [\cf8 0\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index\cf7 =\cf8 1\cf7 ;\cf0  index\cf7 <\cf0 numbers.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 max \cf7 <\cf0  numbers\cf6 [\cf0 index\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0max \cf7 =\cf0  numbers\cf6 [\cf0 index\cf6 ]\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return max\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've replaced int[] with int... Now getMax will automatically take all the integers we might pass into it and create an array from them. It also knows what to do if you pass in an array to begin with.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A couple of details: You can only use the ellipsis (the three dots) 
+\i once
+\i0  in a header, and it must come at the 
+\i end
+\i0  of the parameter list.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anybody have an idea why those rules are there?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 9:27:19 pm
+\fs26 \
+so it doesn't get mixed up with other parameters\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They are there so that Java can easily figure out which parameters are supposed to be part of the array and which are not. Suppose the header had two int\'85 variables, and four parameters are passed in. In such a case, Java wouldn't be able to decide what you mean! Is that two arrays of two, or arrays of one and three?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look at another interesting use of an array in a method. You've probably noticed that main takes an array as a parameter -- String[] args.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What this array does is it allows you to supply \cf3 command line arguments\cf0  to your program. The command line is an operating system prompt that allows you to supply instructions, as text, directly to the operating system without having to go through the GUI. In Windows 7, you get to it by going to Accessories under the Start Menu and choosing "Command Prompt". (For Mac OS X, you need to find an application called Terminal, which is sitting in 
+\i /Applications/Utilities/
+\i0 , meaning you open the Applications directory and from there go into the Utilities directory, then just look for the application named "Terminal".)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I discussed on the message board, you can compile and run programs directly from the command prompt (assuming everything is set up correctly).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Quick review: To compile some Java code you've written from the command line, you enter javac followed by the name of the file with the code, so you'd write something like 
+\i javac program.java
+\i0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To run the compiled code you just created, you type 
+\i java program
+\i0 . This is where command line arguments come into play. You can continue the line 
+\i java program
+\i0  with whatever inputs you want to give the program like 
+\i java program motorbike 1 2
+\i0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anything after the class name gets placed, in order, into the array (of \cf3 Strings\cf0 ) that we have called \cf3 args\cf0 . So, in my example. what's \cf3 args[1]\cf0 ?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: The name of the program is "program". motorbike is not part of the name of the program.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:29:52 pm
+\fs26 \
+"1"\
+\cf4 jdaimax\cf0  
+\fs20 9:29:52 pm
+\fs26 \
+1\
+\cf4 JRY\cf0  
+\fs20 9:29:52 pm
+\fs26 \
+1\
+\cf4 Sir_cumference\cf0  
+\fs20 9:29:52 pm
+\fs26 \
+1\
+\cf4 williamyin08\cf0  
+\fs20 9:30:07 pm
+\fs26 \
+1!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Technically, MSTang's answer is the only correct one, but you didin't know that ahead of time, so I passed others since you're on the right track.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first element is "motorbike" at index 0. Then comes "1" at position 1. Note that's the \cf3 String\cf0  "1", not the \cf3 int\cf0  1. Java does this because, since we can type anything, the only thing we can be sure of is that the user is entering Strings.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java automatically determines the appropriate length for \cf3 args\cf0  based on the number of arguments given.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Command line arguments can also be passed in via Eclipse, but the mechanism is a little more awkward. I won't describe this now for lack of time. Ask on the message board if you'd like to know how to pass in command line arguments through Eclipse.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Time is up. I have one last point I'd like to discuss. You're welcome to go now if you need to. Just remember to check transcript to see this last bit.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The last "array trick" may be the most useful. As you might expect, there are certain tasks that are often done with arrays. We've already needed to print the contents of an array or initialize the contents to a single value.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another thing you might want to do is compare two arrays to see if they have the same contents. Doing a1 == a2 won't work, though. Why not?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (We've already seen what goes wrong in previous weeks. The idea, once again, is the distinction between how Java handles primitive types and how it handles reference types.)
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 9:33:48 pm
+\fs26 \
+That compares their location on the memory disk?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Arrays are reference types, so using the double equals operator is going to test whether a1 and a2 are identically the same object, in the same place in memory, which is (intuitively) not what we want to be testing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Similarly, if you write 
+\i a1 = a2;
+\i0  in an attempt to make a1 into a copy of a2, you may be surprised to find that a1 instead only 
+\i references
+\i0  the 
+\i same
+\i0  object as a2. In particular, a change to a1 also affects a2.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now, Java has a class in the java.util package that provides methods to handle basic array tasks like this for us. But as an exercise, let's try to write our own method to compare two arrays to check whether they have all the same values (and hence are "equal" in the sense we want).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's call our method called areTheSame. It will take two integer arrays as parameters. It should return \cf3 true\cf0  if the two arrays have the same contents, and \cf3 false\cf0  otherwise.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The basic idea is to loop through the arrays simultaneously and compare them element by element. But first there's an important check to do that could save you having to do that. Can you think of what it is?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Actually, it doesn't save YOU anything, but it could save Java some time every now and then.)
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:35:13 pm
+\fs26 \
+Do the two arrays have the same length\
+\cf4 Sir_cumference\cf0  
+\fs20 9:35:13 pm
+\fs26 \
+THe array lengths\
+\cf4 Sir_cumference\cf0  
+\fs20 9:35:13 pm
+\fs26 \
+Lengths of the arrays\
+\cf4 chenjamin\cf0  
+\fs20 9:35:13 pm
+\fs26 \
+length?\
+\cf4 ScottBusche\cf0  
+\fs20 9:35:16 pm
+\fs26 \
+The length?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the two arrays have different lengths, then they can't possibly be the same. So check for that first, and if they are different, we can return \cf3 false\cf0  right away.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To do the looping, should we use the index style loop or the enhanced for loop? Or does it matter?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:35:53 pm
+\fs26 \
+Index loop.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It does matter. If we use the enhanced for loop, we can only get elements from one of the two arrays. We need the index to get the elements from the same spot in 
+\i both
+\i0  of the arrays. If we ever find a mismatch, we know they're not the same. If we get through all the elements with no problem, they are the same.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the interest of time, I'll just give my answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 boolean\cf0  areTheSame\cf6 (\cf5 int\cf6 []\cf0  a1, \cf5 int\cf6 []\cf0  a2\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 a1.\cf11 length\cf0   \cf7 !=\cf0  a2.\cf11 length\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  a1.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 a1\cf6 [\cf0 index\cf6 ]\cf0  \cf7 !=\cf0  a2\cf6 [\cf0 index\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 true\cf7 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note the return inside the loop that kicks us out as soon as we realize there's a problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here are some wrong ways to write the code, to broaden your horizons of common mistakes. Underneath each, I'll say what's wrong with it. You can examine them later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could try the following, but it has a problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 boolean\cf0  areTheSame\cf6 (\cf5 int\cf6 []\cf0  a1, \cf5 int\cf6 []\cf0  a2\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 a1.\cf11 length\cf0   \cf7 !=\cf0  a2.\cf11 length\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  a1.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 a1\cf6 [\cf0 index\cf6 ]\cf0  \cf7 !=\cf0  a2\cf6 [\cf0 index\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That would stop after looking at just one element.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 boolean\cf0  areTheSame\cf6 (\cf5 int\cf6 []\cf0  a1, \cf5 int\cf6 []\cf0  a2\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 a1.\cf11 length\cf0   \cf7 !=\cf0  a2.\cf11 length\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 boolean\cf0  answer \cf7 =\cf0  \cf5 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  a1.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 a1\cf6 [\cf0 index\cf6 ]\cf0  \cf7 !=\cf0  a2\cf6 [\cf0 index\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer \cf7 =\cf0  \cf5 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer \cf7 =\cf0  \cf5 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This one is also bad, since if we find a mismatch early, we reset answer to true and essentially forget there was a problem. Only the last element counts.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next one is fine though:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 boolean\cf0  areTheSame\cf6 (\cf5 int\cf6 []\cf0  a1, \cf5 int\cf6 []\cf0  a2\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 a1.\cf11 length\cf0   \cf7 !=\cf0  a2.\cf11 length\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf5 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 boolean\cf0  answer \cf7 =\cf0  \cf5 true\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf5 int\cf0  index \cf7 =\cf0  \cf8 0\cf7 ;\cf0  index \cf7 <\cf0  a1.\cf11 length\cf7 ;\cf0  index\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 a1\cf6 [\cf0 index\cf6 ]\cf0  \cf7 !=\cf0  a2\cf6 [\cf0 index\cf6 ])\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0answer \cf7 =\cf0  \cf5 false\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this one, we have a default value for answer if everything goes well. If we ever find a mismatch, the answer becomes false. It's less efficient than mine, since we need to search the whole array even if the first elements mismatch.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, we're using != here to compare array elements, since we're specifically looking at integer arrays. The code is nearly identical for arrays of Circles, Scanners, Strings, or any other objects, but you'd have to write !(a1[index].equals(a2[index])) to compare the elements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Last bit is less conversational. I'll just put it up and you can review it later.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now, as I alluded to a few minutes ago, there is a class in Java called Arrays that has several static methods to perform common tasks. (Note that name is Arrays, plural.) There is also an old Array class in Java which can be used to create arrays like you can create objects, but that's made redundant by what you've seen already.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The Arrays class is part of java.util, so you'll need to import it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So if we want to test whether two arrays have all their corresponding values equal, we can write:\
+Arrays.equals(a1, a2)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that this syntax is a little different from how we compare other objects using equals. Both arrays appear inside the parentheses.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you look at the documentation for Arrays online, you'll notice multiple versions of the methods depending on the types of parameters passed to it. So there's one for int arrays, one for double arrays, one for Object arrays, etc. The Object version uses != to compare elements, so it only returns \cf3 true\cf0  if the elements refer to the same objects. To use equals on the objects as I just suggested, use the method deepEquals instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other interesting methods in the Arrays class include copyOf which returns a new copy of a given array. You can also use copyOfRange to get a piece of an array (like Python's slice operator). The fill method lets you put a certain value in each box of the array or in a particular piece of the array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The binarySearch method lets you determine if a particular element appears in the array. The sort method lets you put the array in order from smallest to largest. We'll revisit how these work later in the course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 6: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll be using arrays a lot in the rest of the course. Today we saw:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What an array is and why it's useful
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How to declare and instantiate arrays
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How to manipulate arrays using loops, including the special enhanced for loop
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Some other interesting things we could do using arrays
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week, we'll look at some variations on the basic array structure. See you then!}

@@ -1,0 +1,4942 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fmodern\fcharset0 Courier-Bold;\f2\fmodern\fcharset0 Courier;
+\f3\fmodern\fcharset0 Courier-BoldOblique;\f4\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red1\green32\blue135;\red18\green139\blue2;\red43\green139\blue39;\red10\green82\blue135;\red0\green0\blue255;
+\red11\green85\blue38;\red190\green74\blue193;\red0\green0\blue83;\red83\green83\blue83;\red30\green91\blue156;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 4: Basic Graphics
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This week, we'll see how to write programs that use graphics rather than text to interact with the user. We'll begin by drawing different kinds of shapes and text. Later in the course, we'll be adding buttons, text areas, and other gadgets. But, for now, we'll start simple.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: A FRAMEWORK FOR GRAPHICAL CODE
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To begin, we'll set up the code you'll need for virtually any graphical program you'll write. Follow the steps in this part of the lesson each time you create a program with a graphical interface.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First, go into Eclipse and make a new Java project. It doesn't matter what you call it; you can use the default settings. Then within that project, make a new class. Again you can make the name whatever you want; for now, call it FirstDrawing so you match my code. But don't click Finish yet!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To make graphics in Java, we're going to build off of classes that already exist in Java. These preexisting classes we'll be building from take care of the hard work of interpreting the instructions we will give so that no matter what hardware our program meets, the hardware will understand what we want it to do (as long as the hardware has a Java Virtual Machine installed and running.) We won't need to completely rewrite their code, but we do want to alter some of it so it draws the pictures we want. (The parts we'll be rewriting exist precisely to be overwritten as needed. If we don't write anything for them, their contents are empty by default and they won't do anything.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The class we will want to adapt is called the \cf3 superclass\cf0  of FirstDrawing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may have done work with superclasses and, more generally, \cf3 inheritance\cf0  in previous programming courses. If not, or you don't quite remember how it works, don't worry. We'll go over it all in more detail later in the course. For now, you can just follow the steps and let Java take care of it for you.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, the specific superclass we'll use here is \cf3 javax.swing.JPanel\cf0 . You can type that directly in the "Superclass:" field. You can also get to it by clicking the "Browse..." button next to the field, and then entering javax.swing.JPanel in the "Choose a type:" field. The advantage of the latter is that Eclipse shows you a list of the classes you might want to use as you type.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:33:10 pm
+\fs26 \
+is First Drawing the public class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. Eclipse will handle the declaration for you automatically if you follow along with these steps.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:33:45 pm
+\fs26 \
+Why is there a package called swing?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Are you asking why it's called "swing"?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:34:16 pm
+\fs26 \
+Yes\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's just a name. Just like Java is just a name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I suppose it's meant to sound flashy and cool.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:34:47 pm
+\fs26 \
+Why not "graphics"?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are already subcomponents, as we'll see, with the name "Graphics", so that's one reason not to call the whole package graphics.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, back to what I was saying.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 "So what is a JPanel?" you will naturally be wondering. A JPanel provides an area where we can draw a picture. You can think of it as a canvas we can put paint on. For this program, we'll revise what is painted so it shows the graphics we want to display.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Once you've filled in the Superclass field, make sure you've checked the box that fills in main for you as usual, and then click Finish.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Eclipse should pop up a window with FirstDrawing.java in it. You'll notice a few things. First, we've automatically imported the JPanel class into the code. Second, the class header is a little different than usual. It's:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+public class FirstDrawing extends \cf5 JPanel\cf0  \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The word \cf3 extends\cf0  is the Java keyword that tells the compiler that we are using JPanel as a superclass. Note that if you created your new class by typing the whole thing yourself, or if you forgot to set the superclass in Eclipse, you can just add the import and the words "extends JPanel" in the header of the class directly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As an aside, note that another way we could have gotten to this same point is that we could have just created FirstDrawing as a new class the way we've always been doing and then simply type in \cf3 extends JPanel\cf0  and put in the necessary import statement. I point this out so you understand that if you forget to tell Eclipse ahead of time that you want your class to inherit from some other class, you're free to type it in yourself later. The Eclipse feature we used where we typed JPanel into the "Superclass:" field was a convenience, not a logical necessity.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, the yellow line under FirstDrawing indicates a warning that we can ignore. It's too complicated to explain what the issue is, and it is unimportant for what we're doing. If it really bothers you, you can put the cursor over the yellow line and choose any of the "quick fixes".
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+If we were to build more advanced games (like Minecraft), we wouldn't use JPanel, right? We would have to use third-party graphics rendering systems?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The kind of graphics we will be handling today are far more humble than the kinds of things you would need to build an environment like you find in modern video games.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We will not be coming anywhere close to any of that in today's lesson (or, indeed, in this whole course).
+\b0 \
+\pard\pardeftab720
+\cf4 jprosk\cf0  
+\fs20 7:38:11 pm
+\fs26 \
+The import statement is import javax.swing.JPanel; ?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody with me so far?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we're going to write the main method. It's pretty much going to be the main we'll use for any graphical program. It has six lines; I'll go over each in turn.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In line 1, we're going to create a FirstDrawing object. It works the same way as creating a Scanner or a Random object. There are no parameters needed to create the object. Let's call the object fdPanel. Can you provide the line of code we need?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:39:43 pm
+\fs26 \
+FirstDrawing fdPanel = new FirstDrawing();\
+\cf4 moppr\cf0  
+\fs20 7:39:43 pm
+\fs26 \
+FirstDrawing fdPanel = new FirstDrawing();\
+\cf4 MSTang\cf0  
+\fs20 7:39:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 FirstDrawing fdPanel \cf7 =\cf0  
+\f1\b new
+\f2\b0  FirstDrawing\cf6 ()\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 7:39:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 FirstDrawing fdPanel \cf7 =\cf0  
+\f1\b new
+\f2\b0  FirstDrawing\cf6 ()\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here it is:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0FirstDrawing fdPanel \cf7 =\cf0  new FirstDrawing\cf6 ()\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may be concerned that we're creating an object that we're in the middle of defining. But that's actually not a problem. Remember that we won't execute this code until it's entirely written. So the whole definition will be there.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:40:38 pm
+\fs26 \
+Do we need to write a constructor?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We don't need to write a constructor for what we're doing right now. Since our FirstDrawing class inherits from the JPanel class, we'll be able to use JPanel's constructor by default.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could extend that constructor if we needed to, but in this case we don't need to.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we have a canvas to draw on. The next step is to have a place to hang it. That's going to be the window where our program runs. Again there is a class for this in the javax.swing package called JFrame.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The JFrame object represents the actual "physical" window you can drag around your screen, or resize. It's the thing with a title bar. It's also the thing with that little button that, after we have set it up, you will be able to click to close the window (and terminate our Java program).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I think of all this layering we're doing in terms of making, say, a peanut butter and banana sandwich. JFrame is the bread, the base, the solid thing we can move around. JPanel is the peanut butter on the bread, the interface that lets stuff stick to the bread. In a few minutes, we will talk about putting Graphics objects in, which would correspond to the banana pieces scattered around on the peanut butter.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So now we want to create a JFrame object which we'll call window. This requires us to add two lines to the program. What are they?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I will accept slightly wrong answers here since there's one detail you probably won't guess.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:44:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 import
+\f2\b0  \cf8 java.swing.JFrame\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 7:44:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf5 JFrame\cf0  window \cf7 =\cf0  
+\f1\b new
+\f2\b0  \cf5 JFrame\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 7:44:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf5 JFrame\cf0  window \cf7 =\cf0  
+\f1\b new
+\f2\b0  \cf5 JFrame\cf6 ()\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 7:44:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 import
+\f2\b0  \cf8 javax.swing.*\cf7 ;\cf0 \
+\pard\pardeftab720
+\cf5 JFrame\cf0  window \cf7 =\cf0  
+\f1\b new
+\f2\b0  \cf5 JFrame\cf6 ()\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 7:44:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf5 JFrame\cf0  window \cf7 =\cf0  
+\f1\b new
+\f2\b0  Jframe\cf6 ()\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 7:44:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf5 JFrame\cf0  window \cf7 =\cf0  
+\f1\b new
+\f2\b0  \cf5 JFrame\cf6 ()\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, those are (almost) what we need here.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 More precisely, one thing we need is an import line:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+import \cf8 javax.swing.JFrame\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second is the one that makes the object in the main method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 JFrame\cf0  window \cf7 =\cf0  new \cf5 JFrame\cf6 (\cf9 "First Graphics"\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The parameter here gives the title for the window. (And that's what was missing from the answers I passed.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:45:50 pm
+\fs26 \
+What happens if you don't give a title?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm not sure. Either you will get no title or you will get an error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try it out!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Step 3 is to make sure that our window can be closed. Otherwise, there will be no way to exit the program! Here's the line of code we need:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setDefaultCloseOperation\cf6 (\cf5 JFrame\cf0 .\cf10 EXIT_ON_CLOSE\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 Wilderc\cf0  
+\fs20 7:46:40 pm
+\fs26 \
+Why javax, not java?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:46:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's a totally reasonable question.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is just a historical detail. There was an original bunch of packages that start with java (like java.util and java.awt).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But then it was decided that the libraries needed some updating. The newer packages are in javax
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's all.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:47:58 pm
+\fs26 \
+Why not merge the two?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Probably because this would break programs that were written before javax was created.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Back to what I was saying.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're going to be using several JFrame methods over the next few lines. As usual, to call them, we give the name of the object followed by a dot followed by the method name. From this method's unusually long name, you can tell that it is used to determine what happens when we click the exit button on the window.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The parameter we passed to the method is technically an integer. The allowed integers are defined in the JFrame class as static fields. We're using EXIT_ON_CLOSE which causes the application to end. There's also DO_NOTHING_ON_CLOSE or HIDE_ON_CLOSE or DISPOSE_ON_CLOSE (which kills the current window; this last one is useful if you have multiple windows in the same application).
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 7:49:47 pm
+\fs26 \
+should you be seeing a window when you run this code?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You won't see it yet because we haven't made it visible yet. We'll get to that.
+\b0 \
+\pard\pardeftab720
+\cf4 jprosk\cf0  
+\fs20 7:50:06 pm
+\fs26 \
+why do JPanel and JFrame have to be imported individually?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could do javax.swing.* and it would take care of both.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But it is often helpful to be explicit what you're importing so that when you look at your code later you can tell at a glance what's in it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Step 4: Put the panel in the window. (Put the peanut butter on the bread.) Here's the code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 add\cf6 (\cf0 fdPanel\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Step 5: Set the dimensions (the width and height) of the window. Windows can be resized by the user later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setSize\cf6 (\cf11 250\cf0 , \cf11 250\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The units here are \cf3 pixels\cf0 , by the way. A pixel is an individual dot that makes up a picture. It's short for "picture element". You can't have half a pixel, so the parameters here are both integers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's nothing particularly significant about my decision to use 250 for each dimension. Feel free to make the numbers different. For a complex drawing, you might want to make the proportions of the window match the proportions of the screen.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Step 6 and the last one in main: We have to make sure the user can see the window. Remember that HIDE_ON_CLOSE attribute? When we start out, the window is hidden. It's in memory and created, but it's not shown on the screen. To do that, we use the method setVisible:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setVisible\cf6 (\cf12 true\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hold on, we'll see the whole code in a second.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This might fix the errors for those of you who are having some.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's it for main. Here's the whole method with some comments inserted:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf12 void\cf0  main\cf6 (\cf5 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // create the panel where we are drawing our picture
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0FirstDrawing fdPanel \cf7 =\cf0  new FirstDrawing\cf6 ()\cf7 ;\cf0 \'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // create the window where the picture appears
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 JFrame\cf0  window \cf7 =\cf0  new \cf5 JFrame\cf6 (\cf9 "First Graphics"\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // allow us to close the window
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setDefaultCloseOperation\cf6 (\cf5 JFrame\cf0 .\cf10 EXIT_ON_CLOSE\cf6 )\cf7 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // put the panel in the window
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 add\cf6 (\cf0 fdPanel\cf6 )\cf7 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // set initial dimensions of the window (width and height)
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setSize\cf6 (\cf11 250\cf0 , \cf11 250\cf6 )\cf7 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // make sure window is visible on screen
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setVisible\cf6 (\cf12 true\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can run the program with just this code (along with the import statements and class declaration that I didn't mention but you should have from our discussion earlier). A window will pop up with First Graphics in the title bar. It will have a close button you can click. You could drag the edges to resize. But that's pretty much it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So far, we haven't put any graphics in yet. We'll do that next, but first we had to set up our canvas!!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Where's everybody at? Have you gotten the window to pop up?
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 7:55:06 pm
+\fs26 \
+Yep, pretty boring so far.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Amen, amigo. The first day in art class is not always the most thrilling. But we've got to get our ducks in a row first.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:56:31 pm
+\fs26 \
+what is the difference between panel and window\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The window is the thing you can click on inside your OS and drag around your screen.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The panel is the thing we attach to the window that actually carries around our graphical objects.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we'll add in the method that puts something in our panel and therefore in the window. We'll define this method just above main, but within the FirstDrawing class:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf12 void\cf0  paintComponent\cf6 (\cf5 Graphics\cf0  g\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You need to include this line exactly as written. We're replacing default behavior from the JPanel class, so we need the exact header line so Java can determine the behavior we're replacing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Your only freedom here is that you could give the Graphics object argument a name other than "g".)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'll notice that we do not have the word \cf3 static\cf0  in the header. This method must be called with a particular FirstDrawing object. That makes sense since we need to know which canvas we're painting on if there is more than one floating around.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's something else notable about the way in which this method is called. Take a look at main. Which line calls the paintComponent method?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:59:02 pm
+\fs26 \
+None\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Trick question! Our code does not call it explicitly. Instead Java calls this method automatically whenever the panel needs to be drawn.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When might that be? Well, you tell me. What might happen that would cause us to draw (or redraw) the picture?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:59:44 pm
+\fs26 \
+resize\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We redraw whenever we resize the window.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other suggestions?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:00:19 pm
+\fs26 \
+When we close and re-open the window?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to redraw if we iconify (minimize) the window and then pull it up again.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anybody else?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here are some other times you need to draw or redraw:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll have to do it when the window appears for the first time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to redraw if we iconify (minimize) the window and then pull it up again.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We redraw if we cover the window with another one and then uncover it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We redraw whenever we resize the window.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When any of these events occur, Java calls the paintComponent method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other aspect of the header is the parameter. The variable is a new class for us: Graphics. As usual, we need to import this class first. It's in a different package from JFrame or JPanel. It's in java.awt. So what's the line to add?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This should address the errors that several people were indicating a few minutes ago.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+import \cf8 java.awt.Graphics\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here the Graphics object g represents the area of the panel we can draw on. Java figures out the Graphics object to use when it calls the method for us.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, the key to getting the most out of Eclipse is to relax, let it tell you what's wrong, and take a look at its suggested fixes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're almost ready to draw. First, though, in the body of the method, we have to do a little housekeeping. Before we do our painting, we need to make sure the blank canvas is prepared. Here's the line that does that:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super.\cf10 paintComponent\cf6 (\cf0 g\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And now here's the template for the whole paintComponent method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf12 void\cf0  paintComponent\cf6 (\cf5 Graphics\cf0  g\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Draws content in the panel
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Prepare panel for drawing
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super.\cf10 paintComponent\cf6 (\cf0 g\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 /* CODE TO DRAW GOES HERE*/
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may guess that "super" somehow refers to "superclass". If you did, you're right! We'll go into more detail about how this works when we get to inheritance later in the course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions before we finally dig in to making some graphics appear?
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 8:04:56 pm
+\fs26 \
+can you post all of the code?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what we should have so far:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 import \cf8 java.awt.Graphics\cf7 ;\cf0 \
+\'a0\
+import \cf8 javax.swing.JFrame\cf7 ;\cf0 \
+import \cf8 javax.swing.JPanel\cf7 ;\cf0 \
+\'a0\
+public class FirstDrawing extends \cf5 JPanel\cf0  \cf6 \{\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0
+\f3\i \cf2 /**\
+\'a0\'a0\'a0\'a0 * @param args\
+\'a0\'a0\'a0\'a0 */
+\f1\i0 \cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public \cf12 void\cf0  paintComponent\cf6 (\cf5 Graphics\cf0  g\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Draws content in the panel
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Prepare panel for drawing
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super.\cf10 paintComponent\cf6 (\cf0 g\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 //CODE TO DRAW GOES HERE
+\f1\i0 \cf0 \
+\'a0\
+\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public static \cf12 void\cf0  main\cf6 (\cf5 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // create the panel where we are drawing our picture
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0FirstDrawing fdPanel \cf7 =\cf0  new FirstDrawing\cf6 ()\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // create the window where the picture appears
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 JFrame\cf0  window \cf7 =\cf0  new \cf5 JFrame\cf6 (\cf9 "First Graphics"\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // allow us to close the window
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setDefaultCloseOperation\cf6 (\cf5 JFrame\cf0 .\cf10 EXIT_ON_CLOSE\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // put the panel in the window
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 add\cf6 (\cf0 fdPanel\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // set initial dimensions of the window (width and height)
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setSize\cf6 (\cf11 250\cf0 , \cf11 250\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // make sure window is visible on screen
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setVisible\cf6 (\cf12 true\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on this?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: DRAWING LINES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we're finally ready to replace that CODE TO DRAW comment with stuff that puts something on the screen. We'll start with some simple line segment drawing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How could we specify where the line segment should go?
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 8:07:38 pm
+\fs26 \
+coordinates\
+\cf4 chenjamin\cf0  
+\fs20 8:07:43 pm
+\fs26 \
+endpoints?\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:07:45 pm
+\fs26 \
+By giving coordinates?\
+\cf4 Tungsten\cf0  
+\fs20 8:07:52 pm
+\fs26 \
+What's the @param args comment for?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can ignore that.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:08:20 pm
+\fs26 \
+Do I need to add it to my code?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, you can ignore it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can specify where the line segment should go by giving the location of the endpoints of the line. Then we just fill in the pixels between them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To specify where endpoints are, we use a coordinate system, like we did last week in our driving time program. Here's a picture of the system we use in graphics:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic coordinatePygame.jpg \width4400 \height4580 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:09:06 pm
+\fs26 \
+But that's so awkward\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Too bad. That's the way it works.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The upper-left corner of the picture is called the \cf3 origin\cf0 . It corresponds to the upper-left corner of the window.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any other point can be specified by two numbers: one giving how far to the right the point is from the origin, and one giving how far down the screen it is. We call the first number the \cf3 x-coordinate\cf0  and the second the \cf3 y-coordinate\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the origin itself has coordinates (0,0). In our 250x250 pixel window, the upper-right corner has coordinates (250,0). The lower-left has coordinates (0, 250).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What are the coordinates of the center of the screen?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:10:06 pm
+\fs26 \
+(125, 125)\
+\cf4 puwei99\cf0  
+\fs20 8:10:06 pm
+\fs26 \
+(125,125)\
+\cf4 FerozeM\cf0  
+\fs20 8:10:06 pm
+\fs26 \
+(125,125)\
+\cf4 manbugbeebee\cf0  
+\fs20 8:10:06 pm
+\fs26 \
+(125, 125)?\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:10:06 pm
+\fs26 \
+(125, 125)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That would be (125, 125).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you've seen coordinate systems in other math classes, you may be used to the origin being at the center (or lower-left, depending on what you're doing). We use the upper-left corner in graphics because that point doesn't depend on the size of the window. Also with old-time monitors, the computer would begin drawing by "lighting up" the pixel at the upper-left.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another difference you may have seen is that, in graphics, the y-coordinates increase as you go down, as opposed to increasing as you move up. This is done to keep the coordinates of what we draw on screen positive. It's also another throwback to old monitors. Once the computer activated the upper-left, it proceeded by activating pixels from left to right and top to bottom.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now let's use coordinates to draw a line on the window. All the drawing functions we'll use are methods of the Graphics class. So they will all begin with \cf3 g\cf0 , because remember that's what we decided to call the Graphics object argument we originally passed into our paintComponent method.
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:12:05 pm
+\fs26 \
+what do new monitors do\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I don't know the details. The point I'm making is that, for example, flatscreen monitors are not necessarily set up the same way as old cathode ray monitors (those big ones that are not flat panels).
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:13:39 pm
+\fs26 \
+Why doesn't the paintComponent method say static?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because it's not a static method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Static methods, recall, are methods that belong to a class as a whole, not to any particular object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this case, paintComponent will need to be able to access particular properties of the specific FirstDrawing object we're working with, so it's CAN'T be static.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's now put in the statement to draw our first line.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 100\cf0 , \cf11 100\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This method is unsurprisingly called drawLine. It takes four integer parameters, which you can consider as two pairs. The first pair is the coordinates of one endpoint of the segment. The second pair is the coordinates of the other endpoint.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try it out! Run the program and view the results.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:16:34 pm
+\fs26 \
+Can you change the color of the line?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll get to colors last.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now try this: Can you extend the line so it goes all the way to the bottom right corner of the window?
+\b0 \
+\pard\pardeftab720
+\cf4 Sir_cumference\cf0  
+\fs20 8:17:20 pm
+\fs26 \
+Can we make it so the mouse draws the lines?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That can be done, but we won't discuss it in class. Ask about it on the message board if you like.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:18:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 drawLine\cf6 (\cf11 10\cf0 ,\cf11 10\cf0 ,\cf11 250\cf0 ,\cf11 250\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:18:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 250\cf0 , \cf11 250\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ReciterOfPi\cf0  
+\fs20 8:18:11 pm
+\fs26 \
+change the g.drawLine to (0, 0, 250, 250)\
+\cf4 mario1212\cf0  
+\fs20 8:18:11 pm
+\fs26 \
+Set the last two parameters to 250?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Technically, my question only intended to extend down and to the right, but ReciterOfPi's answer is an acceptable minor variation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We just change the second pair of coordinates:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 250\cf0 , \cf11 250\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is fine until you want to change the window size. What happens if you make it bigger?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:19:14 pm
+\fs26 \
+the line does not become longer\
+\cf4 JRY\cf0  
+\fs20 8:19:14 pm
+\fs26 \
+The window gets bigger but the line doesn't\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The line just stops in the middle of the window as it did before. And if you make it smaller?
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 8:19:29 pm
+\fs26 \
+it goes past the window\
+\cf4 ScottBusche\cf0  
+\fs20 8:19:29 pm
+\fs26 \
+The line goes offscreen?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The line goes off the window. Only the part on the window gets drawn.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's fix the code so the line always goes to the bottom right. To do this, we need to know the current dimensions of the window. Fortunately, the JPanel class has methods to determine its size. They are getWidth() and getHeight().
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So try this line instead:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , getWidth\cf6 ()\cf0 , getHeight\cf6 ())\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try running it, and then resize the window. You'll see that as you resize, the line stretches and shrinks to stay fixed in the lower right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now try this problem. Draw a right triangle (i.e. one with a 90-degree angle) in the window. The upper corner should be at position (10, 10). The base of the triangle should be 10 pixels up from the bottom and extend from 10 pixels from the left side to 10 pixels from the right side.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:21:48 pm
+\fs26 \
+do we need to mention what object or class the getWidth method acts upon?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. Since they're being invoked inside our definition of the FirstDrawing class, Java understands that they are methods of the FirstDrawing class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So then you might wonder where we defined getWidth() and getHeight().
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The answer is that they're defined in JPanel, and our class FirstDrawing inherited them!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's one of the things that's nice about inheritance. It gives you access to powerful tools without necessarily needing to write them yourself (sometimes you might need to do a little editing here and there, it depends on the situation).
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0   g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf0 , getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MSTang\cf0  
+\fs20 8:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , getWidth\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf0 , getHeight\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf0 , getHeight\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf0 , getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 20\cf0 ,\cf11 20\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 ,\cf11 10\cf0 , \cf11 10\cf0 , \cf11 20\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 20\cf0 , \cf11 20\cf0 , \cf11 20\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 piis3141592653\cf0  
+\fs20 8:24:24 pm
+\fs26 \
+g.drawLine(10, 10, getWidth(), getHeight());\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.drawLine(getWidth(), getHeight(),10, getHeight());\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.drawLine(10, getHeight(), 10, 10);\
+\cf4 moppr\cf0  
+\fs20 8:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf0 , getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf0 , getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 manbugbeebee\cf0  
+\fs20 8:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf0 , getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , getWidth\cf6 ()\cf7 -\cf11 10\cf0 , getHeight\cf6 ()\cf7 -\cf11 10\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf0 , getHeight\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , getHeight\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf0 , getWidth\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf0 , getHeight\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , getWidth\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf0 , getHeight\cf6 ()\cf0  \cf7 -\cf0  \cf11 10\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  w \cf7 =\cf0  getWidth\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  h \cf7 =\cf0  getHeight\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf0 , h\cf7 -\cf11 10\cf6 )\cf7 ;\cf0  
+\f3\i \cf13 // left leg
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf11 10\cf0 , h\cf7 -\cf11 10\cf0 , w\cf7 -\cf11 10\cf0 , h\cf7 -\cf11 10\cf6 )\cf7 ;\cf0  
+\f3\i \cf13 // bottom leg
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 w\cf7 -\cf11 10\cf0 , h\cf7 -\cf11 10\cf0 , \cf11 10\cf0 , \cf11 10\cf6 )\cf7 ;\cf0  
+\f3\i \cf13 //hypotenuse
+\f1\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I defined some variables to keep the code tidy.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'd say using variables is a better solution in this case. It keeps the code more readable and easier to edit if you need to.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's do something a little more complicated. We're going to duplicate this picture:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic lineDrawing1.png \width6690 \height6000 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And to make it a little more interesting, we're going to use variables for the number of lines, and the coordinates of the upper-left endpoint.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that the lines are equally spaced. There is also the same amount of empty space to the left of the lines as to the right, as well as the same at the top and at the bottom.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can put this in a whole new program if you like. Keep the same main method as in our previous example, although you might want to change the window title.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the beginning of the new paintComponent method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf12 void\cf0  paintComponent\cf6 (\cf5 Graphics\cf0  g\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Draws content in the panel
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Prepare panel for drawing
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super.\cf10 paintComponent\cf6 (\cf0 g\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  w \cf7 =\cf0  getWidth\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  h \cf7 =\cf0  getHeight\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  lines \cf7 =\cf0  \cf11 10\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  startX \cf7 =\cf0  \cf11 20\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  startY \cf7 =\cf0  \cf11 30\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I have five variables here. w and h are the current width and height of the window. lines tells us how many lines should be drawn. startX and startY give together the coordinates of the upper-left-most endpoint.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The numbers used for lines, startX, and startY can be chosen arbitrarily by you. After we get this to work, I'll show you how to have the user enter the values for the numbers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody with me so far?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What kind of control structure will we use to draw all of the lines?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:28:51 pm
+\fs26 \
+A for loop\
+\cf4 moppr\cf0  
+\fs20 8:28:51 pm
+\fs26 \
+A loop\
+\cf4 k77frank\cf0  
+\fs20 8:28:51 pm
+\fs26 \
+for?\
+\cf4 MathWolf\cf0  
+\fs20 8:28:51 pm
+\fs26 \
+A for loop\
+\cf4 gkaops\cf0  
+\fs20 8:28:51 pm
+\fs26 \
+for loop\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:28:51 pm
+\fs26 \
+a loop?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want to repeat drawing lines, so that means we need a loop. Since we know the number of lines, a for loop is the best choice.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Each iteration will draw one line from top to bottom. So can you give the line that sets up the for loop? We'll worry about the body of the loop momentarily.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:29:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (\cf0  
+\f1\b \cf12 int
+\f2\b0 \cf0  a\cf7 =\cf11 0\cf7 ;\cf0  a\cf7 <\cf11 10\cf7 ;\cf0  a\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Almost, but that upper bound doesn't look quite right. Keep in mind we want the upper bound to be variable depending on what you (or, eventually, the user) chooses.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:31:16 pm
+\fs26 \
+for (counter=0, counter<10,counter++);\
+\cf4 MSTang\cf0  
+\fs20 8:31:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 for
+\f2\b0  \cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf11 0\cf7 ;\cf0  i \cf7 <\cf0  lines\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:31:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 for
+\f2\b0  \cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf11 0\cf7 ;\cf0  i \cf7 <\cf0  lines\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 8:31:16 pm
+\fs26 \
+for (counter = 0; counter < lines, counter++)\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:31:16 pm
+\fs26 \
+for (int a=0; a<lines; a++)\
+\cf4 EmeraldBot\cf0  
+\fs20 8:31:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 for
+\f2\b0  \cf6 (\cf0  
+\f1\b \cf12 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf11 0\cf7 ;\cf0  i \cf7 <=\cf0  lines\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:31:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 for
+\f2\b0 \cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf11 0\cf7 ;\cf0  i \cf7 <\cf0  lines\cf7 ;\cf0  i \cf7 ++\cf6 )\cf0  \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:31:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 for
+\f2\b0  \cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf11 0\cf7 ;\cf0  
+\f1\b \cf12 int
+\f2\b0 \cf0  i \cf7 <\cf0  lines\cf7 ;\cf0  i\cf7 ++\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:31:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 for
+\f2\b0  \cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  a\cf7 =\cf11 0\cf7 ;\cf0  a\cf7 <\cf0 lines\cf7 ;\cf0  a\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here it is:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf12 int\cf0  lineNumber\cf7 =\cf11 0\cf7 ;\cf0  lineNumber \cf7 <\cf0  lines\cf7 ;\cf0  lineNumber\cf7 ++\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can use a different variable name. You could also start at 1 and use <= for the test. Using 0 to start, though, will make the body a little simpler.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll now look at the endpoints of each line. The y-coordinates are easier than the x-coordinates. What is the y-coordinate of the top endpoint of each line?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try to make sure you express your answer in terms of our variables.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the answer isn't "30" it's...?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+startY\
+\cf4 MathWolf\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+StartY\
+\cf4 Tungsten\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+startY\
+\cf4 JRY\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+startY\
+\cf4 chenjamin\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+startY\
+\cf4 manbugbeebee\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+startY\
+\cf4 williamyin08\cf0  
+\fs20 8:33:04 pm
+\fs26 \
+startY\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They are all at startY. How about at the bottom?
+\b0 \
+\pard\pardeftab720
+\cf4 shivammisra\cf0  
+\fs20 8:33:22 pm
+\fs26 \
+endY\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That doesn't work. We don't have any variables with that name.
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 8:33:41 pm
+\fs26 \
+getHeight() - startY\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Basically, but do we have a variable that we can say rather than calling the getHeight() method again?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:34:20 pm
+\fs26 \
+h-startY\
+\cf4 teachm\cf0  
+\fs20 8:34:20 pm
+\fs26 \
+h-startY\
+\cf4 chenjamin\cf0  
+\fs20 8:34:20 pm
+\fs26 \
+h-startY\
+\cf4 piis3141592653\cf0  
+\fs20 8:34:20 pm
+\fs26 \
+h-startY\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:34:20 pm
+\fs26 \
+h-startY\
+\cf4 Tungsten\cf0  
+\fs20 8:34:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 h \cf7 -\cf0  startY\
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:34:23 pm
+\fs26 \
+h - startY\
+\cf4 FerozeM\cf0  
+\fs20 8:34:23 pm
+\fs26 \
+h - startY\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Similar to the right triangle problem, they are all at h-startY.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now the tricky part. The x-coordinates change for each line. Note that the distance between successive x-coordinates is always the same.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To keep things moving, I'll just give the answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To find that distance, we take the total length between the first and last point, and divide by how many steps we take from first to last.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's a lot of words, but if you stop to think about it, of course that's what you do.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So what is the distance between the first and last point in the x-direction?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:36:27 pm
+\fs26 \
+(w-2*startX)\
+\cf4 JRY\cf0  
+\fs20 8:36:27 pm
+\fs26 \
+w - 2*startX\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first point is at startX. The last point is at w-startX. So the difference is w-startX-startX or w-2*startX.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And how many steps are there?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again, you'll want your answer in terms of our variables, not in terms of any specific number.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To check your answer, if we have 3 lines, what will you need to divide by? (I don't need your answer to this question, but you might want to revise your answer after you solve this.)
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:38:28 pm
+\fs26 \
+lines-1\
+\cf4 MSTang\cf0  
+\fs20 8:38:28 pm
+\fs26 \
+lines - 1\
+\cf4 puwei99\cf0  
+\fs20 8:38:28 pm
+\fs26 \
+lines-1\
+\cf4 moppr\cf0  
+\fs20 8:38:28 pm
+\fs26 \
+lines - 1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are lines-1 spaces \cf3 between\cf0  the points.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Therefore the distance between successive points is (w-2*startX)/(lines-1). Let's call this value incrementX.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, now, what is the x-coordinate of the first point?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again, make sure to answer in terms of our 
+\i variables
+\i0 .
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:40:02 pm
+\fs26 \
+startX\
+\cf4 moppr\cf0  
+\fs20 8:40:02 pm
+\fs26 \
+startX\
+\cf4 MSTang\cf0  
+\fs20 8:40:02 pm
+\fs26 \
+startX\
+\cf4 chenjamin\cf0  
+\fs20 8:40:02 pm
+\fs26 \
+startX\
+\cf4 Tungsten\cf0  
+\fs20 8:40:02 pm
+\fs26 \
+startX\
+\cf4 MathWolf\cf0  
+\fs20 8:40:02 pm
+\fs26 \
+StartX\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:40:02 pm
+\fs26 \
+startX\
+\cf4 k77frank\cf0  
+\fs20 8:40:02 pm
+\fs26 \
+startX\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's just startX. How about the second point?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:40:50 pm
+\fs26 \
+startX+ incrementX\
+\cf4 Tungsten\cf0  
+\fs20 8:40:50 pm
+\fs26 \
+startX + incrementX\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's at startX + incrementX. And the third point?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + 2*incrementX\
+\cf4 piis3141592653\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX+2*incrementX\
+\cf4 k77frank\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + 2 * incrementX\
+\cf4 ScottBusche\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX+incrementX*2\
+\cf4 moppr\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + 2*incrementX\
+\cf4 Tungsten\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + incrementX * 2\
+\cf4 JRY\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + incrementX * 2\
+\cf4 manbugbeebee\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + 2*incrementX\
+\cf4 shivammisra\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX+ 2*incrementX\
+\cf4 epicninjatiffy\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + 2incrementX\
+\cf4 chutney\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + 2*incrementX\
+\cf4 FerozeM\cf0  
+\fs20 8:41:25 pm
+\fs26 \
+startX + 2*incrementX\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 startX + 2*incrementX.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Do you see a pattern? Suppose we are at line number lineNumber (which remember starts at 0, not 1). What is the x-coordinate of this point?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: Remember when I said things will be nicer if we start our loop variable at 0 rather than 1? This is where we get that payoff. Your answer to this will be very simple.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:42:50 pm
+\fs26 \
+startX + incrementX * lineNumber\
+\cf4 chenjamin\cf0  
+\fs20 8:42:50 pm
+\fs26 \
+startX + lineNumber*incrementX\
+\cf4 dlennon\cf0  
+\fs20 8:42:50 pm
+\fs26 \
+startX + lineNumber * incrementX\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah! It's startX + lineNumber*incrementX. lineNumber tells you how many steps you take to get to the current point.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is one very common example for why it is often the case that programmers prefer to start their counting at 0 rather than 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we'll look at the bottom points. The first point on the top (with lineNumber=0) corresponds to the last point on the bottom. What's the value of lineNumber at the last point?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 VARIABLES. Make sure to answer in terms of variables.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+lines - 1\
+\cf4 moppr\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+lines-1\
+\cf4 chenjamin\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+lines-1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's lines-1. So the x-coordinate would be at startX + (lines-1)*incrementX. The second point (with lineNumber=1) corresponds to the point with lineNumber=lines-2.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the formula we want is not quite startX + 
+\i lineNumber
+\i0 *incrementX. What is it?
+\b0 \
+\pard\pardeftab720
+\cf4 chutney\cf0  
+\fs20 8:45:41 pm
+\fs26 \
+startX + (lines-(lineNumber+1))*incrementX\
+\cf4 MSTang\cf0  
+\fs20 8:45:41 pm
+\fs26 \
+startX + (lines - 1 - lineNumber) * incrementX\
+\cf4 chenjamin\cf0  
+\fs20 8:45:41 pm
+\fs26 \
+startX + (lines-(lineNumber+1))*incrementX\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's startX + (lines-1-lineNumber)*incrementX. You should verify this gives us the correct formula when lineNumber is either 0 or 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Phew! Now that we've identified the four numbers we need for the two pairs of coordinates, can you fill in the body of the loop?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 At this point, you just need to put together the pieces we already talked through.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I've got two answers so far.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anybody else want to take a crack at it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I just need the for loop.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:49:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  lineNumber\cf7 =\cf11 0\cf7 ;\cf0  lineNumber\cf7 <\cf0 lines\cf7 ;\cf0  lineNumber\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 startX\cf7 +\cf0 lineNumber\cf7 *\cf0 incrementX, startY, startX \cf7 +\cf0  \cf6 (\cf0 lines\cf7 -\cf6 (\cf0 lineNumber\cf7 +\cf11 1\cf6 ))\cf7 *\cf0 incrementX, h\cf7 -\cf0 startY\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:49:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 for
+\f2\b0 \cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  lineNumber \cf7 =\cf0  \cf11 0\cf7 ;\cf0  lineNumber \cf7 <\cf0  lines\cf7 ;\cf0  lineNumber \cf7 ++\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 startX \cf7 +\cf0  lineNumber \cf7 *\cf0  incrementX, startY, startX \cf7 +\cf0  \cf6 (\cf0 lines \cf7 -\cf0  \cf11 1\cf0  \cf7 -\cf0  lineNumber\cf6 )\cf0  \cf7 *\cf0  incrementX, h \cf7 -\cf0  startY\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:49:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f4\fs24 \cf0 {{\NeXTGraphic 1d28f9758a7c527db555c4e17b34e7f0467c3efd.png \width9000 \height1140 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:49:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0  
+\f1\b for
+\f2\b0  \cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  lineNumber\cf7 =\cf11 0\cf7 ;\cf0  lineNumber \cf7 <\cf0  lines\cf7 ;\cf0  lineNumber\cf7 ++\cf6 )\{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 startX \cf7 +\cf0  lineNumber\cf7 *\cf0 incrementX, startY, startX \cf7 +\cf0  \cf6 (\cf0 lines\cf7 -\cf6 (\cf0 lineNumber\cf7 +\cf11 1\cf6 ))\cf7 *\cf0 incrementX, h\cf7 -\cf0 startY\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 teachm\cf0  
+\fs20 8:49:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 or\cf6 (
+\f1\b \cf12 int
+\f2\b0 \cf0  i \cf7 =\cf0  \cf11 0\cf7 ;\cf0  i \cf7 !=\cf0  lines\cf7 ;\cf0  i\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f1\b \cf12 int
+\f2\b0 \cf0  howfar \cf7 =\cf0  \cf6 (\cf0 w\cf7 -\cf6 (\cf11 2\cf7 *\cf0 startX\cf6 ))\cf0  \cf7 /\cf0  \cf6 (\cf0 lines\cf7 -\cf11 1\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 startX \cf7 +\cf0  i\cf7 *\cf0 howfar, startY,w \cf7 -\cf0  \cf6 (\cf0 startX \cf7 +\cf0  i\cf7 *\cf0 howfar\cf6 )\cf0 , h\cf7 -\cf0 startY\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep! Here's my answer (spaced over a few lines for readability):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf12 int\cf0  lineNumber\cf7 =\cf11 0\cf7 ;\cf0  lineNumber \cf7 <\cf0  lines\cf7 ;\cf0  lineNumber\cf7 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 startX\cf7 +\cf0 incrementX\cf7 *\cf0 lineNumber, \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0startY, \
+startX\cf7 +\cf0 incrementX\cf7 *\cf6 (\cf0 lines\cf7 -\cf11 1\cf7 -\cf0 lineNumber\cf6 )\cf0 , \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0h\cf7 -\cf0 startY\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try running the program. If you resize the window, the drawing should grow and shrink accordingly. Also if you change the numbers in the code, the drawing should change too.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let us know if you've got any questions.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have 3 more topics to get to this evening: Simple User Input, Shapes, and Colors.
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 8:50:25 pm
+\fs26 \
+can you show all the code\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me see if I can get that up.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This should be right, but I edited a later version, so I might have missed a detail here or there.\
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 import \cf8 java.awt.Graphics\cf7 ;\cf0 \
+\'a0\
+import \cf8 javax.swing.JFrame\cf7 ;\cf0 \
+import \cf8 javax.swing.JPanel\cf7 ;\cf0 \
+\'a0\
+\'a0\
+public class FirstDrawing extends \cf5 JPanel\cf0  \cf6 \{\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public \cf12 void\cf0  paintComponent\cf6 (\cf5 Graphics\cf0  g\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Draws content in the panel
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Prepare panel for drawing
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super.\cf10 paintComponent\cf6 (\cf0 g\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  w \cf7 =\cf0  getWidth\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  h \cf7 =\cf0  getHeight\cf6 ()\cf7 ;\cf0 \
+\'a0\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  incrementX \cf7 =\cf0  \cf6 (\cf0 w\cf7 -\cf0 startX\cf7 *\cf11 2\cf6 )\cf7 /\cf6 (\cf0 lines\cf7 -\cf11 1\cf6 )\cf7 ;\cf0  
+\f3\i \cf13 // space between endpoints on top/bottom
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // distance between first and last point is w-startX-startX = w-startX*2
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // number of gaps between points is lines-1
+\f1\i0 \cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf12 int\cf0  lineNumber\cf7 =\cf11 0\cf7 ;\cf0  lineNumber \cf7 <\cf0  lines\cf7 ;\cf0  lineNumber\cf7 ++\cf6 )\cf0  
+\f3\i \cf13 // for each line
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 startX\cf7 +\cf0 incrementX\cf7 *\cf0 lineNumber, 
+\f3\i \cf13 // draw the line
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0startY, startX\cf7 +\cf0 incrementX\cf7 *\cf6 (\cf0 lines\cf7 -\cf11 1\cf7 -\cf0 lineNumber\cf6 )\cf0 , \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0h\cf7 -\cf0 startY\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public static \cf12 void\cf0  main\cf6 (\cf5 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // create the panel where we are drawing our picture
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0FirstDrawing fdPanel \cf7 =\cf0  new FirstDrawing\cf6 ()\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // create the window where the picture appears
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 JFrame\cf0  window \cf7 =\cf0  new \cf5 JFrame\cf6 (\cf9 "Second Graphics"\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // allow us to close the window
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setDefaultCloseOperation\cf6 (\cf5 JFrame\cf0 .\cf10 EXIT_ON_CLOSE\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // put the panel in the window
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 add\cf6 (\cf0 fdPanel\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // set initial dimensions of the window (width and height)
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setSize\cf6 (\cf11 250\cf0 , \cf11 250\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // make sure window is visible on screen
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setVisible\cf6 (\cf12 true\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ready to carry on?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: SIMPLE USER INPUT
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a bit of a pain to have to recompile the code to change the number of lines or the coordinates of the starting point. Let's alter the program so the user enters this data first.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've been using Scanner for user input the last several weeks. But that reads from the console, and it's a little awkward to use command line input for a graphical program. Does anyone remember the other way we've seen to do user input?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 8:53:46 pm
+\fs26 \
+JOptionPane\
+\cf4 ScottBusche\cf0  
+\fs20 8:53:46 pm
+\fs26 \
+JOptionPane!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We use the JOptionPane class and the static method showInputDialog. Since in this case we're reading integer values, what other method do we need to convert the value received from the dialog box?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since this is a method, let's say I want the full call, not just the name of the method itself. (So include the class name too, since the method I'm looking for happens to be a static method.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:55:24 pm
+\fs26 \
+Integer.parseInt()\
+\cf4 puwei99\cf0  
+\fs20 8:55:24 pm
+\fs26 \
+Integer.parseInt();\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:55:24 pm
+\fs26 \
+Integer.parseInt\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's Integer.parseInt. Recall that showInputDialog returns a String. Integer.parseInt turns the String into an integer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So far so good?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's put these together to put the number of lines into the variable lines. Can you do it?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:57:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf12 int
+\f2\b0 \cf0  lines \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf9 "Please enter the number of lines:"\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 puwei99\cf0  
+\fs20 8:57:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf12 int
+\f2\b0 \cf0  lines \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf9 "Enter the number of lines."\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:57:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 lines \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf9 "Enter number of lines : "\cf6 ))\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the line of code I wrote; your prompt might be different:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  lines \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf12 null\cf0 , \cf9 "How many lines should be drawn?"\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we need to decide where we will put this line of code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We will go through a couple revisions before we get it in the right spot.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Part of the reason we'll do it wrong first is so that you'll be better able to troubleshoot stuff for yourself later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For starters, let's try to use this line to replace the declaration and initialization of the variable 
+\i lines
+\i0  within paintComponent in the original code. This will not work the way we want but run it anyway and tell me what happens.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:59:39 pm
+\fs26 \
+What does "null" mean?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I commented on this a couple weeks ago, but I might as well say it again.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you put null here, it means that the JOptionPane is going to show up in some absolute location on your screen. (I forget whether it's the center of your screen or the top left corner or whatever.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But you might have a situation where you want the JOptionPane to pop up in some location relative to where the user has his or her JFrame sitting.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then you would pass in that JFrame instead of null.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For simplicity, we will always use null, since we don't need that extra level of fanciness.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So what happens when we run the code as we have it right now?
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 9:02:11 pm
+\fs26 \
+It asked me the question a lot of times before working.\
+\cf4 chenjamin\cf0  
+\fs20 9:02:11 pm
+\fs26 \
+the dialog box pops up twice\
+\cf4 JRY\cf0  
+\fs20 9:02:13 pm
+\fs26 \
+It runs twice\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first sign of something odd is that it asks you for the number of lines twice. Now try resizing the window.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:02:40 pm
+\fs26 \
+It asks again\
+\cf4 ScottBusche\cf0  
+\fs20 9:02:40 pm
+\fs26 \
+It asks again.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again it asks for you the number of lines a few times. If you look in the Eclipse window, you'll also notice red error lines popping up. Definitely not good. Close the window now before you get into more trouble.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why are we seeing the request for lines occur again?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll put the code up after we get through this bit. It will only be another minute or two.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:03:58 pm
+\fs26 \
+It happens whenever paintComponent is called\
+\cf4 puwei99\cf0  
+\fs20 9:03:58 pm
+\fs26 \
+because java runs the paintComponent method lots of times to redraw what's on the canvas paper\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Exactly! Every time Java needs to redraw the panel, it calls the paintComponent method. One of the things we do in the method is ask for the number of lines. So that will recur every time Java redraws.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So it was a 
+\i terrible
+\i0  idea to put our JOptionPane call in paintComponent.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We just want the request to occur once at the beginning of the program. Well, main just gets called once, so maybe we could put the declaration/initialization of lines there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try that. Cut and paste the code for "int lines = ..." out of paintComponent and into main. It doesn't really matter where within main. What happens now if you try to run it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (This is still not right, but we're getting closer.)
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:05:39 pm
+\fs26 \
+There's an error because we haven't defined lines in paintComponent.\
+\cf4 Tungsten\cf0  
+\fs20 9:05:42 pm
+\fs26 \
+The scope is wrong. Lines doesn't exist in paintComponent.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Trick question! You don't even get that far. Within paintComponent, lines start showing up with a red error line beneath it. Why?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java doesn't know what variable lines is within paintComponent. The variable is now in the scope of main only, so it only exists within main. And we can't just also declare lines within paintComponent, because that would be a completely separate variable. It wouldn't have the value read in during main.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You might suggest passing lines as a parameter to paintComponent. That would be a good idea, EXCEPT unfortunately because we're revising a method that already exists in JPanel, we have to use the same set of parameters as the original paintComponent.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we don't have that freedom.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fortunately, there IS a place where we can declare and initialize lines to solve this problem. The key is to make lines a \cf3 field\cf0  of our Drawing class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Cut and paste "int lines = Integer.parseInt ..." so it appears after the open curly brace for the entire class, but before the header for paintComponent. Make sure there is no declaration for lines within paintComponent. Now try running it.
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 9:07:23 pm
+\fs26 \
+should we put the line in right after the decleration of the class?\
+\cf4 bluebandit21\cf0  
+\fs20 9:07:23 pm
+\fs26 \
+I got it to work by putting it right under the class thing\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, that's what you need to do.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:07:54 pm
+\fs26 \
+It working\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is this? Lolcatz? 
+\f4\b0\fs24 {{\NeXTGraphic tongue.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Alright! Everything should be working now. The dialog box will appear with the prompt. After you enter the number, the window should appear with the drawing in it. You can then resize the window without more input requests.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 9:08:41 pm
+\fs26 \
+I question the stereotypical belief that cats have bad grammar.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nice try, Mr. Whiskers. But we're on to you.
+\b0 \
+\pard\pardeftab720
+\cf4 adrianu\cf0  
+\fs20 9:09:01 pm
+\fs26 \
+can you post the entire code\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Oh yes. Just a moment.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 import \cf8 java.awt.Graphics\cf7 ;\cf0 \
+\'a0\
+import \cf8 javax.swing.JFrame\cf7 ;\cf0 \
+import \cf8 javax.swing.JOptionPane\cf7 ;\cf0 \
+import \cf8 javax.swing.JPanel\cf7 ;\cf0 \
+\'a0\
+\'a0\
+public class SecondDrawing extends \cf5 JPanel\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\cf12 int\cf0  lines \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf12 null\cf0 , \cf9 "How many lines should be drawn?"\cf6 ))\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf12 int\cf0  startX \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf12 null\cf0 , \cf9 "What is the starting x-coordinate?"\cf6 ))\cf7 ;\cf0  \
+\'a0\'a0\'a0\'a0\cf12 int\cf0  startY \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf12 null\cf0 , \cf9 "What is the starting y-coordinate?"\cf6 ))\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public \cf12 void\cf0  paintComponent\cf6 (\cf5 Graphics\cf0  g\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Draws content in the panel
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // Prepare panel for drawing
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0super.\cf10 paintComponent\cf6 (\cf0 g\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  w \cf7 =\cf0  getWidth\cf6 ()\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  h \cf7 =\cf0  getHeight\cf6 ()\cf7 ;\cf0 \
+\'a0\
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf12 int\cf0  incrementX \cf7 =\cf0  \cf6 (\cf0 w\cf7 -\cf0 startX\cf7 *\cf11 2\cf6 )\cf7 /\cf6 (\cf0 lines\cf7 -\cf11 1\cf6 )\cf7 ;\cf0  
+\f3\i \cf13 // space between endpoints on top/bottom
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // distance between first and last point is w-startX-startX = w-startX*2
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // number of gaps between points is lines-1
+\f1\i0 \cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf12 int\cf0  lineNumber\cf7 =\cf11 0\cf7 ;\cf0  lineNumber \cf7 <\cf0  lines\cf7 ;\cf0  lineNumber\cf7 ++\cf6 )\cf0  
+\f3\i \cf13 // for each line
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawLine\cf6 (\cf0 startX\cf7 +\cf0 incrementX\cf7 *\cf0 lineNumber, 
+\f3\i \cf13 // draw the line
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0startY, startX\cf7 +\cf0 incrementX\cf7 *\cf6 (\cf0 lines\cf7 -\cf11 1\cf7 -\cf0 lineNumber\cf6 )\cf0 , \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0h\cf7 -\cf0 startY\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0public static \cf12 void\cf0  main\cf6 (\cf5 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // create the panel where we are drawing our picture
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0SecondDrawing sdPanel \cf7 =\cf0  new SecondDrawing\cf6 ()\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // create the window where the picture appears
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf5 JFrame\cf0  window \cf7 =\cf0  new \cf5 JFrame\cf6 (\cf9 "Second Graphics"\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // allow us to close the window
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setDefaultCloseOperation\cf6 (\cf5 JFrame\cf0 .\cf10 EXIT_ON_CLOSE\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // put the panel in the window
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 add\cf6 (\cf0 sdPanel\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // set initial dimensions of the window (width and height)
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setSize\cf6 (\cf11 250\cf0 , \cf11 250\cf6 )\cf7 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\i \cf13 // make sure window is visible on screen
+\f1\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0window.\cf10 setVisible\cf6 (\cf12 true\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I changed the name from FirstDrawing to SecondDrawing.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:09:34 pm
+\fs26 \
+Can we change the icon of the window?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, but we can discuss that on the message board.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We will go into a lot more detail about how fields work in Java classes in a couple of weeks. The idea with this particular piece of code is that when we create the Drawing object in main with the first line, it declares and initializes all the fields for the object. The initialization is done via the dialog box.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you add in the remaining lines we need so the starting coordinates are also given by the user?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nevermind, that's already in the code I just posted.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\cf12 int\cf0  startX \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf12 null\cf0 , \cf9 "What is the starting x-coordinate?"\cf6 ))\cf7 ;\cf0  \
+\'a0\'a0\'a0\'a0\cf12 int\cf0  startY \cf7 =\cf0  \cf5 Integer\cf0 .\cf10 parseInt\cf6 (\cf5 JOptionPane\cf0 .\cf10 showInputDialog\cf6 (\cf12 null\cf0 , \cf9 "What is the starting y-coordinate?"\cf6 ))\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These can go right after the declaration for lines, but before the declaration of paintComponent.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions before we carry on?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have 20 minutes left and two more topics to get to.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I might have to just hit the highlights in each.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: OTHER SHAPES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll move on to some of the other things you can draw via method calls. You may want to make another new class at this point.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first shape we'll draw is a rectangle:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawRect\cf6 (\cf11 10\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If that's the only line in paintComponent (other than super.paintComponent(g)), you should get a picture that looks like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic rectDrawing.png \width6270 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:12:33 pm
+\fs26 \
+Should I create a new program?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. I think that would be a good idea.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you tell from the picture what the four numbers given as parameters represent?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: They do not all describe the corners of the rectangle.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Only some of them refer to the coordinates of corners.
+\b0 \
+\pard\pardeftab720
+\cf4 spower4\cf0  
+\fs20 9:14:31 pm
+\fs26 \
+(length, width, top lef corner x-coord., top left y-coord.)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Almost, but swap the first two and the last two.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first two numbers are the coordinates of the upper-left corner of the rectangle. That's similar to drawLine.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second pair, though, are not those of another corner, but the dimensions of the rectangle. The third number is the width of the rectangle. The last is its height.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, you could draw this figure using four calls to g.drawLine, but this is a nice shortcut. Note that drawRect only draws rectangles whose sides are parallel to the sides of the window.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Good so far? Questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a question for you. Rotate the rectangle we drew 90 degrees clockwise using the lower-left corner as the pivot point. In other words, that corner will be the upper-left corner of the rectangle after rotation. Here's a picture to help:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic rectDrawing2.png \width6270 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you give me the line of code that draws the new rectangle?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 9:17:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 drawRect\cf6 (\cf11 10\cf0 ,\cf11 160\cf0 ,\cf11 100\cf0 ,\cf11 30\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 williamyin08\cf0  
+\fs20 9:17:01 pm
+\fs26 \
+g.drawRect(10,160,100,30);\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:17:01 pm
+\fs26 \
+g.drawRect(10, 160, 100, 30)?\
+\cf4 k77frank\cf0  
+\fs20 9:17:01 pm
+\fs26 \
+g.drawRect(10, 160, 100, 30);\
+\cf4 JRY\cf0  
+\fs20 9:17:01 pm
+\fs26 \
+g.drawRect(10, 160, 100, 30);\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 g.\cf10 drawRect\cf6 (\cf11 10\cf0 , \cf11 160\cf0 , \cf11 100\cf0 , \cf11 30\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first number is 10, because the x-coordinate of the lower-left corner of the first rectangle is the same as that of the upper-left. To get the y-coordinate, we take the y for the upper-left and add the height of the entire rectangle. That's 60+100=160.
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 9:17:15 pm
+\fs26 \
+g.drawRect(10,160,100,30)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since we rotated 90 degrees, the width and height switch. Instead of being 30x100, it's now 100x30.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now try rotating 90 degrees clockwise around the bottom right corner:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic rectDrawing3.png \width6270 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 9:18:30 pm
+\fs26 \
+g.drawRect(110,90,30,100);\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:18:30 pm
+\fs26 \
+g.drawRect(110, 90, 30, 100);\
+\cf4 k77frank\cf0  
+\fs20 9:18:30 pm
+\fs26 \
+g.drawRect(110, 90, 30, 100);\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawRect\cf6 (\cf11 110\cf0 , \cf11 90\cf0 , \cf11 30\cf0 , \cf11 100\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The original bottom-right is the new bottom-left. So its x-coordinate is the same as the upper-left. We go 10 over to the original x and then the width of rectangle 2. That's 10+100=110.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To find the y-coordinate, we can go up from the bottom by the height of the new rectangle. The bottom is at the original y (60) plus the original height (100) plus the height after the first rotate (30). We go up by subtracting the 100 for the original height, giving a final total of 90.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The width and height are the same as the original width and height.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 9:19:36 pm
+\fs26 \
+Is there a way to do transformations on these shapes?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is the kind of question you should be able to address by checking out the Java API Specification that I also mentioned last week. {\field{\*\fldinst{HYPERLINK "http://docs.oracle.com/javase/7/docs/api/"}}{\fldrslt \cf14 http://docs.oracle.com/javase/7/docs/api/}}
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's move on to another shape. Here's how you can draw an oval or ellipse:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawOval\cf6 (\cf11 10\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what the oval looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic ovalDrawing.png \width6270 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you compare this picture to the stickied rectangle picture, you'll see they are very similar. The four parameters to drawOval define the same rectangle as in drawRect. The first two numbers are the coordinates of the upper-left corner. The second pair are the width and height.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this case, though, instead of drawing the rectangle, Java draws the largest ellipse possible that will fit inside the rectangle. So, for my example, the oval does not actually touch (10, 60); that point is just above and to the left of the shape. Can you tell me the coordinates of the northernmost point on this ellipse?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 9:22:35 pm
+\fs26 \
+(25,60)\
+\cf4 moppr\cf0  
+\fs20 9:22:35 pm
+\fs26 \
+(25, 60)\
+\cf4 MSTang\cf0  
+\fs20 9:22:35 pm
+\fs26 \
+(25, 60)\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:22:35 pm
+\fs26 \
+(25, 60)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you draw the enclosing rectangle, the top point of the ellipse is at the midpoint of the top side of the rectangle. The rectangle is 30 pixels across, so half of that is 15. 10+15 = 25; that's the x-coordinate. The y is 60, so the point is at (25, 60).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Under what conditions will drawOval draw a perfect circle?
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 9:23:13 pm
+\fs26 \
+length = width\
+\cf4 FerozeM\cf0  
+\fs20 9:23:13 pm
+\fs26 \
+width = height\
+\cf4 Tungsten\cf0  
+\fs20 9:23:20 pm
+\fs26 \
+When the width and height are equal\
+\cf4 epicninjatiffy\cf0  
+\fs20 9:23:20 pm
+\fs26 \
+when the length and width are the same\
+\cf4 k77frank\cf0  
+\fs20 9:23:20 pm
+\fs26 \
+length and width are the same\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That happens when the enclosing rectangle is a square. So we'd need the width and height are the same.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you only want to do a part of an oval, the Graphics class has you covered with the method drawArc. Take a look:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawArc\cf6 (\cf11 70\cf0 ,\cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 0\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And here's what it looks like with the oval we drew before next to it for reference:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic ovalArcDrawing.png \width6270 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first four parameters are the same as drawOval. We specify the upper-left corner, width, and height of the bounding rectangle. In the examples I showed you, I shifted the upper-left corner to the right of the oval, and I used the same size rectangle.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The last two parameters to drawArc specify the part of the oval you wish to draw. We do it using angles. If we go due east (i.e. directly to the right), that's an angle of zero degrees. As you increase the angle, you go counterclockwise. So a 45-degree angle points directly northeast. A 90-degree angle points straight up. Straight down would be\'85?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 9:24:06 pm
+\fs26 \
+270\
+\cf4 MSTang\cf0  
+\fs20 9:24:06 pm
+\fs26 \
+-90\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's 270 degrees. Or alternatively -90; a negative angle would go clockwise.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The final parameters to drawArc give the starting angle and how many degrees you want to go from there. In my example, we start at 0, and we go 90 degrees, so we're drawing the northeast quadrant of the oval.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Five minutes left. Let's talk about colors!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: COLORS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Our windows probably look a bit drab being black and gray. Let's add some color.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java, as you may expect, has a class for color that, as you probably won't be surprised to learn, is called Color. Like Graphics, it's part of the java.awt package.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are two ways to make colors. The Color class comes with thirteen pre-defined colors including BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY, MAGENTA, ORANGE, PINK, RED, WHITE, and YELLOW. To use them, you precede the name with Color. as in Color.BLUE.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can also blend your own colors with a statement like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\pard\pardeftab720
+\cf5 Color\cf0  c \cf7 =\cf0  new \cf5 Color\cf6 (\cf0 red, green, blue\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 red, green, and blue should be replaced with integers between 0 and 255 inclusive. They represent the amount of that color to be added to the blend. 0 means none, and 255 means the maximum. Think of it as having red, green, and blue lamps connected to dimmer switches.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To use the color, you pass it as a parameter to the Graphics method setColor, such as in:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 RED\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then everything drawn from that point forward will be in that color. Here's an example. This code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 BLUE\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawOval\cf6 (\cf11 10\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 RED\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawArc\cf6 (\cf11 70\cf0 ,\cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 0\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 drawArc\cf6 (\cf11 100\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 90\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 draws this picture:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic colorDrawing.png \width6270 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can also use colors to draw a filled shape. drawRect, drawOval, and drawArc all have the counterparts fillRect, fillOval, and fillArc respectively. The parameters are exactly the same. It uses the current color for the fill.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what the picture above would look like using fill methods in place of the draw methods:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic colorDrawing2.png \width6270 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you make this drawing? Don't worry about getting the sizes or positions exact.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 9:28:30 pm
+\fs26 \
+Wait, but red, green, and blue light physically blends differently from painted color\
+\cf4 ScottBusche\cf0  
+\fs20 9:28:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 BLUE\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillOval\cf6 (\cf11 10\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 RED\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillArc\cf6 (\cf11 70\cf0 ,\cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 0\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillArc\cf6 (\cf11 100\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 90\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:28:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 BLUE\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillOval\cf6 (\cf11 10\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 RED\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillArc\cf6 (\cf11 70\cf0 ,\cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 0\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillArc\cf6 (\cf11 100\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 90\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 9:28:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 BLUE\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillOval\cf6 (\cf11 10\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 setColor\cf6 (\cf5 Color\cf0 .\cf10 RED\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillArc\cf6 (\cf11 70\cf0 ,\cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 0\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0g.\cf10 fillArc\cf6 (\cf11 100\cf0 , \cf11 60\cf0 , \cf11 30\cf0 , \cf11 100\cf0 , \cf11 90\cf0 , \cf11 90\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep, we just change all those draw methods to fill methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As an extra challenge, see if you can now make this drawing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f4\b0\fs24 \cf0 {{\NeXTGraphic colorDrawing3.png \width6270 \height5400 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Don't worry about getting the sizes and positions exact.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're about out of time. Let's move the discussion of this last exercise to the message board.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In honor of Halloween, maybe you could try making a bat, or a pumpkin with vampire teeth!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You know. Whatevs!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can also put text into your picture. You can do this using the method drawString:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\b \cf0 \'a0\
+g.\cf10 drawString\cf6 (\cf9 "This is some text"\cf0 , \cf11 200\cf0 , \cf11 300\cf6 )\cf7 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first parameter is the text you want to show. The next two tell you where the String goes in the window. As with drawOval, we imagine a rectangle drawn around the text. The numbers give the coordinates of the \cf3 lower-left\cf0  corner of the rectangle.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 6: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We will be revisiting graphics later as we learn more about Java. Today you saw:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The basics of how to set up a graphics application. Use this template in your future projects.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How to use g.drawLine, g.drawRect, g.drawOval, g.drawArc, and g.drawString.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How to create fields that can let you give input to the paintComponent method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How to draw using different colors.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We built a class today to help us do our drawing. Next week, we'll look at some more details on coding classes in Java.}

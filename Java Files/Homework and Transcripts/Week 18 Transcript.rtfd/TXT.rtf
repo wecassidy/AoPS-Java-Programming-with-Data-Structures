@@ -1,0 +1,4546 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier-Bold;
+\f3\fmodern\fcharset0 Courier;\f4\fmodern\fcharset0 Courier-BoldOblique;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red251\green0\blue7;\red115\green0\blue2;
+\red43\green139\blue39;\red18\green139\blue2;\red0\green0\blue83;\red1\green32\blue135;\red190\green74\blue193;
+\red11\green85\blue38;\red10\green82\blue135;\red83\green83\blue83;\red0\green0\blue255;\red0\green0\blue135;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As this is our last class meeting together, let me just point out one more time that you are welcome to request an official grade for the course, if you want. Just send a request to grades@artofproblemsolving.com and put in your note both the name you want to appear on the official report and the address you want it sent to. It would also be helpful for you to mention what your username is and what course you're requesting the official grade report for.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's as simple as that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'll get back a report, on official AOPS letterhead, with a grade, some comments from me, and I don't know what else they put in there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You typically only need a report if you want one for your personal records or you need to submit one to your school.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on any of that before we begin today's discussion?
+\b0 \
+\pard\pardeftab720
+\cf3 AkshajK\cf0  
+\fs20 7:35:56 pm
+\fs26 \
+Is an extension of this course planned? (On AoPS)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There is a game programming course. I'm not sure what language that course is based on, and I don't know how often (or even whether) it currently is being offered. I've heard reports from students it hasn't been offered much lately. If you're interested, send an email to AOPS HQ to inquire about it. Maybe if they see a lot of interest, they'd bring it back.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other than that, I don't know of plans to add any programming courses to the AOPS curriculum.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, let's get down to business.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 Java Programming with Data Structures Week 18: Hashing and Heaps
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Today is H Day, as we'll be discussing two data structures that happen to begin with the same letter of the alphabet. The first is:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 PART 1: HASH TABLES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Last week, we discussed binary search trees. If a search tree is balanced, what's the running time for a search?
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 7:39:01 pm
+\fs26 \
+O(log n)\
+\cf3 ScottBusche\cf0  
+\fs20 7:39:01 pm
+\fs26 \
+O(log N)\
+\cf3 moppr\cf0  
+\fs20 7:39:01 pm
+\fs26 \
+O(log n)\
+\cf3 JRY\cf0  
+\fs20 7:39:01 pm
+\fs26 \
+O(logN)\
+\cf3 bluebandit21\cf0  
+\fs20 7:39:01 pm
+\fs26 \
+O(log N)\
+\cf3 Tungsten\cf0  
+\fs20 7:39:01 pm
+\fs26 \
+O(log (N))\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's O(log N) time. Recall that we search by moving down from the root to the left or right subtrees depending on whether or not the value we're looking for is less or greater than the root's value. At each step, we throw away half the tree, leading to log N steps before reaching the bottom.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Logarithmic time is really quite good already, but it would be great if we could do better. Ideally, we'd like to take constant time for search, insert, and even delete.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, the answer is we can't guarantee constant time in every situation. We can under certain conditions but only if we're willing to sacrifice space (i.e. memory) at the same time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look at a particular example. You may remember from previous weeks that we wrote an application (NameManager.java) to manage attendance in the chatroom. We'd add people in, ask if certain people were present, and remove people when they left.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose I wanted to manage the classroom specifically for this course. Let's assume for the moment that the only people who may show up are me, Anna (Anna Smith) and Kevin (TheWorstPlayer), and all of the signed-up students. In other words, let's assume we won't have a visit from another AOPS person or some other random guest.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Given that, how could I easily keep track of who is here? Think if I was doing this on paper.
+\b0 \
+\pard\pardeftab720
+\cf3 EmeraldBot\cf0  
+\fs20 7:41:35 pm
+\fs26 \
+A list?\
+\cf3 teachm\cf0  
+\fs20 7:41:35 pm
+\fs26 \
+make a list, mark present or absent (1/0)\
+\cf3 ScottBusche\cf0  
+\fs20 7:41:35 pm
+\fs26 \
+Write down everyone who could be there, with a box next to their name on whether or not they're there.\
+\cf3 spower4\cf0  
+\fs20 7:41:35 pm
+\fs26 \
+make a list of names and cross out all who leave and add all who come in\
+\cf3 MathWolf\cf0  
+\fs20 7:41:35 pm
+\fs26 \
+Have a list of names and boolean for is here.\
+\cf3 Tungsten\cf0  
+\fs20 7:41:43 pm
+\fs26 \
+Write down everyone in the class and put marks next to the people who are in the classroom\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure. One way (and maybe your teacher does this at school) is to have a list of all of the possible attendees. When someone comes in, I go to their spot on their list and put a check mark.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If I want to know if someone is present, I go to their spot and see if there's a check mark there. And if someone leaves?
+\b0 \
+\pard\pardeftab720
+\cf3 moppr\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+remove their check\
+\cf3 ScottBusche\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+Erase the check.\
+\cf3 Tungsten\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+Erase/change the mark\
+\cf3 MSTang\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+cross them out\
+\cf3 connor0728\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+change it to an x\
+\cf3 EmeraldBot\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+Remove said checkmark\
+\cf3 ReciterOfPi\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+Erase the check mark?\
+\cf3 MathWolf\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+Take the checkmark off\
+\cf3 JRY\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+Mark them absent\
+\cf3 spower4\cf0  
+\fs20 7:42:10 pm
+\fs26 \
+cross it out\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Go to their spot and erase the check mark.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This system sounds great, but there's an important question. How do we know 
+\i where
+\i0  someone is on the list? We could do a search for the spot, but that requires linear time for an unordered list or logarithmic time for a sorted one. We may as well just stick with a binary search tree.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For this to be effective, we need to be able to 
+\i find
+\i0  spots in constant time. So we need some operation that takes a user name and gives me the position where that user's information is stored. We call this operation a \cf4 hash function\cf0 . The array where we're storing the information about who's present is called a \cf4 hash table\cf0 .
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 7:43:04 pm
+\fs26 \
+Is this the source of java.util.HashMap?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. The Java built-in HashMap library uses hashing to implement a "map". Maps in Java are a lot like Python's dictionary data structure, which lets you associate some collection of data with some other collection of data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Terminology sidenote: The use of the word "hash" here comes from its sense of "to chop or mix". For example, the hash marks on a football field chop up length of the field into smaller distance units, and hash browned potatoes are chopped up potatoes that are browned in a pan and often offered as a breakfast side dish option in restaurants in the US. Likewise, hash functions often work by taking the given data, converting it into a numerical form in some way, then mixing up that numerical data somehow using modular arithmetic operations. But that's getting a little ahead of ourselves. Let's first start with some simpler examples of hash functions.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a way we could approach creating the hash function to use. Assign each person a number. I might be 00, Anna might be 01, Kevin might be 02, etc. up to williamyin09 being 31. Then append this number to the user name. So my new user name would be dkneezel00. williamyin08 would then be williamyin0830.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Note: I might slip later and call myself ScottWeiss as has happened previously in our discussions. Sorry in advance if that occurs. For the rest of the discussion, I will also pretend that this class has 76 people who log in to class, in order not to have to change all the numbers around last minute today.)
+\b0 \
+\pard\pardeftab720
+\cf3 spower4\cf0  
+\fs20 7:47:14 pm
+\fs26 \
+but what if we go into the hundreds, wouldn't it get confusing?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're assuming there won't be any unanticipated other people logging in, so I would know in advance how many people I would need to account for. If there were hundreds of people who might log in, I would just three digit numbers instead of two digit numbers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Furthermore, this is just a simple first example. It's not what we'll actually settle on as a good solution.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Question: Why did I always use a two digit number, even for 0, 1, or 2?
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 7:49:06 pm
+\fs26 \
+So you know what part is actually the username\
+\cf3 JRY\cf0  
+\fs20 7:49:06 pm
+\fs26 \
+So that we can tell who's who by looking at the last 2 digits\
+\cf3 teachm\cf0  
+\fs20 7:49:06 pm
+\fs26 \
+So you can always lop of the last two char and get the number\
+\cf3 bluebandit21\cf0  
+\fs20 7:49:10 pm
+\fs26 \
+so that you can just grab the last two letters of name to find position\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because we can then consistently strip the last two characters of the user name to get the position. For example, with williamyin0830, we wouldn't worry if the position number was 0 or 30.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This operation we just described is an example of a \cf4 perfect hash function\cf0 . It takes any user name and maps it to a 
+\i unique
+\i0  single number.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What issues do you see with this approach?
+\b0 \
+\pard\pardeftab720
+\cf3 puwei99\cf0  
+\fs20 7:50:33 pm
+\fs26 \
+the number of people could be greater than 100\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's not quite a problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I said earlier, we're assuming we know ahead of time how many people there will be.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If there will be more than 100 people, I'll just make my number I tack on at the end long enough to deal with all those possibilities.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One obvious [problem is that it changes your user name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any other suggestions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What might happen if you're taking more than one AOPS course?
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 7:52:37 pm
+\fs26 \
+You might have a different number in each classroom\
+\cf3 moppr\cf0  
+\fs20 7:52:37 pm
+\fs26 \
+two different usernames for 1 person\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, depending on how we'd implement this system, you might get a different username entry for each class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Actually it's worse than that. You'd need digits for every single AOPS course offered! Do you see why?
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 7:54:05 pm
+\fs26 \
+For the classes they're not taking you need to always mark them absent\
+\cf3 ScottBusche\cf0  
+\fs20 7:54:05 pm
+\fs26 \
+In case you took that class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah. AOPS students are enrolled in different sets of courses. We'd need to know 
+\i which digits
+\i0  corresponded to 
+\i which course
+\i0 . So we'd need to be consistent and say, for example, that the fourth pair of digits from the end correspond to the Java course.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're not taking the Java course, you'd need some sort of placeholder (like XX) at that spot.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This makes all the user names very long and probably not feasible for any person to remember.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Given that we know all of the user names ahead of time, we can construct a perfect hash function for them that doesn't involve changing the names at all. Unfortunately, doing so is not an easy task.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since we're working with Strings, we would typically have to convert them to numbers. How do you convert a letter to a number?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just naively how might you do it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you ask your younger sibling to turn an A into a number, for example, what might they say?
+\b0 \
+\pard\pardeftab720
+\cf3 moppr\cf0  
+\fs20 7:56:32 pm
+\fs26 \
+a=1, b=2, ... z = 26\
+\cf3 moppr\cf0  
+\fs20 7:56:32 pm
+\fs26 \
+1\
+\cf3 MSTang\cf0  
+\fs20 7:56:32 pm
+\fs26 \
+A = 1\
+\cf3 spower4\cf0  
+\fs20 7:56:32 pm
+\fs26 \
+1\
+\cf3 mattpi\cf0  
+\fs20 7:56:32 pm
+\fs26 \
+a-1, b-2, ... z-26?\
+\cf3 MathWolf\cf0  
+\fs20 7:56:32 pm
+\fs26 \
+1\
+\cf3 eyl766\cf0  
+\fs20 7:56:32 pm
+\fs26 \
+1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure, we might just use the numbering implied by how the letters are sorted in some language's alphabet.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we're just talking about letters, we can say A is 1, B is 2, C is 3, etc.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 More generally, however, there are more characters that can be typed by a computer than just the 52 upper and lower case Latin letters, so let's get a little cleverer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In general, each character is represented in the computer by a particular number using what is called \cf4 Unicode\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, the Unicode value for A is 65. B's is 66. Lowercase a has a different value than A; it's 97. The digit 5 is stored with the code 53. ! is 33.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As an aside, you may have expected me to say the codes were in ASCII (American Standard Code for Information Interchange). The numbers I gave you were for ASCII; Unicode includes all of ASCII, but it also allows for codes for characters in other languages. Chinese, for example, has many different characters, so we'd need a lot of numbers to represent all of them.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, to form a hash function, we can look at, say, the first three letters of the name, multiply their codes together, and add in the fourth. If that gives you a unique number, we're in business, although we would then have to shift the numbers to get them in the right range. If there are 76 people, we want a number from 0 to 75.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Like I said earlier, let's pretend now that there are 76 people who log on regularly to this class so I won't have to change all the numbers later in this upcoming discussion.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As you can see, there's a lot of math and potential trial and error to get a perfect hash function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It turns out that, for AOPS people, each user already has a unique number assigned to them. For example, my number is 80245.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Great! Could we just use 
+\i that
+\i0  number as our position number? What issues might be involved with that?
+\b0 \
+\pard\pardeftab720
+\cf3 bluebandit21\cf0  
+\fs20 8:00:23 pm
+\fs26 \
+it's a very big number\
+\cf3 teachm\cf0  
+\fs20 8:00:25 pm
+\fs26 \
+Some might be crazy large.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, we could use the userid number, but that involves making a list that is over 80000 spots long. Actually, if you look at the list of user IDs for this course, the highest one is around 160000. So we'd need a list with at least 160000 entries. That's pretty big.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 On the other hand, our course has only 80 or so people in it, so we would be setting aside 2000 times as much space as there are people to store! Again, theoretically, we could do some clever math on the ids to figure out a way to put them in the right range and not need all that space.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But even if we did, this doesn't help us with the general problem. If I don't know the data values in advance, then I can't construct the perfect function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So maybe let's relax our goal and not try to get a 
+\i perfect
+\i0  hashing function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If absolutely any AOPS user could show up in the chatroom, am I really stuck with a 160000-plus array? The answer is no. We can sacrifice a "perfect" hash function for a "very good" one and still have a reasonable running time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To begin, let's make our array just a little bit bigger than necessary. We'll use 163 slots. That's about double the number in the class [because we're pretending there are 76 people in this class; I'll stop putting these reminders in now].
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why 163 and not 160? What special property does 163 have that 160 (and 161 and 162) don't have?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're not sure, just guess. You'll probably be right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: What's a property of integers we commonly wonder about?
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+It's prime?\
+\cf3 MSTang\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+it's prime?\
+\cf3 MathWolf\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+163 is prime?\
+\cf3 JRY\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+163 is prime\
+\cf3 spower4\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+its prime\
+\cf3 teachm\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+priminess\
+\cf3 AkshajK\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+its prime\
+\cf3 EmeraldBot\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+Or wait. It's prime?\
+\cf3 manbugbeebee\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+it's prime?\
+\cf3 ScottBusche\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+Is it prime?\
+\cf3 PiCrazy31415\cf0  
+\fs20 8:04:23 pm
+\fs26 \
+its prime\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a prime number. Using a prime will help distribute the values better in our array.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is simply because prime numbers aren't divisible by anything smaller than themselves, so it's hard for the data to clump up, as may become clearer as we continue our discussion.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Not divisible by anything smaller than themselves other than 1, of course.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I can't use the user ID directly with this size array. What is an easy mathematical operation I can perform on the ID to get it in the range from 0 to 162?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Reminder: Recall that if you take something mod 2, for example, you get values that are either 0 or 1.
+\b0 \
+\pard\pardeftab720
+\cf3 puwei99\cf0  
+\fs20 8:06:34 pm
+\fs26 \
+modulo 163\
+\cf3 JRY\cf0  
+\fs20 8:06:34 pm
+\fs26 \
+I mean take it mod 163\
+\cf3 connor0728\cf0  
+\fs20 8:06:34 pm
+\fs26 \
+mod 163\
+\cf3 connor0728\cf0  
+\fs20 8:06:34 pm
+\fs26 \
+%163\
+\cf3 ReciterOfPi\cf0  
+\fs20 8:06:34 pm
+\fs26 \
+mod 163.\
+\cf3 moppr\cf0  
+\fs20 8:06:43 pm
+\fs26 \
+mod 163\
+\cf3 teachm\cf0  
+\fs20 8:07:10 pm
+\fs26 \
+mod 163\
+\cf3 MSTang\cf0  
+\fs20 8:07:10 pm
+\fs26 \
+mod 163\
+\cf3 eyl766\cf0  
+\fs20 8:07:10 pm
+\fs26 \
+mod 163\
+\cf3 PiCrazy31415\cf0  
+\fs20 8:07:10 pm
+\fs26 \
+mod 163\
+\cf3 AkshajK\cf0  
+\fs20 8:07:10 pm
+\fs26 \
+modulo 163\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can use the mod or remainder operator. We'll just take the user ID % 163.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As an example, for my ID number, I take 80245 % 163, which is 49. So I would put my check mark in box 49.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, we'll be doing several of these modular operations today.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you want, you can try computing them by hand.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's also fine by me if you were to use a program (like Python) to compute them for you.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can also just submit such computations to the Google search bar and it will use its built-in calculator to get you the answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, I just googled 80245 % 163 and got 49 as the response.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, that's all pretty straightforward. What's the big problem with this, though?
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 8:10:33 pm
+\fs26 \
+But if somebody with the ID 49 showed up, they would also go in box 49.\
+\cf3 ScottBusche\cf0  
+\fs20 8:10:33 pm
+\fs26 \
+What if 2 people had the same remainder?\
+\cf3 puwei99\cf0  
+\fs20 8:10:33 pm
+\fs26 \
+more than one user could have the same remainder\
+\cf3 MathWolf\cf0  
+\fs20 8:10:33 pm
+\fs26 \
+What if 2 numbers have the same remainder?\
+\cf3 Tungsten\cf0  
+\fs20 8:10:33 pm
+\fs26 \
+49 % 163 = 80245 % 163. It clashes.\
+\cf3 JRY\cf0  
+\fs20 8:10:33 pm
+\fs26 \
+Two of the user ids might give the same remainder mod 163\
+\cf3 spower4\cf0  
+\fs20 8:10:38 pm
+\fs26 \
+two usernames could have the same modula 163\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, indeed. What if someone else also ended up with a remainder of 49? (We might say their ID \cf4 hashed\cf0  to 49.) For example, the person with user ID 16349 would also map to 49. So it would look like that person is already present, even though it's me who's there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When two distinct data elements hash to the same value, we call it a \cf4 collision\cf0 . Nearly all real-world hash functions potentially result in collisions. The hope is that we can minimize the probability of colliding. Having a larger table helps, but you don't want to take up too much space in memory.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are several approaches one could take to deal with collisions. We'll discuss two: \cf4 probing\cf0  (or \cf4 open addressing\cf0 ) and \cf4 chaining\cf0 . In both cases, we'll have to move away from storing a "present" or "absent" Boolean in the table to storing the actual value of the item (like 80245 for my ID).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the most straightforward form of probing (called \cf4 linear probing\cf0 ), if you find a space is taken, you just take the next space over instead. So if I take space 49 first with my ID of 80245, then 16349 would go into space 50.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So suppose 80245 and 16349 are both stored in the table. Anna Smith's ID is 28393. Where would she go?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (This would be a good time to use whatever device you're going to use to do modular arithmetic for you, which might be a computer/calculator or might be your brains.)
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 Tungsten\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 spower4\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 moppr\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 teachm\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 JRY\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+space 31\
+\cf3 ScottBusche\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 mattpi\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 piis3141592653\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 MathWolf\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31\
+\cf3 ReciterOfPi\cf0  
+\fs20 8:13:10 pm
+\fs26 \
+31.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Take 28393 mod 163, and you get 31. So she's in space 31.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens with 81662 and 146862? Where would they be placed?
+\b0 \
+\pard\pardeftab720
+\cf3 ScottBusche\cf0  
+\fs20 8:13:58 pm
+\fs26 \
+162 and 162...\
+\cf3 ReciterOfPi\cf0  
+\fs20 8:13:58 pm
+\fs26 \
+162 and 162.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hmmm, yes, those both come out to 162 (mod 163).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What might we do in order to be able to place both entries in our table?
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:14:42 pm
+\fs26 \
+162 and 0\
+\cf3 moppr\cf0  
+\fs20 8:14:42 pm
+\fs26 \
+162 and... 0?\
+\cf3 piis3141592653\cf0  
+\fs20 8:14:42 pm
+\fs26 \
+162 and 0?\
+\cf3 teachm\cf0  
+\fs20 8:14:42 pm
+\fs26 \
+bump to 0\
+\cf3 piis3141592653\cf0  
+\fs20 8:14:42 pm
+\fs26 \
+move one of them to space 0?\
+\cf3 moppr\cf0  
+\fs20 8:14:42 pm
+\fs26 \
+bump 146862 to 0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Both of these hash to 162. So the first one would go there, and the second would go into position 0. There's no spot 163, so we wrap back around to the front.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now take a student with the ID 55470. Where would she go?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It can't be 50. Why not?
+\b0 \
+\pard\pardeftab720
+\cf3 ScottBusche\cf0  
+\fs20 8:15:39 pm
+\fs26 \
+50--isn't that where you put 16349?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. We already put user number 16349 into spot 50, because I was sitting in spot 49. So this new entry needs to scan further to the right to find a place to go. 51 is the next open place, so we put user 55470 there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that?
+\b0 \
+\pard\pardeftab720
+\cf3 puwei99\cf0  
+\fs20 8:17:15 pm
+\fs26 \
+what makes this not a "perfect" hashing algorithm?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's not perfect because of the colliisions.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In our perfect hash, it was not possible to get collisions because every user hashed to a unique location in the table.
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:17:50 pm
+\fs26 \
+What if every spot is taken?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We made the table large enough (twice as large as the pretend 80 students who log in to this course) so that probably isn't the most pressing of our concerns.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But we are starting to see something that should draw our attention.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that in placing 55470 into the table, we've had to deal with a collision even though 16349 and 55470 hash to different values.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This indicates an issue called \cf4 clustering\cf0 . If we get a series of collisions on close values, then those values will clump together. As the cluster grows, it will cause even more collisions. This leads to decreasing efficiency as we need to do longer probes to get out of the cluster and find an empty space.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we want to know if person 10000 is in the chatroom. We take the number mod 163 and get 57. If 10000 is at that position, then we know the person is present.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Question: What if 10000 is not there? Does that mean the person is absent?
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 8:20:26 pm
+\fs26 \
+No, 1000 could be at the next spot if it was already taken when he/she logged in.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right. Not necessarily. If the space is empty, then clearly we never put the person into the table.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But if the space is taken, it's possible the person is there. If we added in, say, person 57 first, then 10000 would cause a collision. We'd have to look at the next spot.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And if that next spot is taken? What do we do?
+\b0 \
+\pard\pardeftab720
+\cf3 MathWolf\cf0  
+\fs20 8:21:13 pm
+\fs26 \
+Go to the next after that\
+\cf3 MSTang\cf0  
+\fs20 8:21:13 pm
+\fs26 \
+keep going\
+\cf3 piis3141592653\cf0  
+\fs20 8:21:13 pm
+\fs26 \
+move over to the next spot\
+\cf3 ReciterOfPi\cf0  
+\fs20 8:21:13 pm
+\fs26 \
+Go to the next one!\
+\cf3 teachm\cf0  
+\fs20 8:21:13 pm
+\fs26 \
+Keep looking until empty spot\
+\cf3 moppr\cf0  
+\fs20 8:21:21 pm
+\fs26 \
+keep going until we hit a spot that isn't taken\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to keep going (wrapping around to position 0 if needed) until you find either an empty space or the value you're searching for.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Technically there's a third possibility. What is it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The third possibility is that if all the spaces in the table are taken, we could potentially wrap around back to where you started. Now, in my example, we chose a value larger than the number of students in the class, so we wouldn't expect this to happen. But in a real situation, it's possible, and clustering makes it more likely.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we need to remove a value from the table, we follow a similar approach. Search for the element in the table, starting at the position indicated by the hash function. If we hit an empty space, it's not there. If we find the element, clear its space.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This algorithm has a big problem. What is it?
+\b0 \
+\pard\pardeftab720
+\cf3 ReciterOfPi\cf0  
+\fs20 8:26:09 pm
+\fs26 \
+Don't you need to move the "bumped" ones back to where they should have been placed?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's an interesting proposition, but that would be complicated to organize. I propose there's a simpler solution to this difficulty.
+\b0 \
+\pard\pardeftab720
+\cf3 MathWolf\cf0  
+\fs20 8:26:50 pm
+\fs26 \
+It leaves empty spaces that fool you after.\
+\cf3 MSTang\cf0  
+\fs20 8:26:50 pm
+\fs26 \
+It will start to make a bunch of holes\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, the problem is that we could end up thinking that something is not in the table when it really is. Here's an example. Suppose A, B, and C all hash to 30. So, if inserted in that order, they end up in positions 30, 31, and 32. Now suppose we remove B. That puts an empty space at 31.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But if we now look for C, we start at 30, hit the empty space at 31, and conclude C is not there. Oops!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How might we resolve this problem with minimal fussing?
+\b0 \
+\pard\pardeftab720
+\cf3 teachm\cf0  
+\fs20 8:27:48 pm
+\fs26 \
+We could keep going until we find one that does not hash to 30\
+\cf3 Tungsten\cf0  
+\fs20 8:27:48 pm
+\fs26 \
+Keep going until we get back to the original spot?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One way wouild be to keep searching even if we hit an empty space. But that's not a good idea, because we'll essentially have to search the entire array when something is absent.
+\b0 \
+\pard\pardeftab720
+\cf3 ScottBusche\cf0  
+\fs20 8:28:08 pm
+\fs26 \
+Leave a flag that someone was there?\
+\cf3 MSTang\cf0  
+\fs20 8:28:08 pm
+\fs26 \
+Put a marker to say "keep going?"\
+\cf3 bluebandit21\cf0  
+\fs20 8:28:08 pm
+\fs26 \
+could you keep B and change a boolean to false?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instead, rather than clear a space, we put a new value there that indicates the space was previously occupied. So now spaces are empty, previously occupied, or occupied. When inserting, we can add an element to spaces in the first two categories. When searching, we skip spaces in the last two categories.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions about linear probing?
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 8:29:09 pm
+\fs26 \
+What would the running time of the methods to hash, insert, and remove values?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That would all depend on the specific implementation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's put that question on hold until we implement a hash.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As we've discussed, linear probing suffers from clustering. One easy revision to our probing algorithm is to not always skip by 1s. In \cf4 quadratic probing\cf0 , we skip by 1, then if that space is filled we next skip by 3, then by 5, and so on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why is this called quadratic probing? Think about which places are checked.
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:30:48 pm
+\fs26 \
+We check n, n+1, n+4, n+9, ..., n+k^2, ...\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because you first check 1 away from the start, then 4 away (1+3), then 9 (1+3+5) away, and so on. This is the sequence of perfect squares.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By spacing out the colliding values, we hope to prevent similar values from causing clusters.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'll notice that we haven't coded this structure; I'll have you do that for homework. Instead we'll code now the \cf4 chaining\cf0  version of a hash table.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The basic idea is to store more than one thing at a particular position in an array. What structure do we know that can store more than one thing?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I should be getting flooded with answers to this one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've seen several examples of data structures that can hold more than one data element.
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+array ...?\
+\cf3 Tungsten\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+Lists!\
+\cf3 puwei99\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+list\
+\cf3 AkshajK\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+array\
+\cf3 ScottBusche\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+Any kind of list.\
+\cf3 teachm\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+arrays\
+\cf3 teachm\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+trees\
+\cf3 teachm\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+queues\
+\cf3 ReciterOfPi\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+Multi-dimensional array.\
+\cf3 bluebandit21\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+arrays\
+\cf3 teachm\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+arraylists\
+\cf3 bluebandit21\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+lists\
+\cf3 eyl766\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+array?\
+\cf3 bluebandit21\cf0  
+\fs20 8:32:26 pm
+\fs26 \
+stacks\
+\cf3 JRY\cf0  
+\fs20 8:32:36 pm
+\fs26 \
+Another array, lists\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure. All of those can hold many data elements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've got a bunch of possibilities at this point, but the simplest is a list, either array or linked-based. If our hash function is good at avoiding collisions, then we expect not to have too many elements in this list. So we don't need something so sophisticated.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll use a LinkedList in this example, but, as I said, an ArrayList could work too. These lists are often called \cf4 buckets\cf0 . When we want to insert an element, we put the value in the bucket referred to by the hash function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you want, you can think of this solution as building something like a comb.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll have an array of LinkedLists. When we find some user's hash, we'll look at that place in the array. If someone is there, we'll tack the new user onto that LinkedList.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions there?
+\b0 \
+\pard\pardeftab720
+\cf3 williamyin08\cf0  
+\fs20 8:34:22 pm
+\fs26 \
+Why a comb?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm imagining the array as a column of boxes, like the spine of a comb. The LinkedLists would then be growing horizontally out away from the spine.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 See it?
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 8:35:35 pm
+\fs26 \
+A comb made out of buckets?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ha, yes, I'm mixing metaphors a bit, I guess. 
+\f1\b0\fs24 {{\NeXTGraphic smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's do some coding.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Make a new class called HashTable. We're going to assume that we're just going to put Strings into it. Therefore we need to make an array that can hold lists of Strings. Can you declare the appropriate structure? Call it table.
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 8:37:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 private
+\f3\b0  LinkedList\cf5 <\cf0 String\cf5 >\cf0  \cf6 []\cf0  table\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 JRY\cf0  
+\fs20 8:37:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 private
+\f3\b0  LinkedList\cf5 <\cf0 String\cf5 >\cf6 []\cf0  table\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, we want an 
+\i array
+\i0  of 
+\i LinkedList
+\i0 s of 
+\i String
+\i0 s, so that would be the declaration we'd need to make.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions there? That probably looks a bit unfamiliar, but all of the pieces are certainly well known to everybody.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We just had to put them together.
+\b0 \
+\pard\pardeftab720
+\cf3 ScottBusche\cf0  
+\fs20 8:39:27 pm
+\fs26 \
+Note that you need to import java.util.LinkedList\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, indeed, we do need to import java.util.LinkedList.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Alternatively, you could use the Linked List structure wrote together instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I wrote for declaring the array of linked lists of strings:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public class HashTable \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0private LinkedList\cf5 <\cf0 String\cf5 >\cf0  \cf6 []\cf0  table\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we need a constructor. I'll pass the size of the array as a parameter to it. Here's the code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public HashTable\cf6 (\cf7 int\cf0  capacity\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table \cf5 =\cf0  new \cf8 LinkedList\cf6 [\cf0 capacity\cf6 ]\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf7 int\cf0  i\cf5 =\cf9 0\cf5 ;\cf0  i \cf5 <\cf0  capacity\cf5 ;\cf0  i\cf5 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 i\cf6 ]\cf0  \cf5 =\cf0  new LinkedList\cf5 <\cf0 String\cf5 >\cf6 ()\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first line instantiates the array as a whole. I just use the generic to create the array; Java doesn't like it when you put <String> in. We do use LinkedList<String> inside the loop to make sure each array position stores a list of the appropriate type.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll write the insert method, which I'll actually call add. Here's the header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  add\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What should the first step of the method be? I'm looking for an English description here.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: We're trying to implement hashing now.
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:43:01 pm
+\fs26 \
+Make the string into a number?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. More or less.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need some way to associate a hash value with our data elements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That is to say: We need to apply the hash function to the value x that we are inserting. So we need a hash function.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In fact, we won't need to worry too much about that part. It turns out that every Java object already has an associated hash function. One of the functions in the class Object is \cf4 hashcode\cf0 . It takes no parameters and returns an int.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, the one in Object is very generic. It will hash distinct \cf4 objects\cf0  to distinct values; it does this by hashing off of the memory locations. If String a is "Scott" and String b is "Scott", you want a and b to have the same hashcode.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fortunately, the String class's own hash function is better. It uses a technique like we discussed earlier. It converts each character to a number and then essentially treats the string as a base-31 number. The actual formula for a string s of length n is:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+s\cf6 [\cf9 0\cf6 ]\cf5 *\cf9 31\cf5 ^\cf6 (\cf0 n\cf5 -\cf9 1\cf6 )\cf0  \cf5 +\cf0  s\cf6 [\cf9 1\cf6 ]\cf5 *\cf9 31\cf5 ^\cf6 (\cf0 n\cf5 -\cf9 2\cf6 )\cf0  \cf5 +\cf0  ... \cf5 +\cf0  s\cf6 [\cf0 n\cf5 -\cf9 1\cf6 ]\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you ever want to make a hash table with objects from a class that you made, you will want to override hashcode yourself. Eclipse can help generate the code; it's one of the options under the Source menu. Note that the specification of the Java language says that if two objects are the same according to the equals method, hashcode must give the same value for them. So if you change equals, change hashcode too.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (That only matters if you're going to make hash tables containing objects of your class. That's why we haven't done it in previous classes even though we've modified equals.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One other technical detail before we proceed. If our String is long (how long exactly is left as a homework problem), the calculated value will become larger than what can be stored in an int variable. When that happens, it is possible the hashcode will give us a negative number. That's due to how Java stores numbers internally; take a computer architecture course to find out more.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're going to handle this issue by simply taking the absolute value of the hashcode. Once we have this value, we don't quite have the spot we want to place x into yet. What else must we do to this number?
+\b0 \
+\pard\pardeftab720
+\cf3 puwei99\cf0  
+\fs20 8:49:00 pm
+\fs26 \
+mod (capacity)\
+\cf3 MathWolf\cf0  
+\fs20 8:49:00 pm
+\fs26 \
+find its remainder mod 163\
+\cf3 teachm\cf0  
+\fs20 8:49:00 pm
+\fs26 \
+moduloooooo\
+\cf3 eyl766\cf0  
+\fs20 8:49:05 pm
+\fs26 \
+mod\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to make sure it is a legal array position for the table, so we have to get the remainder when we divide it by the table size.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we've got the pieces: call the hashcode method on x, take its absolute value, and mod it by the table size. Can you give me the (one) line of code that does all that, putting the result into the new variable 
+\i spot
+\i0 ?
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:51:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf7 int
+\f3\b0 \cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  add\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next thing we should do is check if x is not already in the bucket. We don't want it there twice. Can you give me the appropriate if test? Remember that the bucket is a LinkedList.
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:52:14 pm
+\fs26 \
+How fast does x.hashCode() run?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It'll be fast.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 These built-in hashing functions are extensively tested and optimized by the Java developers to be very good.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The next thing we should do is check if x is not already in the bucket. We don't want it there twice. Can you give me the appropriate if test? Remember that the bucket is a LinkedList.
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 8:53:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 if
+\f3\b0  \cf6 (\cf0 table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 ))\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 JRY\cf0  
+\fs20 8:53:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 if
+\f3\b0  \cf6 (\cf5 !\cf6 (\cf0 table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 )))\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can use the contains method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  add\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf5 !\cf0 table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 ))\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If it's not there, we put it in the list. Where should it go?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: For a linked list, where can we insert elements most quickly?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Is there one insert that is faster than others?
+\b0 \
+\pard\pardeftab720
+\cf3 MathWolf\cf0  
+\fs20 8:54:36 pm
+\fs26 \
+The back of the list\
+\cf3 ScottBusche\cf0  
+\fs20 8:54:36 pm
+\fs26 \
+The back.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To get to the back, I need to start at the head and step forward a bunch of times until I get to the end.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's O(n).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Do we have any other inserts for linked lists that might be faster than that?
+\b0 \
+\pard\pardeftab720
+\cf3 ScottBusche\cf0  
+\fs20 8:55:22 pm
+\fs26 \
+The front.\
+\cf3 teachm\cf0  
+\fs20 8:55:22 pm
+\fs26 \
+the head, then?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The order doesn't particularly matter, so we should do the fastest insertion possible. For a linked list, that's at the front. So here's the full method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  add\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf5 !\cf0 table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 addFirst\cf6 (\cf0 x\cf6 )\cf5 ;\cf0    \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next comes contains to check if a string is stored in the table. Here's the header:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 boolean\cf0  contains\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you fill in the code? Remember it returns true if x is present and false otherwise.
+\b0 \
+\pard\pardeftab720
+\cf3 MathWolf\cf0  
+\fs20 8:57:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b \cf7 boolean
+\f3\b0 \cf0  contains\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf7 int
+\f3\b0 \cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf5 %\cf0 table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 MSTang\cf0  
+\fs20 8:57:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b \cf7 boolean
+\f3\b0 \cf0  contains\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf7 int
+\f3\b0 \cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 JRY\cf0  
+\fs20 8:57:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b \cf7 boolean
+\f3\b0 \cf0  contains\cf6 (\cf8 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf7 int
+\f3\b0 \cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf6 (\cf0 table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 ))\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 Tungsten\cf0  
+\fs20 8:58:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b \cf7 boolean
+\f3\b0 \cf0  contains\cf6 (\cf8 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf7 int
+\f3\b0 \cf0  hash \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  
+\f2\b this
+\f3\b0 .\cf10 table\cf0 .\cf10 length\cf5 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  
+\f2\b this
+\f3\b0 .\cf10 table\cf6 [\cf0 hash\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 puwei99\cf0  
+\fs20 8:58:03 pm
+\fs26 \
+public boolean contains(String x) \{\
+int spot = Math.abs(x.hashCode()) % table.length;\
+if (table[spot].contains(x)) \{\
+return true;\
+\}\
+return false;\
+\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 boolean\cf0  contains\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And finally we have the method remove that deletes x from the table if it is present (and otherwise leaves the table alone). Can you provide the complete method? Hint: LinkedList has its own remove method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It'll be a lot like our contains method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We just need to find the appropriate spot in the array, go there, and use the remove method belonging to the LinkedList at that location.
+\b0 \
+\pard\pardeftab720
+\cf3 MathWolf\cf0  
+\fs20 9:00:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b \cf7 void
+\f3\b0 \cf0  remove\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf7 int
+\f3\b0 \cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf5 %\cf0 table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 remove\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 MSTang\cf0  
+\fs20 9:00:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b \cf7 void
+\f3\b0 \cf0  remove\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf7 int
+\f3\b0 \cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 remove\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 JRY\cf0  
+\fs20 9:00:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b \cf7 void
+\f3\b0 \cf0  remove\cf6 (\cf8 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf7 int
+\f3\b0 \cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 remove\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 Tungsten\cf0  
+\fs20 9:00:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b \cf7 boolean
+\f3\b0 \cf0  remove\cf6 (\cf8 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf7 int
+\f3\b0 \cf0  hash \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  
+\f2\b this
+\f3\b0 .\cf10 table\cf0 .\cf10 length\cf5 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  
+\f2\b this
+\f3\b0 .\cf10 table\cf6 [\cf0 hash\cf6 ]\cf0 .\cf10 remove\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  remove\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 remove\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And here's the complete class with comments:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+import \cf11 java.util.LinkedList\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f4\i \cf12 // Implements a hash table with chaining
+\f2\i0 \cf0 \
+public class HashTable \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0private LinkedList\cf5 <\cf0 String\cf5 >\cf0  \cf6 []\cf0  table\cf5 ;\cf0  
+\f4\i \cf12 // array of buckets
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0
+\f4\i \cf2 /**\
+\'a0\'a0\'a0\'a0 * Constructs the hash table\
+\'a0\'a0\'a0\'a0 * @param capacity number of slots in table\
+\'a0\'a0\'a0\'a0 */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0public HashTable\cf6 (\cf7 int\cf0  capacity\cf6 )\cf0  \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table \cf5 =\cf0  new \cf8 LinkedList\cf6 [\cf0 capacity\cf6 ]\cf5 ;\cf0  
+\f4\i \cf12 // create array
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0for \cf6 (\cf7 int\cf0  i\cf5 =\cf9 0\cf5 ;\cf0  i \cf5 <\cf0  capacity\cf5 ;\cf0  i\cf5 ++\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 i\cf6 ]\cf0  \cf5 =\cf0  new LinkedList\cf5 <\cf0 String\cf5 >\cf6 ()\cf5 ;\cf0  
+\f4\i \cf12 // place empty list in each array position
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\i \cf2 /**\
+\'a0\'a0\'a0\'a0 * add an element to the hash table (if not already present)\
+\'a0\'a0\'a0\'a0 * @param x String to add\
+\'a0\'a0\'a0\'a0 */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  add\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0  
+\f4\i \cf12 // find position based on hash function
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf5 !\cf0 table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 addFirst\cf6 (\cf0 x\cf6 )\cf5 ;\cf0    
+\f4\i \cf12 // add to front of list for maximum efficiency
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\i \cf2 /**\
+\'a0\'a0\'a0\'a0 * Determine if x is stored in the hash table\
+\'a0\'a0\'a0\'a0 * @param x Element to search for\
+\'a0\'a0\'a0\'a0 * @return true if x is in the table, false otherwise\
+\'a0\'a0\'a0\'a0 */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 boolean\cf0  contains\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 contains\cf6 (\cf0 x\cf6 )\cf5 ;\cf0  
+\f4\i \cf12 // search appropriate bucket
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0
+\f4\i \cf2 /**\
+\'a0\'a0\'a0\'a0 * Delete x from the table if present\
+\'a0\'a0\'a0\'a0 * @param x Element to remove\
+\'a0\'a0\'a0\'a0 */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  remove\cf6 (\cf8 String\cf0  x\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  \cf8 Math\cf0 .\cf10 abs\cf6 (\cf0 x.\cf10 hashCode\cf6 ())\cf0  \cf5 %\cf0  table.\cf10 length\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0table\cf6 [\cf0 spot\cf6 ]\cf0 .\cf10 remove\cf6 (\cf0 x\cf6 )\cf5 ;\cf0  
+\f4\i \cf12 // use LinkedList remove function to take out x
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0   \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To demonstrate the class in action, I've modified the NameManager application we worked on previously. The code we wrote mostly works, but we have a few changes to make. I'll post the code in its entirety after class; I'll just discuss the differences right now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The most significant change is to this line:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0AOPSList names \cf5 =\cf0  new LList\cf6 ()\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we declare and instantiate the variable names in this version using HashTables?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What type declaration goes on the left? What constructor goes on the right?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Go ahead and assume we still want to use a hash table that has 163 entries.
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 9:03:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 HashTable names \cf5 =\cf0  
+\f2\b new
+\f3\b0  HashTable\cf6 (\cf9 163\cf6 )\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 JRY\cf0  
+\fs20 9:03:11 pm
+\fs26 \
+HashTable names = new HashTable(163);\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0   HashTable names \cf5 =\cf0  new HashTable\cf6 (\cf9 163\cf6 )\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We no longer have an interface to deal with, so we just declare HashTable as the type on both sides of the equals. We need to give the capacity of the table. I followed my earlier example of 163, but any large prime would do.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The two other changes are even less interesting. The original used addToBack to put the new name in it. Here we use what?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: What's the only method we wrote for HashTable that lets us put new elements into the table?
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 9:04:38 pm
+\fs26 \
+add\
+\cf3 Tungsten\cf0  
+\fs20 9:04:38 pm
+\fs26 \
+add()\
+\cf3 JRY\cf0  
+\fs20 9:04:38 pm
+\fs26 \
+add\
+\cf3 eyl766\cf0  
+\fs20 9:04:38 pm
+\fs26 \
+add\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just add; the hash function tells us where to put things, so there's no need for multiple kinds of add.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When removing, we checked if index returned -1, and if it wasn't, we removed the element at the spot:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 int\cf0  spot \cf5 =\cf0  names.\cf10 index\cf6 (\cf0 userName\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 spot \cf5 !=\cf0  \cf5 -\cf9 1\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0names.\cf10 remove\cf6 (\cf0 spot\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf13 "Sorry, %s is not present\cf14 \\n\cf13 "\cf0 , userName\cf6 )\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now what code can replace the first three lines?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (In other words, what HashTable method can we use here to simplify this section of code?)
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 9:06:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 if
+\f3\b0  \cf6 (\cf0 names.\cf10 contains\cf6 (\cf0 userName\cf6 ))\cf0  \cf6 \{\cf0 names.\cf10 remove\cf6 (\cf0 userName\cf6 )\cf5 ;\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 JRY\cf0  
+\fs20 9:06:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0  
+\f2\b if
+\f3\b0  \cf6 (\cf0 names.\cf10 contains\cf6 (\cf0 x\cf6 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0remove\cf6 (\cf0 x\cf6 )\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf3 moppr\cf0  
+\fs20 9:06:18 pm
+\fs26 \
+contains\
+\cf3 connor0728\cf0  
+\fs20 9:06:18 pm
+\fs26 \
+remove\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We use contains to check if userName is present and then remove to remove it:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 names.\cf10 contains\cf6 (\cf0 userName\cf6 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0names.\cf10 remove\cf6 (\cf0 userName\cf6 )\cf5 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf13 "Sorry, %s is not present\cf14 \\n\cf13 "\cf0 , userName\cf6 )\cf5 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Analyzing the running time of the methods in our code is tricky, because it depends so heavily on the hash function. If we map everything to, say, 17, then essentially our hash table elements are stored in the same linked list. That degenerates to the linear running times of a linked list.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If our hash table tends to distribute elements evenly to all of the buckets, however, then the buckets will be all very short, and searching one will take just about constant time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm going to skip part 2 of our lesson, about \cf4 HashSet\cf0 s and \cf4 maps\cf0  (like dictionaries in Python).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ask about that on the message board if you'd like some more information about that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I think you'll probably prefer we spend time today talking about our last data structure, priority queues and heaps.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 PART 3: PRIORITY QUEUES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll now change gears and look at another data structure. Unlike the hash table or binary search table, it does not support search or retrieval of arbitrary elements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've already discussed some data structures that didn't give you built-in access to arbitrary elements. Which ones have we talked about that are like that?
+\b0 \
+\pard\pardeftab720
+\cf3 mattpi\cf0  
+\fs20 9:09:25 pm
+\fs26 \
+stacks and queues\
+\cf3 moppr\cf0  
+\fs20 9:09:25 pm
+\fs26 \
+stacks, queues, deques?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The stack only give you direct access to the last element entered. The queue only gives you direct access to the first element entered.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The data structure we'll discuss now is called a \cf4 priority queue\cf0 . To build our priority queue, we will require that the data elements it will store will be endowed with an associated value called a \cf4 priority\cf0 . In this discussion, we'll assume that the priority value is an integer. When we retrieve an element from the structure, the element we get back will be the one with the 
+\i highest
+\i0  priority.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, suppose we enter elements in this order with the priorities 5, 3, 6, 2, 4.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If this data were being stored in a stack, which element would be extracted? (Let's pretend for now that the data element being store just 
+\i is
+\i0  its priority, so if you think the element associated with priority 3 is what we'd get back, you can just say "3".)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want the element at the top of the stack, and that will be the last element that got pushed on. Which is that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 5 gets pushed on first.
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 9:12:01 pm
+\fs26 \
+4\
+\cf3 spower4\cf0  
+\fs20 9:12:01 pm
+\fs26 \
+4\
+\cf3 JRY\cf0  
+\fs20 9:12:01 pm
+\fs26 \
+last element is 4\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 4 was the last element to get pushed on, so it's extracted next if this data were being put into a stack.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What if this were a regular queue?
+\b0 \
+\pard\pardeftab720
+\cf3 ScottBusche\cf0  
+\fs20 9:12:40 pm
+\fs26 \
+5\
+\cf3 puwei99\cf0  
+\fs20 9:12:40 pm
+\fs26 \
+"5"\
+\cf3 ReciterOfPi\cf0  
+\fs20 9:12:40 pm
+\fs26 \
+5.\
+\cf3 Tungsten\cf0  
+\fs20 9:12:40 pm
+\fs26 \
+We would get 5\
+\cf3 spower4\cf0  
+\fs20 9:12:45 pm
+\fs26 \
+5\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 5 was entered first.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we get 5 back first if we're using a queue data structure to store this data.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And now what if this data were being stored in our new priority queue?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:13:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The priority queue is going to grab the element with the highest priority, regardless of when we put it into our structure.
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 9:13:56 pm
+\fs26 \
+6\
+\cf3 MSTang\cf0  
+\fs20 9:13:56 pm
+\fs26 \
+6\
+\cf3 JRY\cf0  
+\fs20 9:13:56 pm
+\fs26 \
+6\
+\cf3 ScottBusche\cf0  
+\fs20 9:13:56 pm
+\fs26 \
+6\
+\cf3 spower4\cf0  
+\fs20 9:13:56 pm
+\fs26 \
+6\
+\cf3 MathWolf\cf0  
+\fs20 9:13:56 pm
+\fs26 \
+6\
+\cf3 williamyin08\cf0  
+\fs20 9:13:56 pm
+\fs26 \
+6, right in the middle\
+\cf3 ReciterOfPi\cf0  
+\fs20 9:13:56 pm
+\fs26 \
+6.\
+\cf3 moppr\cf0  
+\fs20 9:14:01 pm
+\fs26 \
+so 6\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 6 is the highest priority currently stored in the structure, so that's the one our priority queue would give back to us.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll make an interface for our priority queue structure. It will look similar to our AOPSQueue interface from several weeks ago. You can make a new Java interface called AOPSPriorityQueue and put the following code in it:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+public interface AOPSPriorityQueue \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public \cf7 void\cf0  enqueue\cf6 (\cf7 int\cf0  x\cf6 )\cf5 ;\cf0  
+\f4\i \cf12 // adds x to the queue
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 int\cf0  dequeue\cf6 ()\cf5 ;\cf0  
+\f4\i \cf12 // removes and returns the highest priority element
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 int\cf0  peek\cf6 ()\cf5 ;\cf0  
+\f4\i \cf12 // returns the highest priority element
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 boolean\cf0  isEmpty\cf6 ()\cf5 ;\cf0  
+\f4\i \cf12 // is the priority queue empty?
+\f2\i0 \cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The major differences are the comments about what these methods should return and the type of element we're storing. In the version we'll write together now, we'll just store the priorities themselves so we get a sense of how the structure works. In "reality", you'd want a generic type where compareTo was based off of the priorities of the elements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Actually, we won't write it together now. But we should say enough that you could write it yourself after class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we wanted to use our linked list structure to implement this. How could we implement enqueue and dequeue?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Don't fret too much about efficiency. If it's going to take O(n) time, so be it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just describe what you'd do in words.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that we don't always have to insert elements into a linked list at the front or the back. We have more options than that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we might just be careful about where we put newly inserted elements.
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 9:17:33 pm
+\fs26 \
+To enqueue, add in the linked-list between the two elements less and greater than it\
+\cf3 Tungsten\cf0  
+\fs20 9:17:33 pm
+\fs26 \
+Dequeue: go through the list and record the element with the highest priority.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Both of those could be options.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll go with the first one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When we add an element, we put it in the correct spot based on its priority. It would essentially be in reverse numerical order. Then when we dequeue, we just take the first element.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What would be the running time for these operations?
+\b0 \
+\pard\pardeftab720
+\cf3 MSTang\cf0  
+\fs20 9:18:22 pm
+\fs26 \
+O(N), O(1)\
+\cf3 MathWolf\cf0  
+\fs20 9:18:22 pm
+\fs26 \
+O(n) and O(1)\
+\cf3 ScottBusche\cf0  
+\fs20 9:18:22 pm
+\fs26 \
+enqueue: O(N) dequeue: O(1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Enqueue would potentially be linear time since we may have to go through the whole list to find where the new one goes. Dequeue would be constant time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we used a binary search tree. We use normal insert as the enqueue. We then find the largest element and remove it when we want to dequeue. What are the running times now?
+\b0 \
+\pard\pardeftab720
+\cf3 moppr\cf0  
+\fs20 9:19:00 pm
+\fs26 \
+O(log n) and o(1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Not quite. Removing elements in a BST is also O(log N)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the tree is perfectly balanced, then we get O(log N) time operations for both of these. If it's not, we could have linear time for both. Ugh.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Could we use a hash table approach?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: Does anything about hashing make it at all easy to find where the largest element is?
+\b0 \
+\pard\pardeftab720
+\cf3 Sir_cumference\cf0  
+\fs20 9:20:43 pm
+\fs26 \
+no\
+\cf3 JRY\cf0  
+\fs20 9:20:43 pm
+\fs26 \
+No\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, a hash table is good to find specific elements. But you can't use a hash function to determine where the largest element is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So it looks like we'd like to use a tree-based solution but only if we can guarantee balance. It turns out you can! Instead of using a binary search tree, we use a new structure called a \cf4 heap\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, the word "heap" has two meanings in computer science. The heap could refer to the area of memory that programs could use to store their data. The version we discuss today has nothing to do with that.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are actually several variations on the heap data structure. We're going to build a binary heap. It's based off of a binary tree with the following two important restrictions.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First is an ordering property. The value at any node (i.e. its priority) must be greater than or equal to the values of its children. Notice this says nothing about the order of the children.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's an illustrative picture from Wikipedia:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic maxheap.png \width4000 \height2960 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 100 at the root is larger than 19 or 36. At the root, the right child is larger than the left. For 36, the left child is larger than the right. Also note that 25 is lower in the tree than 19.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This property we've chosen defines what is called a \cf4 maxheap\cf0 . Assuming all the priorities are distinct from one another, where will the element with maximum or largest priority in the heap be?
+\b0 \
+\pard\pardeftab720
+\cf3 Tungsten\cf0  
+\fs20 9:22:46 pm
+\fs26 \
+The root\
+\cf3 MathWolf\cf0  
+\fs20 9:22:46 pm
+\fs26 \
+At the root\
+\cf3 ReciterOfPi\cf0  
+\fs20 9:22:46 pm
+\fs26 \
+the root. Right?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It must be at the root. If it had a parent, the parent would have to be larger, and thus it wouldn't be largest anymore.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can define a \cf4 minheap\cf0  too. What would be the ordering property be then?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Just make the appropriate modification to our first rule.)
+\b0 \
+\pard\pardeftab720
+\cf3 bluebandit21\cf0  
+\fs20 9:23:46 pm
+\fs26 \
+children greater than node\
+\cf3 MathWolf\cf0  
+\fs20 9:23:46 pm
+\fs26 \
+All children must be greater than the parents.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A node must be smaller than or equal to its children. That results in the smallest value on top.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The second restriction refers to the structure of the tree. All levels other than the one at the bottom must have the maximum number of nodes possible. On that bottom level, the nodes must be as far left as possible.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That probably made little sense in words, so let's look at the picture. If you remove the 2 and 7 nodes from the picture, you get a perfectly balanced tree. One node on top, two nodes under it, four nodes under those. Level n has $2^\{n\}$ nodes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When we put 2 and 7 back in, those two nodes must be children of 17 to have them be as left as possible.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we were to add another node to the picture, where would it go?
+\b0 \
+\pard\pardeftab720
+\cf3 ReciterOfPi\cf0  
+\fs20 9:25:17 pm
+\fs26 \
+Would it be a child of 3?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It would. Which child would it need to be?
+\b0 \
+\pard\pardeftab720
+\cf3 moppr\cf0  
+\fs20 9:25:39 pm
+\fs26 \
+left child of 3\
+\cf3 bluebandit21\cf0  
+\fs20 9:25:39 pm
+\fs26 \
+left\
+\cf3 ReciterOfPi\cf0  
+\fs20 9:25:39 pm
+\fs26 \
+Left child.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For the structure, it must be the left child of the 3. What values would work?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I never said these had to be positive integers, but I'm not going to be picky about that.)
+\b0 \
+\pard\pardeftab720
+\cf3 moppr\cf0  
+\fs20 9:26:36 pm
+\fs26 \
+anything 3 or less\
+\cf3 bluebandit21\cf0  
+\fs20 9:26:54 pm
+\fs26 \
+2 1 3\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To keep the ordering, its value must be smaller than or equal to 3. Suppose we wanted to put in a number like 10. How do we fix the heap?
+\b0 \
+\pard\pardeftab720
+\cf3 MathWolf\cf0  
+\fs20 9:27:28 pm
+\fs26 \
+the 10 takes the place of 3.\
+\cf3 moppr\cf0  
+\fs20 9:27:28 pm
+\fs26 \
+put 10 in 3's old spot, and make 3 the left child of 10\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just swap 3 and 10:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic maxheap2.png \width3000 \height2220 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now suppose you want to add 30 to the heap. Can you explain the procedure of how to do it?
+\b0 \
+\pard\pardeftab720
+\cf3 JRY\cf0  
+\fs20 9:28:24 pm
+\fs26 \
+Put 30 as the left child of 36 and 25 as the left child of 30\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can't put in any children for 36.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 36 already has 2 children.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, when we add children, they need to be as far left as possible, then we bubble entries up if need be to satisfy property 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we ignore property 1 and only respect property 2 first, where should we put 30?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 10 doesn't have 2 children yet.
+\b0 \
+\pard\pardeftab720
+\cf3 JRY\cf0  
+\fs20 9:29:59 pm
+\fs26 \
+Right child of 10\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then what?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Is 30 greater than 10?
+\b0 \
+\pard\pardeftab720
+\cf3 moppr\cf0  
+\fs20 9:30:55 pm
+\fs26 \
+30 will take 19's spot, 19 will take 10's spot, 10 becomes the right child of 19\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Put 30 initially as a right child of 10. Then swap 30 and 10. But don't stop there. 19 < 30, so we do one more swap:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic maxheap3.png \width3000 \height2220 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This algorithm of swapping values to higher levels is called \cf4 bubbling up\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When does bubbling up of a value stop?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I have only a little material left to cover, so if you don't mind, I'd like to take just 5 more minutes to finish.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You're welcome to go now if you want/need to and just check the transcript later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When does bubbling up of a value stop?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, when did 30 stop bubbling up?
+\b0 \
+\pard\pardeftab720
+\cf3 JRY\cf0  
+\fs20 9:33:03 pm
+\fs26 \
+When the value is less than its parent\
+\cf3 moppr\cf0  
+\fs20 9:33:08 pm
+\fs26 \
+when you reach a value that's greater than the new one\
+\cf3 ScottBusche\cf0  
+\fs20 9:33:08 pm
+\fs26 \
+When it's parent is larger.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When the value is smaller than its parent, or it doesn't have a parent (i.e. we reach the root).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What is the running time of this operation?
+\b0 \
+\pard\pardeftab720
+\cf3 moppr\cf0  
+\fs20 9:33:35 pm
+\fs26 \
+would it be O(log n)?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since our structure property assures a balanced tree, we're guaranteed O(log N) worst case. (That is to say, by balancing our tree, which is what property 2 does for us, making the tree as bushy as possible, we're guaranteed not to need to go further than log(N) steps, as that's the height of the tree.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So that's insertion in a heap. What value should be deleted from the most recent version of the heap?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That is to say, this is a priority queue, what value do we want to grab when dequeuing?
+\b0 \
+\pard\pardeftab720
+\cf3 JRY\cf0  
+\fs20 9:36:45 pm
+\fs26 \
+The root, so 100\
+\cf3 moppr\cf0  
+\fs20 9:36:45 pm
+\fs26 \
+top priority value\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 100 at the root. But now let's think what \cf4 node\cf0  should be deleted?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We won't delete the root.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 To finish up, I'll just say it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We should delete the node with the 10 in it, because we still want to satisfy property 2. We end up with ten nodes in the tree, and those nodes have to be in specific places.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since the 10 is going homeless and the 100 is leaving its home, it seems like we might as well start by putting the 10 up where the 100 was. In other words, put 10 at the root.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Of course, when we do that, we violate ordering. Just like we bubble up to fix ordering on insertion, we bubble down to fix it for deletion.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The tricky part of bubbling down is that we have two possibilities to swap with. In bubbling up, a node can only swap with its parent. Going down, it could have two children. Which one should it swap with?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we swap with the lower priority child, will that create problems for us?
+\b0 \
+\pard\pardeftab720
+\cf3 JRY\cf0  
+\fs20 9:39:34 pm
+\fs26 \
+The larger of the two\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want to swap with the child with the larger priority.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That is to say, when bubbling down, an element should potentially swap with the larger of the two children. That child is larger than its sibling, so it's OK to make the child the sibling's new parent. Of course, if the value is already larger than both children, there's no need to swap at all.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this case, the 10 now at the root would swap with 36. Then what?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then it swaps with 25. Here's the final heap:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 \
+\pard\pardeftab720
+
+\f1\b0\fs24 \cf0 {{\NeXTGraphic maxheap4.png \width3000 \height2220 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:40:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that 10 used to be in the left subtree, but now it's in the right. The heap ordering property doesn't require nodes to be on particular sides of the tree.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The running time for this removal and bubbling down operation is also O(log N). We follow a path from the root to potentially as far down as a leaf, and no farther.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I have one last section about implementing heaps, but I think I'll just make that a message board post.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf4 PART 5: FINAL SUMMARY!
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Today we looked at two more structures that can hold data. The hash table allows us to do storage and retrieval in close to constant time. It requires a good hash function that evenly distributes data in the table.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The priority queue removes the element of highest priority from the structure, not necessarily the first or last. We can use a structure called a heap to implement this with inserting and removing taking O(log N) time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:41:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And that ends our journey through Java and Data Structures. We saw a lot over the last several months. I hope you feel very comfortable with Java at this point. Of course, the Java API has many more classes that we haven't touched on yet. There are additional classes for GUIs, file processing, networking, input/output, and security, to name just a few categories. I hope you continue to work with Java and write your own cool programs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You also got an introduction to data structures. You saw lists, stacks, queues, hash tables, and heaps. I'll post a chapter from a book my good friend and colleague Brian Heinold wrote about graphs. If you take more advanced courses, you can learn about self-balancing trees, the union-find data structure, sorting algorithms, dynamic programming, and other tools in the computer scientist's toolbox.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And I really hope that you do continue. If you know Python, check out AOPS' game programming course (supposing it gets offered sometime soon; send AOPS HQ a note about it if you're curious or would like to encourage them to start offering it again). And I hope you take a programming course or two (or even major in computer science!) when you get to college. It's an exciting and lucrative discipline.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:42:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, I hope you enjoyed the class. Be sure to give us feedback by filling out the course survey on the homepage. Have a great school year, and don't hesitate to send me a message if you need my assistance in the future.\
+\
+\pard\pardeftab720
+
+\b0\fs24 \cf0 To give context for the following discussion, recall that we ended the Week 18 class by looking at inserting and removing nodes in a heap by using bubbling up (for insert) and bubbling down (for remove).\
+\
+For example, we started with this heap:\
+\
+\pard\pardeftab720
+
+\f1 \cf0 {{\NeXTGraphic 1__#$!@%!#__maxheap.png \width4000 \height2960 \noorient
+}¬}\pard\pardeftab720
+
+\f0 \cf0 \
+\
+then we inserted 10 into the heap. We did this by respecting property 2 which required us to put the new node as far down and as far left as possible, so we had to put the 10 in as the left child of the 3 node. To then get the new structure to respect property 1, we needed to bubble 10 up (swap its value with the value of its parent node 3) because 10 > 3 and we're currently using the version of property 1 that wants us to make a 
+\b maxheap
+\b0  (so our version of property 1 requires that the priority of a node be greater than or equal to the priority of its children). After inserting 10 and bubbling it up to its proper place in the heap, we had this structure in our heap:\
+\
+\pard\pardeftab720
+
+\f1 \cf0 {{\NeXTGraphic 1__#$!@%!#__maxheap2.png \width3000 \height2220 \noorient
+}¬}\pard\pardeftab720
+
+\f0 \cf0 \
+\
+Next we inserted 30. To do this, we again respect property 2 by putting the new node with 30 in it as far down and as far left as possible, so we put it now as the right child of what is currently the 10 node (which used to be the 3 node before we inserted 10 into the heap). Then, since 30 is of greater priority than its parent 10 node, we bubble 30 up. After one bubble up, 30 is still greater than its parent 19 node, so we bubble up again. At that point, we are done bubbling because the parent of 30 is now the 100 node and 30 < 100. Having inserted 30 and bubbled it to its proper place, the heap now looks like this:\
+\
+\pard\pardeftab720
+
+\f1 \cf0 {{\NeXTGraphic 1__#$!@%!#__maxheap3.png \width3000 \height2220 \noorient
+}¬}\pard\pardeftab720
+
+\f0 \cf0 \
+\
+Finally, we discussed dequeueing (removing) nodes from this priority queue maxheap. To do that, we grab the value at the root (100), erase the bottom-most right-most leaf and put the value that used to be in that node into the root, then bubble it down (where we always swap with the child with the greatest priority) until it is in the proper position so the heap again satisfies property 1 that every node needs to have a greater or equal priority than its children. After performing this dequeue operation on our heap, we ended up with the following structure right at the end of our class discussion.\
+\
+\pard\pardeftab720
+
+\f1 \cf0 {{\NeXTGraphic 1__#$!@%!#__maxheap4.png \width3000 \height2220 \noorient
+}¬}\pard\pardeftab720
+
+\f0 \cf0 \
+\
+\pard\pardeftab720
+
+\b \cf0 PART 4: IMPLEMENTING THE HEAP
+\b0 \
+\
+Now that we know the algorithms , we can write the code for the data structure. We could do this as a variation on the binary tree code we wrote last week.\
+\
+However, that would not be particularly efficient in terms of space. For each node, we have a left and a right pointer to the children. Many of the links will be null, since any tree is at least half leaves.\
+\
+In this case, we can take advantage of the heap structure property to instead place the values into an array. We put the values in starting at the top and going left to right across each level.\
+\
+For the last heap (after deleting 100), our array begins with: 36, 30, 25, 17, 19. 36 is at the root, then 30 and 25 are its children in that left-to-right order, then comes 17 and 19. What are the remaining values?\
+\
+\pard\pardeftab720
+
+\f1 \cf0 {{\NeXTGraphic 2__#$!@%!#__maxheap4.png \width3000 \height2220 \noorient
+}¬}\pard\pardeftab720
+
+\f0 \cf0 \
+\
+In order, the whole heap is 36, 30, 25, 17, 19, 10, 1, 2, 7, 3. Notice this array is 
+\i not
+\i0  in sorted order.\
+\
+To perform the algorithms, you need to be able to find your parent and your children. Consider the value 17. It's in position 3 in the array (remember we start at 0). What value is its left child, and what is that child's position?\
+\
+It's easy to see from the image that the left child of the 17 node is the 2 node. You can check the array to see that 2 is in array position 7. Likewise, you can check that the right child of the 17 node is the 7 node which is at position 8 in the array.\
+\
+To recap, the element in position 3 has its left child at position 7 and its right child at position 8. Furthermore, 17 in position 3 also has a parent at position 1.\
+\
+How about 19? What's its left child's position?\
+\
+19 is in position 4. Its left child is the 3 in position 9. Notice that 19 does not have a right child.\
+\
+Let's see if we can find a pattern:\
+Position 0's children are at 1 and 2.\
+Position 1 has children at 3 and 4.\
+Position 2 has children at 5 and 6.\
+Position 3 has children at 7 and 8.\
+Position 4 has a child at 9.\
+The other positions are leaves.\
+\
+Can you come up with a formula that maps a position x to the position of its left child?\
+\
+Apparently, you go from x to 2x+1 to get the left child. The right child is at 2x+2. Notice that if this value is greater than or equal to the number of elements in the heap, the child does not exist. So, position 5 would have its left child at position 11, but 11>10.\
+\
+How about to go from child to parent? For example, position 5 has its parent at position 2. What formula finds the parent of the element at position x?\
+\
+In that case we need (x-1)/2. Technically, you'd take the floor of this number, but since we're in Java and x is an integer type, Java will automatically perform this operation as 
+\i integer division
+\i0 , which you will recall means precisely that the remainder part gets dropped. Consequently, Java will automatically already be taking the floor for us in this situation.\
+\
+Our general strategy is to store the elements in an array. When we add an element, it goes in the box after the last element, and then we bubble it up to the appropriate place to keep the ordering property correct. To remove an element, we place the element in the last array box into the first one, and then we bubble down to put it in the correct place.\
+\
+I won't go over the code for implementing a heap now, but a complete heap implementation for integers is posted on the Handouts page. Note that the remove method is a bit longer to code than the insert method, since you have to deal with the different cases of switching with the left child versus switching with the right one.}

@@ -1,0 +1,5113 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier-Bold;
+\f3\fmodern\fcharset0 Courier;\f4\fmodern\fcharset0 Courier-Oblique;\f5\fmodern\fcharset0 Courier-BoldOblique;
+\f6\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red10\green82\blue135;\red43\green139\blue39;\red18\green139\blue2;\red0\green0\blue83;\red1\green32\blue135;
+\red11\green85\blue38;\red0\green0\blue255;\red190\green74\blue193;\red83\green83\blue83;\red30\green91\blue156;
+\red0\green0\blue135;\red247\green247\blue247;\red38\green38\blue38;\red196\green196\blue196;\red59\green73\blue100;
+\red249\green249\blue249;\red144\green146\blue5;\red11\green86\blue1;\red87\green197\blue83;\red154\green151\blue213;
+\red133\green35\blue39;\red162\green165\blue6;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid401\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid501\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid601\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid7}
+{\list\listtemplateid8\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid701\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid8}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}{\listoverride\listid8\listoverridecount0\ls8}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 3: Methods
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We saw last week how we can use selection and iteration to affect the flow of control of a program. Another way we can affect flow is by the use of a \cf3 method call\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:30:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A method is a task our program performs as part of solving the larger problem. Our program jumps to the code for the task and then picks up where it left off when the task is complete.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you name some methods that we've called already?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:31:29 pm
+\fs26 \
+main\
+\cf4 ScottBusche\cf0  
+\fs20 7:31:29 pm
+\fs26 \
+nextInt\
+\cf4 MSTang\cf0  
+\fs20 7:31:29 pm
+\fs26 \
+System.out.print\
+\cf4 ScottBusche\cf0  
+\fs20 7:31:29 pm
+\fs26 \
+scan.nextInt()\
+\cf4 ScottBusche\cf0  
+\fs20 7:31:31 pm
+\fs26 \
+System.out.print()\
+\cf4 spower4\cf0  
+\fs20 7:31:31 pm
+\fs26 \
+nextInt()\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The methods we've used so far have been for input and output. We've seen \cf3 nextInt\cf0  and \cf3 showInputDialog\cf0  to read from the keyboard. We've seen \cf3 print\cf0 , \cf3 printf\cf0 , and \cf3 showMessageDialog\cf0  for output.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And we've actually even written a few methods already. (A method that, in fact, every complete, runnable Java program needs and is always called the exact same thing in every program.) Any ideas what method I'm talking about?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:32:36 pm
+\fs26 \
+The main method!\
+\cf4 MathWolf\cf0  
+\fs20 7:32:36 pm
+\fs26 \
+main\
+\cf4 ScottBusche\cf0  
+\fs20 7:32:36 pm
+\fs26 \
+main()\
+\cf4 williamyin08\cf0  
+\fs20 7:32:41 pm
+\fs26 \
+main!\
+\cf4 dlennon\cf0  
+\fs20 7:32:41 pm
+\fs26 \
+main\
+\cf4 MathWolf\cf0  
+\fs20 7:32:41 pm
+\fs26 \
+public\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:32:41 pm
+\fs26 \
+The main method of the class!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Every Java program must have a method called \cf3 main\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:32:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So our goals today are to see a few more methods in Java and figure out how to write more of our own. Plus we'll look at some details of how Java works with methods.
+\b0 \
+\pard\pardeftab720
+\cf4 jprosk\cf0  
+\fs20 7:32:51 pm
+\fs26 \
+Are these the equivalent of Python functions?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It will be easier to explain the difference in a couple weeks once we've actually discussed what classes are about in more detail.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Basically, a "method" is like a "function", but every method belongs to an object, so you have to give the name of the object before you can call a method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When you call a function, it exists on its own, independent of any objects, so you can call it just by its name without referring to any object.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, when we have a Scanner object called scan, we write "scan.nextInt()" to call the nextInt method that belongs to the scan object of type Scanner.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everything in Java is object-oriented, so technically in Java there aren't any "functions" there are only "methods".
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:36:06 pm
+\fs26 \
+In python there are both right?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, and in C++ too, since they permit programming using the object-oriented paradigm or using other paradigms.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is all I'll say about that for now.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Getting back to what I was saying:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So our goals today are to see a few more methods in Java and figure out how to write more of our own. Plus we'll look at some details of how Java works with methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: SOME MATH METHODS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose you are planning a long car trip with your family. You'd like to know the time it will take to drive from one city to another. To estimate this, you'll assume you're going in a straight line between the cities at a constant speed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's work through how we'd write this program. After we set up our class (let's call it CarTrip), what's the first thing to do in main?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Well, we do the usual housekeeping stuff (initialize variables and all that...).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the first interesting thing we need to do?
+\b0 \
+\pard\pardeftab720
+\cf4 adrianu\cf0  
+\fs20 7:38:28 pm
+\fs26 \
+initialize the distance and speed variables\
+\cf4 teachm\cf0  
+\fs20 7:38:28 pm
+\fs26 \
+define speed and distance\
+\cf4 ScottBusche\cf0  
+\fs20 7:38:28 pm
+\fs26 \
+Input the distance between the cities.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to get the input information necessary to do the computation. What info is that?
+\b0 \
+\pard\pardeftab720
+\cf4 sanpran\cf0  
+\fs20 7:38:56 pm
+\fs26 \
+distance and speed\
+\cf4 jprosk\cf0  
+\fs20 7:38:56 pm
+\fs26 \
+user input for distance and speed\
+\cf4 MSTang\cf0  
+\fs20 7:38:56 pm
+\fs26 \
+Find the distance and speed\
+\cf4 FerozeM\cf0  
+\fs20 7:38:56 pm
+\fs26 \
+distance\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll need to know the distance between the two cities. We could just ask the user to input the distance, but for this example we'll do something a little more interesting.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's assume all the cities are laid out on a large rectangular grid. So each city will have a particular pair of coordinates associated with it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do you calculate the distance between two points?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Say the two points are at (x_0, y_0) and (x_1, y_1).
+\b0 \
+\pard\pardeftab720
+\cf4 adrianu\cf0  
+\fs20 7:40:18 pm
+\fs26 \
+sqrt\{(x1 - x2)^2 + (y1 - y2)^2\}\
+\cf4 ScottBusche\cf0  
+\fs20 7:40:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\fs24 \cf0 {{\NeXTGraphic 067374e76993bd7dea87b5609fa9afa4a2ded7e7.png \width3660 \height420 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:40:21 pm
+\fs26 \
+$\\sqrt\{(\\Delta x)^2 + (\\Delta y)^2\}\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah! Take the difference between the x-coordinates of the points and square it. Do the same for the y-coordinates. Add those values up and then take the square root of the sum.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\fs24 \cf0 {{\NeXTGraphic d7239ca75fa883b33e5391e62f2c14eaf647d531.png \width3660 \height420 \noorient
+}¬}\pard\pardeftab720
+
+\f0\b\fs26 \cf0 \
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody remember that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we need a pair of numbers for each city. That's four numbers so far. Anything else?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We also need the speed at which we're traveling. Given that, how do we compute the time it will take us to drive between the cities?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 7:41:47 pm
+\fs26 \
+distance/speed\
+\cf4 JRY\cf0  
+\fs20 7:41:47 pm
+\fs26 \
+time = distance / speed\
+\cf4 Tungsten\cf0  
+\fs20 7:41:47 pm
+\fs26 \
+Time = distance/speed\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Simply, divide the distance by the speed. If we drive 150 miles at 50 miles per hour, it will take us 3 hours.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Once we have the time, we print it, and we're done!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is a fairly simple program; you already know how to do most of it. Here's the beginning where we read in all the coordinates and the speed of the car:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+import \cf5 java.util.Scanner\cf6 ;\cf0 \
+public class CarTrip \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf8 void\cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf7 (\cf9 System\cf0 .\cf10 in\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter x-coordinate of start city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  startX \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter y-coordinate of start city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  startY \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter x-coordinate of end city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  endX \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter y-coordinate of end city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  endY \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "How fast will you be going? "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  speed \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (I left out closing braces since this is just the beginning portion. We're not done with it yet.)
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:42:40 pm
+\fs26 \
+Is a double a new class we're learning?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 double is a primitive data type. It is not, strictly speaking, a class, though there are ways to get Java to work with them as though they were.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note that in this program, we're going to allow decimal points for the coordinates and the speed. This means we need a new data type: \cf3 double\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java actually has two types for these kinds of numbers: \cf3 double\cf0  and \cf3 float\cf0 . The difference is the range of values that can be stored in the variables. The \cf3 double\cf0  type can store double the range of a \cf3 float\cf0 . (And, correspondingly, takes up twice as much room in memory.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, Java has multiple types for integers too. We've been using \cf3 int\cf0 , but there's also \cf3 byte\cf0 , \cf3 short\cf0 , and \cf3 long\cf0 . \cf3 byte\cf0  and \cf3 short\cf0  hold smaller values than \cf3 int\cf0 , and \cf3 long\cf0  holds bigger. (Basically, these types are all just different sizes of boxes. \cf3 byte\cf0  is the smallest box you could use to hold an integer. \cf3 long\cf0  is the largest box you could use. You could use any of them to hold a small integer. You'd need to use a big box, like \cf3 int\cf0  or \cf3 long\cf0 , if there's a chance that at some point in your program your variable will need to take on a large value. \cf3 int\cf0  is generally a fine default choice.) You can look up the exact ranges each variable type can hold online if you're curious.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I typically use \cf3 double\cf0  for real numbers and \cf3 int\cf0  for integers.
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 7:44:50 pm
+\fs26 \
+Oh. So int does not use decimal points?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right. ints are integers. Integers, by definition, are whole numbers. They don't have fractional parts.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll work on the distance formula. First we need the square of the difference of the x-coordinates. Let's put this in a variable called squareX. Can you give me a line of code that does this?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:46:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 squareX \cf6 =\cf0  \cf7 (\cf0 endX\cf6 -\cf0 startX\cf7 )\cf0  \cf6 *\cf0  \cf7 (\cf0 endX\cf6 -\cf0 startX\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 7:46:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf8 double
+\f3\b0 \cf0  squareX \cf6 =\cf0  \cf7 (\cf0 startX \cf6 -\cf0  endX\cf7 )\cf0  \cf6 *\cf0  \cf7 (\cf0 startX \cf6 -\cf0  endX\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, either of those will work just fine, since x^2 = (-x)^2.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareX \cf6 =\cf0  \cf7 (\cf0 startX\cf6 -\cf0 endX\cf7 )\cf6 *\cf7 (\cf0 startX\cf6 -\cf0 endX\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:47:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since our goal for today's lesson is to look at methods, let's see how we could instead use a pre-existing method in Java to do this.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The method we'll use will square the difference of the x-coordinates for us. When I wrote the formula out earlier, I did it using a superscript 2:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\fs24 \cf0 {{\NeXTGraphic 9c43ab9b1609edbf265e41824480f988a09dd7c5.png \width1440 \height360 \noorient
+}¬}\pard\pardeftab720
+
+\f0\b\fs26 \cf0 \
+\pard\pardeftab720
+\cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What does that superscript notation indicate in general?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:48:29 pm
+\fs26 \
+exponents\
+\cf4 ScottBusche\cf0  
+\fs20 7:48:29 pm
+\fs26 \
+Exponents\
+\cf4 chenjamin\cf0  
+\fs20 7:48:29 pm
+\fs26 \
+exponentiation\
+\cf4 EmeraldBot\cf0  
+\fs20 7:48:29 pm
+\fs26 \
+An exponent\
+\cf4 adrianu\cf0  
+\fs20 7:48:29 pm
+\fs26 \
+a quantity raised to a power\
+\cf4 moppr\cf0  
+\fs20 7:48:29 pm
+\fs26 \
+Raising to a power\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It means you're raising something to a particular power. Squaring means raise it to the power of 2. If we want to cube the difference (i.e. x times x times x), that would be what power?
+\b0 \
+\pard\pardeftab720
+\cf4 piis3141592653\cf0  
+\fs20 7:48:44 pm
+\fs26 \
+3\
+\cf4 sanpran\cf0  
+\fs20 7:48:44 pm
+\fs26 \
+3\
+\cf4 FerozeM\cf0  
+\fs20 7:48:44 pm
+\fs26 \
+3\
+\cf4 k77frank\cf0  
+\fs20 7:48:44 pm
+\fs26 \
+3\
+\cf4 FrozenFury\cf0  
+\fs20 7:48:48 pm
+\fs26 \
+3\
+\cf4 MathWolf\cf0  
+\fs20 7:48:48 pm
+\fs26 \
+3\
+\cf4 joberman\cf0  
+\fs20 7:48:51 pm
+\fs26 \
+3rd degree\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's 3. The number 2 or 3 is sometimes called the \cf3 exponent\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we'll use a method that allows us to raise a number to any power we want. It's already built into Java as a method of a new class for us, namely Math. Here's what the line looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareX \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 startX\cf6 -\cf0 endX, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (No, Java won't know what you mean if you try to write this using ^. Yes, you'd need to use Math.pow.)
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 7:49:35 pm
+\fs26 \
+Is Math imported ?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:49:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try it and find out. Eclipse will complain at you if you need it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And it will tell you what you need to import in that case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (By the way, go ahead and follow along in Eclipse as we write this. Sorry, I should have said that sooner.)
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:50:46 pm
+\fs26 \
+Can you use the ** operator like in Python?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. Java doesn't use that notation. Use Math.pow to get functionality in Java.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look at how this method is called. The first thing you see to the right of the equal sign is the word Math followed by a dot. Math is the name of the class the method is stored in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is different than most of the other methods we've called before. To read a value from the keyboard, we have scan.nextDouble(). Is scan the name of a class? If not, what is it?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:51:55 pm
+\fs26 \
+scan is the name of a Scanner object.\
+\cf4 FerozeM\cf0  
+\fs20 7:51:55 pm
+\fs26 \
+its an object\
+\cf4 spower4\cf0  
+\fs20 7:51:55 pm
+\fs26 \
+its the object\
+\cf4 MSTang\cf0  
+\fs20 7:51:55 pm
+\fs26 \
+scan is a Scanner object\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 scan is the name of an object. In particular, we have defined it to be the name for an object from the Scanner class. In other words, scan is a specific Scanner (just like my pet goldfish Herman is a specific Goldfish). We don't write Scanner.nextDouble(). Why must we use a specific object with nextDouble?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In practice, it's because we need to know where the value is coming from. Is it the keyboard? Is it a file? Is it over a network? As we'll go on, we'll see other options for where data can originate from. We may even have multiple Scanner objects in the same program.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:53:54 pm
+\fs26 \
+scan is passed System.in\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, that's how we tell the scan object what data stream it's grabbing values from.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now Math methods are different. There's no specific kind of mathematics or any variation in how you, for example, raise something to a power. So we don't need a Math object to use a Math method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The term for methods that are not tied to particular objects, but to a class as a whole, is \cf3 static\cf0 . To call a static method, we give the name of the class followed a dot followed by the name of the method. You've seen other static methods in previous weeks: JOptionPane.showMessageDialog, String.format, and Integer.parseInt to name a few examples.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you enter the line into Eclipse, you'll notice that the word pow appears in italics. That is a visual clue for us that we're using a static method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Have you seen the word static in your code, by the way?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:55:23 pm
+\fs26 \
+Yes. public static void main\
+\cf4 ScottBusche\cf0  
+\fs20 7:55:23 pm
+\fs26 \
+public static void\
+\cf4 MSTang\cf0  
+\fs20 7:55:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf8 void
+\f3\b0 \cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 adrianu\cf0  
+\fs20 7:55:23 pm
+\fs26 \
+public static void main(String[] args)\{\
+\cf4 jprosk\cf0  
+\fs20 7:55:23 pm
+\fs26 \
+public static void main()\
+\cf4 k77frank\cf0  
+\fs20 7:55:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf8 void
+\f3\b0 \cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 7:55:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf8 void
+\f3\b0 \cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0  
+\f4\i \cf13 // It's in the main method definition!
+\f3\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 teachm\cf0  
+\fs20 7:55:33 pm
+\fs26 \
+public static void main!\
+\cf4 moppr\cf0  
+\fs20 7:55:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf8 void
+\f3\b0 \cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 bluebandit21\cf0  
+\fs20 7:55:36 pm
+\fs26 \
+it is in public static void main(String[] args)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're looking at your code, you'll notice the word static appears in the header line for the main method. This tells Java that we don't need to make a CarTrip class to run our code. Otherwise, we get into a chicken-and-egg paradox; if we need to make an object to execute code, then how can we execute the code that makes that object?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (That was a rhetorical question.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And while you're looking at the code, do you see any other instances of the italics I mentioned before?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:56:26 pm
+\fs26 \
+System.in\
+\cf4 teachm\cf0  
+\fs20 7:56:26 pm
+\fs26 \
+system.in\
+\cf4 Tungsten\cf0  
+\fs20 7:56:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 7:56:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:56:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Look at System.out and System.in. out and in are also italicized. They are not methods, though. We can also have variables associated with a class. Technically, these variables are called \cf3 fields\cf0 . As we've discussed, the in and out fields of the System class are tied to your keyboard and console respectively.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The Math class has some static fields too. They represent the constants PI (3.14159\'85) and E (for the natural logarithm 2.718\'85). You use Math.PI or Math.E to refer to these values in your code. Since these numbers are irrational, you want to use the constants so you get the most exact representation of them for your system.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions about this?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 7:57:54 pm
+\fs26 \
+Wait, so in and out are like variables?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. in and out are the names of static methods that belong to the System class.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:58:36 pm
+\fs26 \
+What types are Math.PI and Math.E?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They're doubles.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 7:58:50 pm
+\fs26 \
+So something that is static can be found in all classes?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. A static method is something you define in a particular class and you can then access it from the class as a whole rather than any specific instance (object) of the class.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let me try to give a concrete example.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose you want your class to be able to keep track of how many instances (objects) of itself have been created as your program is running. You'd keep track of this information using a static variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because that information doesn't belong to any particular object in the class, it belongs to the class as a whole.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:01:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And you might write a static method that you could use to retrieve that information.
+\b0 \
+\pard\pardeftab720
+\cf4 adrianu\cf0  
+\fs20 8:02:15 pm
+\fs26 \
+so static variables cannot be modified?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. "static" means this thing you're defining in the class belongs to EVERYTHING in the class, not to any particular instance.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Maybe it's not a very helpful name, but that's what it means.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, back to our method call for squaring the differences:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareX \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 startX\cf6 -\cf0 endX, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've gone over the name of the method. The rest should be familiar from your previous coding experience. Inside the parentheses, we give the parameters to the method \'96 the information it needs to do the computation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are two here separated by a comma. The first is what we want to raise to a power. The second is the power itself.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We wrap it up with a closed parenthesis and a semicolon to finish the line.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may be wondering why I used 2.0 instead of 2. Both of the parameters to pow should be of type double. So we want the real number for the exponent, not the integer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It turns out if I 
+\i had
+\i0  used 2 there, Java would have been fine with it. If you give an integer where a double is expected, Java automatically converts the int to a double for you. This is called \cf3 argument promotion\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In general, Java can do the conversion if no information is lost in the conversion. 2 can become 2.0, since the two are equal. But 2.5 is not the same as 2, so we \cf3 can't\cf0  automatically convert from the double to the int. Java won't even let you convert 2.0 into 2 automatically. You'll get an error about "loss of precision".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now it's your turn. Supply the line that puts the square of the y-coordinate differences into the variable squareY. And then see if you can make dist the square root of the sum of the squares.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:06:27 pm
+\fs26 \
+wait, how do the import the Math?\
+\cf4 MSTang\cf0  
+\fs20 8:06:27 pm
+\fs26 \
+What units should we use?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:06:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Whoops, I only meant to pass the second question. Oh well, I'll answer them both.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You don't need to import Math. Just like System, Java makes the Math class available without needing to import.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It doesn't matter what units you use. The program will be the same in any case.
+\b0 \
+\pard\pardeftab720
+\cf4 EmeraldBot\cf0  
+\fs20 8:08:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf8 double
+\f3\b0 \cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 startY\cf6 -\cf0 endY, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:08:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf8 double
+\f3\b0 \cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 startY\cf6 -\cf0 endY, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf8 double
+\f3\b0 \cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX \cf6 +\cf0  squareY\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 adrianu\cf0  
+\fs20 8:08:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf8 double
+\f3\b0 \cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 startY \cf6 -\cf0  endY, \cf12 2\cf7 )\cf6 ;\cf0  
+\f2\b \cf8 double
+\f3\b0 \cf0  result \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX \cf6 -\cf0  sqaureY\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:08:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf8 double
+\f3\b0 \cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 startY\cf6 -\cf0 endY, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf8 double
+\f3\b0 \cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX\cf6 +\cf0 squareY\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 joberman\cf0  
+\fs20 8:08:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 distance \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 squareX \cf6 +\cf0  squareY, \cf12 0.5\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:08:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf8 double
+\f3\b0 \cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 squareX\cf6 +\cf0 squareY, \cf12 0.5\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, putting those answers together gives us what we need.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 startY\cf6 -\cf0 endY, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 squareX\cf6 +\cf0 squareY, \cf12 0.5\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may have noticed as you were typing in the code that Eclipse pops up various windows to help you. After typing Math., you would get a list of all the Math methods or fields that could go at that spot in the code. If you click one of them, you'll get a description of what the method does and what parameters it requires.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Once you select the method, Eclipse will provide you with a template to fill in, and it will even give a drop-down where you can choose the value to fill in for each parameter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Alternatively, you can see the information about the methods available in a class online. Go to this website now: {\field{\*\fldinst{HYPERLINK "http://docs.oracle.com/javase/7/docs/api/"}}{\fldrslt \cf14 http://docs.oracle.com/javase/7/docs/api/}}
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:09:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is the site for the API or Application Programming Interface for Java 7. Change the 7 to a 6 if you're using Java 6. It describes all of Java's classes and all of the methods in those classes. Scroll down the lower-left window (with the heading "All Classes") until you see the link for Math. They're in alphabetical order. Click the link and the big section on the right should change to a description of Class Math.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Scroll that window (via the right-most scroll bar) until you see the method summary section. You'll notice on the left that all the methods listed are static. After "static", you see the type of value that is computed by the method. This is called the \cf3 return type\cf0 . Nearly all of Math's methods return a double.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the second column, you see the name and parameter list for the method, with a short description of what the method does. The name of the method can be clicked to go to a section with more information about it. Find the description of pow and click its link.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice you get a lot of information specifically about all of the special cases, like raising 0.0 to the 0.0 power. NaN means "not a number", by the way, like when you end up dividing by zero. Anyway, the point is that the API gives you useful information about what methods are available and how they work.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:11:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you find another method we could use to compute the square root of the sum of the differences?
+\b0 \
+\pard\pardeftab720
+\cf4 dlennon\cf0  
+\fs20 8:12:53 pm
+\fs26 \
+Math.sqrt\
+\cf4 k77frank\cf0  
+\fs20 8:12:53 pm
+\fs26 \
+Math.sqrt\
+\cf4 MathWolf\cf0  
+\fs20 8:12:53 pm
+\fs26 \
+Math.sqrt\
+\cf4 connor0728\cf0  
+\fs20 8:12:53 pm
+\fs26 \
+Math.sqrt(squareX+squareY)\
+\cf4 JRY\cf0  
+\fs20 8:12:53 pm
+\fs26 \
+sqrt\
+\cf4 spower4\cf0  
+\fs20 8:12:53 pm
+\fs26 \
+double dist = Math.sqrt(squareX+squareY);\
+\cf4 FerozeM\cf0  
+\fs20 8:12:53 pm
+\fs26 \
+Math.sqrt()\
+\cf4 adrianu\cf0  
+\fs20 8:12:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 var, \cf12 0.5\cf7 )\cf6 ;\cf0  or \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 var\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can use the method sqrt instead. Write the replacement line.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here it is:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX\cf6 +\cf0 squareY\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 Tungsten\cf0  
+\fs20 8:13:07 pm
+\fs26 \
+Also isn't it the square root of the sum of the squares of the differences?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, if you look back at how we defined squareX and squareY, you'll see that they're the squares of the differences.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we are indeed computing these distances correctly.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:13:56 pm
+\fs26 \
+Math.hypot\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, you could also use Math.hypot if you want. You can read in the documentation about it if you're curious.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now that we have the distance, we can compute and print the time it will take to drive. Can you code that for me? If you use printf, we use the format specifier %f to display a \cf3 floating-point number\cf0 , i.e. one with decimal places/
+\b0 \
+\pard\pardeftab720
+\cf4 jprosk\cf0  
+\fs20 8:15:32 pm
+\fs26 \
+What about cube roots? Is there a cube root function, since you can't put exactly one third in pow?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could just do Math.pow(whatever, 1.0/3)
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:16:23 pm
+\fs26 \
+What if you put 1/3?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since both those inputs are integers, Java will interpret that as "integer division", so Java will give you an answer of 0 since 3 doesn't go into 1.
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:17:30 pm
+\fs26 \
+Math.cbrt is a function\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You could also, if you want, use Java's built-in cube root function Math.cbrt, but my answer was meant to suggest what you could do in general since not every nth root is built in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, back to my question.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:18:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf8 double
+\f3\b0 \cf0  time \cf6 =\cf0  dist\cf6 /\cf0 speed\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "It will take %f to get to the destination."\cf0 , time\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 8:18:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf8 double
+\f3\b0 \cf0  time \cf6 =\cf0  dist\cf6 /\cf0 speed\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "The time to drive will be %f hours."\cf0 , time\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:18:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf8 double
+\f3\b0 \cf0  time \cf6 =\cf0  dist\cf6 /\cf0 speed\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "The drive will take %d hours."\cf0 , time\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I did it in two lines:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  time \cf6 =\cf0  dist \cf6 /\cf0  speed\cf6 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "It will take you %f hours to travel\cf15 \\n\cf11 "\cf0 , time\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can run it now if you like once you check your curly braces. Try going from 0,0 to 3,4 at 50 miles per hour. You should get a time of 0.1 hours.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:19:13 pm
+\fs26 \
+You don't know if it is hours\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The units of the time will depend on the ASSUMPTIONS you the user have made about what units you are using.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the data you feed in is in terms of, for example, meters for the location coordinates and meters per second for the speed, then the time will be in seconds.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If your location coordinates are in miles and your speeds are in miles per hour, then the time will be in hours.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'd need to be consistent what units you use though. If you enter your coordinates in, say, kilometers, and your speeds in meters per second, for example, then you will get nonsense because those units don't work together.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:21:35 pm
+\fs26 \
+Is it possible to alter the program to user polar coordinates?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure. I won't discuss that today though.
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:21:48 pm
+\fs26 \
+Whats the difference between %f and %d\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 %f tells printf that the thing that goes there is a floating point number (a float or a double).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 %d tells printf that the thing that goes there is an integer (byte, short, int, long).
+\b0 \
+\pard\pardeftab720
+\cf4 Sir_cumference\cf0  
+\fs20 8:22:35 pm
+\fs26 \
+What is the code so far?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:22:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hang on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It should be like this, though I might have missed some details since I'm editing this from a version further down in what I prepared to say today.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+import \cf5 java.util.Scanner\cf6 ;\cf0 \
+public class CarTripMethods \cf7 \{\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0public static \cf8 void\cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf7 (\cf9 System\cf0 .\cf10 in\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter x-coordinate of start city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  startX \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter y-coordinate of start city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  startY \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter x-coordinate of end city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  endX \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter y-coordinate of end city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  endY \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "How fast will you be going? "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  speed \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareX \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 x0\cf6 -\cf0 x1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 y0\cf6 -\cf0 y1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX\cf6 +\cf0 squareY\cf7 )\cf6 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  time \cf6 =\cf0  dist \cf6 /\cf0  speed\cf6 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "It will take you %f hours to travel\cf15 \\n\cf11 "\cf0 , time\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "You are traveling in the approximate direction %s\cf15 \\n\cf11 "\cf0 , \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0getDirection\cf7 (\cf0 startX, startY, endX, endY\cf7 ))\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 FrozenFury\cf0  
+\fs20 8:24:39 pm
+\fs26 \
+Why is there 2 curly braces at the end?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first closes main. The bottom one closes the class definition.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:25:12 pm
+\fs26 \
+x0, x1, y0, y1 aren't valid variables\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, go ahead and fix that. Sorry. Like I said, I edited it from something we're getting to later today.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:25:37 pm
+\fs26 \
+we never defined getDirection as a function\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sorry. Let's move on. We'll see a more complete version that makes sense if we press on and don't get stuck here.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: WRITING A METHOD
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll go back to look at some other useful classes and methods later in today's class. But while we're still working with a fairly easy program, we'll look at the basics of creating our own methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're going to take the code that computes the distance between the end points and make it its own method. Can you think of some reasons why this might be a good idea (or in general, why writing methods ourselves is useful)?
+\b0 \
+\pard\pardeftab720
+\cf4 piis3141592653\cf0  
+\fs20 8:27:52 pm
+\fs26 \
+you only have to erite the code once\
+\cf4 MSTang\cf0  
+\fs20 8:27:52 pm
+\fs26 \
+so you can reuse code\
+\cf4 adrianu\cf0  
+\fs20 8:27:52 pm
+\fs26 \
+we can reuse the code on multiple variables, not only in one instance\
+\cf4 spower4\cf0  
+\fs20 8:27:52 pm
+\fs26 \
+so that you can use it in any program you want without having to write the same code over and over again\
+\cf4 k77frank\cf0  
+\fs20 8:27:52 pm
+\fs26 \
+so we don't have to repeat the code each time we want to use it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, code reuse is one reason writing a method can be helpful.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here are some other ideas:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we pull out a task into a method, then we can focus on writing just that task. Other parts of the program won't interfere.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we want to change how the method works, then we just change the method. The rest of the program doesn't change.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can call the method multiple times in our program without having to reproduce the code each time. (That is, code reuse, as we already observed.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can take the code and put it into a different program without having to rewrite it. (Code reuse again.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It makes the code that uses the method much shorter and hopefully easier to read.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You probably had this drummed into you when you took your first programming classes. So let's see how to make a method in Java. We'll be doing this a lot more when we write our own classes in a couple of weeks.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 8:29:17 pm
+\fs26 \
+In general should we make everything a method?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Deciding what to make a method is more an art than a science.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You get a feel for it over time as you write more and more programs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:29:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The code for our method will be part of our class, but it will not be inside the code for main. So add this line of code just \cf3 before\cf0  the beginning of main:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 double\cf0  getDistance\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first word here is \cf3 public\cf0 . This indicates that we want to allow other classes to call this method. Of course, in our program, there's just one class, so this isn't particularly useful. It comes more into play when we develop complex classes.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:30:18 pm
+\fs26 \
+Should I start a new file?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. This method belongs to the class we're writing, so it goes in the same file you're currently writing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next is \cf3 static\cf0 . As I said earlier about main, we don't want to have to make an object to use this method either.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next comes \cf3 double\cf0 . What does that mean?
+\b0 \
+\pard\pardeftab720
+\cf4 chenjamin\cf0  
+\fs20 8:31:12 pm
+\fs26 \
+it returns a double\
+\cf4 JRY\cf0  
+\fs20 8:31:15 pm
+\fs26 \
+getDistance should return a double\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The distance we're computing is a real number, and that's represented in Java by a double. Since Java is a "strongly typed" language, we have to say what kind of thing the method returns. This is so Java can make sure we are using it correctly.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the double there says "this method returns a double".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You may notice that in the first line of main, the word \cf3 void\cf0  follows \cf3 static\cf0 . The word void tells Java that the method is not used to compute a particular value. We'll see more examples of that later.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next up is the name of the method. The same rules apply for method names as variable names. We can't use spaces, so if you're using a two-word name, then you need to use the underscore or capitalize the second word as I did.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then within parentheses, we list the \cf3 arguments\cf0  or parameters to the method. These are the variables that will be used to store the values given as input to the method. For each, we have to give two things: the type of the variable and the name of the variable. As in the call to a method, we separate the arguments by commas.
+\b0 \
+\pard\pardeftab720
+\cf4 Wilderc\cf0  
+\fs20 8:32:28 pm
+\fs26 \
+Should it be startx and starty, not x0, x1, etc.?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No. We are free to name those arguments whatever we want. These variables belong to the method we're writing, and in principle this method has a life of its own independent of any particular other place we might call it in our code.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:33:49 pm
+\fs26 \
+Why don't we have a semicolon at the end?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You don't put a semicolon after any declaration of the header of a method. Think back to when you write public static void main ...
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You don't put a semicolon there either.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since I just used the term "header", this brings me back to what I was saying: This first line is called the \cf3 header\cf0  of the method. We'll typically follow the header with a comment that explains the purpose of the method. In this case, we might have something like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:34:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 double\cf0  getDistance\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf13 /* Computes distance between (x0, y0) and (x1, y1) */
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We follow it with the \cf3 body\cf0  of the method, i.e. the code that does the computation we want. As with main, the body is enclosed in curly braces. Some people put the open curly brace on the same line as the header (as Eclipse does when it provides main for you), but I prefer to put the brace on a line by itself. Then it's easier to see how it lines up with the closed brace at the end.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Note: Eclipse will complain at you because we're not done writing the method yet! Sit tight. We'll get there.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:35:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this method, the body of the method is essentially the code we wrote before using pow and sqrt. We could almost cut and paste it from main into getDistance. What would have to change?
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:36:26 pm
+\fs26 \
+The variable names!\
+\cf4 moppr\cf0  
+\fs20 8:36:31 pm
+\fs26 \
+startX and startY\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Instead of startX, which is the value read from the user in main, within getDistance, we have to use the corresponding parameter. So we need to use not startX-endX, but x0-x1. Here's what it looks like:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 double\cf0  getDistance\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf13 /* Computes distance between (x0, y0) and (x1, y1) */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareX \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 x0\cf6 -\cf0 x1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 y0\cf6 -\cf0 y1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX\cf6 +\cf0 squareY\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now you may be wondering why we have to use the parameter. In this program, don't we want the difference between startX and endX? Why bother introducing the extra variables?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are two important answers to this question. The first is that we want our method to be reusable. We'd like to plug any pairs of points we want into this method. We don't want to restrict it to one possible source.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other answer is that variables are only usable within the block where they are declared. This is called the \cf3 scope\cf0  of the variable. Since startX is defined within main, startX doesn't exist outside main!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So if you try to refer to startX within getDistance, we'll get an error that startX is undeclared. If you tried to fix the error by putting in a declaration, then you'll be getting a completely new variable that happens to have the same name as one in main.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:38:15 pm
+\fs26 \
+Is it possible to create global variables?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, you can create global variables in Java. I don't want to discuss that today.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You're welcome to ask about it on the message board though.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's one more line (other than one with a closing brace) that our method needs. We've computed the value we want, and now we need to tell Java this is the final answer. The magic word for this is \cf3 return\cf0 , the same as in Python or C++. Here's the complete method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 double\cf0  getDistance\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf13 /* Computes distance between (x0, y0) and (x1, y1) */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareX \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 x0\cf6 -\cf0 x1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 y0\cf6 -\cf0 y1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX\cf6 +\cf0 squareY\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return dist\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember that the method doesn't actually do anything until another method calls it. In this case, that's done by main. We can replace the three lines that computed the distance with one. Here's what it looks like (with a couple of other lines shown for context):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  getDistance\cf7 (\cf0 startX, startY, endX, endY\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  time \cf6 =\cf0  dist \cf6 /\cf0  speed\cf6 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "It will take you %f hours to travel\cf15 \\n\cf11 "\cf0 , time\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A couple of things to point out here. The call to the method looks a little different than the other ones. With pow, we needed to write Math.pow; the static method's name is preceded by the class name. But here I didn't precede getDistance with anything. There isn\'92t even a dot!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's going on there??
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The reason for writing Math.pow is so Java knows what class to look in to find the definition of pow. The default behavior is to look inside the class where your code currently is. The call to getDistance is in main, which is in the class CarTrip. So Java looks within CarTrip to find the method's definition.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We 
+\i could
+\i0  be explicit about it and write CarTrip.getDistance(?) instead. That would work too.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:41:15 pm
+\fs26 \
+Would that speed up the code?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope. It won't make a difference.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 When we call getDistance in that first line, inside the parentheses we place the variables that we want to use as inputs to the method. Remember that the values in them are copied into the variables within the method's definition. Order matters; startX goes into x0, startY goes into y0, and so on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also note the use of the variable dist again. Based on the scope rules, the variable dist here differs from the one in getDistance's definition. If you find it confusing, you can rename dist to something else (like distance).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 By the way, it is very important that our method \cf3 returns\cf0  the computed distance instead of \cf3 printing\cf0  it. If we only printed it, then we could not assign the result of the method call to a variable as we did in main and then do further computations with it to determine the travel time. In general, it's better to have a method return rather than print; that gives the programmer using the method more flexibility in how to use it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions at this point?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You should have a working version of getDistance in your code at this point.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I think the following should be an accurate representation of what you should have so far (crosses fingers).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+import \cf5 java.util.Scanner\cf6 ;\cf0 \
+public class CarTripMethods \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf8 double\cf0  getDistance\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf13 /* Computes distance between (x0, y0) and (x1, y1) */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareX \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 x0\cf6 -\cf0 x1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 y0\cf6 -\cf0 y1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX\cf6 +\cf0 squareY\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return dist\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \'a0\'a0\'a0\'a0\
+\'a0\
+\'a0\'a0\'a0\'a0public static \cf8 void\cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf7 (\cf9 System\cf0 .\cf10 in\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter x-coordinate of start city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  startX \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter y-coordinate of start city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  startY \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter x-coordinate of end city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  endX \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter y-coordinate of end city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  endY \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "How fast will you be going? "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  speed \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  getDistance\cf7 (\cf0 startX, startY, endX, endY\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  time \cf6 =\cf0  dist \cf6 /\cf0  speed\cf6 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "It will take you %f hours to travel\cf15 \\n\cf11 "\cf0 , time\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 Tungsten\cf0  
+\fs20 8:45:16 pm
+\fs26 \
+It is! 
+\f1\fs24 {{\NeXTGraphic bigsmile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Alright! Wooooot!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We've figured out the time it takes to drive. Now we'll figure out the direction. What do we have to look at to determine the direction?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:46:20 pm
+\fs26 \
+Whether startX > endX and startY > endY\
+\cf4 moppr\cf0  
+\fs20 8:46:20 pm
+\fs26 \
+Direction of Y relative to X\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, more or less. To do this simply, we just have to look at how the coordinates change.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, let's consider the case where we are going due East. What should the change be in the y-coordinate between the beginning and ending points?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Assume that the x coordinate goes east-west and the y coordinate goes north-south. I think this is pretty broadly the way people set up coordinates, but maybe they do it differently, for example in the southern hemisphere.)
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0\
+\cf4 ScottBusche\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0\
+\cf4 connor0728\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0\
+\cf4 williamyin08\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0\
+\cf4 joberman\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0\
+\cf4 MathWolf\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0\
+\cf4 williamyin08\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+absolutely nada.\
+\cf4 MSTang\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0\
+\cf4 MathWolf\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0 difference\
+\cf4 MathWolf\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+0 in the y axis.\
+\cf4 want2learn\cf0  
+\fs20 8:48:31 pm
+\fs26 \
+change in y should be 0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It would be 0. We're going directly to the right, so there's no up or down movement. How about the x-coordinate change?
+\b0 \
+\pard\pardeftab720
+\cf4 want2learn\cf0  
+\fs20 8:49:04 pm
+\fs26 \
+it should be +ve\
+\cf4 moppr\cf0  
+\fs20 8:49:04 pm
+\fs26 \
+The end should be greater than the start\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We don't know what it is exactly, since we don't know how far we're moving. But we can say that it must be positive.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Combine these ideas together and give me a Boolean expression that we could use in an if statement to determine if we're going due east. Assume our points are (x0, y0) and (x1, y1).
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 8:49:45 pm
+\fs26 \
+&&\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You will definitely want to use &&, and, keep going!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since I'm just asking for the boolean expression on its own, you don't need (shouldn't include) any if's right now.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:51:20 pm
+\fs26 \
+startY - endY == 0 && startX < endX\
+\cf4 Tungsten\cf0  
+\fs20 8:51:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 startX \cf6 <\cf0  endX \cf6 &&\cf0  startY \cf6 ==\cf0  endY\
+\pard\pardeftab720
+
+\f0 \cf4 ReciterOfPi\cf0  
+\fs20 8:51:20 pm
+\fs26 \
+x1>x0 && y1 == y0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a possibility: (y0-y1==0 && x1>x0). You could also have done (y0==y1 && x1>x0).
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Unfortunately there is a subtle problem with either of these expressions. What data type are we using for the coordinates in our program?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:51:56 pm
+\fs26 \
+double\
+\cf4 FrozenFury\cf0  
+\fs20 8:51:56 pm
+\fs26 \
+Double\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:51:56 pm
+\fs26 \
+double\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:51:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a double. The problem is that we can't represent a double exactly within a computer. An irrational number like pi requires an infinite number of decimal places; we don't have that kind of room.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Even a number like 0.1 can't be represented exactly. The problem occurs when we convert it into a binary representation that the computer understands. There's a small amount of round-off. If you do further arithmetic using the number, those errors accumulate. You can see this by trying to compare 0.1*11 to 0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1+0.1 (that's 11 0.1s). Mathematically, they're the same, but Java will say they are not.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Try it out either now or after class!)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The preferred solution to this issue is to compare the difference of the two values. If the difference is sufficiently small (say, less than 0.00001), then we say the two values are equal.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's write a method to do this check. We'll call it areEqual. It will take as parameters the two doubles that we wish to compare; let's call them value1 and value2. What kind of value should it return, if any?
+\b0 \
+\pard\pardeftab720
+\cf4 jprosk\cf0  
+\fs20 8:53:37 pm
+\fs26 \
+a Boolean\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:53:37 pm
+\fs26 \
+A boolean!\
+\cf4 Tungsten\cf0  
+\fs20 8:53:37 pm
+\fs26 \
+A boolean.\
+\cf4 MathWolf\cf0  
+\fs20 8:53:37 pm
+\fs26 \
+a boolean\
+\cf4 jdaimax\cf0  
+\fs20 8:53:37 pm
+\fs26 \
+Boolean\
+\cf4 ScottBusche\cf0  
+\fs20 8:53:37 pm
+\fs26 \
+boolean\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since it's answering a yes/no question, then it should return either true or false. That's a boolean. Given this, can you provide the first line of the method?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: This method is comparing \cf3 just two\cf0  doubles to check whether they're equal. Write it accordingly.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:55:51 pm
+\fs26 \
+so we write a whole new method?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nope. Just the header.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'm basically just checking if everybody follows what needs to get input into this method and what gets output (and if you understand what other keywords need to be used).
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:56:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf8 boolean
+\f3\b0 \cf0  areEqual\cf7 (
+\f2\b \cf8 double
+\f3\b0 \cf0  value1, 
+\f2\b \cf8 double
+\f3\b0 \cf0  value2\cf7 )\cf0  \cf7 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:56:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf8 boolean
+\f3\b0 \cf0  arEqual\cf7 (
+\f2\b \cf8 double
+\f3\b0 \cf0  value1, 
+\f2\b \cf8 double
+\f3\b0 \cf0  value2\cf7 )\{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 FerozeM\cf0  
+\fs20 8:56:54 pm
+\fs26 \
+public static double getDistance(double value1, double value2)\
+\cf4 moppr\cf0  
+\fs20 8:56:54 pm
+\fs26 \
+public static boolean isEqual(double x, double y)\
+\cf4 MSTang\cf0  
+\fs20 8:57:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf8 boolean
+\f3\b0 \cf0  areEqual\cf7 (
+\f2\b \cf8 double
+\f3\b0 \cf0  value1, 
+\f2\b \cf8 double
+\f3\b0 \cf0  value2\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 boolean\cf0  areEqual\cf7 (\cf8 double\cf0  value1, \cf8 double\cf0  value2\cf7 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody see why that's the answer we need? (You could, of course, have used different names for your arguments.)
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 8:57:52 pm
+\fs26 \
+what is value1 and value2\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They're the names for the arguments we're passing into this method.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:58:23 pm
+\fs26 \
+what does this calculate, though?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This method will take two doubles as inputs and it will tell us whether those two doubles are close enough to the same value that we can say "they're equal, for our purposes, given the restrictions of handling floating point numbers on a computational instrument with finite memory capacity"
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now write the body. We can actually do it in one line by returning the result of the comparison we wish to make.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a flawed first attempt:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 boolean\cf0  areEqual\cf7 (\cf8 double\cf0  value1, \cf8 double\cf0  value2\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return value1\cf6 -\cf0 value2 \cf6 <\cf0  \cf12 0.00001\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember our discussion from about fifteen minutes ago! If you try to check equality of doubles using ==, you will VERY OFTEN get told "False" even if you want them treated as equal. That's why we're checking equality using < rather than ==.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the fatal mistake in my example attempt?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:02:21 pm
+\fs26 \
+value1 could be less than value2\
+\cf4 k77frank\cf0  
+\fs20 9:02:21 pm
+\fs26 \
+if value1 is smaller than value2\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:02:21 pm
+\fs26 \
+If value2 were greater than value1\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If value1 = 1.0 and value2 = 1000.0, then value1-value2 = -999.0, which is less than 0.00001. Oops!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we fix it? The key is to make sure the difference is positive. What's the shortest way to do that?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:02:41 pm
+\fs26 \
+absolute value\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If only we could somehow take the absolute value. Any ideas where we might look for a method to help with this?
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:02:51 pm
+\fs26 \
+Math.abs()\
+\cf4 FerozeM\cf0  
+\fs20 9:02:51 pm
+\fs26 \
+Math.abs?\
+\cf4 JRY\cf0  
+\fs20 9:02:51 pm
+\fs26 \
+Math.abs(value1 - value2)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Check the math class. One of the first ones listed is abs.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So can you fix the method now? What's the correct version?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:03:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 return
+\f3\b0  \cf7 (\cf9 Math\cf0 .\cf10 abs\cf7 (\cf0 value1 \cf6 -\cf0  value2\cf7 )\cf6 <\cf12 0.00001\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:03:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  
+\f2\b \cf8 boolean
+\f3\b0 \cf0  areEqual\cf7 (
+\f2\b \cf8 double
+\f3\b0 \cf0  value1, 
+\f2\b \cf8 double
+\f3\b0 \cf0  value2\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf9 Math\cf0 .\cf10 abs\cf7 (\cf0 value1 \cf6 -\cf0  value2\cf7 )\cf0  \cf6 <\cf0  \cf12 0.00001\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 joberman\cf0  
+\fs20 9:03:48 pm
+\fs26 \
+return Math.abs(value1-value2) < 0.00001;\
+\cf4 moppr\cf0  
+\fs20 9:03:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 return
+\f3\b0  \cf9 Math\cf0 .\cf10 abs\cf7 (\cf0 value1\cf6 -\cf0 value2\cf7 )\cf0  \cf6 <\cf0  \cf12 0.00001\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 williamyin08\cf0  
+\fs20 9:03:48 pm
+\fs26 \
+public static boolean areEqual(double value1, double value2)\
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return Math.abs(value1-value2) < 0.00001;\
+\'a0\'a0\'a0\'a0\}\
+\cf4 piis3141592653\cf0  
+\fs20 9:03:48 pm
+\fs26 \
+return Math.abs(value1 - value2) < 0.00001;\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 boolean\cf0  areEqual\cf7 (\cf8 double\cf0  value1, \cf8 double\cf0  value2\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 Math\cf0 .\cf10 abs\cf7 (\cf0 value1\cf6 -\cf0 value2\cf7 )\cf0  \cf6 <\cf0  \cf12 0.00001\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Coming back to the original goal that led us down this side-road, what's the test now to see if we're traveling due east?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 9:05:01 pm
+\fs26 \
+y's are same and x1 is greater than x0\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, that's the answer in words. What's the answer in code, using the method areEqual we just wrote?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, before we had this discussion, our answer was (y1 == y0 && x1 > x0)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can use that for inspiration.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 9:07:36 pm
+\fs26 \
+areEqual(y0, y1) && (x1>x0)\
+\cf4 moppr\cf0  
+\fs20 9:07:42 pm
+\fs26 \
+(areEqual(y0, y1) && x0 < x1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 areEqual(y0, y1) && x1>x0
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So if this test is true, then we are traveling east. How should we represent that fact?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's represent it using a string.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could return the String "east". Or we could simply return the one character String "E". Let's do the latter. Can you write the header line of a getDirection method followed by the code that returns "E" in the case where we're going east?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now you can use that if statement you were all dying to write!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Right now I just need a correct header and the first couple lines of the body.
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:11:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  \cf9 String\cf0  getDirection\cf7 (
+\f2\b \cf8 double
+\f3\b0 \cf0  x0, 
+\f2\b \cf8 double
+\f3\b0 \cf0  y0, 
+\f2\b \cf8 double
+\f3\b0 \cf0  x1, 
+\f2\b \cf8 double
+\f3\b0 \cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf7 (\cf0 areEqual\cf7 (\cf0 y0,y1\cf7 )\cf0  \cf6 &&\cf0  x0 \cf6 <\cf0  x1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "E"\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:11:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  string getDirection\cf7 (
+\f2\b \cf8 double
+\f3\b0 \cf0  value1, 
+\f2\b \cf8 double
+\f3\b0 \cf0  value2\cf7 )\cf0  \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf7 (\cf0 areEqual\cf7 (\cf0 y1, y0\cf7 )\cf0  \cf6 &&\cf0  x1\cf6 >\cf0 x0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "E"\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:11:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  \cf9 String\cf0  getDirection\cf7 (
+\f2\b \cf8 double
+\f3\b0 \cf0  x0, 
+\f2\b \cf8 double
+\f3\b0 \cf0  y0, 
+\f2\b \cf8 double
+\f3\b0 \cf0  x1, 
+\f2\b \cf8 double
+\f3\b0 \cf0  y1\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0  x1 \cf6 >\cf0  x0\cf7 )\cf0  \cf7 \{
+\f2\b \cf0 return
+\f3\b0  \cf11 "E"\cf6 ;\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the code I have:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+public static \cf9 String\cf0  getDirection\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0   x1\cf6 >\cf0 x0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "E"\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Based off of this, can you fill in the cases for the other three cardinal directions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (This part should be easier. You just need to copy-paste and do a few appropriate edits.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Close your brackets for your method definition if you don't want Eclipse complaining at you about that. I'm only leaving them out to make it clear we have not written the complete method yet.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 9:14:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b if
+\f3\b0  \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0   x1\cf6 >\cf0 x0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "E"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b else
+\f3\b0  
+\f2\b if
+\f3\b0  \cf7 (\cf0 areEqual\cf7 (\cf0 x0, x1\cf7 )\cf0  \cf6 &&\cf0   y1\cf6 >\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "N"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b else
+\f3\b0  
+\f2\b if
+\f3\b0  \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0  x1\cf6 <\cf0 x0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "W"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b else
+\f3\b0  
+\f2\b if
+\f3\b0  \cf7 (\cf0 areEqual\cf7 (\cf0 x0, x1\cf7 )\cf0  \cf6 &&\cf0  y1\cf6 <\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "S"\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 moppr\cf0  
+\fs20 9:14:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 else
+\f3\b0  
+\f2\b if
+\f3\b0  \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0  x0\cf6 >\cf0 x1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "W"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b else
+\f3\b0  
+\f2\b if
+\f3\b0  \cf7 (\cf0 y1\cf6 >\cf0 y0 \cf6 &&\cf0  areEqual\cf7 (\cf0 x0, x1\cf7 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "N"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b else
+\f3\b0  
+\f2\b if
+\f3\b0  \cf7 (\cf0 y0\cf6 >\cf0 y1 \cf6 &&\cf0  areEqual\cf7 (\cf0 x0, x1\cf7 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "S"\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 9:14:47 pm
+\fs26 \
+public static String getDirection(double x0, double y0, double x1, double y1)\
+\'a0\'a0\'a0\'a0\{\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if (areEqual(y0, y1) && x1>x0)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return "E";\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if (areEqual(y0, y1) && x0>x1)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return "W";\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if (areEqual(x0, x1) && y1>y0)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return "N";\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if (areEqual(x0, x1) && y0>y1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's one solution (you may order the cases differently):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf9 String\cf0  getDirection\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0   x1\cf6 >\cf0 x0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "E"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 areEqual\cf7 (\cf0 x0, x1\cf7 )\cf0  \cf6 &&\cf0   y1\cf6 >\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "N"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0  x1\cf6 <\cf0 x0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "W"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 areEqual\cf7 (\cf0 x0, x1\cf7 )\cf0  \cf6 &&\cf0  y1\cf6 <\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "S"\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you try to put a closed curly brace on the method, you'll still get fussed at. Why?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 9:15:13 pm
+\fs26 \
+I'm getting a "This method must return a result of type String" error\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep! Because this method, as we've written it so far, does not return a String in all possible cases. If you're not traveling due east, west, north, or south, then none of the cases will pass. We can fix the error by turning the last case into a simple else, but then it will say you're going south most of the time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For now, we'll just handle this issue by grouping any direction between due north and due east into "northeast" or "ne" and doing similar groupings for northwest, southwest, and southeast. (You'll do better approximations as a message board problem.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I don't want to spend more time on this. There's another section I want us to get to today, so I'll just post the code that achieves this so we can move on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sigh, I'm getting a "message too long" error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hang on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+import \cf5 java.util.Scanner\cf6 ;\cf0 \
+public class CarTripMethods \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf8 double\cf0  getDistance\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf13 /* Computes distance between (x0, y0) and (x1, y1) */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareX \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 x0\cf6 -\cf0 x1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  squareY \cf6 =\cf0  \cf9 Math\cf0 .\cf10 pow\cf7 (\cf0 y0\cf6 -\cf0 y1, \cf12 2.0\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  \cf9 Math\cf0 .\cf10 sqrt\cf7 (\cf0 squareX\cf6 +\cf0 squareY\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return dist\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0public static \cf8 boolean\cf0  areEqual\cf7 (\cf8 double\cf0  value1, \cf8 double\cf0  value2\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf13 /* Are value1 and value2 sufficiently close to be considered equal */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf9 Math\cf0 .\cf10 abs\cf7 (\cf0 value1\cf6 -\cf0 value2\cf7 )\cf0  \cf6 <\cf0  \cf12 0.00001\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0public static \cf9 String\cf0  getDirection\cf7 (\cf8 double\cf0  x0, \cf8 double\cf0  y0, \cf8 double\cf0  x1, \cf8 double\cf0  y1\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0
+\f5\i \cf13 /* Determine approximate direction from (x0,y0) to (x1,y1) */
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0   x1\cf6 >\cf0 x0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "E"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 areEqual\cf7 (\cf0 x0, x1\cf7 )\cf0  \cf6 &&\cf0   y1\cf6 >\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "N"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 areEqual\cf7 (\cf0 y0, y1\cf7 )\cf0  \cf6 &&\cf0  x1\cf6 <\cf0 x0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "W"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 areEqual\cf7 (\cf0 x0, x1\cf7 )\cf0  \cf6 &&\cf0  y1\cf6 <\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "S"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 x1\cf6 >\cf0 x0 \cf6 &&\cf0  y1\cf6 >\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "NE"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 x1\cf6 <\cf0 x0 \cf6 &&\cf0  y1\cf6 >\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "NW"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 x1\cf6 <\cf0 x0 \cf6 &&\cf0  y1\cf6 <\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "SW"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else if \cf7 (\cf0 x1\cf6 >\cf0 x0 \cf6 &&\cf0  y1\cf6 <\cf0 y0\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "SE"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "None"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 void\cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf7 (\cf9 System\cf0 .\cf10 in\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter x-coordinate of start city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  startX \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter y-coordinate of start city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  startY \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter x-coordinate of end city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  endX \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter y-coordinate of end city: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  endY \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "How fast will you be going? "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  speed \cf6 =\cf0  scan.\cf10 nextDouble\cf7 ()\cf6 ;\cf0 \'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  dist \cf6 =\cf0  getDistance\cf7 (\cf0 startX, startY, endX, endY\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 double\cf0  time \cf6 =\cf0  dist \cf6 /\cf0  speed\cf6 ;\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "It will take you %f hours to travel\cf15 \\n\cf11 "\cf0 , time\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf7 (\cf11 "You are traveling in the approximate direction %s\cf15 \\n\cf11 "\cf0 , \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0getDirection\cf7 (\cf0 startX, startY, endX, endY\cf7 ))\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 Tungsten\cf0  
+\fs20 9:18:25 pm
+\fs26 \
+What about the case where you don't move?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's handled in the final else that says return "None";
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: RANDOMNESS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's switch gears and write a new program. We'll write a simple program that plays Rock, Paper, Scissors with you. It's a two-player game. Each person secretly and simultaneously chooses either "rock", "paper", or "scissors". Then both players reveal their choices. If they match, the game is a draw. Otherwise, paper beats rock, rock beats scissors, and scissors beats paper. Play as often as you like.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We only have ten minutes left. I'll try to get to as much as we can, but we might not finish this. I'll shift the rest of the discussion to the message board if need be.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll write a version that has the user enter their choice and have the computer generate a random response. We'll then print both moves out and determine the winner. Our program will loop forever.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here\'92s a main method that could work:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf8 void\cf0  main\cf7 (\cf9 String\cf7 []\cf0  args\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Scanner scan \cf6 =\cf0  new Scanner\cf7 (\cf9 System\cf0 .\cf10 in\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0while \cf7 (\cf8 true\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 System\cf0 .\cf10 out\cf0 .\cf10 print\cf7 (\cf11 "Enter Rock, Paper, or Scissors: "\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  userMove \cf6 =\cf0  scan.\cf10 nextLine\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 String\cf0  computerMove \cf6 =\cf0  getComputerMove\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0determineWin\cf7 (\cf0 userMove, computerMove\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 Tungsten\cf0  
+\fs20 9:20:21 pm
+\fs26 \
+Why not loop until quit is entered?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Just for simplicity.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's look at that code. We first create a Scanner (don't forget the import!). The test in the while loop is clearly always true, so it never stops. The body of the loop reads in the user's move, calls a method to determine the computer's move, and then calls another method that is going to print out the winner based on the moves.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's no need to use those last two methods here. We could simply put the appropriate code directly in main. But notice how short and easy to read our main method is now.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 9:21:19 pm
+\fs26 \
+Is this a new class?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:21:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. Make this a new class.
+\b0 \
+\pard\pardeftab720
+\cf4 FrozenFury\cf0  
+\fs20 9:21:39 pm
+\fs26 \
+Do we put import Scanner?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yep. I won't always mention the housekeeping things we've discussed from previous classes and so forth.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (If I did, it would take too long.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's write the getComputerMove method. Can you give me the header line?
+\b0 \
+\pard\pardeftab720
+\cf4 ReciterOfPi\cf0  
+\fs20 9:23:35 pm
+\fs26 \
+public static String main(I have no idea what goes in here)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Almost! Notice that you do know what goes in the arguments list (look at how I called getComputerMove in the main code.)
+\b0 \
+\pard\pardeftab720
+\cf4 moppr\cf0  
+\fs20 9:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  \cf9 String\cf0  getComputerMove\cf7 ()\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 9:24:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 public
+\f3\b0  
+\f2\b static
+\f3\b0  \cf9 String\cf0  getComputerMove\cf7 ()\{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:24:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  \cf9 String\cf0  getComputerMove\cf7 ()\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf9 String\cf0  getComputerMove\cf7 ()\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that we need the parentheses even though this method has no parameters. Those parentheses allow Java to distinguish a method declaration from that for a field or variable.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java doesn't have anything that lets you generate the word "rock", "paper", or "scissors" automatically. (This comment is mainly for those who've studied Python which does supply such capabilities.) But it does have a mechanism that lets you generate a random number. How could we use that here?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:25:59 pm
+\fs26 \
+0 = rock, 1 = paper, 2 = scissors\
+\cf4 k77frank\cf0  
+\fs20 9:25:59 pm
+\fs26 \
+Assign a numbers to each string\
+\cf4 ReciterOfPi\cf0  
+\fs20 9:25:59 pm
+\fs26 \
+assign 1 to "rock", 2 to "paper", and 3 to "scissors".\
+\cf4 AkshajK\cf0  
+\fs20 9:25:59 pm
+\fs26 \
+Assign a number to rock, paper, or scissors\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah, that idea will get us where we need to go.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In particular, we can generate either 0, 1, or 2 (or any three numbers really, but these end up being the most convenient). We then correspond each digit with one of the three choices.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's how it works. We need to bring in a new class called Random. It's in the same package as Scanner. So what do we have to add at the top?
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+import java.util.Random;\
+\cf4 ScottBusche\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 import
+\f3\b0 .\cf10 java\cf0 .\cf10 util\cf0 .\cf9 Random\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 adrianu\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 import
+\f3\b0  \cf5 java.util.Random\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 import
+\f3\b0  \cf5 java.util.Random\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 mrturtle\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+import java.util.Random\
+\cf4 jdaimax\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+import java.util.Random\
+\cf4 williamyin08\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+import java.util.Random;\
+\cf4 MSTang\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 import
+\f3\b0  \cf5 java.util.Random\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:26:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 import
+\f3\b0  \cf5 java.util.Scanner\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+import \cf5 java.util.Random\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Alternatively, you could do import java.util.*
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This imports EVERYTHING from util. Random, Scanner, and everything else in the java.util package.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Inside the method, we need to create a Random object. (Unlike Math, the methods we need are NOT static.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Give me the line that does that. Call the variable rand. Hint: Look at how we created a Scanner. We don't need any special parameters here, like System.in.
+\b0 \
+\pard\pardeftab720
+\cf4 FerozeM\cf0  
+\fs20 9:28:42 pm
+\fs26 \
+Random rand = new Random();\
+\cf4 moppr\cf0  
+\fs20 9:28:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 Random\cf0  rand \cf6 =\cf0  
+\f2\b new
+\f3\b0  \cf9 Random\cf7 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:28:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 Random\cf0  rand \cf6 =\cf0  
+\f2\b new
+\f3\b0  \cf9 Random\cf7 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:28:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf9 Random\cf0  rand \cf6 =\cf0  
+\f2\b new
+\f3\b0  \cf9 Random\cf7 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 Random\cf0  rand \cf6 =\cf0  new \cf9 Random\cf7 ()\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we can use rand to generate a random number. The method we'll use is called nextInt.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 int\cf0  choice \cf6 =\cf0  rand.\cf10 nextInt\cf7 (\cf12 3\cf7 )\cf6 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's break that line down: The parameter here indicates the range of numbers we want to pick from. nextInt(n) returns an integer from 0 to n-1 inclusive.
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 9:29:13 pm
+\fs26 \
+what EXACTLY does nextInt, nextLine, etc. do?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 scan.nextInt() and rand.nextInt() are completely different methods (in completely different classes) that just happen to have the same name.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So the answer is "It depends. Who's asking?"
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The idea, though, is to have some naming uniformity, to help you remember what stuff is called.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, can you finish our method? Just to be different, use a switch statement.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (This will be the last thing we do, since we need to wrap up now.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So you need the header for this method, you need to get a random number 0, 1, or 2, (we already discussed those, so scroll up if you need a reminder) and you need a switch to return an appropriate string.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that break isn't necessary here since return immediately exits the code block for you.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:33:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  \cf9 String\cf0  getComputerMove\cf7 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 Random\cf0  rand \cf6 =\cf0  
+\f2\b new
+\f3\b0  \cf9 Random\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf8 int
+\f3\b0 \cf0  choice \cf6 =\cf0  rand.\cf10 nextInt\cf7 (\cf12 3\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b switch
+\f3\b0 \cf7 (\cf0 choice\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b case
+\f3\b0  \cf12 1\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "rock"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b case
+\f3\b0  \cf12 2\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "scissors"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b case
+\f3\b0  \cf12 3\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "paper"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 9:33:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3 \cf0 \'a0\'a0\'a0\'a0
+\f2\b public
+\f3\b0  
+\f2\b static
+\f3\b0  \cf9 String\cf0  getComputerMove\cf7 ()\cf0  \cf7 \{\cf0  
+\f4\i \cf13 // Get the move of the computer
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 Random\cf0  rand \cf6 =\cf0  
+\f2\b new
+\f3\b0  \cf9 Random\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b \cf8 int
+\f3\b0 \cf0  choice \cf6 =\cf0  rand.\cf10 nextInt\cf7 (\cf12 3\cf7 )\cf6 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b switch
+\f3\b0 \cf7 (\cf0 choice\cf7 )\cf0  \cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b case
+\f3\b0  \cf12 0\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "Rock"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b case
+\f3\b0  \cf12 1\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "Paper"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b case
+\f3\b0  \cf12 3\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f2\b return
+\f3\b0  \cf11 "Scissors"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my code:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf9 String\cf0  getComputerMove\cf7 ()\cf0 \
+\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf9 Random\cf0  rand \cf6 =\cf0  new \cf9 Random\cf7 ()\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf8 int\cf0  choice \cf6 =\cf0  rand.\cf10 nextInt\cf7 (\cf12 3\cf7 )\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0switch \cf7 (\cf0 choice\cf7 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0case \cf12 0\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "Rock"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0case \cf12 1\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "Paper"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0default\cf6 :\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "Scissors"\cf6 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Ok, let's wrap up.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As I said, check the message board for the completion of this discussion
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what we went over today.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw how to call methods in the Math and Random classes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You got an introduction to the Java API a very handy reference source.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw some issues with comparing doubles or objects using ==.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You saw how to write your own static methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week we'll do some drawing and see how to create Java applications with windows and simple graphics.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Last comment:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I said last week I'd investigate when we need to create new projects in Eclipse.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I hunted online as well as I could.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I didn't find any useful information.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Probably, it's not a big deal whether you put everything in the same project.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As far as I can tell, a "project" in Eclipse is just a new directory in your workspace folder.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And each "new class" you add to a given project is just a new file you're putting into that folder.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So it looks like it's up to you how you want to organize these files.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The broad idea is that if you're making a big project with lots of interacting classes, then you'd put those in the same project folder.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 All the stuff we're writing is pretty humble, so we don't necessarily need separate projects for everything.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So do what feels sensible to you.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions before I unmoderate?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 9:38:51 pm
+\fs26 \
+in the rock paper scissors, why didn't you put breaks in the cases of switch\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:38:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 return is doing the job of the break there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:39:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 return immediately jumps out of the method it's contained in.\
+\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clcbpat16 \clwWidth25180\clftsWidth3 \clmaxw20 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt80 \clpadl80 \clpadb80 \clpadr80 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720
+
+\fs24 \cf0 [Introductory remarks.]
+\b0 \
+\
+In the following, I asked a few questions and hid the answers. Try to answer the questions for yourself first before you peek.\
+\
+This is a long post, so here's a summary of the main points you should take away:\
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls1\ilvl0\cf0 {\listtext	\'95	}primitive data types versus reference types. \uc0\u8232 (Knowing the difference is simple. There are exactly eight primitive types in Java; you can find the full list in the discussion below. All other types are reference types.)\
+{\listtext	\'95	}How primitive types are represented in memory.\uc0\u8232 (1 step: variable name tells Java a location in memory. The literal value of the variable is stored at that location.)\
+{\listtext	\'95	}How reference types are represented in memory.\uc0\u8232 (2 steps: variable name tells Java a location in memory. What's stored there is another location in memory, this time the address in memory where the object was actually created. The reason it's set up like this has to do with the mundane organizational realities the compiler needs to deal with when it comes to the nitty-gritty of setting up machine-level instructions for actually reading and writing stuff in memory.)\
+{\listtext	\'95	}How to compare primitive types for equality.\
+{\listtext	\'95	}How to compare reference types for equality.\uc0\u8232 (For primitive types == is good enough. For reference types, you need to use the 
+\b equals
+\b0  method.)\
+{\listtext	\'95	}Definition of determineWin method.\
+\pard\intbl\itap1\pardeftab720
+\cf0 \
+\
+*****************************************\
+\
+\
+
+\b [Refresher on what we had already done.]
+\b0 \
+\
+Recall that we finished Week 3's class with the beginning of a discussion about writing a simple Rock, Paper, Scissors game. This is the completion of that discussion.\
+\
+Here, for convenience, is the outline for how we want the game to work:\
+\pard\intbl\itap1\pardeftab720
+
+\b\fs20 \cf17 \cb18 Quote:\
+\pard\intbl\itap1\pardeftab720
+
+\f6\b0\fs24 \cf19 \cb20 We'll write a simple program that plays Rock, Paper, Scissors with you. It's a two-player game. Each person secretly and simultaneously chooses either "rock", "paper", or "scissors". Then both players reveal their choices. If they match, the game is a draw. Otherwise, paper beats rock, rock beats scissors, and scissors beats paper. Play as often as you like.\
+\
+We'll write a version that has the user enter their choice and have the computer generate a random response. We'll then print both moves out and determine the winner. Our program will loop forever.\
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+And here's the code we had written so far. (In particular, this is not the final code. It won't even run right now since we haven't defined the method determineWin yet. If you want the final code, you're going to have to follow along and finish it off as you read.)\
+\
+\pard\intbl\itap1\pardeftab720
+
+\f6\b\fs18 \cf17 \cb18 Code:
+\b0 \
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0
+\f3\fs24 \cf21 \cb20 {\listtext	1.	}import java.util.Random;\cf22 \
+\ls2\ilvl0\cf21 {\listtext	2.	}import java.util.Scanner;\cf22 \
+{\listtext	3.	}\'a0\
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0
+\f2\b \cf0 {\listtext	4.	}public
+\f3\b0 \cf22  
+\f2\b \cf0 class
+\f3\b0 \cf22  Part3Randomness \cf23 \{\cf22 \
+{\listtext	5.	}\'a0 \'a0\
+{\listtext	6.	}\'a0 \'a0 \'a0
+\f2\b \cf0 public
+\f3\b0 \cf22  
+\f2\b \cf0 static
+\f3\b0 \cf22  {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 String}} getComputerMove\cf23 ()\cf22 \
+{\listtext	7.	}\'a0 \'a0 \'a0 \'a0 \cf23 \{\cf22 \
+{\listtext	8.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ARandom+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 Random}} rand = 
+\f2\b \cf0 new
+\f3\b0 \cf22  {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ARandom+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 Random}}\cf23 ()\cf22 ;\
+{\listtext	9.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf25 int\cf22  choice = rand.nextInt\cf23 (\cf12 3\cf23 )\cf22 ;\
+{\listtext	10.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf26 switch\cf22  \cf23 (\cf22 choice\cf23 )\cf22 \
+{\listtext	11.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf23 \{\cf22 \
+{\listtext	12.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf26 case\cf22  \cf12 0\cf22 :\
+{\listtext	13.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
+\f2\b \cf0 return
+\f3\b0 \cf22  \cf4 "Rock"\cf22 ;\
+{\listtext	14.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf26 case\cf22  \cf12 1\cf22 :\
+{\listtext	15.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
+\f2\b \cf0 return
+\f3\b0 \cf22  \cf4 "Paper"\cf22 ;\
+{\listtext	16.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
+\f2\b \cf0 default
+\f3\b0 \cf22 :\
+{\listtext	17.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 
+\f2\b \cf0 return
+\f3\b0 \cf22  \cf4 "Scissors"\cf22 ;\
+{\listtext	18.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf23 \}\cf22 \
+{\listtext	19.	}\'a0 \'a0 \'a0 \'a0 \cf23 \}\cf22 \
+{\listtext	20.	}\'a0\
+{\listtext	21.	}\'a0 \'a0 \'a0 \'a0 
+\f2\b \cf0 public
+\f3\b0 \cf22  
+\f2\b \cf0 static
+\f3\b0 \cf22  \cf25 void\cf22  main\cf23 ({\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 String}}[]\cf22  args\cf23 )\cf22  \cf23 \{\cf22 \
+{\listtext	22.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 Scanner scan = 
+\f2\b \cf0 new
+\f3\b0 \cf22  Scanner\cf23 ({\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}\cf22 .in\cf23 )\cf22 ;\
+{\listtext	23.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf26 while\cf22  \cf23 (
+\f2\b \cf0 true
+\f3\b0 \cf23 )\cf22 \
+{\listtext	24.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf23 \{\cf22 \
+{\listtext	25.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.print\cf23 (\cf4 "Enter Rock, Paper, or Scissors: "\cf23 )\cf22 ;\
+{\listtext	26.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 String}} userMove = scan.nextLine\cf23 ()\cf22 ;\
+{\listtext	27.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 String}} computerMove = getComputerMove\cf23 ()\cf22 ;\
+{\listtext	28.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 determineWin\cf23 (\cf22 userMove, computerMove\cf23 )\cf22 ;\
+{\listtext	29.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf23 \}\cf22 \
+{\listtext	30.	}\'a0 \'a0 \'a0 \'a0 \cf23 \}\cf22 \
+{\listtext	31.	}\'a0\
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls2\ilvl0\cf23 {\listtext	32.	}\}\cf22 \
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+\
+*****************************************\
+\
+\
+
+\b [Now we pick up from where we left off, beginning with the rest of the analysis of what we wrote for getComputerMove().]
+\b0 \
+\
+...Notice I used default rather than case 2. I actually can't use case 2 here. Why not?\
+\
+Because then Java will complain that the method doesn't necessarily return a String. Of course, we, the mighty creators of the program, know it will since 0, 1, and 2 are the only possible values for choice. But the compiler can't do that sophisticated an analysis.\
+\
+Also notice I didn't put breaks in the cases. Is that a problem?\
+\
+No, because whenever the flow of your program brings you to a 
+\b return
+\b0  statement, the flow leaves the method 
+\i immediately
+\i0 . So it won\'92t go onto the other cases.\
+\
+\
+\
+
+\b Now we'll move onto the determineWin method.
+\b0  As I said earlier, it should print the moves by the players and the result of the match.\
+\
+What should the header line of this method look like?\
+\
+Here's a possible answer:\
+\pard\intbl\itap1\pardeftab720
+\cf11 \ul \ulc11 Hidden Text\cf0 \ulnone \
+\
+The first thing we do is print out the moves. What code does that?\
+\
+Here's a one-line solution:\
+\cf11 \ul Hidden Text\cf0 \ulnone \
+\
+Remember that \\n is the newline character. The two moves will appear on different lines.\
+\
+Now we'll check whether the two moves are the same. In that case, it's a tie. The obvious way to do that is like this:\
+\pard\intbl\itap1\pardeftab720
+
+\f6\b\fs18 \cf17 \cb18 Code:
+\b0 \
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls3\ilvl0
+\f3\fs24 \cf22 \cb20 {\listtext	1.	}\'a0 \'a0 \'a0 \'a0\cf26 if\cf22  \cf23 (\cf22 userMove==computerMove\cf23 )\cf22 \
+{\listtext	2.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.println\cf23 (\cf4 "It's a tie!"\cf23 )\cf22 ;\
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+\pard\intbl\itap1\pardeftab720
+
+\b \cf0 Unfortunately this approach does not work for a subtle reason.
+\b0  The issue is what actually gets stored in a variable, so let's take a moment to explore that.\
+\
+
+\b int
+\b0  and 
+\b double
+\b0  are examples of 
+\b primitive
+\b0  types. Java has eight of them; the others are 
+\b boolean, char, float, byte, short, and long
+\b0 . 
+\b char
+\b0  is for single letters or digits; the word is short for "character". As I said before, 
+\b float
+\b0  is for real numbers, and 
+\b byte
+\b0 , 
+\b short
+\b0 , and 
+\b long
+\b0  are for integers. The difference between those and 
+\b double
+\b0  or 
+\b int
+\b0  is how much memory is reserved to store the numbers. The more memory, the larger a range of numbers can be stored.\
+\
+All other types (both the ones that come as part of the Java libraries like String, Random, Scanner, System, Math, and so on, as well as any classes you yourself might write) are 
+\b reference
+\b0  types.\
+\
+When we refer to a variable like 
+\b userMove
+\b0  or 
+\b choice
+\b0  in our code, that's really a name we're assigning to a 
+\i particular location in the computer's memory
+\i0 . You can think of these locations as a series of post office boxes. The variable 
+\b choice
+\b0  may refer to box 2345, and 
+\b userMove
+\b0  may be for box 2346.\
+\
+Why do we refer to these boxes by name in our code rather than number? I can think of a couple of reasons.\
+\
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls4\ilvl0\cf0 {\listtext	\'95	}It makes the code easier to read and write if we use a name that illustrates what value is there.\
+{\listtext	\'95	}More importantly, the compiler can decide what box to use depending on the other requirements of the program or the computer as a whole.\
+\pard\intbl\itap1\pardeftab720
+\cf0 \
+When a variable refers to a primitive type, the value stored in the box is the actual value of the type. So, for example, if the variable choice refers to the number 2, then the value stored in the box is 2 (technically represented in the binary number system, but that's not important to this discussion).\
+\
+Reference types are more interesting. The value stored in the box is the 
+\b location
+\b0  of where the object is stored in memory. In other words, it's another box number! So, if 
+\b userChoice
+\b0  refers to "Rock", then the variable may store something like 9876, because the String "Rock" starts in box 9876.\
+\
+Why does Java do this? One reason is that objects can sometimes have varying sizes. A String can have one character or one hundred characters. So if I declare a String variable, Java can't tell how many memory boxes should correspond to it. But every box number (every Java reference indicating an address in computer memory) is the same size. So Java can make enough space to hold a box number at the point of declaration and decide later how much memory to use for the actual String.\
+\
+Also this gives Java more flexibility in how memory is used. It can take the space for an object from just about anywhere.\
+\
+Now, with that digression out of the way, let's return to our (at the moment, flawed) if statement.\
+\
+\pard\intbl\itap1\pardeftab720
+
+\f6\b\fs18 \cf17 \cb18 Code:
+\b0 \
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls5\ilvl0
+\f3\fs24 \cf22 \cb20 {\listtext	1.	}\'a0 \'a0 \'a0 \'a0\cf26 if\cf22  \cf23 (\cf22 userMove==computerMove\cf23 )\cf22 \
+{\listtext	2.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.println\cf23 (\cf4 "It's a tie!"\cf23 )\cf22 ;\
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+Let's look at what that == operator does. It compares the values stored in the variables to see if they are the same. For primitive types, this is fine. If the int x has 5 in it, and the int y has 5 in it, then x and y have the same value.\
+\
+But this doesn't work for reference types! Suppose 
+\b userChoice
+\b0  has the value 1000 referring to the location allocated in memory by the program for the String "Rock". Suppose 
+\b computerChoice
+\b0  has the value 2000 referring to the location of a 
+\b different
+\b0  String "Rock". Just because the data contained by these two objects is the same doesn't mean that they are the same object! What we want to say is that since 
+\b userChoice
+\b0  and 
+\b computerChoice
+\b0  each refer to "Rock", they are the same. But Java sees two 
+\i different
+\i0  instances of the word "Rock" in two 
+\i different
+\i0  memory locations. So it says they are different; 1000 is not the same as 2000.\
+\
+The moral is that, for reference types, == only gives true if the two things refer to 
+\i identically
+\i0  the same object in memory. It will returns false for two different things, even if they happen to look the same.\
+\
+An analogy: I have a copy of Huckleberry Finn in my left hand and an identical copy (same edition, cover, etc.) in my right hand. Are they the same? The Java answer is no; I'm holding two books, not one. Hence they are different.\
+\
+Fortunately, Java provides a way for us to compare objects based on their "appearance".\
+\
+As you might guess, the answer is to use a method. Every object has a method called 
+\b equals
+\b0 . If you pass another object to this method, it will tell you if the two "look the same".\
+\
+The definition of "look the same" depends on the class. (Without going too much into details, what I'm really saying is that Java has a default behavior for what 
+\b equals
+\b0  will mean for a given class if you decide not to explicitly define an 
+\b equals
+\b0  method. Sometimes the default behavior is good enough. Other times the default behavior won't do the right thing, in which case then you'd simply overwrite the definition of 
+\b equals
+\b0  for your class.)\
+\
+For Strings, 
+\b equals
+\b0  simply checks whether the two strings you feed it have the same characters in the same order. No surprises there!\
+\
+So here's the correct test to see if the two moves are the same:\
+\
+\pard\intbl\itap1\pardeftab720
+
+\f6\b\fs18 \cf17 \cb18 Code:
+\b0 \
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls6\ilvl0
+\f3\fs24 \cf22 \cb20 {\listtext	1.	}\'a0 \'a0 \'a0 \'a0\cf26 if\cf22  \cf23 (\cf22 userMove.equals\cf23 (\cf22 computerMove\cf23 ))\cf22 \
+{\listtext	2.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.println\cf23 (\cf4 "It's a tie!"\cf23 )\cf22 ;\
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+Can you fill in the code for determining if the user has won?\
+\
+Here's mine:\
+\
+\cf11 \ul Hidden Text\cf0 \ulnone \
+\pard\intbl\itap1\pardeftab720
+
+\f6\b\fs18 \cf17 \cb18 Code:
+\b0 \
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls7\ilvl0
+\f3\fs24 \cf22 \cb20 {\listtext	1.	}\'a0 \'a0 \'a0 \'a0\cf26 if\cf22  \cf23 (\cf22 userMove.equals\cf23 (\cf22 computerMove\cf23 ))\cf22 \
+{\listtext	2.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.println\cf23 (\cf4 "It's a tie!"\cf23 )\cf22 ;\
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 \cf26 else\cf22  \cf26 if\cf22  \cf23 ((\cf22 userMove.equals\cf23 (\cf4 "Rock"\cf23 )\cf22  && \cf23 (\cf22 computerMove.equals\cf23 (\cf4 "Scissors"\cf23 )))\cf22  ||\
+{\listtext	4.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf23 (\cf22 userMove.equals\cf23 (\cf4 "Scissors"\cf23 )\cf22  && \cf23 (\cf22 computerMove.equals\cf23 (\cf4 "Paper"\cf23 )))\cf22  ||\
+{\listtext	5.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf23 (\cf22 userMove.equals\cf23 (\cf4 "Paper"\cf23 )\cf22  && \cf23 (\cf22 computerMove.equals\cf23 (\cf4 "Rock"\cf23 ))))\cf22 \
+{\listtext	6.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.println\cf23 (\cf4 "You win!"\cf23 )\cf22 ;\
+\pard\intbl\itap1\pardeftab720
+
+\f0 \cf0 \cb1 \
+\
+Note that I use the || (which, as you'll recall from Week 2, means "or") to combine all the winning conditions into one test. You could also do it as a series of three if tests.\
+\
+Every other case is a computer win, so we just need a final else. Here's the complete method:\
+\
+\cf11 \ul Hidden Text\cf0 \ulnone \
+\pard\intbl\itap1\pardeftab720
+
+\f6\b\fs18 \cf17 \cb18 Code:
+\b0 \
+\pard\intbl\itap1\tx220\tx720\pardeftab720\li720\fi-720
+\ls8\ilvl0
+\f3\fs24 \cf22 \cb20 {\listtext	1.	}\'a0 \'a0
+\f2\b \cf0 public
+\f3\b0 \cf22  
+\f2\b \cf0 static
+\f3\b0 \cf22  \cf25 void\cf22  determineWin\cf23 ({\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 String}}\cf22  userMove, {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3AString+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 String}} computerMove\cf23 )\cf22 \
+{\listtext	2.	}\'a0 \'a0 \cf23 \{\cf22 \
+{\listtext	3.	}\'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.printf\cf23 (\cf4 "Your move: %s
+\f2\b \cf15 \\n
+\f3\b0 \cf4 My move: %s
+\f2\b \cf15 \\n
+\f3\b0 \cf4 "\cf22 , userMove, computerMove\cf23 )\cf22 ;\
+{\listtext	4.	}\'a0 \'a0 \'a0 \'a0 \cf26 if\cf22  \cf23 (\cf22 userMove.equals\cf23 (\cf22 computerMove\cf23 ))\cf22 \
+{\listtext	5.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.println\cf23 (\cf4 "It's a tie!"\cf23 )\cf22 ;\
+{\listtext	6.	}\'a0 \'a0 \'a0 \'a0 \cf26 else\cf22  \cf26 if\cf22  \cf23 ((\cf22 userMove.equals\cf23 (\cf4 "Rock"\cf23 )\cf22  && \cf23 (\cf22 computerMove.equals\cf23 (\cf4 "Scissors"\cf23 )))\cf22  ||\
+{\listtext	7.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf23 (\cf22 userMove.equals\cf23 (\cf4 "Scissors"\cf23 )\cf22  && \cf23 (\cf22 computerMove.equals\cf23 (\cf4 "Paper"\cf23 )))\cf22  ||\
+{\listtext	8.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \cf23 (\cf22 userMove.equals\cf23 (\cf4 "Paper"\cf23 )\cf22  && \cf23 (\cf22 computerMove.equals\cf23 (\cf4 "Rock"\cf23 ))))\cf22 \
+{\listtext	9.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.println\cf23 (\cf4 "You win!"\cf23 )\cf22 ;\
+{\listtext	10.	}\'a0 \'a0 \'a0 \'a0 \cf26 else\cf22 \
+{\listtext	11.	}\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://www.google.com/search?hl=en&q=allinurl%3ASystem+java.sun.com&btnI=I%27m%20Feeling%20Lucky"}}{\fldrslt 
+\f2\b \cf24 System}}.out.println\cf23 (\cf4 "I win!"\cf23 )\cf22 ;\
+{\listtext	12.	}\'a0\
+{\listtext	13.	}\'a0 \'a0 \cf23 \}\cf22 \cell \lastrow\row
+}

@@ -1,0 +1,6043 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier;
+\f3\fmodern\fcharset0 Courier-Bold;\f4\fmodern\fcharset0 Courier-BoldOblique;\f5\fmodern\fcharset0 Courier-Oblique;
+}
+{\colortbl;\red255\green255\blue255;\red15\green112\blue1;\red115\green0\blue2;\red251\green0\blue7;
+\red0\green0\blue83;\red18\green139\blue2;\red1\green32\blue135;\red43\green139\blue39;\red83\green83\blue83;
+\red11\green85\blue38;\red0\green0\blue255;\red10\green82\blue135;\red190\green74\blue193;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\b\fs26 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 Java Programming with Data Structures Week 16: Stacks and Queues
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In this week's lesson, we'll consider two important data structures: the stack and the queue. Like the lists we've been discussing, they also contain collections of elements.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The difference is that we restrict how we access those elements. With a list, we can look anywhere in it. We can modify, insert at, or remove the contents of any position. In stacks and queues, only certain elements are accessible.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:31:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This leads to the important question of why do we need special data structures if the general one could do. Can you think of an answer?
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 7:33:25 pm
+\fs26 \
+they in some way be more efficient for processing?\
+\cf4 AkshajK\cf0  
+\fs20 7:33:25 pm
+\fs26 \
+EFFICIENCY\
+\cf4 spower4\cf0  
+\fs20 7:33:25 pm
+\fs26 \
+to make it more efficient\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we know we will only use the structure in a certain way, then we can optimize those operations to run as efficiently as possible.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:33:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also it provides a kind of error-checking by guaranteeing the integrity of the structure. If we don't want someone to remove from the middle, we simply don't give them that option.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So let's get started with:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 1: STACKS
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:34:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The stack gets its name from the common English word. What does that word mean?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:35:17 pm
+\fs26 \
+A pile of stuff.\
+\cf4 JRY\cf0  
+\fs20 7:35:17 pm
+\fs26 \
+pile\
+\cf4 connor0728\cf0  
+\fs20 7:35:17 pm
+\fs26 \
+things on top of each other\
+\cf4 MSTang\cf0  
+\fs20 7:35:17 pm
+\fs26 \
+put things on top of each other\
+\cf4 ScottBusche\cf0  
+\fs20 7:35:17 pm
+\fs26 \
+A pile of objects.\
+\cf4 bluebandit21\cf0  
+\fs20 7:35:17 pm
+\fs26 \
+things on top of eachother?\
+\cf4 k77frank\cf0  
+\fs20 7:35:17 pm
+\fs26 \
+a pile\
+\cf4 connor0728\cf0  
+\fs20 7:35:17 pm
+\fs26 \
+a pile of objects, typically one that is neatly arranged.\
+\cf4 spower4\cf0  
+\fs20 7:35:20 pm
+\fs26 \
+many things pilled up on eachother\
+\cf4 MathWolf\cf0  
+\fs20 7:35:20 pm
+\fs26 \
+A pile of objects\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:35:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Dictionary.com tells me that it is a "pile of objects, typically one that is neatly arranged". (It appears connor0728 and I have the same go-to online dictionary.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:36:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you give me an example of a stack in the "real world"?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+stack of books\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+PANCAKES\
+\cf4 connor0728\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+pancakes
+\f1\fs24 {{\NeXTGraphic smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\cf4 JRY\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+a pile of books on top of each other\
+\cf4 Tungsten\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+A pile of books.\
+\cf4 spower4\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+a burger\
+\cf4 connor0728\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+wood\
+\cf4 manbugbeebee\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+pancakes\
+\cf4 ScottBusche\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+A stack of books.\
+\cf4 ReciterOfPi\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+Cup-stacking!\
+\cf4 Tungsten\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+An apartment building.\
+\cf4 chutney\cf0  
+\fs20 7:36:50 pm
+\fs26 \
+A stack of books\
+\cf4 k77frank\cf0  
+\fs20 7:36:54 pm
+\fs26 \
+a granum stack in the chloroplast of plants\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sure, these all seem reasonable. (I'd never heard of granum stacks, but a quick glance shows that it would make sense too.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another example: As a game player, I frequently need to make a stack of cards for a draw deck.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:37:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A stack of trays would work too. When I go to my school's cafeteria and I want to get a tray to carry my food, I'll get one off a stack near the main entrance.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If I'm going to take a tray off that stack, where is the easiest place to get one? Which is easiest to access?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:38:19 pm
+\fs26 \
+The top.\
+\cf4 connor0728\cf0  
+\fs20 7:38:19 pm
+\fs26 \
+the top\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:38:19 pm
+\fs26 \
+top\
+\cf4 k77frank\cf0  
+\fs20 7:38:19 pm
+\fs26 \
+the top one\
+\cf4 MSTang\cf0  
+\fs20 7:38:19 pm
+\fs26 \
+top\
+\cf4 JRY\cf0  
+\fs20 7:38:19 pm
+\fs26 \
+the top\
+\cf4 piis3141592653\cf0  
+\fs20 7:38:21 pm
+\fs26 \
+the top\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The one on top is simplest, since there's nothing blocking it. In our cafeteria, the trays are stacked on a spring-loaded mechanism so the entire stack rises once you remove the top tray.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:38:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And what is the simplest way to put new trays onto the stack?
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+onto the top\
+\cf4 Tungsten\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+Put them on the top.\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+putting one on top\
+\cf4 ScottBusche\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+Put them on the top.\
+\cf4 piis3141592653\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+on the top.\
+\cf4 bluebandit21\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+on to the top\
+\cf4 JRY\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+Onto the top\
+\cf4 k77frank\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+on the top\
+\cf4 MathWolf\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+the top also\
+\cf4 MSTang\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+on top\
+\cf4 spower4\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+top\
+\cf4 connor0728\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+the top\
+\cf4 connor0728\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+put them on top\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:39:26 pm
+\fs26 \
+top\
+\cf4 manbugbeebee\cf0  
+\fs20 7:39:28 pm
+\fs26 \
+also the top\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For the same reason, the top is simplest.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So with a stack, we both add and remove from the top. Of course, one could try to dig underneath or shove objects into the middle. However, for our purposes today, we're going to only allow access to the top.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Some terminology: adding an element to the top of a stack is called a \cf3 push\cf0 . Removing the top element is called a \cf3 pop\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Sometimes we'll want to look at the top element of a stack without actually removing it. This operation is called a \cf3 peek\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:39:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It may also be useful to be able to determine if a stack is empty. There's no fancy name for that one; we'll just call it isEmpty.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's practice with the operations for a minute. We'll represent a stack as a sequence in brackets with the top of the stack on the left. So in [1, 2, 3], 1 is on top.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:40:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Starting with an empty stack, push(A), push(O), push(P), then push(S). What is the stack that results?
+\b0 \
+\pard\pardeftab720
+\cf4 pinkfluffybunnies\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+SPOA\
+\cf4 mattpi\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+[S,P,O,A]\
+\cf4 spower4\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+SPOA\
+\cf4 connor0728\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+SPOA\
+\cf4 ScottBusche\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+[S,P,O,A]\
+\cf4 Wilderc\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+SPOA\
+\cf4 AkshajK\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+SPOA\
+\cf4 JRY\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+[S,P,O,A]\
+\cf4 connor0728\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+[S,P,O,A]\
+\cf4 Tungsten\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+S, P, O, A\
+\cf4 MathWolf\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+SPOA\
+\cf4 spower4\cf0  
+\fs20 7:41:00 pm
+\fs26 \
+[S,P,O,A]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 [S, P, O, A]. Notice that the elements are in reverse order of how they were put in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Suppose we pop the stack twice and then push B. What stack do we have now?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+BOA\
+\cf4 puwei99\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+BOA\
+\cf4 mattpi\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+[B,O,A]\
+\cf4 ScottBusche\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+[B,O,A]\
+\cf4 k77frank\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+BOA\
+\cf4 bluebandit21\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+[B,O,A]\
+\cf4 MathWolf\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+BOA\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+[B,O,A]\
+\cf4 Tungsten\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+[B, O, A]\
+\cf4 MathWolf\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+[B,O,A]\
+\cf4 spower4\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+[B,O,A]\
+\cf4 manbugbeebee\cf0  
+\fs20 7:41:40 pm
+\fs26 \
+[B,O,A]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The S and P come off, then we put B on top of the two that remain. So we get [B, O, A].
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody happy with that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:41:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In our notation, the far left is the "top".
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 S went in most recently, but because it's on top, it's the first to come off. Because of this general rule, a stack is called a \cf3 last-in, first-out\cf0  or \cf3 LIFO\cf0  structure.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:42:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 "Pop" quiz: What is the best way in Java to specify that our structure requires these operations?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:43:12 pm
+\fs26 \
+An interface!\
+\cf4 ScottBusche\cf0  
+\fs20 7:43:12 pm
+\fs26 \
+An interface!\
+\cf4 puwei99\cf0  
+\fs20 7:43:12 pm
+\fs26 \
+interfaces\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 7:43:12 pm
+\fs26 \
+interface\
+\cf4 bluebandit21\cf0  
+\fs20 7:43:12 pm
+\fs26 \
+interface?\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:43:12 pm
+\fs26 \
+interface\
+\cf4 MathWolf\cf0  
+\fs20 7:43:12 pm
+\fs26 \
+interface\
+\cf4 mattpi\cf0  
+\fs20 7:43:12 pm
+\fs26 \
+interface\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As with the two lists we implemented, we can create an interface for the methods. So let's do that. Go into Eclipse and make an interface called AOPSStack.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For simplicity, we're going to make a stack of Strings. For homework, you'll make it generic as we did with the lists.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:43:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody got the (so far) blank interface ready to go?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:44:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the header for the push operation? Remember it adds an element to the top of the stack. We'll just be doing one element at a time.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 void
+\f2\b0 \cf0  push\cf6 (\cf7 String\cf0  s\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+public void push(String s) \{\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+public void push(String x);\
+\cf4 Tungsten\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  
+\f3\b \cf5 void
+\f2\b0 \cf0  push\cf6 (\cf7 String\cf0  s\cf6 )\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 mattpi\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+public void push(String x) \{\
+\cf4 puwei99\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+public void push(String element);\
+\cf4 spower4\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+public void push(String x);\
+\cf4 chenjamin\cf0  
+\fs20 7:45:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  
+\f3\b \cf5 void
+\f2\b0 \cf0  push\cf6 (\cf7 String\cf0  s\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 void\cf0  push\cf6 (\cf7 String\cf0  x\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:45:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next we'll do pop. We have a little choice here, depending on whether or not we want to return the element that we removed. We'll do the former and return the element. So that gives us what header?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  pop\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0    
+\f3\b public
+\f2\b0  \cf7 String\cf0  pop\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+public String pop();\
+\cf4 JRY\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  pop\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+public String pop();\
+\cf4 PiCrazy31415\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+public String pop();\
+\cf4 moppr\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  pop\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  pop\cf6 ()\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 mattpi\cf0  
+\fs20 7:48:15 pm
+\fs26 \
+public void pop();\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  pop\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 EmeraldBot\cf0  
+\fs20 7:48:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  pop\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:48:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Does everybody see why pop() doesn't need to take any parameters?
+\b0 \
+\pard\pardeftab720
+\cf4 connor0728\cf0  
+\fs20 7:49:43 pm
+\fs26 \
+yeah just takes the top off\
+\cf4 mattpi\cf0  
+\fs20 7:49:43 pm
+\fs26 \
+because there is no choice which one to remove, it is just the top one\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, exactly. We don't have any choice which element (which "tray") we get. We just take the top one.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:50:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And now we need peek and isEmpty. Can you give me their headers?
+\b0 \
+\pard\pardeftab720
+\cf4 mattpi\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+peek: public String peek(); isEmpty: public boolean isEmpty();\
+\cf4 chenjamin\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf7 String\cf0  peek\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 boolean
+\f2\b0 \cf0  isEmpty\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 connor0728\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+public boolean isEmpty();\
+\cf4 JRY\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  peep\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 boolean
+\f2\b0 \cf0  isEmpty\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 EmeraldBot\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  peek\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 boolean
+\f2\b0 \cf0  isEmpty\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 spower4\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+public boolean isEmpty();\
+\cf4 Tungsten\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf7 String\cf0  peek\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 boolean
+\f2\b0 \cf0  isEmpty\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 spower4\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+public String peek();\
+\cf4 spower4\cf0  
+\fs20 7:51:35 pm
+\fs26 \
+public String peek();\
+public boolean isEmpty();\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  peek\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0public \cf5 boolean\cf0  isEmpty\cf6 ()\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Notice that pop and peek have the same parameters and return type. pop changes the stack, and peek does not.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the complete interface with some comments:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+public interface AOPSStack \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public \cf5 void\cf0  push\cf6 (\cf7 String\cf0  x\cf6 )\cf8 ;\cf0  
+\f4\i \cf9 // adds x to the top of the stack
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  pop\cf6 ()\cf8 ;\cf0  
+\f4\i \cf9 // removes and returns the top element
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  peek\cf6 ()\cf8 ;\cf0  
+\f4\i \cf9 // returns the top element
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf5 boolean\cf0  isEmpty\cf6 ()\cf8 ;\cf0  
+\f4\i \cf9 // is the stack empty?
+\f3\i0 \cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:51:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Any questions so far?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everyone happy with those headers?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Okay, now that we've got this fancy interface, let's implement it!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 2: CODING THE STACK
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:52:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As with the list, we could code this in an array-based way or in a linked-based way. We're going to do the linked-based way today; you'll write the array version for homework.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Make a class called LStack. It should implement the interface we just wrote. You can have Eclipse provide the abstract methods to fill in.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:53:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we're doing this in a way similar to a linked list, what do we have to define first?
+\b0 \
+\pard\pardeftab720
+\cf4 puwei99\cf0  
+\fs20 7:54:18 pm
+\fs26 \
+instance variables like the head of the list\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:54:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we do that the way we did our linked list, what kind of thing will those "instance variables" be?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 7:54:52 pm
+\fs26 \
+a Node class\
+\cf4 ScottBusche\cf0  
+\fs20 7:54:52 pm
+\fs26 \
+Node!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we want to work with data elements the way we did in our linked list implementation last week, we have to make a (private, internal) class for Nodes. We can use the same one from last week's LList class. It is again defined \cf3 inside\cf0  the LStack class as a private class:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:55:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+public class LStack implements AOPSStack \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0private class Node\
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public \cf7 String\cf0  data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node\cf6 (\cf7 String\cf0  data, Node next\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 data\cf0  \cf8 =\cf0  data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 next\cf0  \cf8 =\cf0  next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:57:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now that we have this, we're ready for an instance variable. We'll call it top. We'll have it point to the node containing the top element of the stack. \cf3 Please give its initialization for when we create an empty stack.\cf0  (If we do the initialization of the \cf3 top\cf0  Node just with the declaration, then we won't need to write a default constructor.)
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 7:58:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  Node top\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Almost, but that's missing something.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'd like this Node to get initialized at the same time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:58:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do we use as an initialization for Nodes when we don't yet know what they're going to be?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 7:59:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 private
+\f2\b0  Node top \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 7:59:03 pm
+\fs26 \
+private Node top = null; ?\
+\cf4 MathWolf\cf0  
+\fs20 7:59:03 pm
+\fs26 \
+private Node top = null;\
+\cf4 MathWolf\cf0  
+\fs20 7:59:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 private
+\f2\b0  Node top \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 k77frank\cf0  
+\fs20 7:59:03 pm
+\fs26 \
+private Node top = null;\
+\cf4 ScottBusche\cf0  
+\fs20 7:59:03 pm
+\fs26 \
+null?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's the answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private Node top \cf8 =\cf0  \cf5 null\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everyone happy with that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Or maybe it would have been better to ask, "Anyone not happy with that?"
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 7:59:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we can write push. Remember that it would turn a stack like [3, 2, 1] into [4, 3, 2, 1] if we push(4). This is equivalent to what specific operation on a regular linked list?
+\b0 \
+\pard\pardeftab720
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:00:25 pm
+\fs26 \
+addToFront\
+\cf4 JRY\cf0  
+\fs20 8:00:25 pm
+\fs26 \
+addToFront\
+\cf4 Tungsten\cf0  
+\fs20 8:00:25 pm
+\fs26 \
+addToFront()\
+\cf4 ScottBusche\cf0  
+\fs20 8:00:25 pm
+\fs26 \
+AddToFront\
+\cf4 mattpi\cf0  
+\fs20 8:00:25 pm
+\fs26 \
+addToFront\
+\cf4 connor0728\cf0  
+\fs20 8:00:25 pm
+\fs26 \
+addToFront\
+\cf4 connor0728\cf0  
+\fs20 8:00:25 pm
+\fs26 \
+addToFront()\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's adding to the front of the list. In fact, we could have chosen to implement this using a LList from last week or even a LinkedList (from the Java Collections library) as the underlying instance variable. We'd then call the addToFront method to do the push.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:00:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But, as a review and to make the running time analysis a bit more obvious, we'll code it ourselves today. Can you give the code for the body of push that adds x to the front of the list?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I'll accept either the full method or just the essential line or lines of the body of the method.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:02:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0@Override\
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 void
+\f2\b0 \cf0  push\cf6 (\cf7 String\cf0  s\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 top\cf0  \cf8 =\cf0  
+\f3\b new
+\f2\b0  Node\cf6 (\cf0 s, 
+\f3\b this
+\f2\b0 .\cf10 top\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 spower4\cf0  
+\fs20 8:02:48 pm
+\fs26 \
+this.top = new Node(x, this.top);\
+\cf4 chenjamin\cf0  
+\fs20 8:02:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 this
+\f2\b0 .\cf10 top\cf0  \cf8 =\cf0  Node\cf6 (\cf0 s, 
+\f3\b this
+\f2\b0 .\cf10 top\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:02:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 this
+\f2\b0 .\cf10 top\cf0  \cf8 =\cf0  
+\f3\b new
+\f2\b0  Node \cf6 (\cf0 x, 
+\f3\b this
+\f2\b0 .\cf10 top\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:02:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 void
+\f2\b0 \cf0  push\cf6 (\cf7 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node n\cf8 =
+\f3\b \cf0 new
+\f2\b0  Node\cf6 (\cf0 x, 
+\f3\b this
+\f2\b0 .\cf10 top\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 top\cf8 =\cf0 n\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my answer in two lines:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:02:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 void\cf0  push\cf6 (\cf7 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node newNode \cf8 =\cf0  new Node\cf6 (\cf0 x, this.\cf10 top\cf6 )\cf8 ;\cf0  
+\f4\i \cf9 // make new node pointing to original top
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 top\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The one-line answer is: \cf3 this.top = new Node(x, this.top);\cf0  In both cases, we make a new node that points at the original top node. Then we adjust the top reference so it now points at the new node.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Pretty familiar, right?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is essentially the same code we wrote for addToFront last week.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:03:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Running time?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:04:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Think carefully. If I were to make my list twice as long, or ten times as long, will it make this method run any slower?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 piis3141592653\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 MathWolf\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 JRY\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 puwei99\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 ScottBusche\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 chenjamin\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 AkshajK\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 spower4\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\cf4 mattpi\cf0  
+\fs20 8:04:58 pm
+\fs26 \
+O(1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The running time for this method is constant. We just make a node and adjust a pointer. For our method to do what it needs to, it doesn't matter at all how long the list is.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions there?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:05:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next, we move on to pop. What do we have to be careful about when using this method? When could calling it be a problem?
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+if the list is empty\
+\cf4 Tungsten\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+When this.top is null.\
+\cf4 JRY\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+when the stack is empty\
+\cf4 chenjamin\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+list is empty\
+\cf4 mattpi\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+when the stack is empty\
+\cf4 k77frank\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+empty\
+\cf4 williamyin08\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+Empty stack\
+\cf4 connor0728\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+when there are no elements in the list\
+\cf4 teachm\cf0  
+\fs20 8:06:54 pm
+\fs26 \
+when isEmpty == TRUE\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:07:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We don't want to (= can't) pop from an empty stack. So we check for that first. What test do we use?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+if (this.isEmpty())\
+\cf4 JRY\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+if (top != null) then we can use pop\
+\cf4 bluebandit21\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+if(!isEmpty())\
+\cf4 piis3141592653\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+isEmpty();\
+\cf4 Tungsten\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0  \cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 top\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\cf0  \cf6 \{\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:08:09 pm
+\fs26 \
+this.top == null\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could call isEmpty() here. We could also just check directly if this.top == null. Either would be fine. I'll go with the latter possibility.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:08:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As with our String list implementation, we'll just return "ERROR" in this case. Another approach would be to throw an exception.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This is typical of writing code in stages. Right now I'll just return a string to stand for an error having occurred. After I get the code running, I'd go back and set the method up to actually throw an error instead.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's what we've got so far:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  pop\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 top\cf0  \cf8 ==\cf0  \cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:10:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Can you fill in the else case? Remember we want to remove and return the top element.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:12:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I've got four answers so far. Anyone else want to get in on this?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:13:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: We want to grab the data from the top node, move what we're calling the top node forward by one, then return the data we grabbed.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  topData \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 top\cf0  \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  topData\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  s\cf8 =
+\f3\b \cf0 this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0  
+\f5\i \cf9 //save it so we can return it's data
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 top\cf8 =
+\f3\b \cf0 this
+\f2\b0 .\cf10 top\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  s\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf7 String\cf0  temp \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 top\cf0  \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  temp\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  answer \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 top\cf0  \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  answer\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 8:14:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 else
+\f2\b0 \'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  data \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 top\cf0  \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:08 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's mine:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  pop\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 top\cf0  \cf8 ==\cf0  \cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  answer \cf8 =\cf0  this.\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 top\cf0  \cf8 =\cf0  this.\cf10 top\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:14:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:15:17 pm
+\fs26 \
+We don't really need the else right?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:15:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If the condition being checked by the if clause is true, that'll kick us out of the method, so that's technically true. I'd write it the way I showed, but your tastes may run a different direction.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The variable declaration saves the top element. Is that necessary? Would this work too? Explain why or why not.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:16:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  pop\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 top\cf0  \cf8 ==\cf0  \cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 top\cf0  \cf8 =\cf0  this.\cf10 top\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return this.\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 ScottBusche\cf0  
+\fs20 8:16:54 pm
+\fs26 \
+That would return the data in the new top, not the popped one.\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:16:54 pm
+\fs26 \
+no. it would give the 2nd element\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This does remove the top element, but then it returns the 
+\i new
+\i0  top. So if the stack were [4, 3, 2, 1], we'd remove the 4, but the returned result would be 3.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's clearly not the behavior we're trying to produce.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's wrong with this one?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:17:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  pop\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 top\cf0  \cf8 ==\cf0  \cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return this.\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 top\cf0  \cf8 =\cf0  this.\cf10 top\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 MSTang\cf0  
+\fs20 8:18:07 pm
+\fs26 \
+Last line is unreachable\
+\cf4 chenjamin\cf0  
+\fs20 8:18:07 pm
+\fs26 \
+we would never get to the last line\
+\cf4 JRY\cf0  
+\fs20 8:18:07 pm
+\fs26 \
+the code after the return statement is unreachable\
+\cf4 bluebandit21\cf0  
+\fs20 8:18:07 pm
+\fs26 \
+it is unatainable\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:18:07 pm
+\fs26 \
+won't get to the removal of the element\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 First off, Java won't even let you compile this. The return ends the method, so the second line of the else will never be executed. Java will tell you that you have unreachable code.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:18:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Even if the compiler were lenient on this point, however, the problem is that we would return the correct value, but then 
+\i it would stay on top of the stack
+\i0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:19:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So that doesn't work either.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:19:23 pm
+\fs26 \
+Why can't Java just mind it's own business? 
+\f1\fs24 {{\NeXTGraphic tongue.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Why would you want Java to allow code that is clearly ill-formed? I agree that the compiler's warnings are a pain, but they occur due to programmer error, not due to anything Java did wrong.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:20:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For the correct version of pop, what's the running time?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again, if the method can do its job in the same number of steps no matter what the size of the list is, then the running time is O(1).
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 MSTang\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 MathWolf\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 chenjamin\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 ScottBusche\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 JRY\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 connor0728\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 k77frank\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 bluebandit21\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\cf4 puwei99\cf0  
+\fs20 8:21:27 pm
+\fs26 \
+O(1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's also constant. We don't need to loop through the list since we have immediate access to the top element.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:21:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 peek and isEmpty are really easy. We've basically discussed how they're coded already. Can you fill in both of those methods for me?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:23:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: Note that if peek doesn't find anything in the list, it should inform you of that somehow. It doesn't have anything to return to you, so what could it do in that case?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:24:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Follow-up hint: How can you exit any method when you fail to produce returnable data of the right type?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:25:23 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Answer: You throw an error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:26:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But instead of throwing errors here, we're just returning the string "ERROR", so you could have peek() do that instead when it finds the list is empty.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:26:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf7 String\cf0  peek\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 top\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 "Nothing in stack."\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0@Override\
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 boolean
+\f2\b0 \cf0  isEmpty\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b this
+\f2\b0 .\cf10 top\cf8 ==
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 Tungsten\cf0  
+\fs20 8:26:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0@Override\
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf7 String\cf0  peek\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 top\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b throw
+\f2\b0  
+\f3\b new
+\f2\b0  \cf7 EmptyStackException\cf6 (\cf11 "Can't peek at empty stack"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0@Override\
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 boolean
+\f2\b0 \cf0  isEmpty\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\cf6 \}\cf0 \
+\'a0\
+\pard\pardeftab720
+
+\f3\b \cf0 class
+\f2\b0  \cf7 EmptyStackException\cf0  
+\f3\b extends
+\f2\b0  \cf7 IllegalArgumentException\cf6 \{\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf7 EmptyStackException\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b super
+\f2\b0 \cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf7 EmptyStackException\cf6 (\cf7 String\cf0  s\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b super
+\f2\b0 \cf6 (\cf0 s\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 8:26:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  peep\cf6 ()\cf0  \cf6 \{\cf0  \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 top\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\cf0  
+\f5\i \cf9 //list is empty
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  
+\f3\b \cf5 boolean
+\f2\b0 \cf0  isEmpty\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf6 (\cf0 top \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 8:26:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  peek\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f5\i \cf9 // TODO Auto-generated method stub
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf6 (\cf0 isEmpty\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 "NONE"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  
+\f3\b this
+\f2\b0 .\cf10 top\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: Tungsten is missing a \cf3 throws\cf0  declaration in peek's header, but it's close enough.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:27:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again, I'm generally going to ignore exceptions for this discussion, so you also shouldn't feel like you have to put them in your answers.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 peek is essentially pop without the change to top:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  peek\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 top\cf0  \cf8 ==\cf0  \cf5 null\cf6 )\cf0  
+\f4\i \cf9 // empty stack, nothing to pop
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  answer \cf8 =\cf0  this.\cf10 top\cf0 .\cf10 data\cf8 ;\cf0  
+\f4\i \cf9 // save top element
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf8 ;\cf0  
+\f4\i \cf9 // return it
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0   \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (Or we could just return this.top.data directly in the else clause.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And isEmpty is just the test from the if statement in pop:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 boolean\cf0  isEmpty\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return this.\cf10 top\cf0  \cf8 ==\cf0  \cf5 null\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:28:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the running time of these two methods?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Is the running time unclear? I should be getting deluged with answers, I'd expect.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 ScottBusche\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1) for both.\
+\cf4 chenjamin\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 EmeraldBot\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 JRY\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+Both are also O(1)\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 connor0728\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 k77frank\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 mattpi\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 MathWolf\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 connor0728\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:30:40 pm
+\fs26 \
+O(1)\
+\cf4 manbugbeebee\cf0  
+\fs20 8:30:44 pm
+\fs26 \
+both O(1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They're both constant. So all four of the operations we wish to perform on stacks are constant time. That's about as good as we could hope for.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's a short main that you can add to this class or another class to verify that things are working:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  main\cf6 (\cf7 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0LStack myStack \cf8 =\cf0  new LStack\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 myStack.\cf10 isEmpty\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Nothing to pop yet"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myStack.\cf10 push\cf6 (\cf11 "A"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myStack.\cf10 push\cf6 (\cf11 "O"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myStack.\cf10 push\cf6 (\cf11 "P"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myStack.\cf10 push\cf6 (\cf11 "S"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  val \cf8 =\cf0  myStack.\cf10 pop\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "Val is %s and stack top is %s"\cf0 , val, myStack.\cf10 peek\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It will output:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:30:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+Nothing to pop yet\
+Val is S and stack top is P\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:14 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Does it work?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:31:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Looks like it's generally working for folks. Let's press on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 3: USING A STACK
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For such a simple structure, it turns out that stacks have a variety of applications. If you've got a good memory, you may remember me mentioning the word "stack" in a previous week. Anyone recall when?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:32:28 pm
+\fs26 \
+recursion\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:32:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's dig a little deeper. When did I mention stacks with regard to recursion?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:33:00 pm
+\fs26 \
+A stack that remembers the calls to the recursion function\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah. Back in week 11, when discussing recursion, I mentioned the idea of the \cf3 function stack\cf0 . The system uses it to save the state of the system when we call a function. When the function finishes, we need to go back to the last point where we were in the program.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So when we call a function, we push the current info about the program. When the function finishes, we pop the stack to restore that info and continue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:33:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Another application involves going through a maze. Suppose you reach a point where we have two possible ways to go. How could a stack be helpful?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:35:40 pm
+\fs26 \
+push one way, and pop if wrong?\
+\cf4 teachm\cf0  
+\fs20 8:35:40 pm
+\fs26 \
+if you die, you could pop back to the starting point of the level\
+\cf4 bluebandit21\cf0  
+\fs20 8:35:42 pm
+\fs26 \
+remembering the path up to that point/\
+\cf4 AkshajK\cf0  
+\fs20 8:36:36 pm
+\fs26 \
+you could put the possible ways into a stack, to traverse the maze. This is 
+\b Depth-first Search
+\b0  or DFS\
+\cf4 jprosk\cf0  
+\fs20 8:36:36 pm
+\fs26 \
+push each turn and when it is unsuccessful pop it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:36:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We can push the current position on the stack. Then we choose one of the paths and take it as far as we can go. What do we do once we hit a dead end?
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:37:19 pm
+\fs26 \
+pop\
+\cf4 connor0728\cf0  
+\fs20 8:37:19 pm
+\fs26 \
+pop\
+\cf4 MSTang\cf0  
+\fs20 8:37:19 pm
+\fs26 \
+pop\
+\cf4 manbugbeebee\cf0  
+\fs20 8:37:19 pm
+\fs26 \
+pop back\
+\cf4 JRY\cf0  
+\fs20 8:37:19 pm
+\fs26 \
+pop the old position and take the correct path from there\
+\cf4 chenjamin\cf0  
+\fs20 8:37:24 pm
+\fs26 \
+if you get to a dead end, you pop the last move and choose another\
+\cf4 jprosk\cf0  
+\fs20 8:37:24 pm
+\fs26 \
+pop back to the last junction\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Pop the stack and go back to the decision point. Choose the other direction. This idea is called \cf3 backtracking\cf0  and is very useful for making computers solve problems automatically.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:32 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll go over my final example in a little more detail. You're all familiar with mathematical expressions of the form 2 + 3 * 8. What does that evaluate to?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:37:50 pm
+\fs26 \
+26\
+\cf4 JRY\cf0  
+\fs20 8:37:50 pm
+\fs26 \
+26\
+\cf4 williamyin08\cf0  
+\fs20 8:37:50 pm
+\fs26 \
+26\
+\cf4 manbugbeebee\cf0  
+\fs20 8:37:50 pm
+\fs26 \
+26\
+\cf4 MathWolf\cf0  
+\fs20 8:37:52 pm
+\fs26 \
+26\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:37:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everyone's saying 26 (for 2 + 24). Why isn't it 40 (i.e. 5 * 8)?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:38:08 pm
+\fs26 \
+order of operations\
+\cf4 spower4\cf0  
+\fs20 8:38:08 pm
+\fs26 \
+PEMDAS\
+\cf4 williamyin08\cf0  
+\fs20 8:38:08 pm
+\fs26 \
+PEMDAS!\
+\cf4 JRY\cf0  
+\fs20 8:38:12 pm
+\fs26 \
+because of order of operations\
+\cf4 MathWolf\cf0  
+\fs20 8:38:12 pm
+\fs26 \
+Because multiplication goes first\
+\cf4 manbugbeebee\cf0  
+\fs20 8:38:14 pm
+\fs26 \
+because of the order of operations\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Because we have this convention that multiplication has higher precedence over addition. You needed to know something beyond what is given in the formula to be able to get the right answer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:38:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also, if we wanted the 40 interpretation, we'd need to add in parentheses.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The problem of which operation to do first, which is why we need to have an order of operations convention at all, is due to the fact that we put the operation (+ or *) 
+\i in between
+\i0  its operands. This is called \cf3 infix notation\cf0 . Instead we can remove these ambiguities by placing the operation 
+\i after
+\i0  its operands, resulting in what is called \cf3 postfix notation\cf0 . (There's also prefix notation, which we're not going to be looking at today.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In other words, if you use postfix or prefix notation, there is no longer any ambiguity about order of operations, so parentheses become unnecessary.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:39:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 For example, the formula 2 + 3 * 8 would be written as 2 3 8 * +. The multiplication symbol immediately follows its operands, so that means we're taking the product of 3 and 8, which is 24. The + then adds the 2 and the 24 to get 26.
+\b0 \
+\pard\pardeftab720
+\cf4 teachm\cf0  
+\fs20 8:40:13 pm
+\fs26 \
+is that like reverse polish notation?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:39 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes. Reverse Polish notation is just another name for postfix notation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:40:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Contrast this with 8 2 3 + *. This evaluates to 40, since we compute 2 3 + as 2 + 3 or 5, and then we essentially have 8 5 * which is 8 * 5.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What does this evaluate to: 3 6 + 2 4 * +
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:41:38 pm
+\fs26 \
+17\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:41:38 pm
+\fs26 \
+17?\
+\cf4 AkshajK\cf0  
+\fs20 8:41:38 pm
+\fs26 \
+17\
+\cf4 JRY\cf0  
+\fs20 8:41:38 pm
+\fs26 \
+9+8=17\
+\cf4 connor0728\cf0  
+\fs20 8:41:38 pm
+\fs26 \
+17\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:41:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's 17. 3 6 + is 9. 2 4 * is 8. 9 8 + is 17.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Everybody see that? Any questions? We're going to do a few more examples to really get a hang of this.
+\b0 \
+\pard\pardeftab720
+\cf4 k77frank\cf0  
+\fs20 8:42:09 pm
+\fs26 \
+woahs, this is kinda like how hp calculators work\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, that's true. Some calculators and other computing environments (like Lisp, for example) use postfix or prefix notation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:42:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How about 3 6 2 4 + * +
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:43:18 pm
+\fs26 \
+39\
+\cf4 Tungsten\cf0  
+\fs20 8:43:18 pm
+\fs26 \
+39?\
+\cf4 MSTang\cf0  
+\fs20 8:43:18 pm
+\fs26 \
+39?\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:43:18 pm
+\fs26 \
+39.\
+\cf4 AkshajK\cf0  
+\fs20 8:43:18 pm
+\fs26 \
+39\
+\cf4 JRY\cf0  
+\fs20 8:43:18 pm
+\fs26 \
+39\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:43:18 pm
+\fs26 \
+39\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's 39. 4 + 2 is 6. 6 * 6 is 36. 3 + 36 is 39.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What about 3 6 2 + * + 4
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:43:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Read carefully!
+\b0 \
+\pard\pardeftab720
+\cf4 AkshajK\cf0  
+\fs20 8:44:06 pm
+\fs26 \
+wait this isn't possible\
+\cf4 bluebandit21\cf0  
+\fs20 8:44:06 pm
+\fs26 \
+error\
+\cf4 MSTang\cf0  
+\fs20 8:44:06 pm
+\fs26 \
+error -- the last addition is impossible\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:44:06 pm
+\fs26 \
+That's not even correct, is it?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's a badly-formed expression. Note there's no operator following the 4.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What about: 3 6 2 + * 4 +
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+28\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+28\
+\cf4 Tungsten\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+28\
+\cf4 mattpi\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+28\
+\cf4 JRY\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+28\
+\cf4 MathWolf\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+28\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:44:35 pm
+\fs26 \
+28.\
+\cf4 manbugbeebee\cf0  
+\fs20 8:44:42 pm
+\fs26 \
+28\
+\cf4 teachm\cf0  
+\fs20 8:44:42 pm
+\fs26 \
+28\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This one's good, and it works out to 28. 6 2 + is 8. Then 3 8 * is 24. Finally 24 4 + is 28.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:44:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hopefully, everyone's got the idea by now. Let's think about an algorithm for evaluating a postfix expression. I jumped around some when I explained how a calculation worked, but instead, let's try to work by going left to right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So suppose the beginning of our expression is 1 2 3 4 5 + with more stuff to come after it. Which numbers are added together by the +?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+4, 5\
+\cf4 mattpi\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+4 and 5\
+\cf4 ScottBusche\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+4 and 5\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+4+5\
+\cf4 k77frank\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+4,5\
+\cf4 chenjamin\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+4 and 5\
+\cf4 Tungsten\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+4 and 5\
+\cf4 manbugbeebee\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+the last 2 (4 and 5)\
+\cf4 spower4\cf0  
+\fs20 8:45:26 pm
+\fs26 \
+4 and 5\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:45:29 pm
+\fs26 \
+4 and 5,'\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 4 and the 5. And where do those two numbers appear in the sequence?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:45:46 pm
+\fs26 \
+The last 2.\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:45:46 pm
+\fs26 \
+last\
+\cf4 MathWolf\cf0  
+\fs20 8:45:46 pm
+\fs26 \
+Second last\
+\cf4 JRY\cf0  
+\fs20 8:45:46 pm
+\fs26 \
+immediately before the +\
+\cf4 MathWolf\cf0  
+\fs20 8:45:46 pm
+\fs26 \
+at the end\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:45:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 They're the last two. So the operator needs to work on the last numbers entered. Hmmm\'85what structure could help us with that?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:46:00 pm
+\fs26 \
+A stack!\
+\cf4 connor0728\cf0  
+\fs20 8:46:00 pm
+\fs26 \
+stacks\
+\cf4 MSTang\cf0  
+\fs20 8:46:00 pm
+\fs26 \
+STACK\
+\cf4 Tungsten\cf0  
+\fs20 8:46:00 pm
+\fs26 \
+A stack?\
+\cf4 AkshajK\cf0  
+\fs20 8:46:00 pm
+\fs26 \
+stack\
+\cf4 spower4\cf0  
+\fs20 8:46:02 pm
+\fs26 \
+stacks\
+\cf4 bluebandit21\cf0  
+\fs20 8:46:02 pm
+\fs26 \
+Stacks\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, a stack, of course. So we want to push each number we read onto a stack.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Then what happens when we hit an operator?
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 8:46:37 pm
+\fs26 \
+add it to another stack?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's say we just want to compute the result in the most efficient way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:46:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So we'll just compute as we go.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:47:09 pm
+\fs26 \
+we pop towo\
+\cf4 MSTang\cf0  
+\fs20 8:47:09 pm
+\fs26 \
+We pop the first two and push the result\
+\cf4 ScottBusche\cf0  
+\fs20 8:47:09 pm
+\fs26 \
+We pop twice.\
+\cf4 MathWolf\cf0  
+\fs20 8:47:09 pm
+\fs26 \
+we pop two\
+\cf4 Tungsten\cf0  
+\fs20 8:47:09 pm
+\fs26 \
+We pop the last two items and preform the operator on them\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:47:09 pm
+\fs26 \
+pop\
+\cf4 williamyin08\cf0  
+\fs20 8:47:09 pm
+\fs26 \
+pop!\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We pop the stack 
+\i twice
+\i0  to get its operands. Note that if we can't, then our expression is invalid. We then apply the operator.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we have to figure out what to do with the result. Well, consider 1 2 3 4 5 + * as the beginning. We know when we hit the +, we want to add 4 and 5 to get 9. The multiplication is then between what two numbers?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:47:41 pm
+\fs26 \
+3, 9\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:47:41 pm
+\fs26 \
+3 and 9\
+\cf4 MathWolf\cf0  
+\fs20 8:47:41 pm
+\fs26 \
+9 and 3\
+\cf4 ScottBusche\cf0  
+\fs20 8:47:41 pm
+\fs26 \
+9 and 3.\
+\cf4 manbugbeebee\cf0  
+\fs20 8:47:44 pm
+\fs26 \
+the resulting 9 and the 3\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:47:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's 3 and the 9 we just computed. So where does the 9 have to be for this to work out?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:48:01 pm
+\fs26 \
+We put the result back on the stack.\
+\cf4 MSTang\cf0  
+\fs20 8:48:01 pm
+\fs26 \
+on the top of the stack\
+\cf4 JRY\cf0  
+\fs20 8:48:01 pm
+\fs26 \
+at the top of the stack\
+\cf4 ScottBusche\cf0  
+\fs20 8:48:01 pm
+\fs26 \
+On top of the stack.\
+\cf4 manbugbeebee\cf0  
+\fs20 8:48:01 pm
+\fs26 \
+the top of the stack\
+\cf4 k77frank\cf0  
+\fs20 8:48:01 pm
+\fs26 \
+at the top\
+\cf4 MathWolf\cf0  
+\fs20 8:48:01 pm
+\fs26 \
+We need to push it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The 9 goes back onto the stack.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So here's the algorithm:\
+Repeat for each part of the expression:\
+If it's a number, push the number onto the stack.\
+If it's an operator, pop the stack twice, apply the operator to the two operands, and push the result back on the stack. (If you can't pop twice, report an error.)\
+If it's anything else, report an error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:48:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 How do we get the final answer for the expression?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:49:03 pm
+\fs26 \
+One item\
+\cf4 MathWolf\cf0  
+\fs20 8:49:03 pm
+\fs26 \
+One spot\
+\cf4 JRY\cf0  
+\fs20 8:49:03 pm
+\fs26 \
+when we only have one number in the stack\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:49:03 pm
+\fs26 \
+take the last remaining number?\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:49:03 pm
+\fs26 \
+the top\
+\cf4 bluebandit21\cf0  
+\fs20 8:49:03 pm
+\fs26 \
+when there are no items left in expression\
+\cf4 manbugbeebee\cf0  
+\fs20 8:49:03 pm
+\fs26 \
+if there's only 1 term left in the stack, return it\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If all has gone well, the result should be the only value left on the stack. So pop it, and we're done. If the stack has more than one element, there was an error.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's work through the expression 3 6 2 + * 4 + as an example. We'll write the stack as we go in square brackets with the top at the left. So the stack begins empty: [ ].
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What happens when we encounter the 3?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:49:41 pm
+\fs26 \
+push\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:49:41 pm
+\fs26 \
+Put it in the stack!\
+\cf4 MSTang\cf0  
+\fs20 8:49:41 pm
+\fs26 \
+Push it: [3]\
+\cf4 ScottBusche\cf0  
+\fs20 8:49:41 pm
+\fs26 \
+Push it--[3]\
+\cf4 Tungsten\cf0  
+\fs20 8:49:41 pm
+\fs26 \
+The stack becomes [3]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:49:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The stack becomes [3]. Then we hit the 6, and the stack is:?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, the notational convention I've set up is that the far left is the "top" of the stack.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6, 3]\
+\cf4 Tungsten\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6, 3]\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+6,3\
+\cf4 ReciterOfPi\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6, 3]\
+\cf4 williamyin08\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6,3]\
+\cf4 JRY\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6,3]\
+\cf4 k77frank\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6, 3]\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6,3]\
+\cf4 piis3141592653\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6, 3]\
+\cf4 bluebandit21\cf0  
+\fs20 8:50:32 pm
+\fs26 \
+[6,3]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:50:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We push the 6 on top of the [3] stack, so we get [6, 3]. Then we hit the 2 and the stack becomes [2, 6, 3]. What happens when we reach the first +?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+Pop twice, getting 6 and 2.\
+\cf4 manbugbeebee\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+pop the 2 and 6. push the resulting 8\
+\cf4 bluebandit21\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+[8,3]\
+\cf4 chenjamin\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+we pop 2 and 6 and add them together and push 8\
+\cf4 williamyin08\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+pop 2 and 6, add them, then push 8 back onto the stack\
+\cf4 MSTang\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+We pop the 2, 6 and push 8 back\
+\cf4 spower4\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+8, 3\
+\cf4 connor0728\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+combine the first 2 elemens\
+\cf4 MathWolf\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+pop 2 and 6\
+\cf4 Tungsten\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+We pop the 2 and 6, add them, and push the result to the stack.\
+\cf4 MathWolf\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+add the two\
+\cf4 MathWolf\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+push 8 to the stack\
+\cf4 mattpi\cf0  
+\fs20 8:52:32 pm
+\fs26 \
+add the 2 and 6 to make 8, so its [8,3]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:52:37 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We pop 2 and 6, then push 8. So the stack is [8, 3]. Then what happens with the next symbol?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:53:19 pm
+\fs26 \
+We pop 8, 3 and push 24\
+\cf4 spower4\cf0  
+\fs20 8:53:19 pm
+\fs26 \
+[24]\
+\cf4 bluebandit21\cf0  
+\fs20 8:53:19 pm
+\fs26 \
+[24]\
+\cf4 k77frank\cf0  
+\fs20 8:53:19 pm
+\fs26 \
+[24]\
+\cf4 ScottBusche\cf0  
+\fs20 8:53:19 pm
+\fs26 \
+We pop twice, 8 and 3, then multiply, then push 24.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:53:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We reach the *, pop the 8 and 3, then push 24. Can you finish up the example?
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 8:54:06 pm
+\fs26 \
+the stack is [24] only one item so return 24.\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Certainly not! We're not done getting all the operators yet.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It is not enough ONLY to check that the stack only has one element in it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:54:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's only sensible to check that after the computation is done.
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 8:55:11 pm
+\fs26 \
+Push 4, add 4 and 24 to get 28.\
+\cf4 chenjamin\cf0  
+\fs20 8:55:11 pm
+\fs26 \
+push 4, pop 4 and 24, push 28, pop 28\
+\cf4 connor0728\cf0  
+\fs20 8:55:11 pm
+\fs26 \
+add 24 and 4 to get 28\
+\cf4 Tungsten\cf0  
+\fs20 8:55:11 pm
+\fs26 \
+We get to a 4, so it is pushed onto the stack, making it [4, 24]. The next character is a +, so we pop the top two items in the stack, add them, then push 28 (4 + 24) to the stack.\
+\cf4 manbugbeebee\cf0  
+\fs20 8:55:11 pm
+\fs26 \
+push 4, pop 24 and 4, push 28\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Push 4 onto the stack to get [4, 24], and then pop both numbers and add them to get 28.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You'll be writing a program that take an expression and computes its value for your graded problem this week. Here's a few hints about how to do it.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One tricky thing is breaking the expression into pieces. 3 2 4 + * 7 + has seven parts, four numbers and three operations. Of course, the numbers could have multiple digits.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:33 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Fortunately, Scanner can help. We already know how to use a Scanner to read values from the console or from a file. Scanner can also read values from a String.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you have your expression in the String expr, you can then write:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+stringScan \cf8 =\cf0  new Scanner\cf6 (\cf0 expr\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can then use stringScan.next() to read the next piece as a String, stringScan.hasNext() to determine if there is stuff left to process, stringScan.hasNextInt() to determine if the next element is an integer, etc.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:55:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Also note that the stack we developed is designed to hold Strings. You may want to create a similar kind of stack for this problem. You can also use the class that's part of the Java Collections Framework that we'll get into later in today's session.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:56:29 pm
+\fs26 \
+Is the expression going to have spaces in-between?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You can assume the delimiter will be a space, yes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:56:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions before we continue?
+\b0 \
+\pard\pardeftab720
+\cf4 williamyin08\cf0  
+\fs20 8:57:19 pm
+\fs26 \
+Delimiter?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 A delimiter is just a thing that comes between the stuff you care about. For example, commas and spaces function as delimiters in our notation for lists.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 4: QUEUES
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:57:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now we'll move on to the other major data structure of our lesson. It's called a \cf3 queue\cf0 , pronounced like the letter Q. That's another "normal" English word, although not one as common as stack. Can someone tell me what it means?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:58:01 pm
+\fs26 \
+a line\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:58:01 pm
+\fs26 \
+a line\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:58:01 pm
+\fs26 \
+a line\
+\cf4 MSTang\cf0  
+\fs20 8:58:01 pm
+\fs26 \
+A line of people\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's a line, especially one made of people. It's more common in British English than in American.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In any case, you see queues everywhere. There's a queue of people waiting at a cash register to check out. Planes queue up in order to take off from an airport. You may have heard of a printer queue which holds the documents waiting to be printed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In all of these situations, which thing in the queue is the one that is dealt with first? For example, in the cashier example, who gets to pay for their groceries first?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:58:55 pm
+\fs26 \
+the first person\
+\cf4 PiCrazy31415\cf0  
+\fs20 8:58:55 pm
+\fs26 \
+first\
+\cf4 k77frank\cf0  
+\fs20 8:58:55 pm
+\fs26 \
+the one in front\
+\cf4 pinkfluffybunnies\cf0  
+\fs20 8:58:55 pm
+\fs26 \
+the guy in the front\
+\cf4 ScottBusche\cf0  
+\fs20 8:58:55 pm
+\fs26 \
+The one that's been there longest.\
+\cf4 MathWolf\cf0  
+\fs20 8:58:55 pm
+\fs26 \
+The top or first\
+\cf4 MathWolf\cf0  
+\fs20 8:58:55 pm
+\fs26 \
+the head\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:58:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The person at the front of the line. When someone wants to check out, where are they placed in the queue (assuming they're being polite)?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 8:59:13 pm
+\fs26 \
+at the back\
+\cf4 mattpi\cf0  
+\fs20 8:59:13 pm
+\fs26 \
+in the back\
+\cf4 ScottBusche\cf0  
+\fs20 8:59:13 pm
+\fs26 \
+The bottom.\
+\cf4 Tungsten\cf0  
+\fs20 8:59:13 pm
+\fs26 \
+The back\
+\cf4 manbugbeebee\cf0  
+\fs20 8:59:13 pm
+\fs26 \
+at the back\
+\cf4 spower4\cf0  
+\fs20 8:59:18 pm
+\fs26 \
+behind the linde\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Things enter the queue at the back of the line. You then have to wait patiently until you move up to the front.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, like a stack, there's a specific place where you can enter or leave the structure. In a stack, these places are the same. In a queue, they are different.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I said a stack was a LIFO or last-in-first-out structure. Similarly, a queue would be what?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 8:59:44 pm
+\fs26 \
+FILO?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 8:59:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you're the first in a line waiting for something, are you the last out?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:38 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note: It's conventional to phrase the answer in terms of _ _ F O.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:00:49 pm
+\fs26 \
+FIFO\
+\cf4 MathWolf\cf0  
+\fs20 9:00:49 pm
+\fs26 \
+First in first out\
+\cf4 MSTang\cf0  
+\fs20 9:00:49 pm
+\fs26 \
+FIFO?\
+\cf4 piis3141592653\cf0  
+\fs20 9:00:49 pm
+\fs26 \
+FIFO?\
+\cf4 Wilderc\cf0  
+\fs20 9:00:49 pm
+\fs26 \
+FIFO then\
+\cf4 connor0728\cf0  
+\fs20 9:00:52 pm
+\fs26 \
+FIFO\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That's a FIFO or first-in-first-out structure.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:00:58 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The operations for a queue are essentially the same as for a stack. However, they get slightly fancier names. The operation to add an element to the back of a queue is not push, but \cf3 enqueue\cf0 . To remove an element from the front is to \cf3 dequeue\cf0 .
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We'll still use "peek" to look at an element, but we'll only look at the one in front. And we'll use the isEmpty operation to determine if there are no elements in the queue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here\'92s an example to practice. We'll write a queue similar to a stack as a bracketed sequence. The front of the queue will be on the left, and the back will be on the right.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:01:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So starting with an empty queue, enqueue the letters A, O, P, and S in that order. What is the queue that you get?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+A, O, P, S\
+\cf4 ScottBusche\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+[A,O,P,S]\
+\cf4 k77frank\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+AOPS\
+\cf4 bluebandit21\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+[A,O,P,S]\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+A,O,P,S\
+\cf4 manbugbeebee\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+[A,O,P,S]\
+\cf4 MathWolf\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+[A,O,P,S]\
+\cf4 teachm\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+AOPS\
+\cf4 spower4\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+AOPS\
+\cf4 mattpi\cf0  
+\fs20 9:01:58 pm
+\fs26 \
+[A,O,P,S]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's [A, O, P, S]. Since this is FIFO, they are in the same order as when we inserted.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So if you dequeue twice, and then enqueue B, what queue do you get?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:02:44 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In other words, two people have checked out of the line at the grocery store and B arrives and takes his/her place in the line.
+\b0 \
+\pard\pardeftab720
+\cf4 manbugbeebee\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+[P,S,B]\
+\cf4 MathWolf\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+[P,S,B]\
+\cf4 teachm\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+PSB\
+\cf4 ScottBusche\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+[P,S,B]\
+\cf4 JRY\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+[P,S,B]\
+\cf4 spower4\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+[P,S,B]\
+\cf4 k77frank\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+PSB\
+\cf4 MSTang\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+P, S, B\
+\cf4 AkshajK\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+PSB\
+\cf4 bluebandit21\cf0  
+\fs20 9:03:07 pm
+\fs26 \
+[P,S,B]\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's [P, S, B]. The P and S have moved up to the front of the line, and B is now in the back.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:03:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 You enter at the back and you leave when you get to the front.
+\b0 \
+\pard\pardeftab720
+\cf4 Sir_cumference\cf0  
+\fs20 9:03:49 pm
+\fs26 \
+Is there a way to reverse?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Queues as a data structure are not assumed to have a method that reverses elements, but you're always welcome to add that as a bonus.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 5: QUEUE CODE
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Again we'll code this assuming the elements are Strings. And as before, we'll start with an interface specifying the methods.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:04:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The one for stack is stickied above. How do we modify it for queue?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:05:22 pm
+\fs26 \
+Change the method names to enqueue and dequeue.\
+\cf4 teachm\cf0  
+\fs20 9:05:22 pm
+\fs26 \
+enqueue and dequeue\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The only changes are in names (and the text of comments). We'll call the interface itself AOPSQueue. push becomes enqueue, and pop becomes dequeue:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+public interface AOPSQueue \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public \cf5 void\cf0  enqueue\cf6 (\cf7 String\cf0  x\cf6 )\cf8 ;\cf0  
+\f4\i \cf9 // adds x to the back of the queue
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  dequeue\cf6 ()\cf8 ;\cf0  
+\f4\i \cf9 // removes and returns the front element
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  peek\cf6 ()\cf8 ;\cf0  
+\f4\i \cf9 // returns the front element
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0public \cf5 boolean\cf0  isEmpty\cf6 ()\cf8 ;\cf0  
+\f4\i \cf9 // is the stack empty?
+\f3\i0 \cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:05:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And as with stacks, we could implement this with arrays or with a linked structure. Again we'll choose linked.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:06:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There's nothing wrong with using arrays to do this, I just had to pick one for this example and I'm going to stick with continuing the linked structure theme we've had this week and last week.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (There are comparative advantages and disadvantages either way, whether you go with arrays or linked. I'll comment on that after class if anyone asks.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So make a class called LQueue that implements AOPSQueue. Include the Node from LStack again as a private class. Let me know once you've set it all up.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what you should have so far:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+public class LQueue implements AOPSQueue \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0private class Node\
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public \cf7 String\cf0  data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node\cf6 (\cf7 String\cf0  data, Node next\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 data\cf0  \cf8 =\cf0  data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 next\cf0  \cf8 =\cf0  next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:07:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the stack, we had one instance variable referencing the stack's top. We could just have one instance variable here too referencing the front. But why isn't that such a good idea?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:08:13 pm
+\fs26 \
+We need to add to the back\
+\cf4 JRY\cf0  
+\fs20 9:08:13 pm
+\fs26 \
+we only add to the back\
+\cf4 ScottBusche\cf0  
+\fs20 9:08:13 pm
+\fs26 \
+We'd like one to represent the back, too.\
+\cf4 chenjamin\cf0  
+\fs20 9:08:17 pm
+\fs26 \
+we add to the back\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We need to reference the back a lot. We could go through the list until we find the back, but that takes linear time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:08:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So instead we'll keep track of the front and back of the queue with separate references. Can you declare and initialize those?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:34 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Think back to how we initialized the top node in our stacks example. I'm looking for something similar here.
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:09:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  Node front \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  Node back \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 chenjamin\cf0  
+\fs20 9:09:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 private
+\f2\b0  Node front \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  Node back \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:09:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 private
+\f2\b0  Node front \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  Node back \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 9:09:45 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 private
+\f2\b0  Node front \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0
+\f3\b private
+\f2\b0  Node back \cf8 =\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's what I've got:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private Node front \cf8 =\cf0  \cf5 null\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0private Node back \cf8 =\cf0  \cf5 null\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:09:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We have to think a little carefully about how our list will work. Suppose our queue is [A, B, C, D] with A on top. We could represent this as the list A -> B -> C -> D or as the list A <- B <- C <- D. In this example, front would point at A's node, and back would point at D's node.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Which is the better way to do it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:10:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Think about what will need to change when we dequeue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 One of these will be significantly more complicated to work with when we want to remove A.
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 9:11:41 pm
+\fs26 \
+the first one\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:11:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The first way is better. To remove A with a dequeue in the second version, we'd have to change B's node. But there's no easy way to move from A to B, since the pointer is in the wrong direction.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 So, in our linked list, the "next" reference will point at the node \cf3 behind\cf0  it in the queue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 That is to say, if I'm in the front of the line, I'll point back to the person behind me. That person will point backward to the third person in line. And so on.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:12:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're actually going to do dequeue first. This should return and remove the front element of the list. Can you do it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:14:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint: This code is pretty much the same as what we did for LStack, except we're using front instead of top.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (If you do what I'm expecting, there will still be a small bug we'll have to deal with.)
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:15:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0 \'a0\'a0\'a0\'a0@Override\
+\'a0\'a0\'a0\'a0
+\f3\b public
+\f2\b0  \cf7 String\cf0  dequeue\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 front\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b throw
+\f2\b0  
+\f3\b new
+\f2\b0  EmptyQueueException\cf6 (\cf11 "Can't dequeue from empty queue"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  frontData \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 front\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 front\cf0  \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 front\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  frontData\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0  
+\f5\i \cf9 // EmptyQueueException is the same as EmptyStackException
+\f2\i0 \cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 JRY\cf0  
+\fs20 9:15:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  dequeue\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 front\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  answer \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 front\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 front\cf0  \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 front\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  answer\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 MathWolf\cf0  
+\fs20 9:15:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 public
+\f2\b0  \cf7 String\cf0  dequeue\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f5\i \cf9 // TODO Auto-generated method stub
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf6 (\cf8 !\cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 front\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 ))\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  data \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 front\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 front\cf0  \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 front\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 "ERRROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf4 ScottBusche\cf0  
+\fs20 9:15:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\f2 \cf0    
+\f3\b public
+\f2\b0  \cf7 String\cf0  dequeue\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b if
+\f2\b0  \cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 front\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b else
+\f2\b0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  answer \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 front\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 front\cf0  \cf8 =\cf0  
+\f3\b this
+\f2\b0 .\cf10 front\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b return
+\f2\b0  answer\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's my (first, buggy) answer:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  dequeue\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 front\cf8 ==\cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  answer \cf8 =\cf0  this.\cf10 front\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 front\cf0  \cf8 =\cf0  this.\cf10 front\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:15:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the bug? Well, there's a certain case where this doesn't do everything it has to. Can you spot it?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Remember, we're supposed to be keeping track of a back node too.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:16:41 pm
+\fs26 \
+If the queue is only 1 long\
+\cf4 JRY\cf0  
+\fs20 9:16:41 pm
+\fs26 \
+if this.front == this.back, then back should become null\
+\cf4 Tungsten\cf0  
+\fs20 9:16:41 pm
+\fs26 \
+If there is only one element in the queue, we don't update this.back\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:16:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The problem is when we dequeue the last node in the list. In other words, the code we just wrote has a problem when the front is the same as the back. We correctly move front to null, but back will remain pointing at the node we just took out! Oops.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 There are a few ways we could deal with this. Here's what I did:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  dequeue\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 front\cf8 ==\cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  answer \cf8 =\cf0  this.\cf10 front\cf0 .\cf10 data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 front\cf0  \cf8 =\cf0  this.\cf10 front\cf0 .\cf10 next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 front\cf8 ==\cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0  \cf8 =\cf0  \cf5 null\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Let's break that down: If, after deletion, front becomes null, then we need to set back to null as well. You could instead check first if front == back and deal with the whole thing as a special case.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:17:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (This would be an instance where the default behavior of == only saying reference types are equal if their locations in memory are identical works in our favor. In particular, if the front and back nodes just happened to contain the same data but did not represent the exact same node in the list, == would say front and back are not equal as elements of this data structure.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Questions on that?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Nothing fancy is happening there. We're just doing our due diligence to properly handle the back node pointer.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:18:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What's the running time for dequeue?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:19:10 pm
+\fs26 \
+O(1)\
+\cf4 Tungsten\cf0  
+\fs20 9:19:10 pm
+\fs26 \
+O(1)\
+\cf4 spower4\cf0  
+\fs20 9:19:10 pm
+\fs26 \
+O(1)\
+\cf4 JRY\cf0  
+\fs20 9:19:10 pm
+\fs26 \
+O(1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:47 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's O(1). There are no loops needed.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:19:50 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now let's write enqueue. We need to create a new node to place after the back element. What should this new node's next be?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What do you point to when you're the end of the line?
+\b0 \
+\pard\pardeftab720
+\cf4 bluebandit21\cf0  
+\fs20 9:20:43 pm
+\fs26 \
+null\
+\cf4 JRY\cf0  
+\fs20 9:20:43 pm
+\fs26 \
+null\
+\cf4 MSTang\cf0  
+\fs20 9:20:43 pm
+\fs26 \
+null\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It would be null, since nothing comes after it. So here's how our method could start:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 void\cf0  enqueue\cf6 (\cf7 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node newNode \cf8 =\cf0  new Node\cf6 (\cf0 x, \cf5 null\cf6 )\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:20:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Try taking it from here. Remember that both front and back need to be correct when the enqueue is done.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:22:31 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Writing this will have some similarity with addToFront from last week. (It would also be similar to addToBack, except we're tracking the back node, so we don't have to hunt for it, and for adding the first node "to the back", we just passed the buck to addToFront.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:23:25 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Hint 1: If we're adding to an empty queue, then we need to adjust both front and back to refer to the new node. How do we write that?
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:23:54 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 if
+\f2\b0  \cf6 (
+\f3\b \cf0 this
+\f2\b0 .\cf10 front\cf0  \cf8 ==\cf0  
+\f3\b \cf5 null
+\f2\b0 \cf6 )\{\cf0  
+\f5\i \cf9 //empty queue
+\f2\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 front\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0
+\f3\b this
+\f2\b0 .\cf10 back\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:02 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yeah.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+   public \cf5 void\cf0  enqueue\cf6 (\cf7 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node newNode \cf8 =\cf0  new Node\cf6 (\cf0 x, \cf5 null\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 front\cf8 ==\cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 front\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+ \cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:16 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 What about the case where the list is not empty?
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:24:46 pm
+\fs26 \
+\pard\pardeftab720
+
+\f1\fs24 \cf0 {{\NeXTGraphic 40e1628bcb7621229fa82852f98968d7997b4fc4.png \width3900 \height320 \noorient
+}¬}\pard\pardeftab720
+
+\f0\fs26 \cf0 \
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:24:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And what else?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:25:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (You should update this.back to point at the new back.)
+\b0 \
+\pard\pardeftab720
+\cf4 JRY\cf0  
+\fs20 9:25:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 this
+\f2\b0 .\cf10 back\cf0 .\cf10 next\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+
+\f3\b this
+\f2\b0 .\cf10 back\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\pard\pardeftab720
+
+\f0\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:04 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the else clause, when we're enqueuing onto a nonempty list, just the back changes:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0 .\cf10 next\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Would the opposite order work? In other words:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0 .\cf10 next\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0\b0 \cf4 ScottBusche\cf0  
+\fs20 9:26:28 pm
+\fs26 \
+No!\
+\cf4 bluebandit21\cf0  
+\fs20 9:26:28 pm
+\fs26 \
+no\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:30 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 No, this would be bad. We move back first. So changing back's next would be the same as changing newNode's next. So newNode's next would be newNode. We'd get a loop back to itself. Plus nothing in the rest of the list would be pointing at the new node.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, here's the complete correct method:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:36 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 void\cf0  enqueue\cf6 (\cf7 String\cf0  x\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Node newNode \cf8 =\cf0  new Node\cf6 (\cf0 x, \cf5 null\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 front\cf8 ==\cf5 null\cf6 )\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 front\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0  \cf8 =\cf0  newNode\cf8 ;\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0 .\cf10 next\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 back\cf0  \cf8 =\cf0  newNode\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:43 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Running time?
+\b0 \
+\pard\pardeftab720
+\cf4 Tungsten\cf0  
+\fs20 9:26:57 pm
+\fs26 \
+O(1)\
+\cf4 MathWolf\cf0  
+\fs20 9:26:57 pm
+\fs26 \
+O(1)\
+\cf4 chenjamin\cf0  
+\fs20 9:26:57 pm
+\fs26 \
+O(1)\
+\cf4 ScottBusche\cf0  
+\fs20 9:26:57 pm
+\fs26 \
+O(1)\
+\cf4 JRY\cf0  
+\fs20 9:26:57 pm
+\fs26 \
+O(1)\
+\cf4 connor0728\cf0  
+\fs20 9:26:57 pm
+\fs26 \
+O(1)\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:26:57 pm
+\fs26 \
+O(1)\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:26:59 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Constant again. We just create a node and manipulate a few pointers.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:27:08 pm
+\fs26 \
+It seems to be a leitmotiv\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Yes, for loose interpretations of "leitmotiv". 
+\f1\b0\fs24 {{\NeXTGraphic 1__#$!@%!#__smile.gif \width320 \height320 \noorient
+}¬}
+\f0\fs26 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:29 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 But of course you should expect that!
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:27:40 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We're talking about these data structures because they're efficient.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And that generally means they'll be O(1) (or O(something good) ) in the methods that matter.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In the interest of time, I'll give peek and isEmpty. No surprises there.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Here's peek:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf7 String\cf0  peek\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 this.\cf10 front\cf0  \cf8 ==\cf0  \cf5 null\cf6 )\cf0  
+\f4\i \cf9 // empty queue, nothing to remove
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return \cf11 "ERROR"\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0else\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  answer \cf8 =\cf0  this.\cf10 front\cf0 .\cf10 data\cf8 ;\cf0  
+\f4\i \cf9 // save first element
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return answer\cf8 ;\cf0  
+\f4\i \cf9 // return it
+\f3\i0 \cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0   \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This one is exactly the same as for the stack, just with top changed to front. Since the queue isn't changing, we don't have to worry about back.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And here's my isEmpty:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public \cf5 boolean\cf0  isEmpty\cf6 ()\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0return this.\cf10 front\cf0  \cf8 ==\cf0  \cf5 null\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:49 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could have alternatively checked this.back == null.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 And these operations are constant time. Like the stack, the queue handles its operations very efficiently.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:28:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Once we change the method names around, our main that checked the stack code also works for the queue:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  main\cf6 (\cf7 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0LQueue myQueue \cf8 =\cf0  new LQueue\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 myQueue.\cf10 isEmpty\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Nothing to remove yet"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myQueue.\cf10 enqueue\cf6 (\cf11 "A"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myQueue.\cf10 enqueue\cf6 (\cf11 "O"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myQueue.\cf10 enqueue\cf6 (\cf11 "P"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myQueue.\cf10 enqueue\cf6 (\cf11 "S"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  val \cf8 =\cf0  myQueue.\cf10 dequeue\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "Val is %s and queue front is %s"\cf0 , val, myQueue.\cf10 peek\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:05 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This should give you the output:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+Nothing to remove yet\
+Val is A and queue front is O\
+\pard\pardeftab720
+
+\f0\b0 \cf4 MSTang\cf0  
+\fs20 9:29:09 pm
+\fs26 \
+Is O(n) (linear) "something good?"\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:18 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's good in comparison to O(n^k) for k > 1.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:29:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 O(n) is not preferred if you have a reasonable way to get O(1) performance.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 I have about 5-10 minutes of material left to talk about a common generalization of stacks and queues.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyone who wants to go now is welcome to. Just check the transcript later.
+\b0 \
+\pard\pardeftab720
+\cf4 MathWolf\cf0  
+\fs20 9:30:28 pm
+\fs26 \
+O(log(N)) is good right?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:30:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 O(log(N)) is great compared to O(N). O(1) is still better.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 6: STACKS AND QUEUES IN JAVA
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:01 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 As you may expect, stacks and queues are already implemented in the Java libraries. Before I get to that, I want to sneak in one more bonus data structure.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:11 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It's called a \cf3 deque\cf0 , usually pronounced "deck". That's not an English word this time. Instead, it's an abbreviation for Double Ended QUEue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:24 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Given that name, how do you think a deque differs from a standard queue?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:31:46 pm
+\fs26 \
+You can add/remove from both ends?\
+\cf4 williamyin08\cf0  
+\fs20 9:31:46 pm
+\fs26 \
+You can enqueue or dequeue from both ends\
+\cf4 PiCrazy31415\cf0  
+\fs20 9:31:46 pm
+\fs26 \
+can add to both front and back\
+\cf4 AkshajK\cf0  
+\fs20 9:31:46 pm
+\fs26 \
+it is a stack and a queue at the same time\
+\cf4 Tungsten\cf0  
+\fs20 9:31:49 pm
+\fs26 \
+You can add and remove stuff from both ends?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:51 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 In a deque, you can add or remove from either end (but only the ends). So it's basically a stack and a queue at the same time. It supports push, pop, enqueue, and dequeue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:31:56 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Actually two of those are really the same. Which two?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:32:15 pm
+\fs26 \
+pop and dequeue\
+\cf4 MSTang\cf0  
+\fs20 9:32:15 pm
+\fs26 \
+pop and dequeue?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 pop and dequeue do the same thing; they remove the front element. We'd also need a removeLast method.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:22 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We could adapt our code to create a Deque class. We don't have time to do all of it, but I'll give you some hints as to how to do this. First off, if we want it to be used as either a stack or a queue, what would its header line look like? What should it implement?
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:32:50 pm
+\fs26 \
+Both interfaces.\
+\cf4 williamyin08\cf0  
+\fs20 9:32:50 pm
+\fs26 \
+AOPSStack and AOPSQueue?\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:52 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want it to implement the methods of both AOPSStack and AOPSQueue, so we get a header like this:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+public class Deque implements AOPSStack, AOPSQueue\
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:32:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note this does not stop us from also having a removeLast method too.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If we wanted to approach this in a linked way, what changes (if any) should we make to the Node class? We want to keep the running times constant, if we can.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:41 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It would be nice if we could move forward and backward easily...
+\b0 \
+\pard\pardeftab720
+\cf4 ScottBusche\cf0  
+\fs20 9:33:47 pm
+\fs26 \
+Double-link it?\
+\cf4 Tungsten\cf0  
+\fs20 9:33:47 pm
+\fs26 \
+We next and previous attributes\
+\cf4 MathWolf\cf0  
+\fs20 9:33:47 pm
+\fs26 \
+Have a double link\
+\cf4 MSTang\cf0  
+\fs20 9:33:47 pm
+\fs26 \
+We need a next and a back\
+\cf4 MathWolf\cf0  
+\fs20 9:33:47 pm
+\fs26 \
+Doubly linked\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:33:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Removing the last element is tricky with our Node class, because we need to alter the reference of the node pointing to the back. But we can't get to it without searching starting at the front.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 (This is the same issue we were discussing about whether in the queue class you'd want your nodes pointing toward the front of the line or the back.)
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:20 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 However, we can do it if we add a second reference to each Node that refers to the node pointing to it (that is to say, if we set up these nodes to point backward as well as forward, like you might do to implement a doubly-linked list):
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:26 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+\'a0\'a0\'a0\'a0private class Node\
+\'a0\'a0\'a0\'a0\cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public \cf7 String\cf0  data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node previous\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0public Node\cf6 (\cf7 String\cf0  data, Node next, Node previous\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 data\cf0  \cf8 =\cf0  data\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 next\cf0  \cf8 =\cf0  next\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0this.\cf10 previous\cf0  \cf8 =\cf0  previous\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf6 \}\cf0 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:34:28 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Now when we remove the last element, we can simply set this.back to what?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 This will be similar to how we pop stuff off the front, but inverted.
+\b0 \
+\pard\pardeftab720
+\cf4 MSTang\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+this.back.previous\
+\cf4 ScottBusche\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+old this.back.previous\
+\cf4 MathWolf\cf0  
+\fs20 9:35:17 pm
+\fs26 \
+this.back.previous\
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:19 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We want to chop off the node that this.back currently points at, so we just set this.back equal to this.back.previous. Of course, we have to make sure all the methods adjust next and previous correctly. You may have already worked through this depending on how you solved last week's challenge problem.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:27 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Since Deque implements both the stack and queue interfaces, we can use a Deque anytime we need a stack or queue. This is essentially the approach taken by the Java library.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:35 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java does have a generic Stack class. It supports the operations empty, peek, pop, and push, as well as a search operation that tells you how deep an object is in the stack. However, it is not recommended for use. It was created in very early versions of Java and only exists now for compatibility with old code. Such a feature is called \cf3 deprecated\cf0 , by the way.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:42 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Java does 
+\i not
+\i0  have a Queue class. Instead it has a generic Queue interface implemented by several classes. The interface uses add instead of enqueue, and remove instead of dequeue.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:35:48 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The Deque interface extends the Queue interface. Extending interfaces (rather than classes) is a new idea for us, but it's pretty much what you expect. The Deque interface requires everything that the Queue interface does, plus some additional methods. These essentially allow manipulation of either end, so there are methods addFirst, addLast; peekFirst, peekLast; etc.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:00 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 If you want a stack or queue, you instantiate a class that implements the Deque interface. There are two classes in the Java library you could use. You've actually met one already: LinkedList. It implements all the Deque operations in constant time, which tells you that its nodes actually point forwards and backwards.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:09 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The other class in the Java library you could use is ArrayDeque. This is a dynamic array implementation. What does that mean?
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:12 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 It means it resizes the underlying array if it gets filled up, just like we did when we wrote our AList class. You'll implement a dynamic array version of our stacks and queues for homework. If you don't need to resize, our add and remove operations could be done in constant time. As you saw a couple of weeks ago, resizing means moving everything over into a new array. Fortunately, if the new capacity is chosen well, that is an infrequent operation.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:53 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Anyway, here's our queue tester main method redone for the ArrayDeque class for use when you get that written:
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:55 pm
+\fs26 \
+\pard\pardeftab720
+
+\f3\b \cf0 \'a0\
+import \cf12 java.util.ArrayDeque\cf8 ;\cf0 \
+import \cf12 java.util.Deque\cf8 ;\cf0 \
+public class DequeTester \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0public static \cf5 void\cf0  main\cf6 (\cf7 String\cf6 []\cf0  args\cf6 )\cf0  \cf6 \{\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0Deque\cf8 <\cf0 String\cf8 >\cf0  myQueue \cf8 =\cf0  new ArrayDeque\cf8 <\cf0 String\cf8 >\cf6 (\cf13 10\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0if \cf6 (\cf0 myQueue.\cf10 isEmpty\cf6 ())\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 System\cf0 .\cf10 out\cf0 .\cf10 println\cf6 (\cf11 "Nothing to remove yet"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myQueue.\cf10 addLast\cf6 (\cf11 "A"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myQueue.\cf10 addLast\cf6 (\cf11 "O"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myQueue.\cf10 addLast\cf6 (\cf11 "P"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0myQueue.\cf10 addLast\cf6 (\cf11 "S"\cf6 )\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 String\cf0  val \cf8 =\cf0  myQueue.\cf10 removeFirst\cf6 ()\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\cf7 System\cf0 .\cf10 out\cf0 .\cf10 printf\cf6 (\cf11 "Val is %s and queue front is %s"\cf0 , val, myQueue.\cf10 peek\cf6 ())\cf8 ;\cf0 \
+\'a0\'a0\'a0\'a0\cf6 \}\cf0 \
+\pard\pardeftab720
+\cf6 \}\cf0 \
+\pard\pardeftab720
+
+\f0 \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:36:57 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Note the imports from java.util at the top. When I create myQueue, I use the interface for the variable's type, but I use the ArrayDeque class for the actual object. The 10 in parentheses is the initial capacity, so I won't have to worry about resizing.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:03 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Other than that, we just change the names to be compatible with the Deque interface.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:06 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf3 PART 7: SUMMARY
+\b0 \cf0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:07 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Today we saw two simple but important data structures.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:10 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The stack is a LIFO ordered structure that allows addition or removal from one end.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:13 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 The queue is a FIFO ordered structure that allows addition from one end and removal from the other.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:15 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We saw a linked operation of both structures that allow the major operations to be done in constant time.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:17 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 We discussed some applications of the structures. We also saw how Java provides stack, queue, and deque classes.
+\b0 \
+\pard\pardeftab720
+
+\b \cf2 dkneezel
+\b0 \cf0  
+\fs20 9:37:21 pm
+\fs26 \
+\pard\pardeftab720
+
+\b \cf0 Next week, we look at another class that can be used to hold a collection of objects. This one will be optimized for fast searching. See you then!}
